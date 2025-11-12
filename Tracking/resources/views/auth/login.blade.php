@@ -46,27 +46,27 @@
                 <form class="space-y-6" method="POST" action="{{ route('login') }}">
                     @csrf
                     
-                    <!-- Email Field -->
+                    <!-- Username Field -->
                     <div>
-                        <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                            Email Address
+                        <label for="username" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                            Username
                         </label>
                         <div class="relative">
                             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                 <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                                 </svg>
                             </div>
-                            <input id="email" 
-                                   name="email" 
-                                   type="email" 
-                                   autocomplete="email" 
+                            <input id="username" 
+                                   name="username" 
+                                   type="text" 
+                                   autocomplete="username" 
                                    required 
-                                   value="{{ old('email') }}"
-                                   class="appearance-none relative block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 text-gray-900 dark:text-white bg-white dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm transition duration-200 @error('email') border-red-500 focus:ring-red-500 focus:border-red-500 @enderror" 
-                                   placeholder="Enter your email">
+                                   value="{{ old('username') }}"
+                                   class="appearance-none relative block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 text-gray-900 dark:text-white bg-white dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm transition duration-200 @error('username') border-red-500 focus:ring-red-500 focus:border-red-500 @enderror" 
+                                   placeholder="Enter your username">
                         </div>
-                        @error('email')
+                        @error('username')
                             <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
                         @enderror
                     </div>

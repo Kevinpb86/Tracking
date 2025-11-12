@@ -23,21 +23,25 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $request->validate([
-            'email' => 'required|email',
+            'username' => 'required|string',
             'password' => 'required|string|min:6',
         ]);
 
-        $credentials = $request->only('email', 'password');
         $remember = $request->boolean('remember');
 
-        if (Auth::attempt($credentials, $remember)) {
+        // Find user by username
+        $user = \App\Models\User::where('username', $request->username)->first();
+
+        if ($user && \Illuminate\Support\Facades\Hash::check($request->password, $user->password)) {
+            Auth::login($user, $remember);
             $request->session()->regenerate();
             
-            return redirect()->route('dashboard');
+            // Redirect to intended URL or dashboard
+            return redirect()->intended(route('dashboard'));
         }
 
         throw ValidationException::withMessages([
-            'email' => 'The provided credentials do not match our records.',
+            'username' => 'The provided credentials do not match our records.',
         ]);
     }
 

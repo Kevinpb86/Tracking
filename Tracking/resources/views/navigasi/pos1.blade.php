@@ -108,27 +108,11 @@
                                 >
                                     <span class="flex items-center gap-3">
                                         <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-100 text-emerald-600 transition duration-200 group-hover:bg-emerald-500 group-hover:text-white">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-emerald-600 group-hover:text-white" viewBox="0 0 20 20" fill="currentColor">
                                                 <path fill-rule="evenodd" d="M3 4.25A2.25 2.25 0 0 1 5.25 2h9.5A2.25 2.25 0 0 1 17 4.25v11.5A2.25 2.25 0 0 1 14.75 18h-9.5A2.25 2.25 0 0 1 3 15.75V4.25Z" clip-rule="evenodd" />
                                             </svg>
                                         </span>
                                         <span class="text-sm">Input HSE</span>
-                                    </span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-emerald-400 transition duration-200 group-hover:text-emerald-600" viewBox="0 0 20 20" fill="currentColor">
-                                        <path fill-rule="evenodd" d="M7.22 14.78a.75.75 0 0 1 0-1.06L10.94 10 7.22 6.28a.75.75 0 1 1 1.06-1.06l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0Z" clip-rule="evenodd" />
-                                    </svg>
-                                </a>
-                                <a
-                                    href="#"
-                                    class="group flex items-center justify-between rounded-xl border border-emerald-100 bg-white px-4 py-3 transition duration-200 hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-700"
-                                >
-                                    <span class="flex items-center gap-3">
-                                        <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-100 text-emerald-600 transition duration-200 group-hover:bg-emerald-500 group-hover:text-white">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                                                <path fill-rule="evenodd" d="M3 4.25A2.25 2.25 0 0 1 5.25 2h9.5A2.25 2.25 0 0 1 17 4.25v11.5A2.25 2.25 0 0 1 14.75 18h-9.5A2.25 2.25 0 0 1 3 15.75V4.25Z" clip-rule="evenodd" />
-                                            </svg>
-                                        </span>
-                                        <span class="text-sm">CETAK HSE FORM</span>
                                     </span>
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-emerald-400 transition duration-200 group-hover:text-emerald-600" viewBox="0 0 20 20" fill="currentColor">
                                         <path fill-rule="evenodd" d="M7.22 14.78a.75.75 0 0 1 0-1.06L10.94 10 7.22 6.28a.75.75 0 1 1 1.06-1.06l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0Z" clip-rule="evenodd" />

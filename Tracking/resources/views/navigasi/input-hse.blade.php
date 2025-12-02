@@ -9,6 +9,12 @@
     <link href="https://fonts.bunny.net/css?family=inter:400,500,600,700" rel="stylesheet" />
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    
+    <!-- Library untuk generate PDF dan gambar -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    
     <style>
         /* Custom styles for HSE form */
         .form-input {
@@ -72,6 +78,93 @@
         
         .submit-btn:hover {
             background-color: #047857 !important;
+        }
+        
+        /* Print styles - hide elemen yang tidak perlu saat cetak */
+        @media print {
+            #sidebar, #sidebarToggle, #sidebarOverlay, .no-print {
+                display: none !important;
+            }
+            
+            body {
+                background: white !important;
+            }
+            
+            .form-card {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+        }
+        
+        /* Dropdown format cetak */
+        .print-format-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .print-format-btn {
+            background-color: #059669;
+            color: white;
+            padding: 0.75rem 1rem;
+            border: none;
+            border-radius: 0;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .print-format-btn:hover {
+            background-color: #047857;
+        }
+        
+        .print-format-menu {
+            display: none;
+            position: absolute;
+            bottom: 100%;
+            right: 0;
+            margin-bottom: 0.5rem;
+            background-color: white;
+            border: 2px solid #059669;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            min-width: 200px;
+        }
+        
+        .print-format-menu.show {
+            display: block;
+        }
+        
+        .print-format-item {
+            display: block;
+            width: 100%;
+            padding: 0.75rem 1rem;
+            text-align: left;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #1e293b;
+            transition: all 0.2s;
+        }
+        
+        .print-format-item:hover {
+            background-color: #ecfdf5;
+            color: #059669;
+        }
+        
+        .print-format-item:first-child {
+            border-top-left-radius: 0.5rem;
+            border-top-right-radius: 0.5rem;
+        }
+        
+        .print-format-item:last-child {
+            border-bottom-left-radius: 0.5rem;
+            border-bottom-right-radius: 0.5rem;
         }
     </style>
 </head>
@@ -185,28 +278,12 @@
                                     class="group flex items-center justify-between rounded-xl border border-emerald-100 bg-emerald-50 px-4 py-3 transition duration-200 hover:border-emerald-300 hover:bg-emerald-100 hover:text-emerald-700"
                                 >
                                     <span class="flex items-center gap-3">
-                                        <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-500 text-white transition duration-200">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                        <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-500 transition duration-200 group-hover:bg-emerald-600">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" viewBox="0 0 20 20" fill="currentColor">
                                                 <path fill-rule="evenodd" d="M3 4.25A2.25 2.25 0 0 1 5.25 2h9.5A2.25 2.25 0 0 1 17 4.25v11.5A2.25 2.25 0 0 1 14.75 18h-9.5A2.25 2.25 0 0 1 3 15.75V4.25Z" clip-rule="evenodd" />
                                             </svg>
                                         </span>
-                                        <span class="text-sm font-semibold">Input HSE</span>
-                                    </span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-emerald-400 transition duration-200 group-hover:text-emerald-600" viewBox="0 0 20 20" fill="currentColor">
-                                        <path fill-rule="evenodd" d="M7.22 14.78a.75.75 0 0 1 0-1.06L10.94 10 7.22 6.28a.75.75 0 1 1 1.06-1.06l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0Z" clip-rule="evenodd" />
-                                    </svg>
-                                </a>
-                                <a
-                                    href="#"
-                                    class="group flex items-center justify-between rounded-xl border border-emerald-100 bg-white px-4 py-3 transition duration-200 hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-700"
-                                >
-                                    <span class="flex items-center gap-3">
-                                        <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-100 text-emerald-600 transition duration-200 group-hover:bg-emerald-500 group-hover:text-white">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                                                <path fill-rule="evenodd" d="M3 4.25A2.25 2.25 0 0 1 5.25 2h9.5A2.25 2.25 0 0 1 17 4.25v11.5A2.25 2.25 0 0 1 14.75 18h-9.5A2.25 2.25 0 0 1 3 15.75V4.25Z" clip-rule="evenodd" />
-                                            </svg>
-                                        </span>
-                                        <span class="text-sm">CETAK HSE FORM</span>
+                                        <span class="text-sm font-semibold text-emerald-700">Input HSE</span>
                                     </span>
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-emerald-400 transition duration-200 group-hover:text-emerald-600" viewBox="0 0 20 20" fill="currentColor">
                                         <path fill-rule="evenodd" d="M7.22 14.78a.75.75 0 0 1 0-1.06L10.94 10 7.22 6.28a.75.75 0 1 1 1.06-1.06l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0Z" clip-rule="evenodd" />
@@ -301,7 +378,23 @@
 
             <section class="relative mx-auto w-full flex-1 px-8 py-16 sm:px-12 lg:px-24">
                 <div class="mx-auto max-w-4xl">
-                    <form action="{{ route('hse.store') }}" method="POST" class="space-y-8">
+                    @if (session('success'))
+                        <div class="mb-6 rounded-none border-2 border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-700 shadow-sm">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
+                    @if ($errors->any())
+                        <div class="mb-6 rounded-none border-2 border-red-200 bg-red-50 px-4 py-3 text-sm font-medium text-red-700 shadow-sm">
+                            <ul class="list-disc list-inside">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
+                    <form action="{{ route('hse.store') }}" method="POST" class="space-y-8" id="hseForm">
                         @csrf
                         <div class="form-card rounded-2xl border-2 border-slate-200 bg-gradient-to-br from-white to-emerald-50/30 p-8 shadow-lg">
                             <h2 class="text-sm font-semibold uppercase tracking-[0.35em] text-emerald-600/80 mb-6 flex items-center gap-2">
@@ -487,16 +580,49 @@
                             >
                                 Batal
                             </a>
-                            <button
-                                type="submit"
-                                style="background-color: #059669; color: #ffffff;"
-                                class="submit-btn inline-flex items-center justify-center gap-2 rounded-none px-8 py-4 text-sm font-semibold shadow-lg focus:outline-none focus-visible:ring-4 focus-visible:ring-emerald-300 focus-visible:ring-offset-2"
-                            >
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                                    <path d="M10.75 4.75a.75.75 0 0 0-1.5 0v4.5h-4.5a.75.75 0 0 0 0 1.5h4.5v4.5a.75.75 0 0 0 1.5 0v-4.5h4.5a.75.75 0 0 0 0-1.5h-4.5v-4.5Z" />
-                                </svg>
-                                Simpan Data
-                            </button>
+                            <div class="print-format-dropdown">
+                                <button
+                                    type="button"
+                                    id="printFormatBtn"
+                                    class="print-format-btn inline-flex items-center justify-center gap-2 rounded-none px-8 py-4 text-sm font-semibold shadow-lg focus:outline-none focus-visible:ring-4 focus-visible:ring-emerald-300 focus-visible:ring-offset-2"
+                                    onclick="togglePrintMenu()"
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                        <path d="M5.625 1.5c-1.036 0-1.875.84-1.875 1.875v17.25c0 1.035.84 1.875 1.875 1.875h12.75c1.035 0 1.875-.84 1.875-1.875V12.75A3.75 3.75 0 0016.5 9h-1.875a1.875 1.875 0 01-1.875-1.875V5.25A3.75 3.75 0 009 1.5H5.625z" />
+                                        <path d="M12.971 1.816A5.23 5.23 0 0114.25 5.25v1.875c0 .207.168.375.375.375H16.5a5.23 5.23 0 013.434 1.279 9.768 9.768 0 00-6.963-6.963z" />
+                                    </svg>
+                                    Cetak HSE
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                                    </svg>
+                                </button>
+                                <div id="printFormatMenu" class="print-format-menu">
+                                    <button type="button" class="print-format-item" onclick="printHSE('pdf')">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M5.625 1.5c-1.036 0-1.875.84-1.875 1.875v17.25c0 1.035.84 1.875 1.875 1.875h12.75c1.035 0 1.875-.84 1.875-1.875V12.75A3.75 3.75 0 0016.5 9h-1.875a1.875 1.875 0 01-1.875-1.875V5.25A3.75 3.75 0 009 1.5H5.625z" clip-rule="evenodd" />
+                                        </svg>
+                                        Cetak sebagai PDF
+                                    </button>
+                                    <button type="button" class="print-format-item" onclick="printHSE('png')">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M1 5a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2H3a2 2 0 01-2-2V5zm3.293 1.293a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 01-1.414-1.414L7.586 10 5.293 7.707a1 1 0 010-1.414zM11 12a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd" />
+                                        </svg>
+                                        Cetak sebagai PNG
+                                    </button>
+                                    <button type="button" class="print-format-item" onclick="printHSE('jpg')">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M1 5a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2H3a2 2 0 01-2-2V5zm3.293 1.293a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 01-1.414-1.414L7.586 10 5.293 7.707a1 1 0 010-1.414zM11 12a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd" />
+                                        </svg>
+                                        Cetak sebagai JPG
+                                    </button>
+                                    <button type="button" class="print-format-item" onclick="printHSE('jpeg')">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M1 5a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2H3a2 2 0 01-2-2V5zm3.293 1.293a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 01-1.414-1.414L7.586 10 5.293 7.707a1 1 0 010-1.414zM11 12a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd" />
+                                        </svg>
+                                        Cetak sebagai JPEG
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -552,6 +678,283 @@
                 }
             }
         }
+
+        // Toggle print format menu
+        function togglePrintMenu() {
+            const menu = document.getElementById('printFormatMenu');
+            if (menu) {
+                menu.classList.toggle('show');
+            }
+        }
+
+        // Close print menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const dropdown = document.querySelector('.print-format-dropdown');
+            const menu = document.getElementById('printFormatMenu');
+            if (dropdown && menu && !dropdown.contains(event.target)) {
+                menu.classList.remove('show');
+            }
+        });
+
+        // Fungsi untuk mengecek apakah library sudah ter-load
+        function checkLibraries() {
+            if (typeof html2pdf === 'undefined') {
+                throw new Error('html2pdf library belum ter-load');
+            }
+            if (typeof html2canvas === 'undefined') {
+                throw new Error('html2canvas library belum ter-load');
+            }
+        }
+
+        // Fungsi untuk mencetak HSE form
+        async function printHSE(format) {
+            try {
+                // Cek apakah library sudah ter-load
+                checkLibraries();
+            } catch (error) {
+                console.error('Library error:', error);
+                showNotification('Library belum ter-load. Silakan refresh halaman.', 'error');
+                document.getElementById('printFormatMenu').classList.remove('show');
+                return;
+            }
+
+            // Validasi form terlebih dahulu
+            const form = document.getElementById('hseForm');
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                document.getElementById('printFormatMenu').classList.remove('show');
+                return;
+            }
+
+            // Tutup menu dropdown
+            document.getElementById('printFormatMenu').classList.remove('show');
+
+            // Tampilkan loading indicator
+            showNotification('Sedang memproses...', 'success');
+
+            try {
+                // Ambil elemen utama yang akan dicetak
+                const mainContent = document.querySelector('main');
+                if (!mainContent) {
+                    throw new Error('Elemen konten tidak ditemukan');
+                }
+
+                // Buat container untuk print dengan style yang tepat
+                const printContainer = document.createElement('div');
+                printContainer.id = 'printContainer';
+                printContainer.style.cssText = `
+                    position: absolute;
+                    left: -9999px;
+                    top: 0;
+                    width: 210mm;
+                    background: white;
+                    padding: 20px;
+                    font-family: 'Inter', sans-serif;
+                `;
+
+                // Clone header section
+                const headerSection = document.querySelector('header');
+                if (headerSection) {
+                    const headerClone = headerSection.cloneNode(true);
+                    // Hapus elemen yang tidak perlu
+                    headerClone.querySelectorAll('button, .no-print').forEach(el => el.remove());
+                    printContainer.appendChild(headerClone);
+                }
+
+                // Clone semua form cards
+                const formCards = document.querySelectorAll('.form-card');
+                if (formCards.length === 0) {
+                    throw new Error('Form cards tidak ditemukan');
+                }
+
+                formCards.forEach((card, index) => {
+                    const cardClone = card.cloneNode(true);
+                    // Hapus elemen interaktif
+                    cardClone.querySelectorAll('button, input[type="radio"], input[type="checkbox"]').forEach(el => {
+                        if (el.type === 'radio' || el.type === 'checkbox') {
+                            // Untuk radio/checkbox, tampilkan nilai yang dipilih sebagai text
+                            if (el.checked) {
+                                const label = cardClone.querySelector(`label[for="${el.id}"]`) || 
+                                            el.closest('label');
+                                if (label) {
+                                    const span = document.createElement('span');
+                                    span.textContent = '✓ ' + (label.textContent.trim() || el.value);
+                                    span.style.cssText = 'color: #059669; font-weight: 600;';
+                                    el.parentNode.replaceChild(span, el);
+                                }
+                            } else {
+                                el.remove();
+                            }
+                        } else {
+                            el.remove();
+                        }
+                    });
+                    
+                    // Tampilkan nilai input sebagai text
+                    cardClone.querySelectorAll('input[type="text"], input[type="date"], input[type="time"], select, textarea').forEach(el => {
+                        const value = el.value || el.textContent || '';
+                        if (value) {
+                            const span = document.createElement('div');
+                            span.textContent = value;
+                            span.style.cssText = 'padding: 8px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 4px; margin-top: 4px;';
+                            el.parentNode.replaceChild(span, el);
+                        } else {
+                            el.style.display = 'none';
+                        }
+                    });
+
+                    cardClone.style.cssText = `
+                        margin-bottom: 2rem;
+                        page-break-inside: avoid;
+                        break-inside: avoid;
+                    `;
+                    printContainer.appendChild(cardClone);
+                });
+
+                // Tambahkan ke body (di luar viewport)
+                document.body.appendChild(printContainer);
+
+                // Tunggu sebentar untuk memastikan elemen ter-render
+                await new Promise(resolve => setTimeout(resolve, 500));
+
+                if (format === 'pdf') {
+                    // Generate PDF menggunakan html2pdf.js
+                    const opt = {
+                        margin: [10, 10, 10, 10],
+                        filename: `HSE_Form_${new Date().toISOString().split('T')[0]}.pdf`,
+                        image: { 
+                            type: 'jpeg', 
+                            quality: 0.98 
+                        },
+                        html2canvas: { 
+                            scale: 2,
+                            useCORS: true,
+                            allowTaint: true,
+                            logging: false,
+                            letterRendering: true,
+                            backgroundColor: '#ffffff'
+                        },
+                        jsPDF: { 
+                            unit: 'mm', 
+                            format: 'a4', 
+                            orientation: 'portrait',
+                            compress: true
+                        },
+                        pagebreak: { 
+                            mode: ['avoid-all', 'css', 'legacy'] 
+                        }
+                    };
+
+                    await html2pdf().set(opt).from(printContainer).save();
+                } else {
+                    // Generate gambar (PNG, JPG, JPEG) menggunakan html2canvas
+                    const canvas = await html2canvas(printContainer, {
+                        scale: 2,
+                        useCORS: true,
+                        allowTaint: true,
+                        logging: false,
+                        backgroundColor: '#ffffff',
+                        letterRendering: true,
+                        width: printContainer.scrollWidth,
+                        height: printContainer.scrollHeight
+                    });
+
+                    // Konversi canvas ke blob dengan promise
+                    await new Promise((resolve, reject) => {
+                        canvas.toBlob(function(blob) {
+                            if (!blob) {
+                                reject(new Error('Gagal membuat blob'));
+                                return;
+                            }
+                            try {
+                                const url = URL.createObjectURL(blob);
+                                const link = document.createElement('a');
+                                link.href = url;
+                                
+                                // Tentukan format file
+                                let fileExtension = format === 'jpeg' ? 'jpg' : format;
+                                
+                                link.download = `HSE_Form_${new Date().toISOString().split('T')[0]}.${fileExtension}`;
+                                document.body.appendChild(link);
+                                link.click();
+                                document.body.removeChild(link);
+                                
+                                // Cleanup
+                                setTimeout(() => URL.revokeObjectURL(url), 100);
+                                resolve();
+                            } catch (err) {
+                                reject(err);
+                            }
+                        }, format === 'png' ? 'image/png' : 'image/jpeg', 0.95);
+                    });
+                }
+
+                // Tampilkan notifikasi sukses
+                showNotification('Form HSE berhasil dicetak sebagai ' + format.toUpperCase() + '!', 'success');
+            } catch (error) {
+                console.error('Error saat mencetak:', error);
+                showNotification('Terjadi kesalahan: ' + (error.message || 'Silakan coba lagi.'), 'error');
+            } finally {
+                // Hapus container sementara
+                const printContainer = document.getElementById('printContainer');
+                if (printContainer) {
+                    document.body.removeChild(printContainer);
+                }
+            }
+        }
+
+        // Fungsi untuk menampilkan notifikasi
+        function showNotification(message, type) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 1rem 1.5rem;
+                background-color: ${type === 'success' ? '#059669' : '#dc2626'};
+                color: white;
+                border-radius: 0.5rem;
+                box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+                z-index: 10000;
+                font-weight: 500;
+                animation: slideIn 0.3s ease-out;
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease-out';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+
+        // Tambahkan animasi CSS untuk notifikasi
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+            @keyframes slideOut {
+                from {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
 </html>

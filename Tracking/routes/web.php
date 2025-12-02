@@ -47,10 +47,39 @@ Route::middleware('auth')->group(function () {
         return view('navigasi.input-hse');
     })->name('hse.input');
 
-    Route::post('/hse/store', function () {
-        // TODO: Implement HSE data storage logic
-        return redirect()->route('hse.input')->with('success', 'Data HSE berhasil disimpan!');
+    Route::post('/hse/store', function (\Illuminate\Http\Request $request) {
+        // Validasi input
+        $validated = $request->validate([
+            'tanggal' => 'required|date',
+            'waktu' => 'required',
+            'nama_petugas' => 'required|string|max:255',
+            'lokasi' => 'required|string|max:255',
+            'kondisi_apd' => 'required|string',
+            'temuan' => 'nullable|string',
+            'tindak_lanjut' => 'nullable|string',
+            'penanggung_jawab' => 'nullable|string|max:255',
+        ]);
+        
+        // Simpan data ke session
+        $hseData = [
+            'tanggal' => $validated['tanggal'],
+            'waktu' => $validated['waktu'],
+            'nama_petugas' => $validated['nama_petugas'],
+            'lokasi' => $validated['lokasi'],
+            'kondisi_apd' => $validated['kondisi_apd'],
+            'temuan' => $validated['temuan'] ?? '',
+            'tindak_lanjut' => $validated['tindak_lanjut'] ?? '',
+            'penanggung_jawab' => $validated['penanggung_jawab'] ?? '',
+        ];
+        
+        session(['hse_data' => $hseData]);
+        
+        return redirect()->route('hse.cetak')->with('success', 'Data HSE berhasil disimpan!');
     })->name('hse.store');
+
+    Route::get('/hse/cetak', function () {
+        return view('navigasi.cetak-hse');
+    })->name('hse.cetak');
 
     Route::get('/dashboard', function () {
         $queues = session('queues', []);

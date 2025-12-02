@@ -41,7 +41,11 @@
             class="fixed left-0 top-0 z-40 flex h-full w-72 -translate-x-full flex-col overflow-hidden border-r border-slate-200 bg-white shadow-lg transition-transform duration-300 ease-in-out lg:w-80"
         >
             <div class="relative flex h-full flex-col gap-6 overflow-y-auto p-8">
-                <div class="relative flex items-center gap-4 rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+                <a
+                    href="{{ route('dashboard.main') }}"
+                    class="relative flex items-center gap-4 rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition hover:border-blue-200 hover:shadow-md"
+                    aria-label="Kembali ke halaman utama"
+                >
                     <div class="flex h-14 w-14 items-center justify-center rounded-lg border border-blue-100 bg-blue-50 p-1.5">
                         <img
                             src="{{ asset('images/wgilogo.jpg') }}"
@@ -53,7 +57,7 @@
                         <p class="text-[11px] font-semibold uppercase tracking-[0.45em] text-blue-500">Tracking System</p>
                         <p class="text-base font-semibold text-slate-900 leading-snug">PT. Wiraswasta Gemilang Indonesia</p>
                     </div>
-                </div>
+                </a>
 
                 <div class="relative space-y-3">
                     <div class="flex items-center justify-between">
@@ -164,7 +168,11 @@
                 <div class="overflow-hidden border-b border-slate-200 bg-white text-slate-700 shadow-sm">
                     <div class="h-3 w-full bg-[#2736a3]"></div>
                     <div class="flex flex-wrap items-center gap-6 px-6 py-6 pl-20 sm:px-10 sm:pl-28">
-                        <div class="flex min-w-[220px] flex-1 items-center gap-5 text-blue-900">
+                        <a
+                            href="{{ route('dashboard.main') }}"
+                            class="flex min-w-[220px] flex-1 items-center gap-5 text-blue-900 transition hover:opacity-80"
+                            aria-label="Kembali ke halaman utama"
+                        >
                             <div class="flex h-16 w-16 items-center justify-center rounded-full border border-blue-900/20 bg-white p-2 shadow-lg shadow-blue-900/20">
                                 <img src="{{ asset('images/wgilogo.jpg') }}" alt="Logo PT. Wiraswasta Gemilang Indonesia" class="h-full w-full object-contain">
                             </div>
@@ -175,7 +183,7 @@
                                     <span class="block whitespace-nowrap">Indonesia</span>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                         <div class="hidden h-14 w-px bg-slate-900 sm:ml-5 sm:block lg:ml-10"></div>
                         <div class="flex min-w-[200px] flex-1 justify-center text-center sm:justify-start sm:text-left">
                             <span class="text-base font-medium uppercase tracking-[0.45em] text-slate-500 whitespace-nowrap">
@@ -199,6 +207,29 @@
 
             <header class="px-8 pt-12 sm:px-12 lg:px-24">
                 <div class="mx-auto rounded-2xl border border-slate-200 bg-white p-10 shadow-sm">
+                    <div class="flex flex-col items-stretch gap-4 sm:flex-row sm:items-center sm:justify-between">
+                        <div class="text-sm font-semibold uppercase tracking-[0.35em] text-slate-500">Navigasi</div>
+                        <div class="flex flex-wrap gap-3">
+                            <a
+                                href="{{ url()->previous() }}"
+                                class="inline-flex items-center gap-2 rounded-lg border border-slate-200 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-slate-600 transition hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-300 focus-visible:ring-offset-2"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 18l-6-6 6-6" />
+                                </svg>
+                                Kembali
+                            </a>
+                            <a
+                                href="{{ route('dashboard.main') }}"
+                                class="inline-flex items-center gap-2 rounded-lg border border-blue-200 bg-blue-50 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-blue-600 transition hover:bg-blue-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 focus-visible:ring-offset-2"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7" />
+                                </svg>
+                                Halaman Utama
+                            </a>
+                        </div>
+                    </div>
                     <div class="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
                         <div class="max-w-2xl space-y-4">
                             <p class="text-xs font-semibold uppercase tracking-[0.45em] text-blue-600/80">

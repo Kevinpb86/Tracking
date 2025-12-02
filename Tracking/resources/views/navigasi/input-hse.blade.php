@@ -64,6 +64,15 @@
         .submit-btn:active {
             transform: translateY(0);
         }
+        
+        .submit-btn {
+            background-color: #059669 !important;
+            color: #ffffff !important;
+        }
+        
+        .submit-btn:hover {
+            background-color: #047857 !important;
+        }
     </style>
 </head>
 <body class="min-h-screen bg-slate-50 font-sans antialiased text-slate-900">
@@ -267,15 +276,23 @@
             </section>
 
             <header class="px-8 pt-12 sm:px-12 lg:px-24">
-                <div class="mx-auto rounded-2xl border border-slate-200 bg-white p-10 shadow-sm">
+                <div class="mx-auto rounded-none border-2 border-emerald-200 bg-gradient-to-br from-white via-emerald-50/50 to-white p-10 shadow-lg">
                     <div class="space-y-4">
-                        <p class="text-xs font-semibold uppercase tracking-[0.45em] text-emerald-600/80">
-                            Input HSE Form
-                        </p>
-                        <h1 class="text-4xl font-semibold text-slate-900 sm:text-5xl">
+                        <div class="flex items-center gap-3">
+                            <div class="flex h-10 w-10 items-center justify-center rounded-none bg-emerald-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <p class="text-xs font-bold uppercase tracking-[0.5em] text-emerald-700">
+                                Input HSE Form
+                            </p>
+                        </div>
+                        <h1 class="text-4xl font-bold text-slate-900 sm:text-5xl leading-tight">
                             Health Safety Environment
                         </h1>
-                        <p class="text-sm text-slate-600">
+                        <div class="h-1 w-20 bg-emerald-600"></div>
+                        <p class="text-sm leading-relaxed text-slate-700 max-w-3xl">
                             Lengkapi form HSE untuk memastikan keselamatan dan kesehatan kerja di area operasional. Semua data yang diinput akan tersimpan untuk keperluan dokumentasi dan audit.
                         </p>
                     </div>
@@ -472,7 +489,8 @@
                             </a>
                             <button
                                 type="submit"
-                                class="submit-btn inline-flex items-center justify-center gap-2 rounded-none bg-emerald-700 px-8 py-4 text-sm font-semibold text-white shadow-lg focus:outline-none focus-visible:ring-4 focus-visible:ring-emerald-300 focus-visible:ring-offset-2 hover:bg-emerald-800"
+                                style="background-color: #059669; color: #ffffff;"
+                                class="submit-btn inline-flex items-center justify-center gap-2 rounded-none px-8 py-4 text-sm font-semibold shadow-lg focus:outline-none focus-visible:ring-4 focus-visible:ring-emerald-300 focus-visible:ring-offset-2"
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                                     <path d="M10.75 4.75a.75.75 0 0 0-1.5 0v4.5h-4.5a.75.75 0 0 0 0 1.5h4.5v4.5a.75.75 0 0 0 1.5 0v-4.5h4.5a.75.75 0 0 0 0-1.5h-4.5v-4.5Z" />

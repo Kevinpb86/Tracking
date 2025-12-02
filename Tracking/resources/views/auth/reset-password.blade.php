@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>PT. WGI</title>
+    <title>Reset Password - PT. WGI</title>
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -20,7 +20,7 @@
     <div class="fixed inset-0 bg-black/50"></div>
     
     <div class="relative h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
-        <div class="max-w-md w-full space-y-8 mt-4">
+        <div class="max-w-md w-full space-y-8 -mt-4">
             <!-- Header -->
             <div class="text-center">
                 <!-- Company Logo/Icon -->
@@ -34,52 +34,41 @@
                 </h1>
                 
                 <h2 class="text-3xl font-bold text-white drop-shadow-lg">
-                    Welcome Back
+                    Reset Password
                 </h2>
                 <p class="mt-2 text-sm text-gray-200 drop-shadow-md">
-                    Sign in to your account to continue
+                    Enter your new password below
                 </p>
             </div>
 
-            <!-- Login Form -->
+            <!-- Reset Password Form -->
             <div class="bg-white/90 dark:bg-gray-800/90 backdrop-blur-lg shadow-2xl rounded-2xl p-8 border border-white/20 dark:border-gray-700/50">
                 @if (session('status'))
                     <div class="mb-6 rounded-xl border border-emerald-200 bg-emerald-50/90 px-4 py-3 text-sm font-medium text-emerald-700 shadow-sm">
                         {{ session('status') }}
                     </div>
                 @endif
-                <form class="space-y-6" method="POST" action="{{ route('login') }}" autocomplete="off">
+
+                @if ($errors->any())
+                    <div class="mb-6 rounded-xl border border-red-200 bg-red-50/90 px-4 py-3 text-sm font-medium text-red-700 shadow-sm">
+                        <ul class="list-disc list-inside">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                <form class="space-y-6" method="POST" action="{{ route('password.reset.submit') }}">
                     @csrf
                     
-                    <!-- Username Field -->
-                    <div>
-                        <label for="username" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                            Username
-                        </label>
-                        <div class="relative">
-                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
-                                </svg>
-                            </div>
-                            <input id="username" 
-                                   name="username" 
-                                   type="text" 
-                                   autocomplete="off" 
-                                   required 
-                                   value="{{ old('username') }}"
-                                   class="appearance-none relative block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 text-gray-900 dark:text-white bg-white dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm transition duration-200 @error('username') border-red-500 focus:ring-red-500 focus:border-red-500 @enderror" 
-                                   placeholder="Enter your username">
-                        </div>
-                        @error('username')
-                            <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
-                        @enderror
-                    </div>
+                    <input type="hidden" name="token" value="{{ $token }}">
+                    <input type="hidden" name="email" value="{{ $email }}">
 
                     <!-- Password Field -->
                     <div>
                         <label for="password" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                            Password
+                            New Password
                         </label>
                         <div class="relative">
                             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -93,29 +82,31 @@
                                    autocomplete="new-password" 
                                    required 
                                    class="appearance-none relative block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 text-gray-900 dark:text-white bg-white dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm transition duration-200 @error('password') border-red-500 focus:ring-red-500 focus:border-red-500 @enderror" 
-                                   placeholder="Enter your password">
+                                   placeholder="Enter your new password">
                         </div>
                         @error('password')
                             <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
                         @enderror
                     </div>
 
-                    <!-- Remember Me & Forgot Password -->
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center">
-                            <input id="remember" 
-                                   name="remember" 
-                                   type="checkbox" 
-                                   class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 dark:border-gray-600 rounded">
-                            <label for="remember" class="ml-2 block text-sm text-gray-700 dark:text-gray-300">
-                                Remember me
-                            </label>
-                        </div>
-
-                        <div class="text-sm">
-                            <a href="{{ route('password.forgot') }}" class="font-medium text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300 transition duration-200">
-                                Forgot password?
-                            </a>
+                    <!-- Password Confirmation Field -->
+                    <div>
+                        <label for="password_confirmation" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                            Confirm Password
+                        </label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <input id="password_confirmation" 
+                                   name="password_confirmation" 
+                                   type="password" 
+                                   autocomplete="new-password" 
+                                   required 
+                                   class="appearance-none relative block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 text-gray-900 dark:text-white bg-white dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm transition duration-200" 
+                                   placeholder="Confirm your new password">
                         </div>
                     </div>
 
@@ -125,21 +116,21 @@
                                 class="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-200 transform hover:scale-105 shadow-lg cursor-pointer">
                             <span class="absolute left-0 inset-y-0 flex items-center pl-3">
                                 <svg class="h-5 w-5 text-blue-300 group-hover:text-blue-200 transition duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                 </svg>
                             </span>
-                            Sign in
+                            Reset Password
                         </button>
                     </div>
 
-                    <!-- Register Link -->
+                    <!-- Back to Login Link -->
                     <div class="text-center">
-                        <p class="text-sm text-gray-600 dark:text-gray-400">
-                            Don't have an account? 
-                            <a href="{{ route('register') }}" class="font-medium text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300 transition duration-200 cursor-pointer">
-                                Sign up here
-                            </a>
-                        </p>
+                        <a href="{{ route('login') }}" class="inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300 transition duration-200">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                            </svg>
+                            Back to login
+                        </a>
                     </div>
                 </form>
             </div>
@@ -155,3 +146,4 @@
 
 </body>
 </html>
+

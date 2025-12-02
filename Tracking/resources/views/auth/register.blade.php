@@ -11,6 +11,39 @@
     
     <!-- Styles / Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    
+    <!-- CSS to prevent autofill color change -->
+    <style>
+        /* Prevent autofill from changing background color */
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus,
+        input:-webkit-autofill:active {
+            -webkit-box-shadow: 0 0 0 30px white inset !important;
+            -webkit-text-fill-color: #111827 !important;
+            transition: background-color 5000s ease-in-out 0s;
+        }
+        
+        /* Dark mode autofill */
+        .dark input:-webkit-autofill,
+        .dark input:-webkit-autofill:hover,
+        .dark input:-webkit-autofill:focus,
+        .dark input:-webkit-autofill:active {
+            -webkit-box-shadow: 0 0 0 30px #374151 inset !important;
+            -webkit-text-fill-color: #ffffff !important;
+        }
+        
+        /* For browsers that use autofill pseudo-class */
+        input:autofill {
+            background-color: white !important;
+            color: #111827 !important;
+        }
+        
+        .dark input:autofill {
+            background-color: #374151 !important;
+            color: #ffffff !important;
+        }
+    </style>
 </head>
 <body class="min-h-screen relative">
     <!-- Background Image -->

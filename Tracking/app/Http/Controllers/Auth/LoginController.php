@@ -36,8 +36,8 @@ class LoginController extends Controller
             Auth::login($user, $remember);
             $request->session()->regenerate();
             
-            // Redirect to intended URL or dashboard
-            return redirect()->intended(route('dashboard'));
+            // Redirect to intended URL or main dashboard
+            return redirect()->intended(route('dashboard.main'));
         }
 
         throw ValidationException::withMessages([

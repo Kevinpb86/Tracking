@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\HseController;
 use Illuminate\Support\Facades\Auth;
 
 // Redirect root to login page
@@ -47,10 +48,14 @@ Route::middleware('auth')->group(function () {
         return view('navigasi.input-hse');
     })->name('hse.input');
 
+<<<<<<< Updated upstream
     Route::post('/hse/store', function () {
         // TODO: Implement HSE data storage logic
         return redirect()->route('hse.input')->with('success', 'Data HSE berhasil disimpan!');
     })->name('hse.store');
+=======
+    Route::post('/hse/store', [HseController::class, 'store'])->name('hse.store');
+>>>>>>> Stashed changes
 
     Route::get('/dashboard', function () {
         $queues = session('queues', []);

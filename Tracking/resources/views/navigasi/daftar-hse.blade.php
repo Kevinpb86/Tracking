@@ -3,16 +3,24 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>POS 1 Dashboard - Checkpoint Kedatangan</title>
+    <title>Daftar HSE - POS 1</title>
 
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=inter:400,500,600,700" rel="stylesheet" />
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <style>
+        .form-card {
+            transition: all 0.3s ease;
+        }
+        
+        .form-card:hover {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
 </head>
 <body class="min-h-screen bg-slate-50 font-sans antialiased text-slate-900">
     @php
-        $now = now();
         $evalubeLogoExists = file_exists(public_path('images/evalube.png'));
     @endphp
 
@@ -41,11 +49,7 @@
             class="fixed left-0 top-0 z-40 flex h-full w-72 -translate-x-full flex-col overflow-hidden border-r border-slate-200 bg-white shadow-lg transition-transform duration-300 ease-in-out lg:w-80"
         >
             <div class="relative flex h-full flex-col gap-6 overflow-y-auto p-8">
-                <a
-                    href="{{ route('dashboard.main') }}"
-                    class="relative flex items-center gap-4 rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition hover:border-blue-200 hover:shadow-md"
-                    aria-label="Kembali ke halaman utama"
-                >
+                <div class="relative flex items-center gap-4 rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
                     <div class="flex h-14 w-14 items-center justify-center rounded-lg border border-blue-100 bg-blue-50 p-1.5">
                         <img
                             src="{{ asset('images/wgilogo.jpg') }}"
@@ -57,7 +61,7 @@
                         <p class="text-[11px] font-semibold uppercase tracking-[0.45em] text-blue-500">Tracking System</p>
                         <p class="text-base font-semibold text-slate-900 leading-snug">PT. Wiraswasta Gemilang Indonesia</p>
                     </div>
-                </a>
+                </div>
 
                 <div class="relative space-y-3">
                     <div class="flex items-center justify-between">
@@ -65,6 +69,20 @@
                         <span class="rounded-full bg-blue-50 px-3 py-0.5 text-[10px] font-semibold uppercase tracking-[0.3em] text-blue-500">Live</span>
                     </div>
                     <nav class="flex flex-col gap-3 text-sm font-semibold text-slate-600">
+                        <a
+                            href="{{ route('pos1.dashboard') }}"
+                            class="group flex items-center justify-between rounded-xl border border-slate-200 bg-slate-50 px-5 py-4 transition duration-200 hover:border-slate-300 hover:bg-slate-100 hover:text-slate-700"
+                        >
+                            <span class="flex items-center gap-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-slate-400" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M9.293 2.293a1 1 0 0 1 1.414 0l7 7A1 1 0 0 1 17 11h-1v6a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6H3a1 1 0 0 1-.707-1.707l7-7Z" clip-rule="evenodd" />
+                                </svg>
+                                <span class="text-base">Dashboard Pos 1</span>
+                            </span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-slate-400 transition duration-200 group-hover:text-slate-600" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M7.22 14.78a.75.75 0 0 1 0-1.06L10.94 10 7.22 6.28a.75.75 0 1 1 1.06-1.06l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0Z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
                         <a
                             href="#"
                             class="group flex items-center justify-between rounded-xl border border-blue-100 bg-white px-5 py-4 transition duration-200 hover:border-blue-300 hover:bg-blue-50 hover:text-blue-700"
@@ -88,16 +106,16 @@
                             <button
                                 type="button"
                                 onclick="toggleHSEMenu()"
-                                class="group flex w-full items-center justify-between rounded-xl border border-emerald-100 bg-white px-5 py-4 transition duration-200 hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-700"
+                                class="group flex w-full items-center justify-between rounded-xl border border-emerald-100 bg-emerald-50 px-5 py-4 transition duration-200 hover:border-emerald-300 hover:bg-emerald-100 hover:text-emerald-700"
                             >
                                 <span class="flex items-center gap-3">
-                                    <span class="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-100 text-emerald-600 transition duration-200 group-hover:bg-emerald-500 group-hover:text-white">
+                                    <span class="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-500 text-white transition duration-200">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                                             <path d="M2 6a2 2 0 0 1 2-2h5l2 2h5a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6Z" />
                                         </svg>
                                     </span>
                                     <span class="flex flex-col gap-0.5">
-                                        <span class="text-[11px] uppercase tracking-[0.3em] text-emerald-400">HSE</span>
+                                        <span class="text-[11px] uppercase tracking-[0.3em] text-emerald-500">HSE</span>
                                         <span class="text-base">Health Safety Environment</span>
                                     </span>
                                 </span>
@@ -124,15 +142,15 @@
                                 </a>
                                 <a
                                     href="{{ route('hse.daftar') }}"
-                                    class="group flex items-center justify-between rounded-xl border border-emerald-100 bg-white px-4 py-3 transition duration-200 hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-700"
+                                    class="group flex items-center justify-between rounded-xl border border-emerald-100 bg-emerald-50 px-4 py-3 transition duration-200 hover:border-emerald-300 hover:bg-emerald-100 hover:text-emerald-700"
                                 >
                                     <span class="flex items-center gap-3">
-                                        <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-100 text-emerald-600 transition duration-200 group-hover:bg-emerald-500 group-hover:text-white">
+                                        <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-500 text-white transition duration-200">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                                                 <path fill-rule="evenodd" d="M3 4.25A2.25 2.25 0 0 1 5.25 2h9.5A2.25 2.25 0 0 1 17 4.25v11.5A2.25 2.25 0 0 1 14.75 18h-9.5A2.25 2.25 0 0 1 3 15.75V4.25Z" clip-rule="evenodd" />
                                             </svg>
                                         </span>
-                                        <span class="text-sm">Daftar HSE</span>
+                                        <span class="text-sm font-semibold">Daftar HSE</span>
                                     </span>
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-emerald-400 transition duration-200 group-hover:text-emerald-600" viewBox="0 0 20 20" fill="currentColor">
                                         <path fill-rule="evenodd" d="M7.22 14.78a.75.75 0 0 1 0-1.06L10.94 10 7.22 6.28a.75.75 0 1 1 1.06-1.06l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0Z" clip-rule="evenodd" />
@@ -168,11 +186,7 @@
                 <div class="overflow-hidden border-b border-slate-200 bg-white text-slate-700 shadow-sm">
                     <div class="h-3 w-full bg-[#2736a3]"></div>
                     <div class="flex flex-wrap items-center gap-6 px-6 py-6 pl-20 sm:px-10 sm:pl-28">
-                        <a
-                            href="{{ route('dashboard.main') }}"
-                            class="flex min-w-[220px] flex-1 items-center gap-5 text-blue-900 transition hover:opacity-80"
-                            aria-label="Kembali ke halaman utama"
-                        >
+                        <div class="flex min-w-[220px] flex-1 items-center gap-5 text-blue-900">
                             <div class="flex h-16 w-16 items-center justify-center rounded-full border border-blue-900/20 bg-white p-2 shadow-lg shadow-blue-900/20">
                                 <img src="{{ asset('images/wgilogo.jpg') }}" alt="Logo PT. Wiraswasta Gemilang Indonesia" class="h-full w-full object-contain">
                             </div>
@@ -183,7 +197,7 @@
                                     <span class="block whitespace-nowrap">Indonesia</span>
                                 </div>
                             </div>
-                        </a>
+                        </div>
                         <div class="hidden h-14 w-px bg-slate-900 sm:ml-5 sm:block lg:ml-10"></div>
                         <div class="flex min-w-[200px] flex-1 justify-center text-center sm:justify-start sm:text-left">
                             <span class="text-base font-medium uppercase tracking-[0.45em] text-slate-500 whitespace-nowrap">
@@ -206,165 +220,145 @@
             </section>
 
             <header class="px-8 pt-12 sm:px-12 lg:px-24">
-                <div class="mx-auto rounded-2xl border border-slate-200 bg-white p-10 shadow-sm">
-                    <div class="flex flex-col items-stretch gap-4 sm:flex-row sm:items-center sm:justify-between">
-                        <div class="text-sm font-semibold uppercase tracking-[0.35em] text-slate-500">Navigasi</div>
-                        <div class="flex flex-wrap gap-3">
-                            <a
-                                href="{{ url()->previous() }}"
-                                class="inline-flex items-center gap-2 rounded-lg border border-slate-200 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-slate-600 transition hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-300 focus-visible:ring-offset-2"
-                            >
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 18l-6-6 6-6" />
+                <div class="mx-auto rounded-none border-2 border-emerald-200 bg-gradient-to-br from-white via-emerald-50/50 to-white p-10 shadow-lg">
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-3">
+                            <div class="flex h-10 w-10 items-center justify-center rounded-none bg-emerald-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                                 </svg>
-                                Kembali
-                            </a>
-                            <a
-                                href="{{ route('dashboard.main') }}"
-                                class="inline-flex items-center gap-2 rounded-lg border border-blue-200 bg-blue-50 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-blue-600 transition hover:bg-blue-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 focus-visible:ring-offset-2"
-                            >
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7" />
-                                </svg>
-                                Halaman Utama
-                            </a>
-                        </div>
-                    </div>
-                    <div class="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
-                        <div class="max-w-2xl space-y-4">
-                            <p class="text-xs font-semibold uppercase tracking-[0.45em] text-blue-600/80">
-                                POS 1 Dashboard
-                            </p>
-                            <h1 class="text-4xl font-semibold text-slate-900 sm:text-5xl">
-                                Checkpoint Kedatangan
-                            </h1>
-                            <p class="text-sm text-slate-600">
-                                Kelola dan pantau proses validasi dokumen serta kelengkapan kendaraan yang memasuki area plant. Sistem ini memastikan setiap kendaraan telah memenuhi persyaratan sebelum melanjutkan ke tahap berikutnya.
+                            </div>
+                            <p class="text-xs font-bold uppercase tracking-[0.5em] text-emerald-700">
+                                Daftar HSE
                             </p>
                         </div>
-                        <div class="flex-1 space-y-5 rounded-xl border border-slate-200 bg-slate-50 p-6 text-sm text-slate-600 lg:ml-8 lg:max-w-md">
-                            <div class="flex items-center justify-between">
-                                <span class="uppercase tracking-[0.35em] text-xs text-slate-500">Tanggal</span>
-                                <span id="currentDate" class="text-base font-semibold text-slate-900">{{ $now->format('d F Y') }}</span>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <span class="uppercase tracking-[0.35em] text-xs text-slate-500">Waktu</span>
-                                <span id="currentTime" class="text-base font-semibold text-slate-900">{{ $now->format('H:i') }} WIB</span>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <span class="uppercase tracking-[0.35em] text-xs text-slate-500">Pengguna</span>
-                                <span class="text-base font-semibold text-slate-900">{{ Auth::user()->name ?? 'Guest User' }}</span>
-                            </div>
-                        </div>
+                        <h1 class="text-4xl font-bold text-slate-900 sm:text-5xl leading-tight">
+                            Health Safety Environment
+                        </h1>
+                        <div class="h-1 w-20 bg-emerald-600"></div>
+                        <p class="text-sm leading-relaxed text-slate-700 max-w-3xl">
+                            Daftar lengkap data HSE yang telah tersimpan. Semua data dapat dilihat untuk keperluan dokumentasi dan audit.
+                        </p>
                     </div>
                 </div>
             </header>
 
             <section class="relative mx-auto w-full flex-1 px-8 py-16 sm:px-12 lg:px-24">
-                <div class="grid gap-8 lg:grid-cols-12">
-                    <div class="lg:col-span-4 space-y-8">
-                        <article class="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
-                            <h2 class="text-sm font-semibold uppercase tracking-[0.35em] text-blue-600/80">Informasi Pos 1</h2>
-                            <p class="mt-2 text-2xl font-semibold text-slate-900">Pusat Pemeriksaan</p>
-                            <p class="mt-4 text-sm text-slate-600">
-                                Pos 1 merupakan titik pemeriksaan pertama yang bertanggung jawab untuk memvalidasi dokumen dan kelengkapan kendaraan sebelum memasuki area utama plant.
-                            </p>
-                            <div class="mt-6 space-y-4">
-                                <div class="rounded-2xl border border-blue-200 bg-blue-50 p-4 text-sm text-blue-700">
-                                    <p class="text-xs uppercase tracking-[0.3em] text-blue-500">FUNGSI UTAMA</p>
-                                    <p class="mt-2 font-semibold text-blue-800">Validasi Dokumen</p>
-                                    <p class="mt-1 text-xs text-blue-600">
-                                        Memastikan semua dokumen kendaraan lengkap dan valid sebelum masuk area plant.
-                                    </p>
-                                </div>
-                                <div class="rounded-2xl border border-blue-200 bg-blue-50 p-4 text-sm text-blue-700">
-                                    <p class="text-xs uppercase tracking-[0.3em] text-blue-500">PROSES</p>
-                                    <p class="mt-2 font-semibold text-blue-800">Pemeriksaan Kelengkapan</p>
-                                    <p class="mt-1 text-xs text-blue-600">
-                                        Verifikasi kelengkapan kendaraan sesuai dengan standar operasional yang berlaku.
-                                    </p>
-                                </div>
-                            </div>
-                        </article>
+                <div class="mx-auto max-w-6xl">
+                    @if (session('success'))
+                        <div class="mb-6 rounded-none border-2 border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-700 shadow-sm">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
+                    <div class="mb-6 flex items-center justify-between">
+                        <a
+                            href="{{ route('hse.input') }}"
+                            class="inline-flex items-center justify-center gap-2 rounded-none bg-emerald-600 px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-emerald-700 focus:outline-none focus-visible:ring-4 focus-visible:ring-emerald-300 focus-visible:ring-offset-2"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
+                            </svg>
+                            Input HSE Baru
+                        </a>
+                        <div class="text-sm text-slate-600">
+                            Total: <span class="font-semibold text-emerald-600">{{ $hseList->count() }}</span> data
+                        </div>
                     </div>
 
-                    <div class="lg:col-span-8 space-y-8">
-                        <article class="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
-                            <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                                <div>
-                                    <h2 class="text-sm font-semibold uppercase tracking-[0.35em] text-blue-600/80">
-                                        Status Real-Time
-                                    </h2>
-                                    <p class="mt-2 text-2xl font-semibold text-slate-900">Aktivitas Pos 1</p>
-                                </div>
-                                <button
-                                    type="button"
-                                    onclick="window.location.reload()"
-                                    class="inline-flex items-center gap-2 rounded-lg border border-blue-200 bg-blue-50 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-blue-600 transition hover:bg-blue-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 focus-visible:ring-offset-2"
-                                >
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.5a7 7 0 0 1 12-4.07M19.5 13.5a7 7 0 0 1-12 4.07M4.5 10.5h4M6.5 7.5l-2 3M19.5 13.5h-4M17.5 16.5l2-3" />
-                                    </svg>
-                                    Refresh
-                                </button>
-                            </div>
+                    @if($hseList->isEmpty())
+                        <div class="form-card rounded-2xl border-2 border-slate-200 bg-gradient-to-br from-white to-emerald-50/30 p-12 shadow-lg text-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-16 w-16 text-slate-400 mb-4" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M3 4.25A2.25 2.25 0 015.25 2h9.5A2.25 2.25 0 0117 4.25v11.5A2.25 2.25 0 0114.75 18h-9.5A2.25 2.25 0 013 15.75V4.25zm4.5 4.5a.75.75 0 00-1.5 0v2.5a.75.75 0 001.5 0v-2.5zm3.5 0a.75.75 0 00-1.5 0v2.5a.75.75 0 001.5 0v-2.5zm3.5 0a.75.75 0 00-1.5 0v2.5a.75.75 0 001.5 0v-2.5z" clip-rule="evenodd" />
+                            </svg>
+                            <h3 class="text-lg font-semibold text-slate-700 mb-2">Belum ada data HSE</h3>
+                            <p class="text-sm text-slate-500 mb-6">Mulai dengan mengisi form HSE baru.</p>
+                            <a
+                                href="{{ route('hse.input') }}"
+                                class="inline-flex items-center justify-center gap-2 rounded-none bg-emerald-600 px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-emerald-700"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
+                                </svg>
+                                Input HSE Baru
+                            </a>
+                        </div>
+                    @else
+                        <div class="space-y-6">
+                            @foreach($hseList as $hse)
+                                <div class="form-card rounded-2xl border-2 border-slate-200 bg-gradient-to-br from-white to-emerald-50/30 p-8 shadow-lg">
+                                    <div class="flex items-start justify-between mb-6">
+                                        <div>
+                                            <h2 class="text-sm font-semibold uppercase tracking-[0.35em] text-emerald-600/80 mb-2 flex items-center gap-2">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                                    <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                                                    <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm9.707 5.707a1 1 0 00-1.414-1.414L9 12.586l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                                </svg>
+                                                Data HSE #{{ $hse->id }}
+                                            </h2>
+                                            <p class="text-xs text-slate-500">
+                                                Dibuat: {{ $hse->created_at->format('d/m/Y H:i') }}
+                                            </p>
+                                        </div>
+                                        <span class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-700">
+                                            {{ $hse->lokasi }}
+                                        </span>
+                                    </div>
 
-                            <div class="mt-8 grid gap-6 sm:grid-cols-2">
-                                <div class="rounded-xl border border-slate-200 bg-slate-50 p-6 text-sm text-slate-600">
-                                    <p class="text-xs uppercase tracking-[0.3em] text-slate-500">Kendaraan Masuk</p>
-                                    <p class="mt-2 text-3xl font-semibold text-slate-900">0</p>
-                                    <p class="mt-3 text-xs text-slate-600">
-                                        Jumlah kendaraan yang telah melewati checkpoint ini hari ini.
-                                    </p>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <div class="space-y-4">
+                                            <div>
+                                                <label class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 mb-1 block">Tanggal</label>
+                                                <p class="text-sm font-medium text-slate-900">{{ \Carbon\Carbon::parse($hse->tanggal)->format('d/m/Y') }}</p>
+                                            </div>
+                                            <div>
+                                                <label class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 mb-1 block">Waktu</label>
+                                                <p class="text-sm font-medium text-slate-900">{{ $hse->waktu }}</p>
+                                            </div>
+                                            <div>
+                                                <label class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 mb-1 block">Nama Petugas</label>
+                                                <p class="text-sm font-medium text-slate-900">{{ $hse->nama_petugas }}</p>
+                                            </div>
+                                            <div>
+                                                <label class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 mb-1 block">Lokasi</label>
+                                                <p class="text-sm font-medium text-slate-900">{{ $hse->lokasi }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="space-y-4">
+                                            <div>
+                                                <label class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 mb-1 block">Kondisi APD</label>
+                                                <span class="inline-flex items-center gap-2 rounded-lg px-3 py-1.5 text-sm font-medium
+                                                    @if($hse->kondisi_apd == 'Lengkap') bg-emerald-100 text-emerald-700
+                                                    @elseif($hse->kondisi_apd == 'Tidak Lengkap') bg-yellow-100 text-yellow-700
+                                                    @else bg-red-100 text-red-700
+                                                    @endif">
+                                                    {{ $hse->kondisi_apd }}
+                                                </span>
+                                            </div>
+                                            @if($hse->temuan)
+                                            <div>
+                                                <label class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 mb-1 block">Temuan / Catatan</label>
+                                                <p class="text-sm text-slate-700 bg-slate-50 p-3 rounded-lg border border-slate-200">{{ $hse->temuan }}</p>
+                                            </div>
+                                            @endif
+                                            @if($hse->tindak_lanjut)
+                                            <div>
+                                                <label class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 mb-1 block">Tindak Lanjut</label>
+                                                <p class="text-sm text-slate-700 bg-slate-50 p-3 rounded-lg border border-slate-200">{{ $hse->tindak_lanjut }}</p>
+                                            </div>
+                                            @endif
+                                            @if($hse->penanggung_jawab)
+                                            <div>
+                                                <label class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 mb-1 block">Penanggung Jawab</label>
+                                                <p class="text-sm font-medium text-slate-900">{{ $hse->penanggung_jawab }}</p>
+                                            </div>
+                                            @endif
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="rounded-xl border border-slate-200 bg-slate-50 p-6 text-sm text-slate-600">
-                                    <p class="text-xs uppercase tracking-[0.3em] text-slate-500">Status Validasi</p>
-                                    <p class="mt-2 text-3xl font-semibold text-slate-900">Aktif</p>
-                                    <p class="mt-3 text-xs text-slate-600">
-                                        Sistem validasi berjalan normal dan siap menerima kendaraan baru.
-                                    </p>
-                                </div>
-                                <div class="rounded-xl border border-slate-200 bg-slate-50 p-6 text-sm text-slate-600">
-                                    <p class="text-xs uppercase tracking-[0.3em] text-slate-500">Dokumen Lengkap</p>
-                                    <p class="mt-2 text-3xl font-semibold text-slate-900">100%</p>
-                                    <p class="mt-3 text-xs text-slate-600">
-                                        Persentase kendaraan dengan dokumen lengkap dan valid.
-                                    </p>
-                                </div>
-                                <div class="rounded-xl border border-slate-200 bg-slate-50 p-6 text-sm text-slate-600">
-                                    <p class="text-xs uppercase tracking-[0.3em] text-slate-500">Waktu Rata-rata</p>
-                                    <p class="mt-2 text-3xl font-semibold text-slate-900">5 Menit</p>
-                                    <p class="mt-3 text-xs text-slate-600">
-                                        Waktu rata-rata proses validasi per kendaraan.
-                                    </p>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
-                            <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-                                <div>
-                                    <h2 class="text-sm font-semibold uppercase tracking-[0.35em] text-blue-600/80">
-                                        Insight
-                                    </h2>
-                                    <p class="mt-2 text-2xl font-semibold text-slate-900">Catatan Operasional</p>
-                                    <p class="mt-2 text-sm text-slate-600">
-                                        Informasi penting untuk menjaga efisiensi proses validasi di Pos 1.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="mt-6 grid gap-4 sm:grid-cols-2">
-                                <div class="rounded-xl border border-amber-200 bg-amber-50 p-5 text-sm text-amber-700">
-                                    <p class="text-xs uppercase tracking-[0.3em] text-amber-500">Prioritas</p>
-                                    <p class="mt-2 font-semibold text-amber-800">Pastikan dokumen lengkap sebelum proses validasi dimulai.</p>
-                                </div>
-                                <div class="rounded-xl border border-emerald-200 bg-emerald-50 p-5 text-sm text-emerald-700">
-                                    <p class="text-xs uppercase tracking-[0.3em] text-emerald-500">Keselamatan</p>
-                                    <p class="mt-2 font-semibold text-emerald-800">Verifikasi kelengkapan keselamatan kendaraan sesuai standar.</p>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
+                            @endforeach
+                        </div>
+                    @endif
                 </div>
             </section>
         </main>
@@ -402,48 +396,8 @@
                     toggleSidebar(true);
                 }
             });
-
-            // Real-time clock for WIB timezone
-            function updateWIBTime() {
-                const now = new Date();
-                // WIB is UTC+7
-                const wibOffset = 7 * 60; // 7 hours in minutes
-                const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
-                const wibTime = new Date(utc + (wibOffset * 60000));
-                
-                // Format time
-                const hours = String(wibTime.getHours()).padStart(2, '0');
-                const minutes = String(wibTime.getMinutes()).padStart(2, '0');
-                const timeString = `${hours}:${minutes} WIB`;
-                
-                // Format date
-                const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
-                const months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
-                const dayName = days[wibTime.getDay()];
-                const day = String(wibTime.getDate()).padStart(2, '0');
-                const month = months[wibTime.getMonth()];
-                const year = wibTime.getFullYear();
-                const dateString = `${day} ${month} ${year}`;
-                
-                // Update DOM
-                const timeElement = document.getElementById('currentTime');
-                const dateElement = document.getElementById('currentDate');
-                if (timeElement) {
-                    timeElement.textContent = timeString;
-                }
-                if (dateElement) {
-                    dateElement.textContent = dateString;
-                }
-            }
-
-            // Update immediately
-            updateWIBTime();
-            
-            // Update every second
-            setInterval(updateWIBTime, 1000);
         });
 
-        // Toggle HSE menu (global function)
         function toggleHSEMenu() {
             const submenu = document.getElementById('hseSubmenu');
             const icon = document.getElementById('hseToggleIcon');

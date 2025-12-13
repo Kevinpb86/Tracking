@@ -48,14 +48,13 @@ Route::middleware('auth')->group(function () {
         return view('navigasi.input-hse');
     })->name('hse.input');
 
-<<<<<<< Updated upstream
-    Route::post('/hse/store', function () {
-        // TODO: Implement HSE data storage logic
-        return redirect()->route('hse.input')->with('success', 'Data HSE berhasil disimpan!');
-    })->name('hse.store');
-=======
+    Route::get('/hse/daftar', [HseController::class, 'index'])->name('hse.daftar');
+
     Route::post('/hse/store', [HseController::class, 'store'])->name('hse.store');
->>>>>>> Stashed changes
+
+    Route::get('/hse/cetak', function () {
+        return view('navigasi.cetak-hse');
+    })->name('hse.cetak');
 
     Route::get('/dashboard', function () {
         $queues = session('queues', []);

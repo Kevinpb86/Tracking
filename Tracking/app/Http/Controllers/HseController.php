@@ -8,6 +8,15 @@ use Illuminate\Http\Request;
 class HseController extends Controller
 {
     /**
+     * Display a listing of HSE records.
+     */
+    public function index()
+    {
+        $hseList = Hse::orderBy('created_at', 'desc')->get();
+        return view('navigasi.daftar-hse', compact('hseList'));
+    }
+
+    /**
      * Store a newly created HSE record in storage.
      */
     public function store(Request $request)

@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\HseController;
 use Illuminate\Support\Facades\Auth;
 
 // Redirect root to login page
@@ -47,6 +48,7 @@ Route::middleware('auth')->group(function () {
         return view('navigasi.input-hse');
     })->name('hse.input');
 
+<<<<<<< HEAD
     Route::post('/hse/store', function (\Illuminate\Http\Request $request) {
         // Validasi input
         $validated = $request->validate([
@@ -83,6 +85,15 @@ Route::middleware('auth')->group(function () {
         
         return redirect()->route('hse.list')->with('success', 'Data HSE berhasil disimpan!');
     })->name('hse.store');
+=======
+    Route::get('/hse/daftar', [HseController::class, 'index'])->name('hse.daftar');
+
+    Route::post('/hse/store', [HseController::class, 'store'])->name('hse.store');
+
+    Route::get('/hse/cetak', function () {
+        return view('navigasi.cetak-hse');
+    })->name('hse.cetak');
+>>>>>>> ac793ad587424a72d39511f66681165145844912
 
     Route::get('/hse/list', function () {
         $hseList = session('hse_list', []);

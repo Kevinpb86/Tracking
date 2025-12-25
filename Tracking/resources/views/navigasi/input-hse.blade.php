@@ -283,7 +283,27 @@
                                                 <path fill-rule="evenodd" d="M3 4.25A2.25 2.25 0 0 1 5.25 2h9.5A2.25 2.25 0 0 1 17 4.25v11.5A2.25 2.25 0 0 1 14.75 18h-9.5A2.25 2.25 0 0 1 3 15.75V4.25Z" clip-rule="evenodd" />
                                             </svg>
                                         </span>
+<<<<<<< HEAD
                                         <span class="text-sm font-semibold text-emerald-700">Input HSE</span>
+=======
+                                        <span class="text-sm font-semibold">Input HSE</span>
+                                    </span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-emerald-400 transition duration-200 group-hover:text-emerald-600" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M7.22 14.78a.75.75 0 0 1 0-1.06L10.94 10 7.22 6.28a.75.75 0 1 1 1.06-1.06l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0Z" clip-rule="evenodd" />
+                                    </svg>
+                                </a>
+                                <a
+                                    href="{{ route('hse.daftar') }}"
+                                    class="group flex items-center justify-between rounded-xl border border-emerald-100 bg-white px-4 py-3 transition duration-200 hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-700"
+                                >
+                                    <span class="flex items-center gap-3">
+                                        <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-100 text-emerald-600 transition duration-200 group-hover:bg-emerald-500 group-hover:text-white">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                                <path fill-rule="evenodd" d="M3 4.25A2.25 2.25 0 0 1 5.25 2h9.5A2.25 2.25 0 0 1 17 4.25v11.5A2.25 2.25 0 0 1 14.75 18h-9.5A2.25 2.25 0 0 1 3 15.75V4.25Z" clip-rule="evenodd" />
+                                            </svg>
+                                        </span>
+                                        <span class="text-sm">Daftar HSE</span>
+>>>>>>> ac793ad587424a72d39511f66681165145844912
                                     </span>
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-emerald-400 transition duration-200 group-hover:text-emerald-600" viewBox="0 0 20 20" fill="currentColor">
                                         <path fill-rule="evenodd" d="M7.22 14.78a.75.75 0 0 1 0-1.06L10.94 10 7.22 6.28a.75.75 0 1 1 1.06-1.06l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0Z" clip-rule="evenodd" />
@@ -378,6 +398,7 @@
 
             <section class="relative mx-auto w-full flex-1 px-8 py-16 sm:px-12 lg:px-24">
                 <div class="mx-auto max-w-4xl">
+<<<<<<< HEAD
                     @if (session('success'))
                         <div class="mb-6 rounded-none border-2 border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-700 shadow-sm">
                             {{ session('success') }}
@@ -395,7 +416,30 @@
                     @endif
 
                     <form action="{{ route('hse.store') }}" method="POST" class="space-y-8" id="hseForm">
+=======
+
+                    <form action="{{ route('hse.store') }}" method="POST" class="space-y-8">
+>>>>>>> ac793ad587424a72d39511f66681165145844912
                         @csrf
+
+                    @if (session('success'))
+                        <div class="mb-6 rounded-none border-2 border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-700 shadow-sm">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
+                    @if ($errors->any())
+                        <div class="mb-6 rounded-none border-2 border-red-200 bg-red-50 px-4 py-3 text-sm font-medium text-red-700 shadow-sm">
+                            <ul class="list-disc list-inside">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
+                    <form action="{{ route('hse.store') }}" method="POST" class="space-y-8" id="hseForm">
+
                         <div class="form-card rounded-2xl border-2 border-slate-200 bg-gradient-to-br from-white to-emerald-50/30 p-8 shadow-lg">
                             <h2 class="text-sm font-semibold uppercase tracking-[0.35em] text-emerald-600/80 mb-6 flex items-center gap-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -580,6 +624,7 @@
                             >
                                 Batal
                             </a>
+<<<<<<< HEAD
                             <div class="print-format-dropdown">
                                 <button
                                     type="button"
@@ -623,6 +668,17 @@
                                     </button>
                                 </div>
                             </div>
+=======
+                            <button
+                                type="submit"
+                                class="inline-flex items-center justify-center gap-2 rounded-none bg-emerald-600 px-8 py-4 text-sm font-semibold text-white shadow-lg transition hover:bg-emerald-700 focus:outline-none focus-visible:ring-4 focus-visible:ring-emerald-300 focus-visible:ring-offset-2"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+                                </svg>
+                                Simpan HSE
+                            </button>
+>>>>>>> ac793ad587424a72d39511f66681165145844912
                         </div>
                     </form>
                 </div>

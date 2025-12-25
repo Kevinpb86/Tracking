@@ -48,7 +48,6 @@ Route::middleware('auth')->group(function () {
         return view('navigasi.input-hse');
     })->name('hse.input');
 
-<<<<<<< HEAD
     Route::post('/hse/store', function (\Illuminate\Http\Request $request) {
         // Validasi input
         $validated = $request->validate([
@@ -61,7 +60,7 @@ Route::middleware('auth')->group(function () {
             'tindak_lanjut' => 'nullable|string',
             'penanggung_jawab' => 'nullable|string|max:255',
         ]);
-        
+
         // Simpan data ke session sebagai array
         $hseData = [
             'id' => uniqid('hse_', true),
@@ -75,34 +74,22 @@ Route::middleware('auth')->group(function () {
             'penanggung_jawab' => $validated['penanggung_jawab'] ?? '',
             'created_at' => now()->toDateTimeString(),
         ];
-        
+
         // Ambil data HSE yang sudah ada
         $hseList = session('hse_list', []);
         // Tambahkan data baru di awal array
         array_unshift($hseList, $hseData);
         // Simpan kembali ke session
         session(['hse_list' => $hseList]);
-        
+
         return redirect()->route('hse.list')->with('success', 'Data HSE berhasil disimpan!');
     })->name('hse.store');
-=======
     Route::get('/hse/daftar', [HseController::class, 'index'])->name('hse.daftar');
-
-    Route::post('/hse/store', [HseController::class, 'store'])->name('hse.store');
-
-    Route::get('/hse/cetak', function () {
-        return view('navigasi.cetak-hse');
-    })->name('hse.cetak');
->>>>>>> ac793ad587424a72d39511f66681165145844912
 
     Route::get('/hse/list', function () {
         $hseList = session('hse_list', []);
         return view('navigasi.daftar-hse', compact('hseList'));
     })->name('hse.list');
-
-    Route::get('/hse/cetak', function () {
-        return view('navigasi.cetak-hse');
-    })->name('hse.cetak');
 
     Route::get('/dashboard', function () {
         $queues = session('queues', []);

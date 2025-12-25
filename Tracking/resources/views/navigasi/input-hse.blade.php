@@ -96,76 +96,6 @@
             }
         }
         
-        /* Dropdown format cetak */
-        .print-format-dropdown {
-            position: relative;
-            display: inline-block;
-        }
-        
-        .print-format-btn {
-            background-color: #059669;
-            color: white;
-            padding: 0.75rem 1rem;
-            border: none;
-            border-radius: 0;
-            cursor: pointer;
-            font-size: 0.875rem;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .print-format-btn:hover {
-            background-color: #047857;
-        }
-        
-        .print-format-menu {
-            display: none;
-            position: absolute;
-            bottom: 100%;
-            right: 0;
-            margin-bottom: 0.5rem;
-            background-color: white;
-            border: 2px solid #059669;
-            border-radius: 0.5rem;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-            min-width: 200px;
-        }
-        
-        .print-format-menu.show {
-            display: block;
-        }
-        
-        .print-format-item {
-            display: block;
-            width: 100%;
-            padding: 0.75rem 1rem;
-            text-align: left;
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: #1e293b;
-            transition: all 0.2s;
-        }
-        
-        .print-format-item:hover {
-            background-color: #ecfdf5;
-            color: #059669;
-        }
-        
-        .print-format-item:first-child {
-            border-top-left-radius: 0.5rem;
-            border-top-right-radius: 0.5rem;
-        }
-        
-        .print-format-item:last-child {
-            border-bottom-left-radius: 0.5rem;
-            border-bottom-right-radius: 0.5rem;
-        }
     </style>
 </head>
 <body class="min-h-screen bg-slate-50 font-sans antialiased text-slate-900">
@@ -580,49 +510,15 @@
                             >
                                 Batal
                             </a>
-                            <div class="print-format-dropdown">
-                                <button
-                                    type="button"
-                                    id="printFormatBtn"
-                                    class="print-format-btn inline-flex items-center justify-center gap-2 rounded-none px-8 py-4 text-sm font-semibold shadow-lg focus:outline-none focus-visible:ring-4 focus-visible:ring-emerald-300 focus-visible:ring-offset-2"
-                                    onclick="togglePrintMenu()"
-                                >
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                                        <path d="M5.625 1.5c-1.036 0-1.875.84-1.875 1.875v17.25c0 1.035.84 1.875 1.875 1.875h12.75c1.035 0 1.875-.84 1.875-1.875V12.75A3.75 3.75 0 0016.5 9h-1.875a1.875 1.875 0 01-1.875-1.875V5.25A3.75 3.75 0 009 1.5H5.625z" />
-                                        <path d="M12.971 1.816A5.23 5.23 0 0114.25 5.25v1.875c0 .207.168.375.375.375H16.5a5.23 5.23 0 013.434 1.279 9.768 9.768 0 00-6.963-6.963z" />
-                                    </svg>
-                                    Cetak HSE
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                                        <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
-                                    </svg>
-                                </button>
-                                <div id="printFormatMenu" class="print-format-menu">
-                                    <button type="button" class="print-format-item" onclick="printHSE('pdf')">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline mr-2" viewBox="0 0 20 20" fill="currentColor">
-                                            <path fill-rule="evenodd" d="M5.625 1.5c-1.036 0-1.875.84-1.875 1.875v17.25c0 1.035.84 1.875 1.875 1.875h12.75c1.035 0 1.875-.84 1.875-1.875V12.75A3.75 3.75 0 0016.5 9h-1.875a1.875 1.875 0 01-1.875-1.875V5.25A3.75 3.75 0 009 1.5H5.625z" clip-rule="evenodd" />
-                                        </svg>
-                                        Cetak sebagai PDF
-                                    </button>
-                                    <button type="button" class="print-format-item" onclick="printHSE('png')">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline mr-2" viewBox="0 0 20 20" fill="currentColor">
-                                            <path fill-rule="evenodd" d="M1 5a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2H3a2 2 0 01-2-2V5zm3.293 1.293a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 01-1.414-1.414L7.586 10 5.293 7.707a1 1 0 010-1.414zM11 12a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd" />
-                                        </svg>
-                                        Cetak sebagai PNG
-                                    </button>
-                                    <button type="button" class="print-format-item" onclick="printHSE('jpg')">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline mr-2" viewBox="0 0 20 20" fill="currentColor">
-                                            <path fill-rule="evenodd" d="M1 5a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2H3a2 2 0 01-2-2V5zm3.293 1.293a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 01-1.414-1.414L7.586 10 5.293 7.707a1 1 0 010-1.414zM11 12a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd" />
-                                        </svg>
-                                        Cetak sebagai JPG
-                                    </button>
-                                    <button type="button" class="print-format-item" onclick="printHSE('jpeg')">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline mr-2" viewBox="0 0 20 20" fill="currentColor">
-                                            <path fill-rule="evenodd" d="M1 5a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2H3a2 2 0 01-2-2V5zm3.293 1.293a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 01-1.414-1.414L7.586 10 5.293 7.707a1 1 0 010-1.414zM11 12a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd" />
-                                        </svg>
-                                        Cetak sebagai JPEG
-                                    </button>
-                                </div>
-                            </div>
+                            <button
+                                type="submit"
+                                class="submit-btn inline-flex items-center justify-center gap-2 rounded-none bg-emerald-600 px-8 py-4 text-sm font-semibold text-white shadow-lg transition hover:bg-emerald-700 focus:outline-none focus-visible:ring-4 focus-visible:ring-emerald-300 focus-visible:ring-offset-2"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                </svg>
+                                Simpan HSE
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -679,49 +575,184 @@
             }
         }
 
-        // Toggle print format menu
-        function togglePrintMenu() {
-            const menu = document.getElementById('printFormatMenu');
-            if (menu) {
-                menu.classList.toggle('show');
-            }
-        }
-
-        // Close print menu when clicking outside
-        document.addEventListener('click', function(event) {
-            const dropdown = document.querySelector('.print-format-dropdown');
-            const menu = document.getElementById('printFormatMenu');
-            if (dropdown && menu && !dropdown.contains(event.target)) {
-                menu.classList.remove('show');
-            }
-        });
 
         // Fungsi untuk mengecek apakah library sudah ter-load
         function checkLibraries() {
             if (typeof html2pdf === 'undefined') {
-                throw new Error('html2pdf library belum ter-load');
+                throw new Error('html2pdf library belum ter-load. Silakan refresh halaman.');
             }
             if (typeof html2canvas === 'undefined') {
-                throw new Error('html2canvas library belum ter-load');
+                throw new Error('html2canvas library belum ter-load. Silakan refresh halaman.');
             }
+        }
+
+        // Fungsi untuk mengkonversi oklch ke rgb
+        function oklchToRgb(oklchString) {
+            // Fallback ke warna default jika tidak bisa dikonversi
+            return 'rgb(30, 41, 59)';
+        }
+
+        // Fungsi untuk override semua style dengan inline style yang kompatibel
+        function overrideStyles(element) {
+            const allElements = element.querySelectorAll('*');
+            allElements.forEach(el => {
+                try {
+                    const computedStyle = window.getComputedStyle(el);
+                    
+                    // Konversi semua properti warna ke RGB
+                    const colorProps = ['color', 'backgroundColor', 'borderColor', 'borderTopColor', 
+                                      'borderRightColor', 'borderBottomColor', 'borderLeftColor',
+                                      'outlineColor', 'textDecorationColor'];
+                    
+                    colorProps.forEach(prop => {
+                        try {
+                            const value = computedStyle[prop] || computedStyle.getPropertyValue(prop);
+                            if (value && (value.includes('oklch') || value.includes('oklab'))) {
+                                // Ambil nilai RGB dari computed style
+                                const rgbValue = window.getComputedStyle(el)[prop];
+                                if (rgbValue && !rgbValue.includes('oklch') && !rgbValue.includes('oklab')) {
+                                    el.style.setProperty(prop, rgbValue, 'important');
+                                } else {
+                                    // Fallback berdasarkan prop
+                                    if (prop === 'color') {
+                                        el.style.setProperty('color', 'rgb(30, 41, 59)', 'important');
+                                    } else if (prop === 'backgroundColor') {
+                                        el.style.setProperty('background-color', 'transparent', 'important');
+                                    } else if (prop.includes('border')) {
+                                        el.style.setProperty(prop, 'rgb(226, 232, 240)', 'important');
+                                    }
+                                }
+                            } else if (value && value !== 'transparent' && value !== 'rgba(0, 0, 0, 0)') {
+                                // Set nilai yang valid
+                                el.style.setProperty(prop, value, 'important');
+                            }
+                        } catch (e) {
+                            // Ignore errors
+                        }
+                    });
+                } catch (e) {
+                    // Ignore errors
+                }
+            });
+        }
+
+        // Fungsi untuk mengkonversi form input menjadi text yang bisa dicetak
+        function convertFormToPrintable(element) {
+            // Clone element
+            const clone = element.cloneNode(true);
+            
+            // Konversi input text, date, time
+            clone.querySelectorAll('input[type="text"], input[type="date"], input[type="time"]').forEach(input => {
+                const value = input.value || '';
+                const wrapper = document.createElement('div');
+                wrapper.className = 'form-value-display';
+                wrapper.style.cssText = 'padding: 0.75rem 1rem; background-color: rgb(248, 250, 252); border: 1px solid rgb(226, 232, 240); border-radius: 0.25rem; margin-top: 0.5rem; font-size: 0.875rem; color: rgb(30, 41, 59);';
+                wrapper.textContent = value || '-';
+                if (input.parentNode) {
+                    input.parentNode.replaceChild(wrapper, input);
+                }
+            });
+
+            // Konversi select
+            clone.querySelectorAll('select').forEach(select => {
+                const selectedOption = select.options[select.selectedIndex];
+                const value = selectedOption ? selectedOption.text : '';
+                const wrapper = document.createElement('div');
+                wrapper.className = 'form-value-display';
+                wrapper.style.cssText = 'padding: 0.75rem 1rem; background-color: rgb(248, 250, 252); border: 1px solid rgb(226, 232, 240); border-radius: 0.25rem; margin-top: 0.5rem; font-size: 0.875rem; color: rgb(30, 41, 59);';
+                wrapper.textContent = value || '-';
+                if (select.parentNode) {
+                    select.parentNode.replaceChild(wrapper, select);
+                }
+            });
+
+            // Konversi textarea
+            clone.querySelectorAll('textarea').forEach(textarea => {
+                const value = textarea.value || '';
+                const wrapper = document.createElement('div');
+                wrapper.className = 'form-value-display';
+                wrapper.style.cssText = 'padding: 0.75rem 1rem; background-color: rgb(248, 250, 252); border: 1px solid rgb(226, 232, 240); border-radius: 0.25rem; margin-top: 0.5rem; font-size: 0.875rem; color: rgb(30, 41, 59); white-space: pre-wrap; min-height: 3rem;';
+                wrapper.textContent = value || '-';
+                if (textarea.parentNode) {
+                    textarea.parentNode.replaceChild(wrapper, textarea);
+                }
+            });
+
+            // Konversi radio button - ambil semua radio dalam grup
+            const radioGroups = {};
+            clone.querySelectorAll('input[type="radio"]').forEach(radio => {
+                const name = radio.name;
+                if (!radioGroups[name]) {
+                    radioGroups[name] = [];
+                }
+                radioGroups[name].push(radio);
+            });
+
+            // Proses setiap grup radio
+            Object.keys(radioGroups).forEach(name => {
+                const radios = radioGroups[name];
+                const checkedRadio = radios.find(r => r.checked);
+                
+                if (checkedRadio) {
+                    // Temukan label untuk radio yang terpilih
+                    let labelText = checkedRadio.value;
+                    const label = clone.querySelector(`label[for="${checkedRadio.id}"]`) || checkedRadio.closest('label');
+                    if (label) {
+                        // Ambil text dari label, hapus text dari radio button
+                        const labelClone = label.cloneNode(true);
+                        labelClone.querySelector('input').remove();
+                        labelText = labelClone.textContent.trim() || checkedRadio.value;
+                    }
+                    
+                    // Buat wrapper untuk nilai yang dipilih
+                    const wrapper = document.createElement('div');
+                    wrapper.style.cssText = 'padding: 0.75rem 1rem; background-color: rgb(236, 253, 245); border: 2px solid rgb(5, 150, 105); border-radius: 0.5rem; margin-top: 0.5rem; font-size: 0.875rem; color: rgb(5, 150, 105); font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem;';
+                    wrapper.innerHTML = '✓ ' + labelText;
+                    
+                    // Ganti semua radio dalam grup dengan wrapper
+                    radios.forEach(radio => {
+                        const parent = radio.closest('label') || radio.parentNode;
+                        if (parent) {
+                            if (radio === checkedRadio) {
+                                // Ganti radio yang terpilih dengan wrapper
+                                parent.parentNode.insertBefore(wrapper, parent);
+                                parent.remove();
+                            } else {
+                                // Hapus radio yang tidak terpilih
+                                parent.remove();
+                            }
+                        }
+                    });
+                } else {
+                    // Jika tidak ada yang terpilih, hapus semua
+                    radios.forEach(radio => {
+                        const parent = radio.closest('label') || radio.parentNode;
+                        if (parent) parent.remove();
+                    });
+                }
+            });
+
+            // Hapus semua button
+            clone.querySelectorAll('button').forEach(btn => btn.remove());
+
+            return clone;
         }
 
         // Fungsi untuk mencetak HSE form
         async function printHSE(format) {
             try {
-                // Cek apakah library sudah ter-load
+                // Cek library terlebih dahulu
                 checkLibraries();
             } catch (error) {
-                console.error('Library error:', error);
-                showNotification('Library belum ter-load. Silakan refresh halaman.', 'error');
+                showNotification(error.message, 'error');
                 document.getElementById('printFormatMenu').classList.remove('show');
                 return;
             }
 
             // Validasi form terlebih dahulu
             const form = document.getElementById('hseForm');
-            if (!form.checkValidity()) {
-                form.reportValidity();
+            if (!form || !form.checkValidity()) {
+                if (form) form.reportValidity();
                 document.getElementById('printFormatMenu').classList.remove('show');
                 return;
             }
@@ -729,85 +760,100 @@
             // Tutup menu dropdown
             document.getElementById('printFormatMenu').classList.remove('show');
 
-            // Tampilkan loading indicator
+            // Tampilkan loading
             showNotification('Sedang memproses...', 'success');
 
             try {
-                // Ambil elemen utama yang akan dicetak
-                const mainContent = document.querySelector('main');
-                if (!mainContent) {
-                    throw new Error('Elemen konten tidak ditemukan');
+                // Ambil elemen yang akan dicetak
+                const formCards = document.querySelectorAll('.form-card');
+                const header = document.querySelector('header');
+                
+                if (formCards.length === 0) {
+                    throw new Error('Form tidak ditemukan');
                 }
 
-                // Buat container untuk print dengan style yang tepat
+                // Buat container untuk print dengan style yang kompatibel
                 const printContainer = document.createElement('div');
-                printContainer.id = 'printContainer';
+                printContainer.id = 'hse-print-container';
                 printContainer.style.cssText = `
                     position: absolute;
                     left: -9999px;
                     top: 0;
                     width: 210mm;
-                    background: white;
-                    padding: 20px;
-                    font-family: 'Inter', sans-serif;
+                    min-height: 297mm;
+                    background-color: rgb(255, 255, 255);
+                    padding: 2rem;
+                    font-family: 'Inter', Arial, sans-serif;
+                    color: rgb(30, 41, 59);
+                    box-sizing: border-box;
                 `;
-
-                // Clone header section
-                const headerSection = document.querySelector('header');
-                if (headerSection) {
-                    const headerClone = headerSection.cloneNode(true);
-                    // Hapus elemen yang tidak perlu
+                
+                // Tambahkan style sheet khusus untuk print dengan warna RGB murni
+                const styleSheet = document.createElement('style');
+                styleSheet.setAttribute('data-hse-print', 'true');
+                styleSheet.textContent = `
+                    #hse-print-container {
+                        all: initial;
+                        display: block;
+                        position: absolute;
+                        left: -9999px;
+                        top: 0;
+                        width: 210mm;
+                        min-height: 297mm;
+                        background-color: rgb(255, 255, 255) !important;
+                        padding: 2rem;
+                        font-family: 'Inter', Arial, sans-serif !important;
+                        color: rgb(30, 41, 59) !important;
+                        box-sizing: border-box;
+                    }
+                    #hse-print-container * {
+                        box-sizing: border-box;
+                        color: rgb(30, 41, 59) !important;
+                        font-family: 'Inter', Arial, sans-serif !important;
+                    }
+                    #hse-print-container .form-card {
+                        background-color: rgb(255, 255, 255) !important;
+                        border: 2px solid rgb(226, 232, 240) !important;
+                        border-radius: 1rem;
+                        padding: 2rem;
+                        margin-bottom: 2rem;
+                    }
+                    #hse-print-container .form-value-display {
+                        background-color: rgb(248, 250, 252) !important;
+                        border: 1px solid rgb(226, 232, 240) !important;
+                        padding: 0.75rem 1rem;
+                        border-radius: 0.25rem;
+                        margin-top: 0.5rem;
+                        font-size: 0.875rem;
+                        color: rgb(30, 41, 59) !important;
+                    }
+                    #hse-print-container h1, #hse-print-container h2, #hse-print-container h3 {
+                        color: rgb(30, 41, 59) !important;
+                    }
+                    #hse-print-container p, #hse-print-container span, #hse-print-container div {
+                        color: rgb(30, 41, 59) !important;
+                    }
+                `;
+                document.head.appendChild(styleSheet);
+                
+                // Tambahkan header jika ada
+                if (header) {
+                    const headerClone = header.cloneNode(true);
+                    headerClone.setAttribute('data-print-id', 'header');
                     headerClone.querySelectorAll('button, .no-print').forEach(el => el.remove());
+                    // Override semua style dengan inline style
+                    overrideStyles(headerClone);
                     printContainer.appendChild(headerClone);
                 }
 
-                // Clone semua form cards
-                const formCards = document.querySelectorAll('.form-card');
-                if (formCards.length === 0) {
-                    throw new Error('Form cards tidak ditemukan');
-                }
-
+                // Tambahkan semua form cards dengan konversi form
                 formCards.forEach((card, index) => {
-                    const cardClone = card.cloneNode(true);
-                    // Hapus elemen interaktif
-                    cardClone.querySelectorAll('button, input[type="radio"], input[type="checkbox"]').forEach(el => {
-                        if (el.type === 'radio' || el.type === 'checkbox') {
-                            // Untuk radio/checkbox, tampilkan nilai yang dipilih sebagai text
-                            if (el.checked) {
-                                const label = cardClone.querySelector(`label[for="${el.id}"]`) || 
-                                            el.closest('label');
-                                if (label) {
-                                    const span = document.createElement('span');
-                                    span.textContent = '✓ ' + (label.textContent.trim() || el.value);
-                                    span.style.cssText = 'color: #059669; font-weight: 600;';
-                                    el.parentNode.replaceChild(span, el);
-                                }
-                            } else {
-                                el.remove();
-                            }
-                        } else {
-                            el.remove();
-                        }
-                    });
-                    
-                    // Tampilkan nilai input sebagai text
-                    cardClone.querySelectorAll('input[type="text"], input[type="date"], input[type="time"], select, textarea').forEach(el => {
-                        const value = el.value || el.textContent || '';
-                        if (value) {
-                            const span = document.createElement('div');
-                            span.textContent = value;
-                            span.style.cssText = 'padding: 8px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 4px; margin-top: 4px;';
-                            el.parentNode.replaceChild(span, el);
-                        } else {
-                            el.style.display = 'none';
-                        }
-                    });
-
-                    cardClone.style.cssText = `
-                        margin-bottom: 2rem;
-                        page-break-inside: avoid;
-                        break-inside: avoid;
-                    `;
+                    const cardClone = convertFormToPrintable(card);
+                    // Set unique ID untuk tracking
+                    cardClone.setAttribute('data-print-id', `card-${index}`);
+                    cardClone.style.cssText = 'margin-bottom: 2rem; page-break-inside: avoid; break-inside: avoid; background-color: rgb(255, 255, 255); border: 2px solid rgb(226, 232, 240); border-radius: 1rem; padding: 2rem;';
+                    // Override semua style dengan inline style
+                    overrideStyles(cardClone);
                     printContainer.appendChild(cardClone);
                 });
 
@@ -815,7 +861,7 @@
                 document.body.appendChild(printContainer);
 
                 // Tunggu sebentar untuk memastikan elemen ter-render
-                await new Promise(resolve => setTimeout(resolve, 500));
+                await new Promise(resolve => setTimeout(resolve, 1000));
 
                 if (format === 'pdf') {
                     // Generate PDF menggunakan html2pdf.js
@@ -828,11 +874,81 @@
                         },
                         html2canvas: { 
                             scale: 2,
-                            useCORS: true,
-                            allowTaint: true,
+                            useCORS: false,
+                            allowTaint: false,
                             logging: false,
                             letterRendering: true,
-                            backgroundColor: '#ffffff'
+                            backgroundColor: '#ffffff',
+                            width: printContainer.scrollWidth,
+                            height: printContainer.scrollHeight,
+                            ignoreElements: function(element) {
+                                return element.classList && element.classList.contains('no-print');
+                            },
+                            onclone: function(clonedDoc) {
+                                try {
+                                    // Hapus SEMUA stylesheet dan style tag kecuali yang kita buat untuk print
+                                    const allStyles = clonedDoc.querySelectorAll('style, link[rel="stylesheet"]');
+                                    allStyles.forEach(sheet => {
+                                        // Simpan hanya style sheet print kita
+                                        if (sheet.getAttribute && sheet.getAttribute('data-hse-print') === 'true') {
+                                            return; // Jangan hapus style sheet print kita
+                                        }
+                                        // Hapus semua yang lain
+                                        sheet.remove();
+                                    });
+                                    
+                                    const clonedContainer = clonedDoc.getElementById('hse-print-container');
+                                    if (clonedContainer) {
+                                        // Set inline style untuk semua elemen dengan warna RGB yang aman
+                                        const allElements = clonedContainer.querySelectorAll('*');
+                                        allElements.forEach(el => {
+                                            try {
+                                                // Set semua properti warna dengan nilai RGB yang aman
+                                                const colorProps = ['color', 'background-color', 'border-color', 
+                                                                   'border-top-color', 'border-right-color', 
+                                                                   'border-bottom-color', 'border-left-color'];
+                                                
+                                                colorProps.forEach(prop => {
+                                                    try {
+                                                        // Ambil nilai dari inline style yang sudah kita set sebelumnya
+                                                        const currentValue = el.style.getPropertyValue(prop);
+                                                        if (!currentValue || currentValue.includes('oklch') || currentValue.includes('oklab')) {
+                                                            // Set default berdasarkan prop dan class
+                                                            if (prop === 'color') {
+                                                                el.style.setProperty('color', 'rgb(30, 41, 59)', 'important');
+                                                            } else if (prop === 'background-color') {
+                                                                if (el.classList && el.classList.contains('form-card')) {
+                                                                    el.style.setProperty('background-color', 'rgb(255, 255, 255)', 'important');
+                                                                } else if (el.classList && el.classList.contains('form-value-display')) {
+                                                                    el.style.setProperty('background-color', 'rgb(248, 250, 252)', 'important');
+                                                                } else {
+                                                                    el.style.setProperty('background-color', 'transparent', 'important');
+                                                                }
+                                                            } else if (prop.includes('border')) {
+                                                                el.style.setProperty(prop, 'rgb(226, 232, 240)', 'important');
+                                                            }
+                                                        }
+                                                    } catch (e) {
+                                                        // Ignore errors
+                                                    }
+                                                });
+                                                
+                                                // Set font family
+                                                el.style.setProperty('font-family', "'Inter', Arial, sans-serif", 'important');
+                                                
+                                                // Set border jika form-card
+                                                if (el.classList && el.classList.contains('form-card')) {
+                                                    el.style.setProperty('border', '2px solid rgb(226, 232, 240)', 'important');
+                                                }
+                                            } catch (e) {
+                                                // Ignore errors
+                                            }
+                                        });
+                                    }
+                                } catch (e) {
+                                    console.error('Error in onclone:', e);
+                                }
+                            }
                         },
                         jsPDF: { 
                             unit: 'mm', 
@@ -850,20 +966,84 @@
                     // Generate gambar (PNG, JPG, JPEG) menggunakan html2canvas
                     const canvas = await html2canvas(printContainer, {
                         scale: 2,
-                        useCORS: true,
-                        allowTaint: true,
+                        useCORS: false,
+                        allowTaint: false,
                         logging: false,
                         backgroundColor: '#ffffff',
                         letterRendering: true,
                         width: printContainer.scrollWidth,
-                        height: printContainer.scrollHeight
+                        height: printContainer.scrollHeight,
+                        ignoreElements: function(element) {
+                            return element.classList && element.classList.contains('no-print');
+                        },
+                        onclone: function(clonedDoc) {
+                            try {
+                                // Hapus SEMUA stylesheet dan style tag kecuali yang kita buat untuk print
+                                const allStyles = clonedDoc.querySelectorAll('style, link[rel="stylesheet"]');
+                                allStyles.forEach(sheet => {
+                                    // Simpan hanya style sheet print kita
+                                    if (sheet.getAttribute && sheet.getAttribute('data-hse-print') === 'true') {
+                                        return; // Jangan hapus style sheet print kita
+                                    }
+                                    // Hapus semua yang lain
+                                    sheet.remove();
+                                });
+                                
+                                const clonedContainer = clonedDoc.getElementById('hse-print-container');
+                                if (clonedContainer) {
+                                    // Set inline style untuk semua elemen dengan warna RGB yang aman
+                                    const allElements = clonedContainer.querySelectorAll('*');
+                                    allElements.forEach(el => {
+                                        try {
+                                            // Set semua properti warna dengan nilai RGB yang aman
+                                            const colorProps = ['color', 'background-color', 'border-color', 
+                                                               'border-top-color', 'border-right-color', 
+                                                               'border-bottom-color', 'border-left-color'];
+                                            
+                                            colorProps.forEach(prop => {
+                                                try {
+                                                    // Ambil nilai dari inline style yang sudah kita set sebelumnya
+                                                    const currentValue = el.style.getPropertyValue(prop);
+                                                    if (!currentValue || currentValue.includes('oklch') || currentValue.includes('oklab')) {
+                                                        // Set default berdasarkan prop dan class
+                                                        if (prop === 'color') {
+                                                            el.style.setProperty('color', 'rgb(30, 41, 59)', 'important');
+                                                        } else if (prop === 'background-color') {
+                                                            if (el.classList && el.classList.contains('form-card')) {
+                                                                el.style.setProperty('background-color', 'rgb(255, 255, 255)', 'important');
+                                                            } else if (el.classList && el.classList.contains('form-value-display')) {
+                                                                el.style.setProperty('background-color', 'rgb(248, 250, 252)', 'important');
+                                                            } else {
+                                                                el.style.setProperty('background-color', 'transparent', 'important');
+                                                            }
+                                                        } else if (prop.includes('border')) {
+                                                            el.style.setProperty(prop, 'rgb(226, 232, 240)', 'important');
+                                                        }
+                                                    }
+                                                } catch (e) {
+                                                    // Ignore errors
+                                                }
+                                            });
+                                            
+                                            // Set font family
+                                            el.style.setProperty('font-family', "'Inter', Arial, sans-serif", 'important');
+                                        } catch (e) {
+                                            // Ignore errors
+                                        }
+                                    });
+                                }
+                            } catch (e) {
+                                console.error('Error in onclone:', e);
+                            }
+                        }
                     });
 
                     // Konversi canvas ke blob dengan promise
                     await new Promise((resolve, reject) => {
+                        const mimeType = format === 'png' ? 'image/png' : 'image/jpeg';
                         canvas.toBlob(function(blob) {
                             if (!blob) {
-                                reject(new Error('Gagal membuat blob'));
+                                reject(new Error('Gagal membuat file gambar'));
                                 return;
                             }
                             try {
@@ -885,7 +1065,7 @@
                             } catch (err) {
                                 reject(err);
                             }
-                        }, format === 'png' ? 'image/png' : 'image/jpeg', 0.95);
+                        }, mimeType, 0.95);
                     });
                 }
 
@@ -896,10 +1076,17 @@
                 showNotification('Terjadi kesalahan: ' + (error.message || 'Silakan coba lagi.'), 'error');
             } finally {
                 // Hapus container sementara
-                const printContainer = document.getElementById('printContainer');
-                if (printContainer) {
-                    document.body.removeChild(printContainer);
+                const container = document.getElementById('hse-print-container');
+                if (container) {
+                    document.body.removeChild(container);
                 }
+                // Hapus style sheet yang ditambahkan
+                const addedStyle = document.querySelector('style[data-hse-print]');
+                if (addedStyle) {
+                    addedStyle.remove();
+                }
+                // Restore stylesheet yang dihapus (jika diperlukan)
+                // Note: Biasanya tidak perlu restore karena browser akan reload stylesheet
             }
         }
 

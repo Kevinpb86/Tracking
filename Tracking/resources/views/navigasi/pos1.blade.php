@@ -28,7 +28,7 @@
         </div>
 
         <button id="sidebarToggle" type="button"
-            class="fixed left-4 top-9 z-50 inline-flex h-12 w-12 items-center justify-center rounded-lg border border-slate-200 bg-white text-red-600 shadow-sm transition hover:bg-red-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2 cursor-pointer sm:left-6 sm:top-10 lg:left-8 lg:top-12"
+            class="fixed left-4 top-9 z-50 inline-flex h-12 w-12 items-center justify-center rounded-lg border border-slate-200 bg-white text-blue-600 shadow-sm transition hover:bg-blue-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 cursor-pointer sm:left-6 sm:top-10 lg:left-8 lg:top-12"
             aria-label="Toggle navigation" aria-expanded="false">
             <span class="relative flex h-4 w-6 flex-col justify-between">
                 <span class="block h-0.5 w-full rounded-full bg-current transition-all"></span>
@@ -43,7 +43,7 @@
             {{-- Branding Section --}}
             <div class="relative flex flex-col gap-6 overflow-y-auto px-6 py-8">
                 <a href="{{ route('dashboard.main') }}"
-                    class="group relative flex items-center gap-4 rounded-2xl bg-gradient-to-br from-slate-50 to-white p-4 shadow-sm border border-slate-100 transition-all hover:shadow-md hover:border-red-100"
+                    class="group relative flex items-center gap-4 rounded-2xl bg-gradient-to-br from-slate-50 to-white p-4 shadow-sm border border-slate-100 transition-all hover:shadow-md hover:border-blue-100"
                     aria-label="Kembali ke halaman utama">
                     <div
                         class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white p-1 shadow-sm ring-1 ring-slate-900/5 group-hover:scale-105 transition-transform">
@@ -51,9 +51,9 @@
                             class="h-full w-full rounded-lg object-contain">
                     </div>
                     <div class="space-y-0.5">
-                        <p class="text-[10px] font-bold uppercase tracking-widest text-red-600">Tracking System</p>
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-blue-600">Tracking System</p>
                         <p
-                            class="text-sm font-bold text-slate-800 leading-tight group-hover:text-red-700 transition-colors">
+                            class="text-sm font-bold text-slate-800 leading-tight group-hover:text-blue-700 transition-colors">
                             PT. Wiraswasta Gemilang Indonesia</p>
                     </div>
                 </a>
@@ -63,8 +63,8 @@
                     <div class="mb-4 flex items-center justify-between px-2">
                         <p class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Navigasi Pos 1</p>
                         <span
-                            class="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-emerald-600">
-                            <span class="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                            class="inline-flex items-center gap-1 rounded-full bg-blue-50 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-blue-600">
+                            <span class="h-1.5 w-1.5 rounded-full bg-blue-500 animate-pulse"></span>
                             Live
                         </span>
                     </div>
@@ -72,7 +72,7 @@
                     <nav class="space-y-2">
                         {{-- Active Dashboard Link --}}
                         <a href="{{ route('pos1.dashboard') }}"
-                            class="flex items-center justify-between rounded-xl bg-red-600 px-4 py-3 text-white shadow-lg shadow-red-500/30 transition-all hover:bg-red-700 hover:shadow-red-600/40 hover:-translate-y-0.5">
+                            class="flex items-center justify-between rounded-xl bg-blue-600 px-4 py-3 text-white shadow-lg shadow-blue-500/30 transition-all hover:bg-blue-700 hover:shadow-blue-600/40 hover:-translate-y-0.5">
                             <span class="flex items-center gap-3">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
                                     fill="currentColor">
@@ -86,10 +86,10 @@
 
                         {{-- Antrian Link --}}
                         <a href="#"
-                            class="group flex items-center justify-between rounded-xl border border-transparent px-4 py-3 text-slate-600 transition-all hover:bg-slate-50 hover:text-red-600">
+                            class="group flex items-center justify-between rounded-xl border border-transparent px-4 py-3 text-slate-600 transition-all hover:bg-slate-50 hover:text-blue-600">
                             <span class="flex items-center gap-3">
                                 <svg xmlns="http://www.w3.org/2000/svg"
-                                    class="h-5 w-5 text-slate-400 transition-colors group-hover:text-red-500"
+                                    class="h-5 w-5 text-slate-400 transition-colors group-hover:text-blue-500"
                                     viewBox="0 0 20 20" fill="currentColor">
                                     <path
                                         d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" />
@@ -168,7 +168,7 @@
             <div class="mt-auto border-t border-slate-100 bg-slate-50/50 p-4">
                 <div class="mb-4 flex items-center gap-3 rounded-xl bg-white p-3 shadow-sm border border-slate-100">
                     <div
-                        class="flex h-10 w-10 items-center justify-center rounded-full bg-red-100 text-red-700 font-bold border border-red-200">
+                        class="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-700 font-bold border border-blue-200">
                         {{ substr(Auth::user()->name ?? 'U', 0, 1) }}
                     </div>
                     <div class="overflow-hidden">
@@ -202,10 +202,10 @@
                     <div class="h-3 w-full bg-[#2736a3]"></div>
                     <div class="flex flex-wrap items-center gap-6 px-6 py-6 pl-20 sm:px-10 sm:pl-28">
                         <a href="{{ route('dashboard.main') }}"
-                            class="flex min-w-[220px] flex-1 items-center gap-5 text-red-900 transition hover:opacity-80"
+                            class="flex min-w-[220px] flex-1 items-center gap-5 text-blue-900 transition hover:opacity-80"
                             aria-label="Kembali ke halaman utama">
                             <div
-                                class="flex h-16 w-16 items-center justify-center rounded-full border border-red-900/20 bg-white p-2 shadow-lg shadow-red-900/20">
+                                class="flex h-16 w-16 items-center justify-center rounded-full border border-blue-900/20 bg-white p-2 shadow-lg shadow-blue-900/20">
                                 <img src="{{ asset('images/wgilogo.jpg') }}"
                                     alt="Logo PT. Wiraswasta Gemilang Indonesia" class="h-full w-full object-contain">
                             </div>
@@ -213,7 +213,7 @@
                                 <span
                                     class="block text-xs font-semibold uppercase tracking-[0.55em] text-slate-500">Tracking
                                     System</span>
-                                <div class="text-lg font-bold italic leading-tight text-red-900">
+                                <div class="text-lg font-bold italic leading-tight text-blue-900">
                                     <span class="block">PT Wiraswasta Gemilang</span>
                                     <span class="block whitespace-nowrap">Indonesia</span>
                                 </div>
@@ -249,7 +249,7 @@
             <section class="relative mx-auto w-full flex-1 px-8 py-12 sm:px-12 lg:px-24">
                 {{-- Hero Section --}}
                 <div
-                    class="mb-12 rounded-3xl bg-gradient-to-r from-red-600 to-red-700 p-10 text-white shadow-2xl relative overflow-hidden">
+                    class="mb-12 rounded-3xl bg-gradient-to-r from-blue-600 to-blue-700 p-10 text-white shadow-2xl relative overflow-hidden">
                     <div class="absolute top-0 right-0 -mt-10 -mr-10 h-64 w-64 rounded-full bg-white/10 blur-3xl"></div>
                     <div class="absolute bottom-0 left-0 -mb-10 -ml-10 h-64 w-64 rounded-full bg-white/10 blur-3xl">
                     </div>
@@ -258,17 +258,17 @@
                         <div>
                             <div class="mb-2 flex items-center gap-2">
                                 <span
-                                    class="rounded-full bg-red-500/30 px-3 py-1 text-xs font-bold uppercase tracking-wider backdrop-blur-sm border border-white/20">
+                                    class="rounded-full bg-blue-500/30 px-3 py-1 text-xs font-bold uppercase tracking-wider backdrop-blur-sm border border-white/20">
                                     Dashboard Utama
                                 </span>
-                                <span class="flex h-2 w-2 rounded-full bg-emerald-400"></span>
-                                <span class="text-xs font-medium text-red-100">Sistem Online</span>
+                                <span class="flex h-2 w-2 rounded-full bg-blue-400"></span>
+                                <span class="text-xs font-medium text-blue-100">Sistem Online</span>
                             </div>
                             <h1 class="text-4xl font-bold leading-tight sm:text-5xl">
                                 Selamat Datang di <br />
-                                <span class="text-red-200">Checkpoint Pos 1</span>
+                                <span class="text-blue-200">Checkpoint Pos 1</span>
                             </h1>
-                            <p class="mt-4 max-w-xl text-lg text-red-100/90 font-light">
+                            <p class="mt-4 max-w-xl text-lg text-blue-100/90 font-light">
                                 Kelola validasi kendaraan dan pemeriksaan HSE dengan efisien. Pantau aktivitas terkini
                                 dan akses menu cepat di satu tempat.
                             </p>
@@ -277,15 +277,15 @@
                         <div
                             class="flex flex-col gap-4 rounded-2xl bg-white/10 p-6 backdrop-blur-md border border-white/20 min-w-[280px]">
                             <div>
-                                <p class="text-xs font-bold uppercase tracking-widest text-red-200">Waktu Operasional
+                                <p class="text-xs font-bold uppercase tracking-widest text-blue-200">Waktu Operasional
                                 </p>
                                 <p id="heroTime" class="text-3xl font-bold tracking-tight">{{ $now->format('H:i') }}
-                                    <span class="text-lg font-medium text-red-300">WIB</span>
+                                    <span class="text-lg font-medium text-blue-300">WIB</span>
                                 </p>
                             </div>
                             <div class="h-px w-full bg-white/20"></div>
                             <div>
-                                <p class="text-xs font-bold uppercase tracking-widest text-red-200">Tanggal</p>
+                                <p class="text-xs font-bold uppercase tracking-widest text-blue-200">Tanggal</p>
                                 <p class="text-lg font-medium">{{ $now->format('d F Y') }}</p>
                             </div>
                         </div>
@@ -298,11 +298,11 @@
                     <div
                         class="group relative overflow-hidden rounded-2xl border border-slate-100 bg-white p-6 shadow-lg transition-all hover:-translate-y-1 hover:shadow-xl">
                         <div
-                            class="absolute right-0 top-0 h-24 w-24 translate-x-8 translate-y-[-20%] rounded-full bg-red-50 transition-all group-hover:scale-110">
+                            class="absolute right-0 top-0 h-24 w-24 translate-x-8 translate-y-[-20%] rounded-full bg-blue-50 transition-all group-hover:scale-110">
                         </div>
                         <div class="relative z-10">
                             <div
-                                class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-red-100 text-red-600 shadow-sm group-hover:bg-red-600 group-hover:text-white transition-colors">
+                                class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100 text-blue-600 shadow-sm group-hover:bg-blue-600 group-hover:text-white transition-colors">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                                     stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -311,7 +311,7 @@
                             </div>
                             <p class="text-xs font-bold uppercase tracking-wider text-slate-500">Total Kendaraan</p>
                             <p class="mt-2 text-3xl font-bold text-slate-900">24</p>
-                            <div class="mt-2 flex items-center text-xs font-medium text-emerald-600">
+                            <div class="mt-2 flex items-center text-xs font-medium text-blue-600">
                                 <svg class="mr-1 h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
@@ -325,11 +325,11 @@
                     <div
                         class="group relative overflow-hidden rounded-2xl border border-slate-100 bg-white p-6 shadow-lg transition-all hover:-translate-y-1 hover:shadow-xl">
                         <div
-                            class="absolute right-0 top-0 h-24 w-24 translate-x-8 translate-y-[-20%] rounded-full bg-emerald-50 transition-all group-hover:scale-110">
+                            class="absolute right-0 top-0 h-24 w-24 translate-x-8 translate-y-[-20%] rounded-full bg-blue-50 transition-all group-hover:scale-110">
                         </div>
                         <div class="relative z-10">
                             <div
-                                class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-100 text-emerald-600 shadow-sm group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+                                class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100 text-blue-600 shadow-sm group-hover:bg-blue-600 group-hover:text-white transition-colors">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                                     stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -361,7 +361,7 @@
                             </div>
                             <p class="text-xs font-bold uppercase tracking-wider text-slate-500">Peringatan HSE</p>
                             <p class="mt-2 text-3xl font-bold text-slate-900">0</p>
-                            <div class="mt-2 flex items-center text-xs font-medium text-emerald-600">
+                            <div class="mt-2 flex items-center text-xs font-medium text-blue-600">
                                 Aman terkendali
                             </div>
                         </div>
@@ -385,7 +385,7 @@
                             <p class="text-xs font-bold uppercase tracking-wider text-slate-500">Avg. Waktu</p>
                             <p class="mt-2 text-3xl font-bold text-slate-900">5 <span
                                     class="text-base font-medium text-slate-500">Menit</span></p>
-                            <div class="mt-2 flex items-center text-xs font-medium text-emerald-600">
+                            <div class="mt-2 flex items-center text-xs font-medium text-blue-600">
                                 <svg class="mr-1 h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
@@ -410,9 +410,9 @@
 
                             <div class="grid gap-4 sm:grid-cols-2">
                                 <a href="{{ route('hse.input') }}"
-                                    class="group relative flex items-center gap-4 overflow-hidden rounded-2xl border-2 border-slate-100 bg-white p-5 transition-all hover:border-emerald-500 hover:shadow-md hover:shadow-emerald-500/10">
+                                    class="group relative flex items-center gap-4 overflow-hidden rounded-2xl border-2 border-slate-100 bg-white p-5 transition-all hover:border-blue-500 hover:shadow-md hover:shadow-emerald-500/10">
                                     <div
-                                        class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-emerald-100 text-emerald-600 transition-colors group-hover:bg-emerald-600 group-hover:text-white">
+                                        class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-blue-100 text-blue-600 transition-colors group-hover:bg-blue-600 group-hover:text-white">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 20 20"
                                             fill="currentColor">
                                             <path
@@ -420,16 +420,16 @@
                                         </svg>
                                     </div>
                                     <div>
-                                        <h3 class="font-bold text-slate-900 group-hover:text-emerald-700">Input HSE Baru
+                                        <h3 class="font-bold text-slate-900 group-hover:text-blue-700">Input HSE Baru
                                         </h3>
                                         <p class="text-xs text-slate-500">Catat pemeriksaan keselamatan</p>
                                     </div>
                                 </a>
 
                                 <a href="{{ route('hse.daftar') }}"
-                                    class="group relative flex items-center gap-4 overflow-hidden rounded-2xl border-2 border-slate-100 bg-white p-5 transition-all hover:border-red-500 hover:shadow-md hover:shadow-red-500/10">
+                                    class="group relative flex items-center gap-4 overflow-hidden rounded-2xl border-2 border-slate-100 bg-white p-5 transition-all hover:border-blue-500 hover:shadow-md hover:shadow-blue-500/10">
                                     <div
-                                        class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-red-100 text-red-600 transition-colors group-hover:bg-red-600 group-hover:text-white">
+                                        class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-blue-100 text-blue-600 transition-colors group-hover:bg-blue-600 group-hover:text-white">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 20 20"
                                             fill="currentColor">
                                             <path
@@ -437,7 +437,7 @@
                                         </svg>
                                     </div>
                                     <div>
-                                        <h3 class="font-bold text-slate-900 group-hover:text-red-700">Daftar Laporan
+                                        <h3 class="font-bold text-slate-900 group-hover:text-blue-700">Daftar Laporan
                                         </h3>
                                         <p class="text-xs text-slate-500">Lihat history data HSE</p>
                                     </div>
@@ -488,16 +488,16 @@
                             <div class="relative pl-6 border-l-2 border-slate-100 space-y-8">
                                 <div class="relative">
                                     <span
-                                        class="absolute -left-[29px] top-1 flex h-4 w-4 items-center justify-center rounded-full bg-emerald-100 ring-4 ring-white">
-                                        <span class="h-2 w-2 rounded-full bg-emerald-500"></span>
+                                        class="absolute -left-[29px] top-1 flex h-4 w-4 items-center justify-center rounded-full bg-blue-100 ring-4 ring-white">
+                                        <span class="h-2 w-2 rounded-full bg-blue-500"></span>
                                     </span>
                                     <p class="text-sm font-semibold text-slate-900">Sistem Siap</p>
                                     <p class="text-xs text-slate-500">Hari ini, {{ $now->format('H:i') }}</p>
                                 </div>
                                 <div class="relative">
                                     <span
-                                        class="absolute -left-[29px] top-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-100 ring-4 ring-white">
-                                        <span class="h-2 w-2 rounded-full bg-red-500"></span>
+                                        class="absolute -left-[29px] top-1 flex h-4 w-4 items-center justify-center rounded-full bg-blue-100 ring-4 ring-white">
+                                        <span class="h-2 w-2 rounded-full bg-blue-500"></span>
                                     </span>
                                     <p class="text-sm font-semibold text-slate-900">Login Petugas</p>
                                     <p class="text-xs text-slate-500">{{ Auth::user()->name }} masuk ke sistem</p>
@@ -656,7 +656,7 @@
                 const heroTimeElement = document.getElementById('heroTime');
                 if (heroTimeElement) {
                     // Update content while preserving the "WIB" span styling
-                    heroTimeElement.innerHTML = `${timeString} <span class="text-lg font-medium text-red-300">WIB</span>`;
+                    heroTimeElement.innerHTML = `${timeString} <span class="text-lg font-medium text-blue-300">WIB</span>`;
                 }
             }
 

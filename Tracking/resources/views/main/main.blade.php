@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,8 +9,11 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=inter:400,500,600,700" rel="stylesheet" />
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
+
 <body class="min-h-screen bg-slate-50 font-sans antialiased text-slate-900">
     @php
         $now = now();
@@ -19,16 +23,14 @@
     <div class="relative min-h-screen overflow-x-hidden">
         <div class="absolute inset-0 -z-10">
             <div class="h-full w-full bg-gradient-to-b from-white via-slate-50 to-slate-100"></div>
-            <div class="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-blue-100/20 via-blue-50/10 to-transparent blur-2xl"></div>
+            <div
+                class="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-blue-100/20 via-blue-50/10 to-transparent blur-2xl">
+            </div>
         </div>
 
-        <button
-            id="sidebarToggle"
-            type="button"
-            class="fixed left-4 top-9 z-20 inline-flex h-12 w-12 items-center justify-center rounded-lg border border-slate-200 bg-white text-blue-600 shadow-sm transition hover:bg-blue-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 cursor-pointer sm:left-6 sm:top-10 lg:left-8 lg:top-12"
-            aria-label="Toggle navigation"
-            aria-expanded="false"
-        >
+        <button id="sidebarToggle" type="button"
+            class="fixed left-4 top-9 z-50 inline-flex h-12 w-12 items-center justify-center rounded-lg border border-slate-200 bg-white text-blue-600 shadow-sm transition hover:bg-blue-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 cursor-pointer sm:left-6 sm:top-10 lg:left-8 lg:top-12"
+            aria-label="Toggle navigation" aria-expanded="false">
             <span class="relative flex h-4 w-6 flex-col justify-between">
                 <span class="block h-0.5 w-full rounded-full bg-current transition-all"></span>
                 <span class="block h-0.5 w-full rounded-full bg-current transition-all"></span>
@@ -36,116 +38,177 @@
             </span>
         </button>
 
-        <aside
-            id="sidebar"
-            class="fixed left-0 top-0 z-40 flex h-full w-72 -translate-x-full flex-col overflow-hidden border-r border-slate-200 bg-white shadow-lg transition-transform duration-300 ease-in-out lg:w-80"
-        >
-            <div class="relative flex h-full flex-col gap-6 overflow-y-auto p-8">
-                <div class="relative flex items-center gap-4 rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
-                    <div class="flex h-14 w-14 items-center justify-center rounded-lg border border-blue-100 bg-blue-50 p-1.5">
-                        <img
-                            src="{{ asset('images/wgilogo.jpg') }}"
-                            alt="Logo PT. Wiraswasta Gemilang Indonesia"
-                            class="h-full w-full rounded-xl object-contain"
-                        >
-                    </div>
-                    <div class="space-y-1">
-                        <p class="text-[11px] font-semibold uppercase tracking-[0.45em] text-blue-500">Tracking System</p>
-                        <p class="text-base font-semibold text-slate-900 leading-snug">PT. Wiraswasta Gemilang Indonesia</p>
-                    </div>
-                </div>
 
-                <div class="relative space-y-3">
-                    <div class="flex items-center justify-between">
-                        <p class="text-[11px] font-semibold uppercase tracking-[0.35em] text-slate-500">Navigasi Pos</p>
-                        <span class="rounded-full bg-blue-50 px-3 py-0.5 text-[10px] font-semibold uppercase tracking-[0.3em] text-blue-500">Live</span>
+        <aside id="sidebar"
+            class="fixed left-0 top-0 z-50 flex h-full w-72 -translate-x-full flex-col overflow-hidden border-r border-slate-200 bg-white/90 backdrop-blur-xl shadow-[4px_0_24px_rgba(0,0,0,0.02)] transition-transform duration-300 ease-in-out lg:w-80 font-sans">
+
+            {{-- Branding Section --}}
+            <div class="relative flex flex-col gap-6 overflow-y-auto px-6 py-8">
+                <a href="{{ route('dashboard.main') }}"
+                    class="group relative flex items-center gap-4 rounded-2xl bg-gradient-to-br from-slate-50 to-white p-4 shadow-sm border border-slate-100 transition-all hover:shadow-md hover:border-blue-100"
+                    aria-label="Halaman utama">
+                    <div
+                        class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white p-1 shadow-sm ring-1 ring-slate-900/5 group-hover:scale-105 transition-transform">
+                        <img src="{{ asset('images/wgilogo.jpg') }}" alt="Logo PT. WGI"
+                            class="h-full w-full rounded-lg object-contain">
                     </div>
-                    <nav class="flex flex-col gap-3 text-sm font-semibold text-slate-600">
-                        <a
-                            href="{{ route('pos1.dashboard') }}"
-                            class="group flex items-center justify-between rounded-xl border border-blue-100 bg-white px-5 py-4 transition duration-200 hover:border-blue-300 hover:bg-blue-50 hover:text-blue-700"
-                        >
+                    <div class="space-y-0.5">
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-blue-600">Tracking System</p>
+                        <p
+                            class="text-sm font-bold text-slate-800 leading-tight group-hover:text-blue-700 transition-colors">
+                            PT. Wiraswasta Gemilang Indonesia</p>
+                    </div>
+                </a>
+
+                {{-- Navigation --}}
+                <div class="flex flex-col gap-1">
+                    <div class="mb-4 flex items-center justify-between px-2">
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Main Dashboard</p>
+                        <span
+                            class="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-emerald-600">
+                            <span class="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                            Live
+                        </span>
+                    </div>
+
+                    <nav class="space-y-2">
+                        {{-- Active Dashboard Link --}}
+                        <a href="{{ route('dashboard.main') }}"
+                            class="flex items-center justify-between rounded-xl bg-blue-600 px-4 py-3 text-white shadow-lg shadow-blue-500/30 transition-all hover:bg-blue-700 hover:shadow-blue-600/40 hover:-translate-y-0.5">
                             <span class="flex items-center gap-3">
-                                <span class="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-100 text-blue-600 transition duration-200 group-hover:bg-blue-500 group-hover:text-white">
-                                    1
-                                </span>
-                                    <span class="flex flex-col gap-0.5">
-                                        <span class="text-[11px] uppercase tracking-[0.3em] text-blue-400">Pos 1</span>
-                                        <span class="text-base">Checkpoint Kedatangan</span>
-                                    </span>
-                                </span>
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-blue-400 transition duration-200 group-hover:text-blue-600" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M7.22 14.78a.75.75 0 0 1 0-1.06L10.94 10 7.22 6.28a.75.75 0 1 1 1.06-1.06l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0Z" clip-rule="evenodd" />
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
+                                    fill="currentColor">
+                                    <path
+                                        d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
                                 </svg>
+                                <span class="font-semibold text-sm">Dashboard</span>
+                            </span>
+                            <div class="h-1.5 w-1.5 rounded-full bg-white/90"></div>
                         </a>
-                        <a
-                            href="#"
-                            class="group flex items-center justify-between rounded-xl border border-emerald-100 bg-white px-5 py-4 transition duration-200 hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-700"
-                        >
+
+                        {{-- POS 1 Link --}}
+                        <a href="{{ route('pos1.dashboard') }}"
+                            class="group flex items-center justify-between rounded-xl border border-transparent px-4 py-3 text-slate-600 transition-all hover:bg-blue-50 hover:text-blue-600">
                             <span class="flex items-center gap-3">
-                                <span class="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-100 text-emerald-600 transition duration-200 group-hover:bg-emerald-500 group-hover:text-white">
-                                    2
-                                </span>
-                                    <span class="flex flex-col gap-0.5">
-                                        <span class="text-[11px] uppercase tracking-[0.3em] text-emerald-400">Pos 2</span>
-                                        <span class="text-base">Zona Distribusi</span>
-                                    </span>
-                                </span>
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-emerald-400 transition duration-200 group-hover:text-emerald-600" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M7.22 14.78a.75.75 0 0 1 0-1.06L10.94 10 7.22 6.28a.75.75 0 1 1 1.06-1.06l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0Z" clip-rule="evenodd" />
-                                </svg>
+                                <div
+                                    class="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-100 text-blue-600 transition-colors group-hover:bg-blue-500 group-hover:text-white">
+                                    <span class="text-sm font-bold">1</span>
+                                </div>
+                                <div class="text-left font-medium text-sm">
+                                    <p class="text-xs font-bold uppercase tracking-wider text-blue-500/80">POS 1</p>
+                                    <p>Checkpoint Kedatangan</p>
+                                </div>
+                            </span>
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="h-4 w-4 text-slate-300 transition-transform group-hover:translate-x-1"
+                                viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                    clip-rule="evenodd" />
+                            </svg>
                         </a>
+
+                        {{-- POS 2 Link --}}
+                        <a href="{{ route('pos2.dashboard') }}"
+                            class="group flex items-center justify-between rounded-xl border border-transparent px-4 py-3 text-slate-600 transition-all hover:bg-emerald-50 hover:text-emerald-600">
+                            <span class="flex items-center gap-3">
+                                <div
+                                    class="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-100 text-emerald-600 transition-colors group-hover:bg-emerald-500 group-hover:text-white">
+                                    <span class="text-sm font-bold">2</span>
+                                </div>
+                                <div class="text-left font-medium text-sm">
+                                    <p class="text-xs font-bold uppercase tracking-wider text-emerald-500/80">POS 2</p>
+                                    <p>Zona Distribusi</p>
+                                </div>
+                            </span>
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="h-4 w-4 text-slate-300 transition-transform group-hover:translate-x-1"
+                                viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </a>
+
+                        {{-- HSE Menu Accordion --}}
+
                     </nav>
                 </div>
+            </div>
 
-                <form action="{{ route('logout') }}" method="POST" class="mt-auto pt-2">
+            {{-- Footer / Profile Section --}}
+            <div class="mt-auto border-t border-slate-100 bg-slate-50/50 p-4">
+                <div class="mb-4 flex items-center gap-3 rounded-xl bg-white p-3 shadow-sm border border-slate-100">
+                    <div
+                        class="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-700 font-bold border border-blue-200">
+                        {{ substr(Auth::user()->name ?? 'U', 0, 1) }}
+                    </div>
+                    <div class="overflow-hidden">
+                        <p class="truncate text-sm font-bold text-slate-900">{{ Auth::user()->name ?? 'Guest' }}</p>
+                        <p class="truncate text-xs text-slate-500">{{ Auth::user()->email ?? '' }}</p>
+                    </div>
+                </div>
+
+                <button type="button" onclick="showLogoutModal()"
+                    class="flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-white border border-rose-100 px-4 py-2.5 text-sm font-semibold text-rose-600 shadow-sm transition-all duration-200 hover:bg-rose-600 hover:text-white hover:border-rose-600 hover:shadow-lg hover:-translate-y-0.5 active:scale-95">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform group-hover:scale-110"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                    </svg>
+                    Sign Out
+                </button>
+                <form id="logoutForm" action="{{ route('logout') }}" method="POST" class="hidden">
                     @csrf
-                    <button
-                        type="submit"
-                        class="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-rose-600 px-4 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-rose-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-300 focus-visible:ring-offset-2"
-                    >
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.5 6.75h-6a2 2 0 0 0-2 2v6.5a2 2 0 0 0 2 2h6M12 9.75l2.75 2.75L12 15.25M14.75 12.5H5" />
-                        </svg>
-                        Logout
-                    </button>
                 </form>
             </div>
         </aside>
 
-        <div
-            id="sidebarOverlay"
-            class="fixed inset-0 z-30 bg-slate-900/10 opacity-0 transition-opacity duration-300 ease-in-out pointer-events-none"
-        ></div>
+        <div id="sidebarOverlay"
+            class="fixed inset-0 z-30 bg-slate-900/10 opacity-0 transition-opacity duration-300 ease-in-out pointer-events-none">
+        </div>
 
         <main class="relative flex min-h-screen flex-col pt-32 sm:pt-36 lg:pt-40">
-            <section class="fixed inset-x-0 top-0 z-10">
+            <section class="fixed inset-x-0 top-0 z-40">
                 <div class="overflow-hidden border-b border-slate-200 bg-white text-slate-700 shadow-sm">
                     <div class="h-3 w-full bg-[#2736a3]"></div>
                     <div class="flex flex-wrap items-center gap-6 px-6 py-6 pl-20 sm:px-10 sm:pl-28">
-                        <div class="flex min-w-[220px] flex-1 items-center gap-5 text-blue-900">
-                            <div class="flex h-16 w-16 items-center justify-center rounded-full border border-blue-900/20 bg-white p-2 shadow-lg shadow-blue-900/20">
-                                <img src="{{ asset('images/wgilogo.jpg') }}" alt="Logo PT. Wiraswasta Gemilang Indonesia" class="h-full w-full object-contain">
+                        <a href="{{ route('dashboard.main') }}"
+                            class="flex min-w-[220px] flex-1 items-center gap-5 text-blue-900 transition hover:opacity-80"
+                            aria-label="Halaman utama">
+                            <div
+                                class="flex h-16 w-16 items-center justify-center rounded-full border border-blue-900/20 bg-white p-2 shadow-lg shadow-blue-900/20">
+                                <img src="{{ asset('images/wgilogo.jpg') }}"
+                                    alt="Logo PT. Wiraswasta Gemilang Indonesia" class="h-full w-full object-contain">
                             </div>
                             <div class="space-y-1">
-                                <span class="block text-xs font-semibold uppercase tracking-[0.55em] text-slate-500">Tracking System</span>
-                                <span class="block text-lg font-semibold leading-tight">PT. Wiraswasta Gemilang Indonesia</span>
+                                <span
+                                    class="block text-xs font-semibold uppercase tracking-[0.55em] text-slate-500">Tracking
+                                    System</span>
+                                <div class="text-lg font-bold italic leading-tight text-blue-900">
+                                    <span class="block">PT Wiraswasta Gemilang</span>
+                                    <span class="block whitespace-nowrap">Indonesia</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="hidden h-14 w-px bg-slate-900 sm:ml-5 sm:block lg:ml-10"></div>
+                        </a>
+                        <div class="hidden h-14 w-0.5 bg-slate-900 sm:ml-5 sm:block lg:ml-10"></div>
                         <div class="flex min-w-[200px] flex-1 justify-center text-center sm:justify-start sm:text-left">
-                            <span class="text-base font-medium uppercase tracking-[0.45em] text-slate-500 whitespace-nowrap">
+                            <span
+                                class="text-base font-medium uppercase tracking-[0.45em] text-slate-500 whitespace-nowrap">
                                 Tracking Information System
                             </span>
                         </div>
-                        <div class="hidden h-14 w-px bg-slate-900 sm:ml-7 sm:block lg:ml-16 xl:ml-20"></div>
+                        <div class="hidden h-14 w-0.5 bg-slate-900 sm:ml-7 sm:block lg:ml-16 xl:ml-20"></div>
                         <div class="flex min-w-[160px] flex-1 justify-center sm:justify-end">
                             @if ($evalubeLogoExists)
-                                <img src="{{ asset('images/evalube.png') }}" alt="Evalube Lubricants" class="h-12 w-auto object-contain">
+                                <img src="{{ asset('images/evalube.png') }}" alt="Evalube Lubricants"
+                                    class="h-12 w-auto object-contain">
                             @else
                                 <div class="flex flex-col items-center text-center sm:items-end sm:text-right">
-                                    <span class="text-2xl font-black uppercase tracking-[0.25em] text-emerald-500 drop-shadow-sm">Evalube</span>
-                                    <span class="text-xs font-semibold uppercase tracking-[0.5em] text-slate-500">Lubricants</span>
+                                    <span
+                                        class="text-2xl font-black uppercase tracking-[0.25em] text-emerald-500 drop-shadow-sm">Evalube</span>
+                                    <span
+                                        class="text-xs font-semibold uppercase tracking-[0.5em] text-slate-500">Lubricants</span>
                                 </div>
                             @endif
                         </div>
@@ -154,31 +217,53 @@
             </section>
 
             <header class="px-8 pt-12 sm:px-12 lg:px-24">
-                <div class="mx-auto rounded-2xl border border-slate-200 bg-white p-10 shadow-sm">
-                    <div class="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
-                        <div class="max-w-2xl space-y-4">
-                            <p class="text-xs font-semibold uppercase tracking-[0.45em] text-blue-600/80">
-                                Main Dashboard
-                            </p>
-                            <h1 class="text-4xl font-semibold text-slate-900 sm:text-5xl">
-                                Visualisasi Operasional yang Elegan
+                <div
+                    class="mx-auto rounded-[2rem] bg-gradient-to-br from-blue-600 via-blue-600 to-blue-700 p-10 shadow-2xl">
+                    <div class="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
+                        <div class="max-w-2xl space-y-6">
+                            <div class="flex items-center gap-3">
+                                <p class="text-xs font-semibold uppercase tracking-[0.45em] text-blue-100">
+                                    Dashboard Utama
+                                </p>
+                                <div class="flex items-center gap-2">
+                                    <span class="relative flex h-2 w-2">
+                                        <span
+                                            class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
+                                        <span class="relative inline-flex h-2 w-2 rounded-full bg-green-300"></span>
+                                    </span>
+                                    <span class="text-xs font-medium text-green-200">Sistem Online</span>
+                                </div>
+                            </div>
+                            <h1 class="text-4xl font-bold text-white sm:text-5xl leading-tight">
+                                Selamat Datang di<br>Main Dashboard
                             </h1>
-                            <p class="text-sm text-slate-600">
-                                Pantau kegiatan logistik dan status setiap pos dengan tampilan yang modern serta mudah dipahami. Gunakan tombol menu di pojok kiri atas untuk mengakses fitur POS 1 dan POS 2 dengan cepat.
+                            <p class="text-base text-blue-50 leading-relaxed">
+                                Kelola validasi kendaraan dan pemeriksaan HSE dengan efisien.<br>
+                                Pantau aktivitas terkini dan akses menu cepat di satu tempat.
                             </p>
                         </div>
-                        <div class="flex-1 space-y-5 rounded-xl border border-slate-200 bg-slate-50 p-6 text-sm text-slate-600 lg:ml-8 lg:max-w-md">
-                            <div class="flex items-center justify-between">
-                                <span class="uppercase tracking-[0.35em] text-xs text-slate-500">Tanggal</span>
-                                <span id="currentDate" class="text-base font-semibold text-slate-900">{{ $now->format('d F Y') }}</span>
+                        <div
+                            class="flex-1 space-y-4 rounded-2xl border border-white/20 bg-white/10 backdrop-blur-sm p-6 text-sm lg:ml-8 lg:max-w-sm">
+                            <div class="space-y-3">
+                                <p class="text-xs font-semibold uppercase tracking-[0.35em] text-blue-100">
+                                    Waktu Operasional
+                                </p>
+                                <div class="text-4xl font-bold text-white">
+                                    <span id="currentTime">{{ $now->format('H:i') }}</span>
+                                    <span class="text-2xl font-medium text-blue-200">WIB</span>
+                                </div>
                             </div>
-                            <div class="flex items-center justify-between">
-                                <span class="uppercase tracking-[0.35em] text-xs text-slate-500">Waktu</span>
-                                <span id="currentTime" class="text-base font-semibold text-slate-900">{{ $now->format('H:i') }} WIB</span>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <span class="uppercase tracking-[0.35em] text-xs text-slate-500">Pengguna</span>
-                                <span class="text-base font-semibold text-slate-900">{{ Auth::user()->name ?? 'Guest User' }}</span>
+                            <div class="border-t border-white/20 pt-3 space-y-2">
+                                <div class="flex items-center justify-between text-blue-50">
+                                    <span class="text-xs uppercase tracking-[0.25em]">Tanggal</span>
+                                    <span id="currentDate"
+                                        class="text-sm font-semibold text-white">{{ $now->format('d F Y') }}</span>
+                                </div>
+                                <div class="flex items-center justify-between text-blue-50">
+                                    <span class="text-xs uppercase tracking-[0.25em]">Pengguna</span>
+                                    <span
+                                        class="text-sm font-semibold text-white">{{ Auth::user()->name ?? 'Guest User' }}</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -186,26 +271,45 @@
             </header>
 
             <section class="relative mx-auto w-full flex-1 px-8 py-16 sm:px-12 lg:px-24">
-                <div class="grid gap-8 lg:grid-cols-12">
-                    <div class="lg:col-span-4 space-y-8">
+                <div class="grid gap-8 lg:grid-cols-3">
+                    {{-- Left Column - Overview (1 column) --}}
+                    <div class="space-y-8">
                         <article class="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
-                            <h2 class="text-sm font-semibold uppercase tracking-[0.35em] text-blue-600/80">Pos Overview</h2>
-                            <p class="mt-2 text-2xl font-semibold text-slate-900">Informasi Pos</p>
-                            <p class="mt-4 text-sm text-slate-600">
-                                Setiap pos dioptimalkan untuk memantau arus kendaraan dan aktivitas distribusi. Ketuk menu untuk menavigasi proses operasional masing-masing pos.
-                            </p>
-                            <div class="mt-6 space-y-4">
-                                <div class="rounded-2xl border border-blue-200 bg-blue-50 p-4 text-sm text-blue-700">
-                                    <p class="text-xs uppercase tracking-[0.3em] text-blue-500">POS 1</p>
-                                    <p class="mt-2 font-semibold text-blue-800">Pusat Pemeriksaan Kedatangan</p>
-                                    <p class="mt-1 text-xs text-blue-600">
+                            <div class="mb-6">
+                                <h2 class="text-xs font-semibold uppercase tracking-[0.35em] text-blue-600">Pos Overview
+                                </h2>
+                                <p class="mt-2 text-2xl font-bold text-slate-900">Informasi Pos</p>
+                                <p class="mt-4 text-sm text-slate-600">
+                                    Setiap pos dioptimalkan untuk memantau arus kendaraan dan aktivitas distribusi.
+                                    Ketuk menu untuk menavigasi proses operasional masing-masing pos.
+                                </p>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="rounded-2xl border border-blue-100 bg-blue-50 p-5 text-sm">
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <div
+                                            class="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-500 text-white font-bold text-sm">
+                                            1
+                                        </div>
+                                        <p class="text-xs uppercase tracking-[0.3em] text-blue-500 font-semibold">POS 1
+                                        </p>
+                                    </div>
+                                    <p class="font-bold text-blue-900 text-base mb-1">Pusat Pemeriksaan Kedatangan</p>
+                                    <p class="text-xs text-blue-700">
                                         Validasi dokumen dan kelengkapan kendaraan sebelum memasuki area utama.
                                     </p>
                                 </div>
-                                <div class="rounded-2xl border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-700">
-                                    <p class="text-xs uppercase tracking-[0.3em] text-emerald-500">POS 2</p>
-                                    <p class="mt-2 font-semibold text-emerald-800">Zona Pengawasan Distribusi</p>
-                                    <p class="mt-1 text-xs text-emerald-600">
+                                <div class="rounded-2xl border border-emerald-100 bg-emerald-50 p-5 text-sm">
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <div
+                                            class="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-500 text-white font-bold text-sm">
+                                            2
+                                        </div>
+                                        <p class="text-xs uppercase tracking-[0.3em] text-emerald-500 font-semibold">POS
+                                            2</p>
+                                    </div>
+                                    <p class="font-bold text-emerald-900 text-base mb-1">Zona Pengawasan Distribusi</p>
+                                    <p class="text-xs text-emerald-700">
                                         Memastikan proses muat dan bongkar berjalan sesuai standar keselamatan.
                                     </p>
                                 </div>
@@ -213,83 +317,157 @@
                         </article>
                     </div>
 
-                    <div class="lg:col-span-8 space-y-8">
+                    {{-- Main Content Column (2 columns) --}}
+                    <div class="lg:col-span-2 space-y-8">
+                        {{-- HSE Line Chart --}}
                         <article class="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
-                            <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                            <div class="mb-6">
+                                <h2 class="text-xs font-semibold uppercase tracking-[0.35em] text-emerald-600">Grafik
+                                    HSE</h2>
+                                <p class="mt-2 text-2xl font-bold text-slate-900">Tren Laporan HSE Bulanan</p>
+                                <p class="mt-2 text-sm text-slate-600">
+                                    Visualisasi jumlah laporan HSE per bulan dalam 6 bulan terakhir.
+                                </p>
+                            </div>
+                            <div class="relative h-80">
+                                <canvas id="hseLineChart"></canvas>
+                            </div>
+                        </article>
+
+                        {{-- Insight Section (moved here) --}}
+                        <article class="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
+                            <div class="mb-6">
+                                <h2 class="text-xs font-semibold uppercase tracking-[0.35em] text-blue-600">Insight</h2>
+                                <p class="mt-2 text-lg font-bold text-slate-900">Catatan Singkat</p>
+                                <p class="mt-2 text-xs text-slate-600">
+                                    Gunakan insight berikut sebagai pengingat saat menjalankan aktivitas operasional
+                                    harian.
+                                </p>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="rounded-xl border-l-4 border-amber-400 bg-amber-50 p-4">
+                                    <p class="text-xs uppercase tracking-[0.3em] text-amber-600 font-semibold mb-1">
+                                        Prioritas</p>
+                                    <p class="text-sm font-semibold text-amber-900">Koordinasi antar pos mempercepat
+                                        alur distribusi.</p>
+                                </div>
+                                <div class="rounded-xl border-l-4 border-emerald-400 bg-emerald-50 p-4">
+                                    <p class="text-xs uppercase tracking-[0.3em] text-emerald-600 font-semibold mb-1">
+                                        Keselamatan</p>
+                                    <p class="text-sm font-semibold text-emerald-900">Periksa ulang kelengkapan HSE
+                                        sebelum proses bongkar.</p>
+                                </div>
+                            </div>
+                        </article>
+
+                        {{-- Status Real-Time --}}
+                        <article class="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
+                            <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between mb-6">
                                 <div>
-                                    <h2 class="text-sm font-semibold uppercase tracking-[0.35em] text-blue-600/80">
+                                    <h2 class="text-xs font-semibold uppercase tracking-[0.35em] text-blue-600">
                                         Status Real-Time
                                     </h2>
-                                    <p class="mt-2 text-2xl font-semibold text-slate-900">Aktivitas Operasional</p>
+                                    <p class="mt-2 text-2xl font-bold text-slate-900">Aktivitas Operasional</p>
                                 </div>
-                                <button
-                                    type="button"
-                                    onclick="window.location.reload()"
-                                    class="inline-flex items-center gap-2 rounded-lg border border-blue-200 bg-blue-50 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-blue-600 transition hover:bg-blue-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 focus-visible:ring-offset-2"
-                                >
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.5a7 7 0 0 1 12-4.07M19.5 13.5a7 7 0 0 1-12 4.07M4.5 10.5h4M6.5 7.5l-2 3M19.5 13.5h-4M17.5 16.5l2-3" />
+                                <button type="button" onclick="window.location.reload()"
+                                    class="inline-flex items-center gap-2 rounded-xl bg-blue-50 px-4 py-2.5 text-xs font-bold uppercase tracking-wide text-blue-600 transition hover:bg-blue-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 focus-visible:ring-offset-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                                     </svg>
                                     Refresh
                                 </button>
                             </div>
 
-                            <div class="mt-8 grid gap-6 sm:grid-cols-2">
-                                <div class="rounded-xl border border-slate-200 bg-slate-50 p-6 text-sm text-slate-600">
-                                    <p class="text-xs uppercase tracking-[0.3em] text-slate-500">Kedatangan</p>
-                                    <p class="mt-2 text-3xl font-semibold text-slate-900">Terpantau</p>
-                                    <p class="mt-3 text-xs text-slate-600">
-                                        Data kendaraan yang memasuki area plant tercatat secara sistematis.
-                                    </p>
+                            <div class="grid gap-5 sm:grid-cols-2">
+                                <div class="rounded-xl bg-blue-50 p-6">
+                                    <div class="flex items-start gap-4">
+                                        <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600"
+                                                fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            </svg>
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="text-xs uppercase tracking-[0.3em] text-blue-500 font-semibold">
+                                                Kedatangan</p>
+                                            <p class="mt-2 text-2xl font-bold text-blue-900">Terpantau</p>
+                                            <p class="mt-2 text-xs text-blue-700">
+                                                Data kendaraan yang memasuki area plant tercatat secara sistematis.
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="rounded-xl border border-slate-200 bg-slate-50 p-6 text-sm text-slate-600">
-                                    <p class="text-xs uppercase tracking-[0.3em] text-slate-500">Keamanan</p>
-                                    <p class="mt-2 text-3xl font-semibold text-slate-900">Terkendali</p>
-                                    <p class="mt-3 text-xs text-slate-600">
-                                        SOP keselamatan diterapkan di seluruh pos untuk memastikan kepatuhan.
-                                    </p>
+                                <div class="rounded-xl bg-emerald-50 p-6">
+                                    <div class="flex items-start gap-4">
+                                        <div
+                                            class="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-100">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-emerald-600"
+                                                fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+                                            </svg>
+                                        </div>
+                                        <div class="flex-1">
+                                            <p
+                                                class="text-xs uppercase tracking-[0.3em] text-emerald-500 font-semibold">
+                                                Keamanan</p>
+                                            <p class="mt-2 text-2xl font-bold text-emerald-900">Terkendali</p>
+                                            <p class="mt-2 text-xs text-emerald-700">
+                                                SOP keselamatan diterapkan di seluruh pos untuk memastikan kepatuhan.
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="rounded-xl border border-slate-200 bg-slate-50 p-6 text-sm text-slate-600">
-                                    <p class="text-xs uppercase tracking-[0.3em] text-slate-500">Penjadwalan</p>
-                                    <p class="mt-2 text-3xl font-semibold text-slate-900">Efisien</p>
-                                    <p class="mt-3 text-xs text-slate-600">
-                                        Sistem memberikan jadwal otomatis agar tidak terjadi penumpukan kendaraan.
-                                    </p>
+                                <div class="rounded-xl bg-amber-50 p-6">
+                                    <div class="flex items-start gap-4">
+                                        <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-amber-100">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-amber-600"
+                                                fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                            </svg>
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="text-xs uppercase tracking-[0.3em] text-amber-500 font-semibold">
+                                                Penjadwalan</p>
+                                            <p class="mt-2 text-2xl font-bold text-amber-900">Efisien</p>
+                                            <p class="mt-2 text-xs text-amber-700">
+                                                Sistem memberikan jadwal otomatis agar tidak terjadi penumpukan
+                                                kendaraan.
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="rounded-xl border border-slate-200 bg-slate-50 p-6 text-sm text-slate-600">
-                                    <p class="text-xs uppercase tracking-[0.3em] text-slate-500">Laporan</p>
-                                    <p class="mt-2 text-3xl font-semibold text-slate-900">Real-Time</p>
-                                    <p class="mt-3 text-xs text-slate-600">
-                                        Catatan aktivitas tersinkronisasi otomatis sehingga mudah dianalisis.
-                                    </p>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
-                            <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-                                <div>
-                                    <h2 class="text-sm font-semibold uppercase tracking-[0.35em] text-blue-600/80">
-                                        Insight
-                                    </h2>
-                                    <p class="mt-2 text-2xl font-semibold text-slate-900">Catatan Singkat</p>
-                                    <p class="mt-2 text-sm text-slate-600">
-                                        Gunakan insight berikut sebagai pengingat saat menjalankan aktivitas operasional harian.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="mt-6 grid gap-4 sm:grid-cols-2">
-                                <div class="rounded-xl border border-amber-200 bg-amber-50 p-5 text-sm text-amber-700">
-                                    <p class="text-xs uppercase tracking-[0.3em] text-amber-500">Prioritas</p>
-                                    <p class="mt-2 font-semibold text-amber-800">Koordinasi antar pos mempercepat alur distribusi.</p>
-                                </div>
-                                <div class="rounded-xl border border-emerald-200 bg-emerald-50 p-5 text-sm text-emerald-700">
-                                    <p class="text-xs uppercase tracking-[0.3em] text-emerald-500">Keselamatan</p>
-                                    <p class="mt-2 font-semibold text-emerald-800">Periksa ulang kelengkapan HSE sebelum proses bongkar.</p>
+                                <div class="rounded-xl bg-purple-50 p-6">
+                                    <div class="flex items-start gap-4">
+                                        <div
+                                            class="flex h-12 w-12 items-center justify-center rounded-xl bg-purple-100">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-600"
+                                                fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                            </svg>
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="text-xs uppercase tracking-[0.3em] text-purple-500 font-semibold">
+                                                Laporan</p>
+                                            <p class="mt-2 text-2xl font-bold text-purple-900">Real-Time</p>
+                                            <p class="mt-2 text-xs text-purple-700">
+                                                Catatan aktivitas tersinkronisasi otomatis sehingga mudah dianalisis.
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </article>
                     </div>
+
+
+
+
                 </div>
             </section>
         </main>
@@ -335,12 +513,12 @@
                 const wibOffset = 7 * 60; // 7 hours in minutes
                 const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
                 const wibTime = new Date(utc + (wibOffset * 60000));
-                
+
                 // Format time
                 const hours = String(wibTime.getHours()).padStart(2, '0');
                 const minutes = String(wibTime.getMinutes()).padStart(2, '0');
                 const timeString = `${hours}:${minutes} WIB`;
-                
+
                 // Format date
                 const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
                 const months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
@@ -349,7 +527,7 @@
                 const month = months[wibTime.getMonth()];
                 const year = wibTime.getFullYear();
                 const dateString = `${day} ${month} ${year}`;
-                
+
                 // Update DOM
                 const timeElement = document.getElementById('currentTime');
                 const dateElement = document.getElementById('currentDate');
@@ -363,11 +541,131 @@
 
             // Update immediately
             updateWIBTime();
-            
+
             // Update every second
             setInterval(updateWIBTime, 1000);
+
+
+            // Initialize HSE Line Chart
+            const ctx = document.getElementById('hseLineChart');
+            if (ctx) {
+                // Get data from backend
+                const monthLabels = @json($monthLabels ?? []);
+                const monthlyData = @json($monthlyData ?? []);
+
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: monthLabels,
+                        datasets: [{
+                            label: 'Jumlah Laporan HSE',
+                            data: monthlyData,
+                            borderColor: '#10b981',
+                            backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                            borderWidth: 3,
+                            pointRadius: 5,
+                            pointBackgroundColor: '#10b981',
+                            pointBorderColor: '#fff',
+                            pointBorderWidth: 2,
+                            pointHoverRadius: 7,
+                            fill: true,
+                            tension: 0.4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: true,
+                                position: 'top',
+                                labels: {
+                                    font: {
+                                        size: 12,
+                                        family: 'Inter, sans-serif',
+                                        weight: '600'
+                                    },
+                                    padding: 15,
+                                    color: '#475569'
+                                }
+                            },
+                            tooltip: {
+                                backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                                padding: 12,
+                                titleFont: {
+                                    size: 13,
+                                    family: 'Inter, sans-serif'
+                                },
+                                bodyFont: {
+                                    size: 14,
+                                    family: 'Inter, sans-serif',
+                                    weight: 'bold'
+                                },
+                                borderColor: '#10b981',
+                                borderWidth: 1,
+                                displayColors: false,
+                                callbacks: {
+                                    label: function (context) {
+                                        return context.parsed.y + ' laporan';
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    stepSize: 5,
+                                    font: {
+                                        size: 11,
+                                        family: 'Inter, sans-serif'
+                                    },
+                                    color: '#64748b'
+                                },
+                                grid: {
+                                    color: '#e2e8f0',
+                                    drawBorder: false
+                                }
+                            },
+                            x: {
+                                ticks: {
+                                    font: {
+                                        size: 11,
+                                        family: 'Inter, sans-serif'
+                                    },
+                                    color: '#64748b'
+                                },
+                                grid: {
+                                    display: false
+                                }
+                            }
+                        }
+                    }
+                });
+            }
         });
+
+        // HSE Menu Toggle Function
+        function toggleHSEMenu() {
+            const submenu = document.getElementById('hseSubmenu');
+            const icon = document.getElementById('hseToggleIcon');
+
+            if (submenu.classList.contains('hidden')) {
+                submenu.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                submenu.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // Logout Modal Function
+        function showLogoutModal() {
+            if (confirm('Apakah Anda yakin ingin keluar dari sistem?')) {
+                document.getElementById('logoutForm').submit();
+            }
+        }
     </script>
 </body>
-</html>
 
+</html>

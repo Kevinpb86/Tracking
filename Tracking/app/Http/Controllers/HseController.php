@@ -46,6 +46,44 @@ class HseController extends Controller
         ]);
 
         // Redirect dengan pesan sukses
-        return redirect()->route('hse.input')->with('success', 'Data HSE berhasil disimpan ke database!');
+        return redirect()->route('hse.daftar')->with('success', 'Data HSE berhasil disimpan ke database!');
+    }
+
+    /**
+     * Display the specified HSE record.
+     */
+    public function show($id)
+    {
+        $hse = Hse::findOrFail($id);
+        return view('navigasi.detail-hse', compact('hse'));
+    }
+
+    /**
+     * Display main dashboard with HSE statistics.
+     */
+    public function mainDashboard()
+    {
+        $pos1Queues = session('pos1_queues', []);
+        $pos2Queues = session('pos2_queues', []);
+
+        // Get HSE data for last 6 months
+        $monthlyData = [];
+        $monthLabels = [];
+
+        for ($i = 5; $i >= 0; $i--) {
+            $date = now()->subMonths($i);
+            $year = $date->year;
+            $month = $date->month;
+
+            // Count HSE reports for this month using YEAR and MONTH functions
+            $count = Hse::whereYear('tanggal', $year)
+                ->whereMonth('tanggal', $month)
+                ->count();
+
+            $monthlyData[] = $count;
+            $monthLabels[] = $date->format('M Y');
+        }
+
+        return view('main.main', compact('pos1Queues', 'pos2Queues', 'monthlyData', 'monthLabels'));
     }
 }

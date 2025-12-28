@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Daftar HSE - POS 1</title>
+    <link rel="icon" type="image/jpeg" href="{{ asset('images/wgilogo.jpg') }}">
 
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=inter:400,500,600,700" rel="stylesheet" />
@@ -13,12 +15,13 @@
         .form-card {
             transition: all 0.3s ease;
         }
-        
+
         .form-card:hover {
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
     </style>
 </head>
+
 <body class="min-h-screen bg-slate-50 font-sans antialiased text-slate-900">
     @php
         $evalubeLogoExists = file_exists(public_path('images/evalube.png'));
@@ -27,16 +30,14 @@
     <div class="relative min-h-screen overflow-x-hidden">
         <div class="absolute inset-0 -z-10">
             <div class="h-full w-full bg-gradient-to-b from-white via-slate-50 to-slate-100"></div>
-            <div class="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-blue-100/20 via-blue-50/10 to-transparent blur-2xl"></div>
+            <div
+                class="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-blue-100/20 via-blue-50/10 to-transparent blur-2xl">
+            </div>
         </div>
 
-        <button
-            id="sidebarToggle"
-            type="button"
-            class="fixed left-4 top-9 z-20 inline-flex h-12 w-12 items-center justify-center rounded-lg border border-slate-200 bg-white text-blue-600 shadow-sm transition hover:bg-blue-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 cursor-pointer sm:left-6 sm:top-10 lg:left-8 lg:top-12"
-            aria-label="Toggle navigation"
-            aria-expanded="false"
-        >
+        <button id="sidebarToggle" type="button"
+            class="fixed left-4 top-9 z-50 inline-flex h-12 w-12 items-center justify-center rounded-lg border border-slate-200 bg-white text-blue-600 shadow-sm transition hover:bg-blue-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 cursor-pointer sm:left-6 sm:top-10 lg:left-8 lg:top-12"
+            aria-label="Toggle navigation" aria-expanded="false">
             <span class="relative flex h-4 w-6 flex-col justify-between">
                 <span class="block h-0.5 w-full rounded-full bg-current transition-all"></span>
                 <span class="block h-0.5 w-full rounded-full bg-current transition-all"></span>
@@ -44,174 +45,204 @@
             </span>
         </button>
 
-        <aside
-            id="sidebar"
-            class="fixed left-0 top-0 z-40 flex h-full w-72 -translate-x-full flex-col overflow-hidden border-r border-slate-200 bg-white shadow-lg transition-transform duration-300 ease-in-out lg:w-80"
-        >
-            <div class="relative flex h-full flex-col gap-6 overflow-y-auto p-8">
-                <div class="relative flex items-center gap-4 rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
-                    <div class="flex h-14 w-14 items-center justify-center rounded-lg border border-blue-100 bg-blue-50 p-1.5">
-                        <img
-                            src="{{ asset('images/wgilogo.jpg') }}"
-                            alt="Logo PT. Wiraswasta Gemilang Indonesia"
-                            class="h-full w-full rounded-xl object-contain"
-                        >
-                    </div>
-                    <div class="space-y-1">
-                        <p class="text-[11px] font-semibold uppercase tracking-[0.45em] text-blue-500">Tracking System</p>
-                        <p class="text-base font-semibold text-slate-900 leading-snug">PT. Wiraswasta Gemilang Indonesia</p>
-                    </div>
-                </div>
+        <aside id="sidebar"
+            class="fixed left-0 top-0 z-50 flex h-full w-72 -translate-x-full flex-col overflow-hidden border-r border-slate-200 bg-white/90 backdrop-blur-xl shadow-[4px_0_24px_rgba(0,0,0,0.02)] transition-transform duration-300 ease-in-out lg:w-80 font-sans">
 
-                <div class="relative space-y-3">
-                    <div class="flex items-center justify-between">
-                        <p class="text-[11px] font-semibold uppercase tracking-[0.35em] text-slate-500">Navigasi Pos</p>
-                        <span class="rounded-full bg-blue-50 px-3 py-0.5 text-[10px] font-semibold uppercase tracking-[0.3em] text-blue-500">Live</span>
+            {{-- Branding Section --}}
+            <div class="relative flex flex-col gap-6 overflow-y-auto px-6 py-8">
+                <a href="{{ route('dashboard.main') }}"
+                    class="group relative flex items-center gap-4 rounded-2xl bg-gradient-to-br from-slate-50 to-white p-4 shadow-sm border border-slate-100 transition-all hover:shadow-md hover:border-blue-100"
+                    aria-label="Kembali ke halaman utama">
+                    <div
+                        class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white p-1 shadow-sm ring-1 ring-slate-900/5 group-hover:scale-105 transition-transform">
+                        <img src="{{ asset('images/wgilogo.jpg') }}" alt="Logo PT. WGI"
+                            class="h-full w-full rounded-lg object-contain">
                     </div>
-                    <nav class="flex flex-col gap-3 text-sm font-semibold text-slate-600">
-                        <a
-                            href="{{ route('pos1.dashboard') }}"
-                            class="group flex items-center justify-between rounded-xl border border-slate-200 bg-slate-50 px-5 py-4 transition duration-200 hover:border-slate-300 hover:bg-slate-100 hover:text-slate-700"
-                        >
+                    <div class="space-y-0.5">
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-blue-600">Tracking System</p>
+                        <p
+                            class="text-sm font-bold text-slate-800 leading-tight group-hover:text-blue-700 transition-colors">
+                            PT. Wiraswasta Gemilang Indonesia</p>
+                    </div>
+                </a>
+
+                {{-- Navigation --}}
+                <div class="flex flex-col gap-1">
+                    <div class="mb-4 flex items-center justify-between px-2">
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Navigasi Pos 1</p>
+                        <span
+                            class="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-emerald-600">
+                            <span class="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                            Live
+                        </span>
+                    </div>
+
+                    <nav class="space-y-2">
+                        {{-- Dashboard Link (Inactive) --}}
+                        <a href="{{ route('pos1.dashboard') }}"
+                            class="group flex items-center justify-between rounded-xl border border-transparent px-4 py-3 text-slate-600 transition-all hover:bg-slate-50 hover:text-blue-600">
                             <span class="flex items-center gap-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-slate-400" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M9.293 2.293a1 1 0 0 1 1.414 0l7 7A1 1 0 0 1 17 11h-1v6a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6H3a1 1 0 0 1-.707-1.707l7-7Z" clip-rule="evenodd" />
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="h-5 w-5 text-slate-400 transition-colors group-hover:text-blue-500"
+                                    viewBox="0 0 20 20" fill="currentColor">
+                                    <path
+                                        d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
                                 </svg>
-                                <span class="text-base">Dashboard Pos 1</span>
+                                <span class="font-medium text-sm">Dashboard</span>
                             </span>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-slate-400 transition duration-200 group-hover:text-slate-600" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M7.22 14.78a.75.75 0 0 1 0-1.06L10.94 10 7.22 6.28a.75.75 0 1 1 1.06-1.06l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0Z" clip-rule="evenodd" />
-                            </svg>
                         </a>
-                        <a
-                            href="#"
-                            class="group flex items-center justify-between rounded-xl border border-blue-100 bg-white px-5 py-4 transition duration-200 hover:border-blue-300 hover:bg-blue-50 hover:text-blue-700"
-                        >
+
+                        {{-- Antrian Link --}}
+                        <a href="#"
+                            class="group flex items-center justify-between rounded-xl border border-transparent px-4 py-3 text-slate-600 transition-all hover:bg-slate-50 hover:text-blue-600">
                             <span class="flex items-center gap-3">
-                                <span class="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-100 text-blue-600 transition duration-200 group-hover:bg-blue-500 group-hover:text-white">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                        <path fill-rule="evenodd" d="M3 4.25A2.25 2.25 0 0 1 5.25 2h9.5A2.25 2.25 0 0 1 17 4.25v11.5A2.25 2.25 0 0 1 14.75 18h-9.5A2.25 2.25 0 0 1 3 15.75V4.25Z" clip-rule="evenodd" />
-                                    </svg>
-                                </span>
-                                <span class="flex flex-col gap-0.5">
-                                    <span class="text-[11px] uppercase tracking-[0.3em] text-blue-400">Antrian</span>
-                                    <span class="text-base">Daftar Antrian</span>
-                                </span>
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="h-5 w-5 text-slate-400 transition-colors group-hover:text-blue-500"
+                                    viewBox="0 0 20 20" fill="currentColor">
+                                    <path
+                                        d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" />
+                                </svg>
+                                <span class="font-medium text-sm">Daftar Antrian</span>
                             </span>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-blue-400 transition duration-200 group-hover:text-blue-600" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M7.22 14.78a.75.75 0 0 1 0-1.06L10.94 10 7.22 6.28a.75.75 0 1 1 1.06-1.06l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0Z" clip-rule="evenodd" />
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="h-4 w-4 text-slate-300 transition-transform group-hover:translate-x-1"
+                                viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                    clip-rule="evenodd" />
                             </svg>
                         </a>
-                        <div class="space-y-1">
-                            <button
-                                type="button"
-                                onclick="toggleHSEMenu()"
-                                class="group flex w-full items-center justify-between rounded-xl border border-emerald-100 bg-emerald-50 px-5 py-4 transition duration-200 hover:border-emerald-300 hover:bg-emerald-100 hover:text-emerald-700"
-                            >
+
+                        {{-- HSE Menu Accordion --}}
+                        <div class="space-y-1 pt-2">
+                            <button type="button" onclick="toggleHSEMenu()"
+                                class="group flex w-full items-center justify-between rounded-xl border border-transparent px-4 py-3 bg-emerald-50/50 text-emerald-700 transition-all hover:bg-emerald-50 hover:text-emerald-800">
                                 <span class="flex items-center gap-3">
-                                    <span class="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-500 text-white transition duration-200">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                            <path d="M2 6a2 2 0 0 1 2-2h5l2 2h5a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6Z" />
+                                    <div
+                                        class="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-100/50 text-emerald-600 transition-colors group-hover:bg-emerald-500 group-hover:text-white">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
+                                            fill="currentColor">
+                                            <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                                            <path fill-rule="evenodd"
+                                                d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm9.707 5.707a1 1 0 00-1.414-1.414L9 12.586l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                                clip-rule="evenodd" />
                                         </svg>
-                                    </span>
-                                    <span class="flex flex-col gap-0.5">
-                                        <span class="text-[11px] uppercase tracking-[0.3em] text-emerald-500">HSE</span>
-                                        <span class="text-base">Health Safety Environment</span>
-                                    </span>
+                                    </div>
+                                    <div class="text-left font-medium text-sm">
+                                        <p class="text-xs font-bold uppercase tracking-wider text-emerald-500/80">HSE
+                                        </p>
+                                        <p>Safety & Environment</p>
+                                    </div>
                                 </span>
-                                <svg id="hseToggleIcon" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-emerald-400 transition-transform rotate-180 group-hover:text-emerald-600" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 11.168l3.71-3.938a.75.75 0 1 1 1.08 1.04l-4.25 4.5a.75.75 0 0 1-1.08 0l-4.25-4.5a.75.75 0 0 1 .02-1.06Z" clip-rule="evenodd" />
+                                <svg id="hseToggleIcon" xmlns="http://www.w3.org/2000/svg"
+                                    class="h-4 w-4 text-emerald-400 transition-transform duration-300 group-hover:text-emerald-600 rotate-180"
+                                    viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                        clip-rule="evenodd" />
                                 </svg>
                             </button>
-                            <div id="hseSubmenu" class="ml-8 space-y-1">
-                                <a
-                                    href="{{ route('hse.input') }}"
-                                    class="group flex items-center justify-between rounded-xl border border-emerald-100 bg-white px-4 py-3 transition duration-200 hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-700"
-                                >
-                                    <span class="flex items-center gap-3">
-                                        <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-100 text-emerald-600 transition duration-200 group-hover:bg-emerald-500 group-hover:text-white">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                                                <path fill-rule="evenodd" d="M3 4.25A2.25 2.25 0 0 1 5.25 2h9.5A2.25 2.25 0 0 1 17 4.25v11.5A2.25 2.25 0 0 1 14.75 18h-9.5A2.25 2.25 0 0 1 3 15.75V4.25Z" clip-rule="evenodd" />
-                                            </svg>
-                                        </span>
-                                        <span class="text-sm">Input HSE</span>
-                                    </span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-emerald-400 transition duration-200 group-hover:text-emerald-600" viewBox="0 0 20 20" fill="currentColor">
-                                        <path fill-rule="evenodd" d="M7.22 14.78a.75.75 0 0 1 0-1.06L10.94 10 7.22 6.28a.75.75 0 1 1 1.06-1.06l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0Z" clip-rule="evenodd" />
-                                    </svg>
-                                </a>
-                                <a
-                                    href="{{ route('hse.daftar') }}"
-                                    class="group flex items-center justify-between rounded-xl border border-emerald-100 bg-emerald-50 px-4 py-3 transition duration-200 hover:border-emerald-300 hover:bg-emerald-100 hover:text-emerald-700"
-                                >
-                                    <span class="flex items-center gap-3">
-                                        <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-500 text-white transition duration-200">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                                                <path fill-rule="evenodd" d="M3 4.25A2.25 2.25 0 0 1 5.25 2h9.5A2.25 2.25 0 0 1 17 4.25v11.5A2.25 2.25 0 0 1 14.75 18h-9.5A2.25 2.25 0 0 1 3 15.75V4.25Z" clip-rule="evenodd" />
-                                            </svg>
-                                        </span>
-                                        <span class="text-sm font-semibold">Daftar HSE</span>
-                                    </span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-emerald-400 transition duration-200 group-hover:text-emerald-600" viewBox="0 0 20 20" fill="currentColor">
-                                        <path fill-rule="evenodd" d="M7.22 14.78a.75.75 0 0 1 0-1.06L10.94 10 7.22 6.28a.75.75 0 1 1 1.06-1.06l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0Z" clip-rule="evenodd" />
-                                    </svg>
-                                </a>
+
+                            <div id="hseSubmenu" class="space-y-1 pl-4">
+                                <div class="relative ml-4 space-y-1 border-l-2 border-slate-100 pl-4 py-1">
+                                    <a href="{{ route('hse.input') }}"
+                                        class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-emerald-50 hover:text-emerald-700">
+                                        <span>Input Data Baru</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            class="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M12 4v16m8-8H4" />
+                                        </svg>
+                                    </a>
+                                    <a href="{{ route('hse.daftar') }}"
+                                        class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm transition-colors bg-emerald-50 text-emerald-700 font-semibold">
+                                        <span>Daftar Laporan</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-emerald-600"
+                                            viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd"
+                                                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </nav>
                 </div>
+            </div>
 
-                <form action="{{ route('logout') }}" method="POST" class="mt-auto pt-2">
+            {{-- Footer / Profile Section --}}
+            <div class="mt-auto border-t border-slate-100 bg-slate-50/50 p-4">
+                <div class="mb-4 flex items-center gap-3 rounded-xl bg-white p-3 shadow-sm border border-slate-100">
+                    <div
+                        class="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-700 font-bold border border-blue-200">
+                        {{ substr(Auth::user()->name ?? 'U', 0, 1) }}
+                    </div>
+                    <div class="overflow-hidden">
+                        <p class="truncate text-sm font-bold text-slate-900">{{ Auth::user()->name ?? 'Guest' }}</p>
+                        <p class="truncate text-xs text-slate-500">{{ Auth::user()->email ?? '' }}</p>
+                    </div>
+                </div>
+
+                <button type="button" onclick="showLogoutModal()"
+                    class="flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-white border border-rose-100 px-4 py-2.5 text-sm font-semibold text-rose-600 shadow-sm transition-all duration-200 hover:bg-rose-600 hover:text-white hover:border-rose-600 hover:shadow-lg hover:-translate-y-0.5 active:scale-95">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform group-hover:scale-110"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                    </svg>
+                    Sign Out
+                </button>
+                <form id="logoutForm" action="{{ route('logout') }}" method="POST" class="hidden">
                     @csrf
-                    <button
-                        type="submit"
-                        class="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-rose-600 px-4 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-rose-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-300 focus-visible:ring-offset-2"
-                    >
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.5 6.75h-6a2 2 0 0 0-2 2v6.5a2 2 0 0 0 2 2h6M12 9.75l2.75 2.75L12 15.25M14.75 12.5H5" />
-                        </svg>
-                        Logout
-                    </button>
                 </form>
             </div>
         </aside>
 
-        <div
-            id="sidebarOverlay"
-            class="fixed inset-0 z-30 bg-slate-900/10 opacity-0 transition-opacity duration-300 ease-in-out pointer-events-none"
-        ></div>
+        <div id="sidebarOverlay"
+            class="fixed inset-0 z-30 bg-slate-900/10 opacity-0 transition-opacity duration-300 ease-in-out pointer-events-none">
+        </div>
 
         <main class="relative flex min-h-screen flex-col pt-32 sm:pt-36 lg:pt-40">
-            <section class="fixed inset-x-0 top-0 z-10">
+            <section class="fixed inset-x-0 top-0 z-40">
                 <div class="overflow-hidden border-b border-slate-200 bg-white text-slate-700 shadow-sm">
                     <div class="h-3 w-full bg-[#2736a3]"></div>
                     <div class="flex flex-wrap items-center gap-6 px-6 py-6 pl-20 sm:px-10 sm:pl-28">
                         <div class="flex min-w-[220px] flex-1 items-center gap-5 text-blue-900">
-                            <div class="flex h-16 w-16 items-center justify-center rounded-full border border-blue-900/20 bg-white p-2 shadow-lg shadow-blue-900/20">
-                                <img src="{{ asset('images/wgilogo.jpg') }}" alt="Logo PT. Wiraswasta Gemilang Indonesia" class="h-full w-full object-contain">
+                            <div
+                                class="flex h-16 w-16 items-center justify-center rounded-full border border-blue-900/20 bg-white p-2 shadow-lg shadow-blue-900/20">
+                                <img src="{{ asset('images/wgilogo.jpg') }}"
+                                    alt="Logo PT. Wiraswasta Gemilang Indonesia" class="h-full w-full object-contain">
                             </div>
                             <div class="space-y-1">
-                                <span class="block text-xs font-semibold uppercase tracking-[0.55em] text-slate-500">Tracking System</span>
+                                <span
+                                    class="block text-xs font-semibold uppercase tracking-[0.55em] text-slate-500">Tracking
+                                    System</span>
                                 <div class="text-lg font-bold italic leading-tight text-blue-900">
                                     <span class="block">PT Wiraswasta Gemilang</span>
                                     <span class="block whitespace-nowrap">Indonesia</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="hidden h-14 w-px bg-slate-900 sm:ml-5 sm:block lg:ml-10"></div>
+                        <div class="hidden h-14 w-0.5 bg-slate-900 sm:ml-5 sm:block lg:ml-10"></div>
                         <div class="flex min-w-[200px] flex-1 justify-center text-center sm:justify-start sm:text-left">
-                            <span class="text-base font-medium uppercase tracking-[0.45em] text-slate-500 whitespace-nowrap">
+                            <span
+                                class="text-base font-medium uppercase tracking-[0.45em] text-slate-500 whitespace-nowrap">
                                 Tracking Information System
                             </span>
                         </div>
-                        <div class="hidden h-14 w-px bg-slate-900 sm:ml-7 sm:block lg:ml-16 xl:ml-20"></div>
-                        <div class="flex min-w-[160px] flex-1 justify-center sm:justify-end">
+                        <div class="hidden h-14 w-0.5 bg-slate-900 sm:ml-7 sm:block lg:ml-16 xl:ml-20"></div>
+                        <div class="flex min-w-[160px] flex-1 justify-center sm:justify-center">
                             @if ($evalubeLogoExists)
-                                <img src="{{ asset('images/evalube.png') }}" alt="Evalube Lubricants" class="h-12 w-auto object-contain">
+                                <img src="{{ asset('images/evalube.png') }}" alt="Evalube Lubricants"
+                                    class="h-12 w-auto object-contain">
                             @else
                                 <div class="flex flex-col items-center text-center sm:items-end sm:text-right">
-                                    <span class="text-2xl font-black uppercase tracking-[0.25em] text-emerald-500 drop-shadow-sm">Evalube</span>
-                                    <span class="text-xs font-semibold uppercase tracking-[0.5em] text-slate-500">Lubricants</span>
+                                    <span
+                                        class="text-2xl font-black uppercase tracking-[0.25em] text-emerald-500 drop-shadow-sm">Evalube</span>
+                                    <span
+                                        class="text-xs font-semibold uppercase tracking-[0.5em] text-slate-500">Lubricants</span>
                                 </div>
                             @endif
                         </div>
@@ -220,143 +251,188 @@
             </section>
 
             <header class="px-8 pt-12 sm:px-12 lg:px-24">
-                <div class="mx-auto rounded-none border-2 border-emerald-200 bg-gradient-to-br from-white via-emerald-50/50 to-white p-10 shadow-lg">
-                    <div class="space-y-4">
-                        <div class="flex items-center gap-3">
-                            <div class="flex h-10 w-10 items-center justify-center rounded-none bg-emerald-600">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                <div
+                    class="mx-auto max-w-7xl rounded-3xl bg-gradient-to-r from-emerald-500 to-emerald-600 p-10 shadow-xl">
+                    <div class="space-y-4 text-center">
+                        <div class="flex items-center justify-center gap-3">
+                            <div class="flex h-10 w-10 items-center justify-center rounded-full bg-white/20">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" viewBox="0 0 20 20"
+                                    fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                        clip-rule="evenodd" />
                                 </svg>
                             </div>
-                            <p class="text-xs font-bold uppercase tracking-[0.5em] text-emerald-700">
+                            <p class="text-xs font-bold uppercase tracking-[0.5em] text-white">
                                 Daftar HSE
                             </p>
                         </div>
-                        <h1 class="text-4xl font-bold text-slate-900 sm:text-5xl leading-tight">
+                        <h1 class="text-4xl font-bold text-white sm:text-5xl leading-tight">
                             Health Safety Environment
                         </h1>
-                        <div class="h-1 w-20 bg-emerald-600"></div>
-                        <p class="text-sm leading-relaxed text-slate-700 max-w-3xl">
-                            Daftar lengkap data HSE yang telah tersimpan. Semua data dapat dilihat untuk keperluan dokumentasi dan audit.
+                        <div class="mx-auto h-1 w-20 bg-white/50"></div>
+                        <p class="mx-auto text-sm leading-relaxed text-white/90 max-w-2xl">
+                            Daftar lengkap data HSE yang telah tersimpan. Semua data dapat dilihat untuk keperluan
+                            dokumentasi dan audit.
                         </p>
                     </div>
                 </div>
             </header>
 
             <section class="relative mx-auto w-full flex-1 px-8 py-16 sm:px-12 lg:px-24">
-                <div class="mx-auto max-w-6xl">
+                <div class="mx-auto max-w-7xl">
                     @if (session('success'))
-                        <div class="mb-6 rounded-none border-2 border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-700 shadow-sm">
-                            {{ session('success') }}
+                        <div
+                            class="mb-8 flex items-center gap-3 rounded-2xl border border-emerald-100 bg-emerald-50/50 p-4 text-emerald-700 shadow-sm backdrop-blur-md">
+                            <div
+                                class="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
+                                    fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <span class="font-medium">{{ session('success') }}</span>
                         </div>
                     @endif
 
-                    <div class="mb-6 flex items-center justify-between">
-                        <a
-                            href="{{ route('hse.input') }}"
-                            class="inline-flex items-center justify-center gap-2 rounded-none bg-emerald-600 px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-emerald-700 focus:outline-none focus-visible:ring-4 focus-visible:ring-emerald-300 focus-visible:ring-offset-2"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                                <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
-                            </svg>
-                            Input HSE Baru
-                        </a>
-                        <div class="text-sm text-slate-600">
-                            Total: <span class="font-semibold text-emerald-600">{{ $hseList->count() }}</span> data
+                    {{-- Action Toolbar --}}
+                    <div class="mb-10 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+                        <div class="relative flex-1 max-w-lg">
+                            <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-slate-400"
+                                    viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <input type="text" placeholder="Cari laporan (Nama, Lokasi, ID)..."
+                                class="w-full rounded-2xl border-0 bg-white py-4 pl-12 pr-4 text-sm font-medium text-slate-600 shadow-lg shadow-slate-200/50 ring-1 ring-slate-100 transition focus:ring-2 focus:ring-emerald-500/50 outline-none placeholder:text-slate-400">
+                        </div>
+
+                        <div class="flex items-center gap-4">
+                            <div class="text-xs font-bold uppercase tracking-wider text-slate-400">
+                                Total: <span class="text-emerald-600 text-lg ml-1">{{ $hseList->count() }}</span>
+                            </div>
+                            <a href="{{ route('hse.input') }}"
+                                class="inline-flex items-center justify-center gap-2 rounded-2xl bg-slate-900 px-6 py-3.5 text-sm font-bold text-white shadow-xl shadow-slate-900/20 transition-all hover:bg-slate-800 hover:scale-105 active:scale-95">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
+                                    fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                                Buat Laporan
+                            </a>
                         </div>
                     </div>
 
                     @if($hseList->isEmpty())
-                        <div class="form-card rounded-2xl border-2 border-slate-200 bg-gradient-to-br from-white to-emerald-50/30 p-12 shadow-lg text-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-16 w-16 text-slate-400 mb-4" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M3 4.25A2.25 2.25 0 015.25 2h9.5A2.25 2.25 0 0117 4.25v11.5A2.25 2.25 0 0114.75 18h-9.5A2.25 2.25 0 013 15.75V4.25zm4.5 4.5a.75.75 0 00-1.5 0v2.5a.75.75 0 001.5 0v-2.5zm3.5 0a.75.75 0 00-1.5 0v2.5a.75.75 0 001.5 0v-2.5zm3.5 0a.75.75 0 00-1.5 0v2.5a.75.75 0 001.5 0v-2.5z" clip-rule="evenodd" />
-                            </svg>
-                            <h3 class="text-lg font-semibold text-slate-700 mb-2">Belum ada data HSE</h3>
-                            <p class="text-sm text-slate-500 mb-6">Mulai dengan mengisi form HSE baru.</p>
-                            <a
-                                href="{{ route('hse.input') }}"
-                                class="inline-flex items-center justify-center gap-2 rounded-none bg-emerald-600 px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-emerald-700"
-                            >
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                                    <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
+                        <div
+                            class="flex flex-col items-center justify-center rounded-[2rem] border-2 border-dashed border-slate-200 bg-slate-50/50 py-24 text-center">
+                            <div
+                                class="mb-6 flex h-24 w-24 items-center justify-center rounded-full bg-white shadow-xl shadow-slate-200/50">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-slate-300" viewBox="0 0 20 20"
+                                    fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H8z"
+                                        clip-rule="evenodd" />
                                 </svg>
-                                Input HSE Baru
-                            </a>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-800">Belum Ada Laporan</h3>
+                            <p class="mt-2 text-slate-500 max-w-sm mx-auto">Data laporan HSE Anda akan muncul di sini. Mulai
+                                dengan membuat laporan baru.</p>
                         </div>
                     @else
-                        <div class="space-y-6">
-                            @foreach($hseList as $hse)
-                                <div class="form-card rounded-2xl border-2 border-slate-200 bg-gradient-to-br from-white to-emerald-50/30 p-8 shadow-lg">
-                                    <div class="flex items-start justify-between mb-6">
-                                        <div>
-                                            <h2 class="text-sm font-semibold uppercase tracking-[0.35em] text-emerald-600/80 mb-2 flex items-center gap-2">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                                    <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
-                                                    <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm9.707 5.707a1 1 0 00-1.414-1.414L9 12.586l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                                                </svg>
-                                                Data HSE #{{ $hse->id }}
-                                            </h2>
-                                            <p class="text-xs text-slate-500">
-                                                Dibuat: {{ $hse->created_at->format('d/m/Y H:i') }}
-                                            </p>
-                                        </div>
-                                        <span class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-700">
-                                            {{ $hse->lokasi }}
-                                        </span>
-                                    </div>
-
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                        <div class="space-y-4">
-                                            <div>
-                                                <label class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 mb-1 block">Tanggal</label>
-                                                <p class="text-sm font-medium text-slate-900">{{ \Carbon\Carbon::parse($hse->tanggal)->format('d/m/Y') }}</p>
-                                            </div>
-                                            <div>
-                                                <label class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 mb-1 block">Waktu</label>
-                                                <p class="text-sm font-medium text-slate-900">{{ $hse->waktu }}</p>
-                                            </div>
-                                            <div>
-                                                <label class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 mb-1 block">Nama Petugas</label>
-                                                <p class="text-sm font-medium text-slate-900">{{ $hse->nama_petugas }}</p>
-                                            </div>
-                                            <div>
-                                                <label class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 mb-1 block">Lokasi</label>
-                                                <p class="text-sm font-medium text-slate-900">{{ $hse->lokasi }}</p>
-                                            </div>
-                                        </div>
-                                        <div class="space-y-4">
-                                            <div>
-                                                <label class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 mb-1 block">Kondisi APD</label>
-                                                <span class="inline-flex items-center gap-2 rounded-lg px-3 py-1.5 text-sm font-medium
-                                                    @if($hse->kondisi_apd == 'Lengkap') bg-emerald-100 text-emerald-700
-                                                    @elseif($hse->kondisi_apd == 'Tidak Lengkap') bg-yellow-100 text-yellow-700
-                                                    @else bg-red-100 text-red-700
-                                                    @endif">
-                                                    {{ $hse->kondisi_apd }}
-                                                </span>
-                                            </div>
-                                            @if($hse->temuan)
-                                            <div>
-                                                <label class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 mb-1 block">Temuan / Catatan</label>
-                                                <p class="text-sm text-slate-700 bg-slate-50 p-3 rounded-lg border border-slate-200">{{ $hse->temuan }}</p>
-                                            </div>
-                                            @endif
-                                            @if($hse->tindak_lanjut)
-                                            <div>
-                                                <label class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 mb-1 block">Tindak Lanjut</label>
-                                                <p class="text-sm text-slate-700 bg-slate-50 p-3 rounded-lg border border-slate-200">{{ $hse->tindak_lanjut }}</p>
-                                            </div>
-                                            @endif
-                                            @if($hse->penanggung_jawab)
-                                            <div>
-                                                <label class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 mb-1 block">Penanggung Jawab</label>
-                                                <p class="text-sm font-medium text-slate-900">{{ $hse->penanggung_jawab }}</p>
-                                            </div>
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
+                        {{-- Table Layout --}}
+                        <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg">
+                            <div class="overflow-x-auto">
+                                <table class="w-full min-w-[1000px]">
+                                    <thead>
+                                        <tr class="bg-gradient-to-r from-emerald-500 to-emerald-600 text-white">
+                                            <th class="px-4 py-4 text-left text-xs font-bold uppercase tracking-wider">No
+                                            </th>
+                                            <th class="px-4 py-4 text-left text-xs font-bold uppercase tracking-wider">
+                                                Tanggal</th>
+                                            <th class="px-4 py-4 text-left text-xs font-bold uppercase tracking-wider">Waktu
+                                            </th>
+                                            <th class="px-4 py-4 text-left text-xs font-bold uppercase tracking-wider">Nama
+                                                Petugas</th>
+                                            <th class="px-4 py-4 text-left text-xs font-bold uppercase tracking-wider">
+                                                Lokasi</th>
+                                            <th class="px-4 py-4 text-left text-xs font-bold uppercase tracking-wider">
+                                                Kondisi APD</th>
+                                            <th class="px-4 py-4 text-left text-xs font-bold uppercase tracking-wider">
+                                                Temuan</th>
+                                            <th class="px-4 py-4 text-left text-xs font-bold uppercase tracking-wider">
+                                                Tindak Lanjut</th>
+                                            <th class="px-4 py-4 text-left text-xs font-bold uppercase tracking-wider">
+                                                Penanggung Jawab</th>
+                                            <th class="px-4 py-4 text-center text-xs font-bold uppercase tracking-wider">
+                                                Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-slate-100">
+                                        @foreach($hseList as $index => $hse)
+                                            @php
+                                                $statusColor = match ($hse->kondisi_apd) {
+                                                    'Lengkap' => 'emerald',
+                                                    'Tidak Lengkap' => 'amber',
+                                                    'Tidak Ada' => 'rose',
+                                                    default => 'slate'
+                                                };
+                                            @endphp
+                                            <tr class="bg-white hover:bg-slate-50 transition-colors duration-150">
+                                                <td class="px-4 py-4 text-sm font-semibold text-slate-700">
+                                                    {{ $index + 1 }}
+                                                </td>
+                                                <td class="px-4 py-4 text-sm text-slate-600 whitespace-nowrap">
+                                                    {{ \Carbon\Carbon::parse($hse->tanggal)->format('d-m-Y') }}
+                                                </td>
+                                                <td class="px-4 py-4 text-sm text-slate-600 whitespace-nowrap">
+                                                    {{ $hse->waktu }}
+                                                </td>
+                                                <td class="px-4 py-4 text-sm font-medium text-slate-800 whitespace-nowrap">
+                                                    {{ $hse->nama_petugas }}
+                                                </td>
+                                                <td class="px-4 py-4 text-sm text-slate-600 max-w-[150px]">
+                                                    <span class="line-clamp-2">{{ $hse->lokasi }}</span>
+                                                </td>
+                                                <td class="px-4 py-4 whitespace-nowrap">
+                                                    <span
+                                                        class="inline-flex items-center rounded-lg bg-{{ $statusColor }}-100 px-2.5 py-1 text-xs font-semibold text-{{ $statusColor }}-700">
+                                                        {{ $hse->kondisi_apd }}
+                                                    </span>
+                                                </td>
+                                                <td class="px-4 py-4 text-sm text-slate-600 max-w-[180px]">
+                                                    <span class="line-clamp-2">{{ $hse->temuan ?? '-' }}</span>
+                                                </td>
+                                                <td class="px-4 py-4 text-sm text-slate-600 max-w-[180px]">
+                                                    <span class="line-clamp-2">{{ $hse->tindak_lanjut ?? '-' }}</span>
+                                                </td>
+                                                <td class="px-4 py-4 text-sm text-slate-600 whitespace-nowrap">
+                                                    {{ $hse->penanggung_jawab ?? '-' }}
+                                                </td>
+                                                <td class="px-4 py-4 text-center whitespace-nowrap">
+                                                    <a href="{{ route('hse.show', $hse->id) }}" target="_blank"
+                                                        onclick="setTimeout(function(){ window.open('{{ route('hse.show', $hse->id) }}').print(); }, 500);"
+                                                        class="inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-3 py-1.5 text-xs font-bold text-white shadow-sm transition-all hover:bg-emerald-700 hover:shadow-md active:scale-95">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5"
+                                                            viewBox="0 0 20 20" fill="currentColor">
+                                                            <path fill-rule="evenodd"
+                                                                d="M5 4v3H4a2 2 0 00-2 2v3a2 2 0 002 2h1v2a2 2 0 002 2h6a2 2 0 002-2v-2h1a2 2 0 002-2V9a2 2 0 00-2-2h-1V4a2 2 0 00-2-2H7a2 2 0 00-2 2zm8 0H7v3h6V4zm0 8H7v4h6v-4z"
+                                                                clip-rule="evenodd" />
+                                                        </svg>
+                                                        Cetak PDF
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     @endif
                 </div>
@@ -364,54 +440,85 @@
         </main>
     </div>
 
+    <!-- Logout Confirmation Modal -->
+    <div id="logoutModal"
+        class="fixed inset-0 z-50 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="closeLogoutModal()"></div>
+        <div
+            class="relative w-full max-w-sm rounded-2xl bg-white p-6 shadow-2xl transform scale-95 transition-transform duration-300">
+            <div class="mb-6 flex flex-col items-center text-center">
+                <div class="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-rose-100 text-rose-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900">Konfirmasi Logout</h3>
+                <p class="mt-2 text-sm text-slate-500">Apakah Anda yakin ingin keluar dari aplikasi?</p>
+            </div>
+            <div class="flex gap-3">
+                <button type="button" onclick="closeLogoutModal()"
+                    class="flex-1 rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50">
+                    Batal
+                </button>
+                <button type="button" onclick="document.getElementById('logoutForm').submit()"
+                    class="flex-1 rounded-xl bg-rose-600 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-rose-600/20 transition hover:bg-rose-700">
+                    Ya, Keluar
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const toggleButton = document.getElementById('sidebarToggle');
-            const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('sidebarOverlay');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        const hseToggleIcon = document.getElementById('hseToggleIcon');
+        const hseSubmenu = document.getElementById('hseSubmenu');
+        const logoutModal = document.getElementById('logoutModal');
+        const logoutModalContent = logoutModal.querySelector('div.transform');
 
-            const toggleSidebar = (forceOpen = null) => {
-                const isOpen = forceOpen !== null ? forceOpen : sidebar.classList.contains('translate-x-0');
-                if (!isOpen) {
-                    sidebar.classList.remove('-translate-x-full');
-                    sidebar.classList.add('translate-x-0');
-                    overlay.classList.remove('pointer-events-none');
-                    overlay.classList.remove('opacity-0');
-                    overlay.classList.add('pointer-events-auto', 'opacity-100');
-                    toggleButton.setAttribute('aria-expanded', 'true');
-                } else {
-                    sidebar.classList.add('-translate-x-full');
-                    sidebar.classList.remove('translate-x-0');
-                    overlay.classList.remove('pointer-events-auto', 'opacity-100');
-                    overlay.classList.add('pointer-events-none', 'opacity-0');
-                    toggleButton.setAttribute('aria-expanded', 'false');
-                }
-            };
-
-            toggleButton.addEventListener('click', () => toggleSidebar());
-            overlay.addEventListener('click', () => toggleSidebar(true));
-
-            document.addEventListener('keydown', (event) => {
-                if (event.key === 'Escape' && sidebar.classList.contains('translate-x-0')) {
-                    toggleSidebar(true);
-                }
-            });
-        });
-
-        function toggleHSEMenu() {
-            const submenu = document.getElementById('hseSubmenu');
-            const icon = document.getElementById('hseToggleIcon');
-            if (submenu && icon) {
-                if (submenu.classList.contains('hidden')) {
-                    submenu.classList.remove('hidden');
-                    icon.classList.add('rotate-180');
-                } else {
-                    submenu.classList.add('hidden');
-                    icon.classList.remove('rotate-180');
-                }
+        function toggleSidebar() {
+            const isClosed = sidebar.classList.contains('-translate-x-full');
+            if (isClosed) {
+                sidebar.classList.remove('-translate-x-full');
+                sidebarOverlay.classList.remove('opacity-0', 'pointer-events-none');
+            } else {
+                sidebar.classList.add('-translate-x-full');
+                sidebarOverlay.classList.add('opacity-0', 'pointer-events-none');
             }
         }
+
+        function toggleHSEMenu() {
+            const isHidden = hseSubmenu.classList.contains('hidden');
+            if (isHidden) {
+                hseSubmenu.classList.remove('hidden');
+                hseToggleIcon.classList.add('rotate-180');
+            } else {
+                hseSubmenu.classList.add('hidden');
+                hseToggleIcon.classList.remove('rotate-180');
+            }
+        }
+
+        function showLogoutModal() {
+            logoutModal.classList.remove('opacity-0', 'pointer-events-none');
+            logoutModalContent.classList.remove('scale-95');
+            logoutModalContent.classList.add('scale-100');
+        }
+
+        function closeLogoutModal() {
+            logoutModal.classList.add('opacity-0', 'pointer-events-none');
+            logoutModalContent.classList.remove('scale-100');
+            logoutModalContent.classList.add('scale-95');
+        }
+
+        sidebarToggle.addEventListener('click', toggleSidebar);
+        sidebarOverlay.addEventListener('click', toggleSidebar);
+
+        // Auto-expand HSE menu if active
+        // hseSubmenu.classList.remove('hidden'); 
     </script>
 </body>
-</html>
 
+</html>

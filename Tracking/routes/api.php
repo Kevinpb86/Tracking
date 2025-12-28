@@ -13,3 +13,7 @@ Route::middleware('auth:sanctum')->group(function () {
     });
     Route::post('/logout', [AuthController::class, 'logout']);
 });
+
+// Public HSE Routes for Testing
+Route::get('/hse', [App\Http\Controllers\Api\HseController::class, 'index']);
+Route::post('/hse', [App\Http\Controllers\Api\HseController::class, 'store']);

@@ -467,9 +467,12 @@
                             </p>
                         </div>
                     </div>
+                </div>
 
+                {{-- Alerts and Form Section --}}
+                <div class="mx-auto w-full max-w-4xl px-4 py-8">
                     {{-- Alerts Section --}}
-                    <div class="px-6 sm:px-12 max-w-5xl mx-auto">
+                    <div class="max-w-5xl mx-auto">
                         @if (session('success'))
                             <div
                                 class="mb-8 flex items-center gap-4 rounded-2xl border border-emerald-200 bg-white/80 p-4 text-emerald-800 shadow-sm backdrop-blur-sm">
@@ -509,10 +512,9 @@
                     </div>
 
                     {{-- Form Content --}}
-                    <div class="bg-white/50 px-6 pb-16 pt-8 sm:px-12 backdrop-blur-sm">
-                        <form action="{{ route('hse.store') }}" method="POST" class="space-y-10 max-w-5xl mx-auto"
-                            id="hseForm">
-                            @csrf
+                    <form action="{{ route('hse.store') }}" method="POST" class="space-y-10 max-w-5xl mx-auto"
+                        id="hseForm">
+                        @csrf
 
                             <div
                                 class="form-card bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
@@ -678,7 +680,8 @@
                             </div>
 
 
-                            <div class="form-card bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
+                            <div
+                                class="form-card bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
                                 <div class="bg-gradient-to-r from-emerald-600 to-emerald-700 px-6 py-4">
                                     <h3 class="text-xl font-bold text-white flex items-center gap-2">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
@@ -688,7 +691,8 @@
                                         </svg>
                                         Tindak Lanjut
                                     </h3>
-                                    <p class="text-emerald-100 text-sm mt-1">Rencana tindak lanjut dan penanggung jawab</p>
+                                    <p class="text-emerald-100 text-sm mt-1">Rencana tindak lanjut dan penanggung jawab
+                                    </p>
                                 </div>
 
                                 <div class="p-8">

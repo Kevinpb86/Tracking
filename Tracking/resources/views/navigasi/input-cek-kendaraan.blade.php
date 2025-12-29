@@ -422,49 +422,53 @@
                 <!-- PAGE CONTENT -->
                 <section class="relative mx-auto w-full flex-1 px-4 py-8 sm:px-6 lg:px-8">
                     <div class="mx-auto max-w-4xl">
-                        <!-- Hero Section dengan Gradient Biru -->
                         <div
-                            class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 px-8 py-12 shadow-2xl mb-8">
-                            <div
-                                class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS1vcGFjaXR5PSIwLjEiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIvPjwvc3ZnPg==')] opacity-10">
-                            </div>
+                            class="mx-auto max-w-4xl rounded-3xl border border-blue-100 bg-blue-50 shadow-xl overflow-hidden mb-8">
 
-                            <div
-                                class="relative flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
-                                <div class="flex-1">
-                                    <div class="flex items-center gap-2 mb-4">
-                                        <span
-                                            class="rounded-full bg-blue-500/20 px-3 py-1 text-xs font-semibold text-blue-100">
-                                            DASHBOARD UTAMA
-                                        </span>
-                                        <span
-                                            class="rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm">
-                                            • Sistem Online
-                                        </span>
+                            {{-- Unified Header Section --}}
+                            <div class="relative px-6 pt-16 pb-10 text-center sm:px-12">
+                                {{-- Background Decoration --}}
+                                <div
+                                    class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full overflow-hidden pointer-events-none opacity-40">
+                                    <div
+                                        class="absolute top-[-50%] left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-blue-200/20 rounded-full blur-3xl">
                                     </div>
-                                    <h2 class="mb-3 text-4xl font-bold tracking-tight text-white">
-                                        Selamat Datang di<br />
-                                        <span class="text-blue-200">Checkpoint Pos 1</span>
-                                    </h2>
-                                    <p class="text-lg text-blue-100 leading-relaxed max-w-2xl">
-                                        Kelola validasi kendaraan dan pemeriksaan dengan efisien.<br
-                                            class="hidden sm:block" />
-                                        Pantau aktivitas terkini dan akses menu cepat di satu tempat.
-                                    </p>
                                 </div>
 
-                                <div class="grid grid-cols-1 gap-4 lg:min-w-[280px]">
+                                <div class="relative z-10 flex flex-col items-center space-y-8">
+                                    {{-- Logo --}}
                                     <div
-                                        class="rounded-xl bg-white/10 backdrop-blur-md border border-white/20 px-6 py-4 shadow-lg">
-                                        <p class="text-sm font-medium text-blue-200 mb-1">WAKTU OPERASIONAL</p>
-                                        <p id="heroTime" class="text-3xl font-bold text-white">00:00 <span
-                                                class="text-lg font-medium text-blue-300">WIB</span></p>
+                                        class="inline-flex items-center gap-3 rounded-full bg-blue-100/50 px-4 py-1.5 border border-blue-200/50 backdrop-blur-sm">
+                                        <span class="flex h-6 w-6 items-center justify-center rounded-full bg-blue-600">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-white"
+                                                viewBox="0 0 20 20" fill="currentColor">
+                                                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                                                <path fill-rule="evenodd"
+                                                    d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                        </span>
+                                        <span
+                                            class="text-[10px] font-bold uppercase tracking-[0.2em] text-blue-800">Input
+                                            Pemeriksaan</span>
                                     </div>
-                                    <div
-                                        class="rounded-xl bg-white/10 backdrop-blur-md border border-white/20 px-6 py-4 shadow-lg">
-                                        <p class="text-sm font-medium text-blue-200 mb-1">TANGGAL</p>
-                                        <p class="text-lg font-semibold text-white">{{ date('d F Y') }}</p>
+
+                                    {{-- Title --}}
+                                    <div class="space-y-4">
+                                        <h1
+                                            class="text-4xl font-extrabold tracking-tight text-blue-600 sm:text-5xl lg:text-6xl text-center">
+                                            Vehicle Inspection
+                                        </h1>
+                                        <div
+                                            class="mx-auto h-1.5 w-24 rounded-full bg-blue-500 shadow-lg shadow-blue-500/30">
+                                        </div>
                                     </div>
+
+                                    <p class="max-w-2xl text-lg font-medium text-slate-600 leading-relaxed">
+                                        Kelola validasi kendaraan dan pemeriksaan dengan efisien.
+                                        Pantau aktivitas terkini dan akses menu cepat di satu tempat.
+                                    </p>
+
                                 </div>
                             </div>
                         </div>

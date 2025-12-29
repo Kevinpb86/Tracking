@@ -470,7 +470,7 @@
                 </div>
 
                 {{-- Alerts and Form Section --}}
-                <div class="mx-auto w-full max-w-4xl px-4 py-8">
+                <div class="mx-auto w-full max-w-5xl px-4 py-8">
                     {{-- Alerts Section --}}
                     <div class="max-w-5xl mx-auto">
                         @if (session('success'))
@@ -516,240 +516,237 @@
                         id="hseForm">
                         @csrf
 
-                            <div
-                                class="form-card bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
-                                <div class="bg-gradient-to-r from-emerald-600 to-emerald-700 px-6 py-4">
-                                    <h3 class="text-xl font-bold text-white flex items-center gap-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-                                            viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                                        </svg>
-                                        Informasi Umum
-                                    </h3>
-                                    <p class="text-emerald-100 text-sm mt-1">Data dasar lokasi dan petugas pemeriksaan
-                                    </p>
-                                </div>
+                        <div class="form-card bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
+                            <div class="bg-gradient-to-r from-emerald-600 to-emerald-700 px-6 py-4">
+                                <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                    </svg>
+                                    Informasi Umum
+                                </h3>
+                                <p class="text-emerald-100 text-sm mt-1">Data dasar lokasi dan petugas pemeriksaan
+                                </p>
+                            </div>
 
-                                <div class="p-8">
+                            <div class="p-8">
 
-                                    <div class="space-y-6">
-                                        <div class="form-group">
-                                            <label for="tanggal"
-                                                class="form-label block text-sm font-semibold text-slate-700 mb-2 flex items-center gap-2">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-emerald-600"
-                                                    viewBox="0 0 20 20" fill="currentColor">
-                                                    <path fill-rule="evenodd"
-                                                        d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                                                        clip-rule="evenodd" />
-                                                </svg>
-                                                Tanggal <span class="text-red-500">*</span>
-                                            </label>
-                                            <input type="date" id="tanggal" name="tanggal" value="{{ date('Y-m-d') }}"
-                                                required
-                                                class="form-input w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3.5 text-slate-900 shadow-sm transition-all focus:bg-white focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/20 focus:outline-none">
-                                        </div>
+                                <div class="space-y-6">
+                                    <div class="form-group">
+                                        <label for="tanggal"
+                                            class="form-label block text-sm font-semibold text-slate-700 mb-2 flex items-center gap-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-emerald-600"
+                                                viewBox="0 0 20 20" fill="currentColor">
+                                                <path fill-rule="evenodd"
+                                                    d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                            Tanggal <span class="text-red-500">*</span>
+                                        </label>
+                                        <input type="date" id="tanggal" name="tanggal" value="{{ date('Y-m-d') }}"
+                                            required
+                                            class="form-input w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3.5 text-slate-900 shadow-sm transition-all focus:bg-white focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/20 focus:outline-none">
+                                    </div>
 
-                                        <div class="form-group">
-                                            <label for="waktu"
-                                                class="form-label block text-sm font-semibold text-slate-700 mb-2 flex items-center gap-2">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-emerald-600"
-                                                    viewBox="0 0 20 20" fill="currentColor">
-                                                    <path fill-rule="evenodd"
-                                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
-                                                        clip-rule="evenodd" />
-                                                </svg>
-                                                Waktu <span class="text-red-500">*</span>
-                                            </label>
-                                            <input type="time" id="waktu" name="waktu" value="{{ date('H:i') }}"
-                                                required
-                                                class="form-input w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3.5 text-slate-900 shadow-sm transition-all focus:bg-white focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/20 focus:outline-none">
-                                        </div>
+                                    <div class="form-group">
+                                        <label for="waktu"
+                                            class="form-label block text-sm font-semibold text-slate-700 mb-2 flex items-center gap-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-emerald-600"
+                                                viewBox="0 0 20 20" fill="currentColor">
+                                                <path fill-rule="evenodd"
+                                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                            Waktu <span class="text-red-500">*</span>
+                                        </label>
+                                        <input type="time" id="waktu" name="waktu" value="{{ date('H:i') }}" required
+                                            class="form-input w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3.5 text-slate-900 shadow-sm transition-all focus:bg-white focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/20 focus:outline-none">
+                                    </div>
 
-                                        <div class="form-group">
-                                            <label for="nama_petugas"
-                                                class="form-label block text-sm font-semibold text-slate-700 mb-2 flex items-center gap-2">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-emerald-600"
-                                                    viewBox="0 0 20 20" fill="currentColor">
-                                                    <path
-                                                        d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
-                                                </svg>
-                                                Nama Petugas <span class="text-red-500">*</span>
-                                            </label>
-                                            <input type="text" id="nama_petugas" name="nama_petugas"
-                                                value="{{ Auth::user()->name ?? '' }}" required
-                                                class="form-input w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3.5 text-slate-900 shadow-sm transition-all focus:bg-white focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/20 focus:outline-none"
-                                                placeholder="Masukkan nama petugas">
-                                        </div>
+                                    <div class="form-group">
+                                        <label for="nama_petugas"
+                                            class="form-label block text-sm font-semibold text-slate-700 mb-2 flex items-center gap-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-emerald-600"
+                                                viewBox="0 0 20 20" fill="currentColor">
+                                                <path
+                                                    d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
+                                            </svg>
+                                            Nama Petugas <span class="text-red-500">*</span>
+                                        </label>
+                                        <input type="text" id="nama_petugas" name="nama_petugas"
+                                            value="{{ Auth::user()->name ?? '' }}" required
+                                            class="form-input w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3.5 text-slate-900 shadow-sm transition-all focus:bg-white focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/20 focus:outline-none"
+                                            placeholder="Masukkan nama petugas">
+                                    </div>
 
-                                        <div class="form-group">
-                                            <label for="lokasi"
-                                                class="form-label block text-sm font-semibold text-slate-700 mb-2 flex items-center gap-2">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-emerald-600"
-                                                    viewBox="0 0 20 20" fill="currentColor">
-                                                    <path fill-rule="evenodd"
-                                                        d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
-                                                        clip-rule="evenodd" />
-                                                </svg>
-                                                Lokasi <span class="text-red-500">*</span>
-                                            </label>
-                                            <select id="lokasi" name="lokasi" required
-                                                class="form-input w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3.5 text-slate-900 shadow-sm transition-all focus:bg-white focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/20 focus:outline-none cursor-pointer">
-                                                <option value="">Pilih Lokasi</option>
-                                                <option value="Pos 1 - Checkpoint Kedatangan">Pos 1 - Checkpoint
-                                                    Kedatangan</option>
-                                                <option value="Pos 2 - Zona Distribusi">Pos 2 - Zona Distribusi</option>
-                                            </select>
-                                        </div>
+                                    <div class="form-group">
+                                        <label for="lokasi"
+                                            class="form-label block text-sm font-semibold text-slate-700 mb-2 flex items-center gap-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-emerald-600"
+                                                viewBox="0 0 20 20" fill="currentColor">
+                                                <path fill-rule="evenodd"
+                                                    d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                            Lokasi <span class="text-red-500">*</span>
+                                        </label>
+                                        <select id="lokasi" name="lokasi" required
+                                            class="form-input w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3.5 text-slate-900 shadow-sm transition-all focus:bg-white focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/20 focus:outline-none cursor-pointer">
+                                            <option value="">Pilih Lokasi</option>
+                                            <option value="Pos 1 - Checkpoint Kedatangan">Pos 1 - Checkpoint
+                                                Kedatangan</option>
+                                            <option value="Pos 2 - Zona Distribusi">Pos 2 - Zona Distribusi</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
-                            <div
-                                class="form-card bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
-                                <div class="bg-gradient-to-r from-emerald-600 to-emerald-700 px-6 py-4">
-                                    <h3 class="text-xl font-bold text-white flex items-center gap-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-                                            viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                                        </svg>
-                                        Kondisi Keselamatan
-                                    </h3>
-                                    <p class="text-emerald-100 text-sm mt-1">Pemeriksaan APD dan temuan keselamatan
-                                        kerja</p>
-                                </div>
+                        <div class="form-card bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
+                            <div class="bg-gradient-to-r from-emerald-600 to-emerald-700 px-6 py-4">
+                                <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                                    </svg>
+                                    Kondisi Keselamatan
+                                </h3>
+                                <p class="text-emerald-100 text-sm mt-1">Pemeriksaan APD dan temuan keselamatan
+                                    kerja</p>
+                            </div>
 
-                                <div class="p-8">
+                            <div class="p-8">
 
-                                    <div class="space-y-6">
-                                        <div class="form-group">
+                                <div class="space-y-6">
+                                    <div class="form-group">
+                                        <label
+                                            class="form-label block text-sm font-semibold text-slate-700 mb-3 flex items-center gap-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-emerald-600"
+                                                viewBox="0 0 20 20" fill="currentColor">
+                                                <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                                                <path fill-rule="evenodd"
+                                                    d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                            Kondisi APD (Alat Pelindung Diri) <span class="text-red-500">*</span>
+                                        </label>
+                                        <div class="space-y-2">
                                             <label
-                                                class="form-label block text-sm font-semibold text-slate-700 mb-3 flex items-center gap-2">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-emerald-600"
-                                                    viewBox="0 0 20 20" fill="currentColor">
-                                                    <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
-                                                    <path fill-rule="evenodd"
-                                                        d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z"
-                                                        clip-rule="evenodd" />
-                                                </svg>
-                                                Kondisi APD (Alat Pelindung Diri) <span class="text-red-500">*</span>
+                                                class="radio-option flex items-center gap-3 cursor-pointer rounded-xl border border-slate-300 bg-slate-50 px-4 py-3.5 transition-all hover:bg-white hover:border-emerald-500 hover:shadow-md hover:shadow-emerald-500/10 active:scale-[0.98]">
+                                                <input type="radio" name="kondisi_apd" value="Lengkap" required
+                                                    class="h-5 w-5 text-emerald-600 focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 cursor-pointer border-slate-400">
+                                                <span class="text-sm font-semibold text-slate-700">Lengkap</span>
                                             </label>
-                                            <div class="space-y-2">
-                                                <label
-                                                    class="radio-option flex items-center gap-3 cursor-pointer rounded-xl border border-slate-300 bg-slate-50 px-4 py-3.5 transition-all hover:bg-white hover:border-emerald-500 hover:shadow-md hover:shadow-emerald-500/10 active:scale-[0.98]">
-                                                    <input type="radio" name="kondisi_apd" value="Lengkap" required
-                                                        class="h-5 w-5 text-emerald-600 focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 cursor-pointer border-slate-400">
-                                                    <span class="text-sm font-semibold text-slate-700">Lengkap</span>
-                                                </label>
-                                                <label
-                                                    class="radio-option flex items-center gap-3 cursor-pointer rounded-xl border border-slate-300 bg-slate-50 px-4 py-3.5 transition-all hover:bg-white hover:border-emerald-500 hover:shadow-md hover:shadow-emerald-500/10 active:scale-[0.98]">
-                                                    <input type="radio" name="kondisi_apd" value="Tidak Lengkap"
-                                                        required
-                                                        class="h-5 w-5 text-emerald-600 focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 cursor-pointer border-slate-400">
-                                                    <span class="text-sm font-semibold text-slate-700">Tidak
-                                                        Lengkap</span>
-                                                </label>
-                                                <label
-                                                    class="radio-option flex items-center gap-3 cursor-pointer rounded-xl border border-slate-300 bg-slate-50 px-4 py-3.5 transition-all hover:bg-white hover:border-emerald-500 hover:shadow-md hover:shadow-emerald-500/10 active:scale-[0.98]">
-                                                    <input type="radio" name="kondisi_apd" value="Tidak Ada" required
-                                                        class="h-5 w-5 text-emerald-600 focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 cursor-pointer border-slate-400">
-                                                    <span class="text-sm font-semibold text-slate-700">Tidak
-                                                        Ada</span>
-                                                </label>
-                                            </div>
+                                            <label
+                                                class="radio-option flex items-center gap-3 cursor-pointer rounded-xl border border-slate-300 bg-slate-50 px-4 py-3.5 transition-all hover:bg-white hover:border-emerald-500 hover:shadow-md hover:shadow-emerald-500/10 active:scale-[0.98]">
+                                                <input type="radio" name="kondisi_apd" value="Tidak Lengkap" required
+                                                    class="h-5 w-5 text-emerald-600 focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 cursor-pointer border-slate-400">
+                                                <span class="text-sm font-semibold text-slate-700">Tidak
+                                                    Lengkap</span>
+                                            </label>
+                                            <label
+                                                class="radio-option flex items-center gap-3 cursor-pointer rounded-xl border border-slate-300 bg-slate-50 px-4 py-3.5 transition-all hover:bg-white hover:border-emerald-500 hover:shadow-md hover:shadow-emerald-500/10 active:scale-[0.98]">
+                                                <input type="radio" name="kondisi_apd" value="Tidak Ada" required
+                                                    class="h-5 w-5 text-emerald-600 focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 cursor-pointer border-slate-400">
+                                                <span class="text-sm font-semibold text-slate-700">Tidak
+                                                    Ada</span>
+                                            </label>
                                         </div>
+                                    </div>
 
-                                        <div class="form-group">
-                                            <label for="temuan"
-                                                class="form-label block text-sm font-semibold text-slate-700 mb-2 flex items-center gap-2">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-emerald-600"
-                                                    viewBox="0 0 20 20" fill="currentColor">
-                                                    <path fill-rule="evenodd"
-                                                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-                                                        clip-rule="evenodd" />
-                                                </svg>
-                                                Temuan / Catatan
-                                            </label>
-                                            <textarea id="temuan" name="temuan" rows="4"
-                                                class="form-input w-full rounded-none border-2 border-slate-300 bg-white px-4 py-3.5 text-slate-900 shadow-sm focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/20 focus:outline-none resize-none"
-                                                placeholder="Masukkan temuan atau catatan terkait keselamatan dan kesehatan kerja..."></textarea>
-                                        </div>
+                                    <div class="form-group">
+                                        <label for="temuan"
+                                            class="form-label block text-sm font-semibold text-slate-700 mb-2 flex items-center gap-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-emerald-600"
+                                                viewBox="0 0 20 20" fill="currentColor">
+                                                <path fill-rule="evenodd"
+                                                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                            Temuan / Catatan
+                                        </label>
+                                        <textarea id="temuan" name="temuan" rows="4"
+                                            class="form-input w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3.5 text-slate-900 shadow-sm transition-all focus:bg-white focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/20 focus:outline-none resize-none"
+                                            placeholder="Masukkan temuan atau catatan terkait keselamatan dan kesehatan kerja..."></textarea>
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
 
-                            <div
-                                class="form-card bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
-                                <div class="bg-gradient-to-r from-emerald-600 to-emerald-700 px-6 py-4">
-                                    <h3 class="text-xl font-bold text-white flex items-center gap-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-                                            viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        <div class="form-card bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
+                            <div class="bg-gradient-to-r from-emerald-600 to-emerald-700 px-6 py-4">
+                                <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                    Tindak Lanjut
+                                </h3>
+                                <p class="text-emerald-100 text-sm mt-1">Rencana tindak lanjut dan penanggung jawab
+                                </p>
+                            </div>
+
+                            <div class="p-8">
+
+                                <div class="space-y-6">
+                                    <div class="form-group">
+                                        <label for="tindak_lanjut"
+                                            class="form-label block text-sm font-semibold text-slate-700 mb-2 flex items-center gap-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-emerald-600"
+                                                viewBox="0 0 20 20" fill="currentColor">
+                                                <path fill-rule="evenodd"
+                                                    d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                            Tindak Lanjut yang Diambil
+                                        </label>
+                                        <textarea id="tindak_lanjut" name="tindak_lanjut" rows="3"
+                                            class="form-input w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3.5 text-slate-900 shadow-sm transition-all focus:bg-white focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/20 focus:outline-none resize-none"
+                                            placeholder="Jelaskan tindak lanjut yang telah atau akan dilakukan..."></textarea>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="penanggung_jawab"
+                                            class="form-label block text-sm font-semibold text-slate-700 mb-2 flex items-center gap-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-emerald-600"
+                                                viewBox="0 0 20 20" fill="currentColor">
+                                                <path
+                                                    d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
+                                            </svg>
+                                            Penanggung Jawab
+                                        </label>
+                                        <input type="text" id="penanggung_jawab" name="penanggung_jawab"
+                                            class="form-input w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3.5 text-slate-900 shadow-sm transition-all focus:bg-white focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/20 focus:outline-none"
+                                            placeholder="Masukkan nama penanggung jawab">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 mt-8 px-2">
+                            <div class="flex gap-3">
+                                <button type="reset"
+                                    class="px-6 py-3 rounded-lg border-2 border-slate-300 text-slate-700 font-semibold hover:bg-slate-100 hover:border-slate-400 focus:ring-2 focus:ring-slate-200 active:scale-95 transition-all cursor-pointer">
+                                    Reset Form
+                                </button>
+                                <button type="submit"
+                                    class="submit-btn px-8 py-3 rounded-lg bg-emerald-600 text-white font-bold shadow-lg hover:shadow-xl transition-all hover:bg-emerald-700 active:scale-95 cursor-pointer">
+                                    <span class="flex items-center gap-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
+                                            fill="currentColor">
+                                            <path fill-rule="evenodd"
+                                                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                                clip-rule="evenodd" />
                                         </svg>
-                                        Tindak Lanjut
-                                    </h3>
-                                    <p class="text-emerald-100 text-sm mt-1">Rencana tindak lanjut dan penanggung jawab
-                                    </p>
-                                </div>
-
-                                <div class="p-8">
-
-                                    <div class="space-y-6">
-                                        <div class="form-group">
-                                            <label for="tindak_lanjut"
-                                                class="form-label block text-sm font-semibold text-slate-700 mb-2 flex items-center gap-2">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-emerald-600"
-                                                    viewBox="0 0 20 20" fill="currentColor">
-                                                    <path fill-rule="evenodd"
-                                                        d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"
-                                                        clip-rule="evenodd" />
-                                                </svg>
-                                                Tindak Lanjut yang Diambil
-                                            </label>
-                                            <textarea id="tindak_lanjut" name="tindak_lanjut" rows="3"
-                                                class="form-input w-full rounded-none border-2 border-slate-300 bg-white px-4 py-3.5 text-slate-900 shadow-sm focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/20 focus:outline-none resize-none"
-                                                placeholder="Jelaskan tindak lanjut yang telah atau akan dilakukan..."></textarea>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="penanggung_jawab"
-                                                class="form-label block text-sm font-semibold text-slate-700 mb-2 flex items-center gap-2">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-emerald-600"
-                                                    viewBox="0 0 20 20" fill="currentColor">
-                                                    <path
-                                                        d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
-                                                </svg>
-                                                Penanggung Jawab
-                                            </label>
-                                            <input type="text" id="penanggung_jawab" name="penanggung_jawab"
-                                                class="form-input w-full rounded-none border-2 border-slate-300 bg-white px-4 py-3.5 text-slate-900 shadow-sm focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/20 focus:outline-none"
-                                                placeholder="Masukkan nama penanggung jawab">
-                                        </div>
-                                    </div>
-                                </div>
+                                        Simpan Data Pemeriksaan
+                                    </span>
+                                </button>
                             </div>
-                    </div>
-
-                    <div class="flex items-center justify-end gap-4">
-                        <a href="{{ route('pos1.dashboard') }}"
-                            class="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50 hover:border-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-200 focus:ring-offset-2">
-                            Batal
-                        </a>
-                        <button type="submit"
-                            class="submit-btn group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 px-8 py-4 text-sm font-bold uppercase tracking-wider text-white shadow-lg shadow-emerald-500/30 transition-all hover:scale-[1.02] hover:shadow-emerald-500/50 focus:outline-none focus:ring-4 focus:ring-emerald-500/30 focus:ring-offset-2">
-                            <svg xmlns="http://www.w3.org/2000/svg"
-                                class="h-5 w-5 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1"
-                                viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd"
-                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                            Simpan Laporan
-                        </button>
-                    </div>
+                        </div>
                     </form>
                 </div>
     </div>

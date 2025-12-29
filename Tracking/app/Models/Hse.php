@@ -2,12 +2,21 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Hse extends Model
 {
+    use HasFactory;
+
+    /**
+     * Nama tabel
+     */
     protected $table = 'hse';
 
+    /**
+     * Kolom yang dapat diisi
+     */
     protected $fillable = [
         'tanggal',
         'waktu',
@@ -19,8 +28,11 @@ class Hse extends Model
         'penanggung_jawab',
     ];
 
+    /**
+     * Cast tipe data
+     */
     protected $casts = [
         'tanggal' => 'date',
-        'waktu' => 'datetime',
+        'waktu' => 'datetime:H:i',
     ];
 }

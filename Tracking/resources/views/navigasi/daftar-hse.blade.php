@@ -113,6 +113,29 @@
                             </svg>
                         </a>
 
+                        {{-- Cek Kendaraan Link --}}
+                        <a href="#"
+                            class="group flex items-center justify-between rounded-xl border border-transparent px-4 py-3 text-slate-600 transition-all hover:bg-slate-50 hover:text-blue-600">
+                            <span class="flex items-center gap-3">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="h-5 w-5 text-slate-400 transition-colors group-hover:text-blue-500"
+                                    viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                                    <path fill-rule="evenodd"
+                                        d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                                <span class="font-medium text-sm">Cek Kendaraan</span>
+                            </span>
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="h-4 w-4 text-slate-300 transition-transform group-hover:translate-x-1"
+                                viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </a>
+
                         {{-- HSE Menu Accordion --}}
                         <div class="space-y-1 pt-2">
                             <button type="button" onclick="toggleHSEMenu()"
@@ -147,7 +170,7 @@
                                 <div class="relative ml-4 space-y-1 border-l-2 border-slate-100 pl-4 py-1">
                                     <a href="{{ route('hse.input') }}"
                                         class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-emerald-50 hover:text-emerald-700">
-                                        <span>Input Data Baru</span>
+                                        <span>Input HSE</span>
                                         <svg xmlns="http://www.w3.org/2000/svg"
                                             class="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100"
                                             fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -349,28 +372,32 @@
                         {{-- Table Layout --}}
                         <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg">
                             <div class="overflow-x-auto">
-                                <table class="w-full min-w-[1000px]">
+                                <table class="w-full min-w-[1200px]">
                                     <thead>
                                         <tr class="bg-gradient-to-r from-emerald-500 to-emerald-600 text-white">
-                                            <th class="px-4 py-4 text-left text-xs font-bold uppercase tracking-wider">No
+                                            <th class="px-3 py-3 text-left text-xs font-bold uppercase tracking-wider w-12">
+                                                No
                                             </th>
-                                            <th class="px-4 py-4 text-left text-xs font-bold uppercase tracking-wider">
+                                            <th class="px-3 py-3 text-left text-xs font-bold uppercase tracking-wider w-28">
                                                 Tanggal</th>
-                                            <th class="px-4 py-4 text-left text-xs font-bold uppercase tracking-wider">Waktu
+                                            <th class="px-3 py-3 text-left text-xs font-bold uppercase tracking-wider w-24">
+                                                Waktu
                                             </th>
-                                            <th class="px-4 py-4 text-left text-xs font-bold uppercase tracking-wider">Nama
+                                            <th class="px-3 py-3 text-left text-xs font-bold uppercase tracking-wider w-32">
+                                                Nama
                                                 Petugas</th>
-                                            <th class="px-4 py-4 text-left text-xs font-bold uppercase tracking-wider">
+                                            <th class="px-3 py-3 text-left text-xs font-bold uppercase tracking-wider w-36">
                                                 Lokasi</th>
-                                            <th class="px-4 py-4 text-left text-xs font-bold uppercase tracking-wider">
+                                            <th class="px-3 py-3 text-left text-xs font-bold uppercase tracking-wider w-28">
                                                 Kondisi APD</th>
-                                            <th class="px-4 py-4 text-left text-xs font-bold uppercase tracking-wider">
+                                            <th class="px-3 py-3 text-left text-xs font-bold uppercase tracking-wider w-40">
                                                 Temuan</th>
-                                            <th class="px-4 py-4 text-left text-xs font-bold uppercase tracking-wider">
+                                            <th class="px-3 py-3 text-left text-xs font-bold uppercase tracking-wider w-40">
                                                 Tindak Lanjut</th>
-                                            <th class="px-4 py-4 text-left text-xs font-bold uppercase tracking-wider">
+                                            <th class="px-3 py-3 text-left text-xs font-bold uppercase tracking-wider w-36">
                                                 Penanggung Jawab</th>
-                                            <th class="px-4 py-4 text-center text-xs font-bold uppercase tracking-wider">
+                                            <th
+                                                class="px-3 py-3 text-center text-xs font-bold uppercase tracking-wider w-32">
                                                 Action</th>
                                         </tr>
                                     </thead>
@@ -385,40 +412,40 @@
                                                 };
                                             @endphp
                                             <tr class="bg-white hover:bg-slate-50 transition-colors duration-150">
-                                                <td class="px-4 py-4 text-sm font-semibold text-slate-700">
+                                                <td class="px-3 py-3 text-sm font-semibold text-slate-700">
                                                     {{ $index + 1 }}
                                                 </td>
-                                                <td class="px-4 py-4 text-sm text-slate-600 whitespace-nowrap">
+                                                <td class="px-3 py-3 text-xs text-slate-600 whitespace-nowrap">
                                                     {{ \Carbon\Carbon::parse($hse->tanggal)->format('d-m-Y') }}
                                                 </td>
-                                                <td class="px-4 py-4 text-sm text-slate-600 whitespace-nowrap">
+                                                <td class="px-3 py-3 text-xs text-slate-600 whitespace-nowrap">
                                                     {{ $hse->waktu }}
                                                 </td>
-                                                <td class="px-4 py-4 text-sm font-medium text-slate-800 whitespace-nowrap">
+                                                <td class="px-3 py-3 text-xs font-medium text-slate-800 whitespace-nowrap">
                                                     {{ $hse->nama_petugas }}
                                                 </td>
-                                                <td class="px-4 py-4 text-sm text-slate-600 max-w-[150px]">
+                                                <td class="px-3 py-3 text-xs text-slate-600 max-w-[140px]">
                                                     <span class="line-clamp-2">{{ $hse->lokasi }}</span>
                                                 </td>
-                                                <td class="px-4 py-4 whitespace-nowrap">
+                                                <td class="px-3 py-3 whitespace-nowrap">
                                                     <span
-                                                        class="inline-flex items-center rounded-lg bg-{{ $statusColor }}-100 px-2.5 py-1 text-xs font-semibold text-{{ $statusColor }}-700">
+                                                        class="inline-flex items-center rounded-lg bg-{{ $statusColor }}-100 px-2 py-0.5 text-xs font-semibold text-{{ $statusColor }}-700">
                                                         {{ $hse->kondisi_apd }}
                                                     </span>
                                                 </td>
-                                                <td class="px-4 py-4 text-sm text-slate-600 max-w-[180px]">
+                                                <td class="px-3 py-3 text-xs text-slate-600 max-w-[150px]">
                                                     <span class="line-clamp-2">{{ $hse->temuan ?? '-' }}</span>
                                                 </td>
-                                                <td class="px-4 py-4 text-sm text-slate-600 max-w-[180px]">
+                                                <td class="px-3 py-3 text-xs text-slate-600 max-w-[150px]">
                                                     <span class="line-clamp-2">{{ $hse->tindak_lanjut ?? '-' }}</span>
                                                 </td>
-                                                <td class="px-4 py-4 text-sm text-slate-600 whitespace-nowrap">
-                                                    {{ $hse->penanggung_jawab ?? '-' }}
+                                                <td class="px-3 py-3 text-xs text-slate-600 max-w-[140px]">
+                                                    <span class="line-clamp-2">{{ $hse->penanggung_jawab ?? '-' }}</span>
                                                 </td>
-                                                <td class="px-4 py-4 text-center whitespace-nowrap">
+                                                <td class="px-3 py-3 text-center whitespace-nowrap">
                                                     <a href="{{ route('hse.show', $hse->id) }}" target="_blank"
                                                         onclick="setTimeout(function(){ window.open('{{ route('hse.show', $hse->id) }}').print(); }, 500);"
-                                                        class="inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-3 py-1.5 text-xs font-bold text-white shadow-sm transition-all hover:bg-emerald-700 hover:shadow-md active:scale-95">
+                                                        class="inline-flex items-center gap-1 rounded-lg bg-emerald-600 px-2.5 py-1.5 text-xs font-bold text-white shadow-sm transition-all hover:bg-emerald-700 hover:shadow-md active:scale-95">
                                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5"
                                                             viewBox="0 0 20 20" fill="currentColor">
                                                             <path fill-rule="evenodd"

@@ -85,8 +85,8 @@
                             <span class="text-sm font-bold">1</span>
                         </div>
                         <div class="flex-1">
-                            <div class="text-[10px] font-bold uppercase tracking-wider text-blue-500">POS 1</div>
-                            <div class="text-sm font-medium">Checkpoint Kedatangan</div>
+                            <div class="text-[10px] font-bold uppercase tracking-wider text-blue-500">Cek DO</div>
+                            <div class="text-sm font-medium">Cek Delivery Order</div>
                         </div>
                     </a>
 
@@ -97,8 +97,9 @@
                             <span class="text-sm font-bold">2</span>
                         </div>
                         <div class="flex-1">
-                            <div class="text-[10px] font-bold uppercase tracking-wider text-emerald-600">POS 2</div>
-                            <div class="text-sm font-bold">Zona Distribusi</div>
+                            <div class="text-[10px] font-bold uppercase tracking-wider text-emerald-600">Cek Barang
+                            </div>
+                            <div class="text-sm font-bold">Cek Barang</div>
                         </div>
                     </a>
                 </nav>
@@ -231,10 +232,10 @@
                 <div class="grid gap-8 lg:grid-cols-3">
                     {{-- Stats Cards --}}
                     <div class="lg:col-span-2 grid gap-6 sm:grid-cols-2">
-                        <article class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-                            <div class="flex items-start gap-4">
-                                <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-100">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-emerald-600" fill="none"
+                        <article class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+                            <div class="flex items-start gap-3">
+                                <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-100">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-emerald-600" fill="none"
                                         viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                         <path stroke-linecap="round" stroke-linejoin="round"
                                             d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -243,19 +244,19 @@
                                 <div class="flex-1">
                                     <p class="text-xs uppercase tracking-[0.3em] text-emerald-500 font-semibold">Total
                                         Distribusi</p>
-                                    <p class="mt-2 text-3xl font-bold text-emerald-900">{{ count($pos2Queues ?? []) }}
+                                    <p class="mt-1 text-2xl font-bold text-emerald-900">{{ count($pos2Queues ?? []) }}
                                     </p>
-                                    <p class="mt-2 text-xs text-slate-600">
+                                    <p class="mt-1 text-xs text-slate-600">
                                         Kendaraan dalam proses distribusi
                                     </p>
                                 </div>
                             </div>
                         </article>
 
-                        <article class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-                            <div class="flex items-start gap-4">
-                                <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-amber-100">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-amber-600" fill="none"
+                        <article class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+                            <div class="flex items-start gap-3">
+                                <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-100">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-600" fill="none"
                                         viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                         <path stroke-linecap="round" stroke-linejoin="round"
                                             d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -264,19 +265,19 @@
                                 <div class="flex-1">
                                     <p class="text-xs uppercase tracking-[0.3em] text-amber-500 font-semibold">Waktu
                                         Rata-rata</p>
-                                    <p class="mt-2 text-3xl font-bold text-amber-900">25 <span
-                                            class="text-lg">Menit</span></p>
-                                    <p class="mt-2 text-xs text-slate-600">
+                                    <p class="mt-1 text-2xl font-bold text-amber-900">25 <span
+                                            class="text-base">Menit</span></p>
+                                    <p class="mt-1 text-xs text-slate-600">
                                         Durasi proses bongkar muat
                                     </p>
                                 </div>
                             </div>
                         </article>
 
-                        <article class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-                            <div class="flex items-start gap-4">
-                                <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none"
+                        <article class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+                            <div class="flex items-start gap-3">
+                                <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-100">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600" fill="none"
                                         viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                         <path stroke-linecap="round" stroke-linejoin="round"
                                             d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
@@ -286,18 +287,18 @@
                                     <p class="text-xs uppercase tracking-[0.3em] text-blue-500 font-semibold">
                                         Keselamatan
                                     </p>
-                                    <p class="mt-2 text-3xl font-bold text-blue-900">100%</p>
-                                    <p class="mt-2 text-xs text-slate-600">
+                                    <p class="mt-1 text-2xl font-bold text-blue-900">100%</p>
+                                    <p class="mt-1 text-xs text-slate-600">
                                         Tingkat kepatuhan HSE
                                     </p>
                                 </div>
                             </div>
                         </article>
 
-                        <article class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-                            <div class="flex items-start gap-4">
-                                <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-purple-100">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-600" fill="none"
+                        <article class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+                            <div class="flex items-start gap-3">
+                                <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-purple-100">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-600" fill="none"
                                         viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                         <path stroke-linecap="round" stroke-linejoin="round"
                                             d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
@@ -307,8 +308,8 @@
                                     <p class="text-xs uppercase tracking-[0.3em] text-purple-500 font-semibold">
                                         Dokumentasi
                                     </p>
-                                    <p class="mt-2 text-3xl font-bold text-purple-900">Lengkap</p>
-                                    <p class="mt-2 text-xs text-slate-600">
+                                    <p class="mt-1 text-2xl font-bold text-purple-900">Lengkap</p>
+                                    <p class="mt-1 text-xs text-slate-600">
                                         Status verifikasi dokumen
                                     </p>
                                 </div>

@@ -103,6 +103,17 @@
 
 <body class="bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100 font-sans antialiased min-h-screen">
     <div class="flex min-h-screen">
+        <!-- SIDEBAR TOGGLE BUTTON -->
+        <button id="sidebarToggle" type="button"
+            class="fixed left-4 top-9 z-50 inline-flex h-12 w-12 items-center justify-center rounded-lg border border-slate-200 bg-white text-blue-600 shadow-sm transition hover:bg-blue-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 cursor-pointer sm:left-6 sm:top-10 lg:left-8 lg:top-12"
+            aria-label="Toggle navigation" aria-expanded="false">
+            <span class="relative flex h-4 w-6 flex-col justify-between">
+                <span class="block h-0.5 w-full rounded-full bg-current transition-all"></span>
+                <span class="block h-0.5 w-full rounded-full bg-current transition-all"></span>
+                <span class="block h-0.5 w-full rounded-full bg-current transition-all"></span>
+            </span>
+        </button>
+
         <!-- SIDEBAR -->
         <aside id="sidebar"
             class="fixed left-0 top-0 z-50 flex h-full w-72 -translate-x-full flex-col overflow-hidden border-r border-slate-200 bg-white/90 backdrop-blur-xl shadow-[4px_0_24px_rgba(0,0,0,0.02)] transition-transform duration-300 ease-in-out lg:w-80 font-sans">
@@ -248,7 +259,7 @@
                                                 clip-rule="evenodd" />
                                         </svg>
                                     </a>
-                                    <a href="#"
+                                    <a href="{{ route('cek-kendaraan.daftar') }}"
                                         class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-blue-50 hover:text-blue-700">
                                         <span>Daftar Pemeriksaan</span>
                                         <svg xmlns="http://www.w3.org/2000/svg"
@@ -355,16 +366,7 @@
                 $evalubeLogoExists = file_exists(public_path('images/evalube.png'));
             @endphp
 
-            <!-- SIDEBAR TOGGLE BUTTON -->
-            <button id="sidebarToggle" type="button"
-                class="fixed left-4 top-9 z-50 inline-flex h-12 w-12 items-center justify-center rounded-lg border border-slate-200 bg-white text-blue-600 shadow-sm transition hover:bg-blue-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 cursor-pointer sm:left-6 sm:top-10 lg:left-8 lg:top-12"
-                aria-label="Toggle navigation" aria-expanded="false">
-                <span class="relative flex h-4 w-6 flex-col justify-between">
-                    <span class="block h-0.5 w-full rounded-full bg-current transition-all"></span>
-                    <span class="block h-0.5 w-full rounded-full bg-current transition-all"></span>
-                    <span class="block h-0.5 w-full rounded-full bg-current transition-all"></span>
-                </span>
-            </button>
+
 
             <div id="sidebarOverlay"
                 class="fixed inset-0 z-30 bg-slate-900/10 opacity-0 transition-opacity duration-300 ease-in-out pointer-events-none">
@@ -426,7 +428,7 @@
                             class="mx-auto max-w-4xl rounded-3xl border border-blue-100 bg-blue-50 shadow-xl overflow-hidden mb-8">
 
                             {{-- Unified Header Section --}}
-                            <div class="relative px-6 pt-16 pb-10 text-center sm:px-12">
+                            <div class="relative px-6 pt-10 pb-6 text-center sm:px-12">
                                 {{-- Background Decoration --}}
                                 <div
                                     class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full overflow-hidden pointer-events-none opacity-40">
@@ -435,7 +437,7 @@
                                     </div>
                                 </div>
 
-                                <div class="relative z-10 flex flex-col items-center space-y-8">
+                                <div class="relative z-10 flex flex-col items-center space-y-4">
                                     {{-- Logo --}}
                                     <div
                                         class="inline-flex items-center gap-3 rounded-full bg-blue-100/50 px-4 py-1.5 border border-blue-200/50 backdrop-blur-sm">

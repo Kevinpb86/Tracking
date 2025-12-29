@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Daftar HSE - POS 1</title>
+    <title>Daftar Pemeriksaan - POS 1</title>
     <link rel="icon" type="image/jpeg" href="{{ asset('images/wgilogo.jpg') }}">
 
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -149,7 +149,7 @@
                         {{-- Cek Kendaraan Menu Accordion --}}
                         <div class="space-y-1">
                             <button type="button" onclick="toggleCekKendaraanMenu()"
-                                class="group flex w-full items-center justify-between rounded-xl border border-transparent px-4 py-3 text-slate-600 transition-all hover:bg-blue-50/50 hover:text-blue-700">
+                                class="group flex w-full items-center justify-between rounded-xl border border-transparent px-4 py-3 bg-blue-50/50 text-blue-700 transition-all hover:bg-blue-50 hover:text-blue-800">
                                 <span class="flex items-center gap-3">
                                     <div
                                         class="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-100/50 text-blue-600 transition-colors group-hover:bg-blue-500 group-hover:text-white">
@@ -169,7 +169,7 @@
                                     </div>
                                 </span>
                                 <svg id="cekKendaraanToggleIcon" xmlns="http://www.w3.org/2000/svg"
-                                    class="h-4 w-4 text-blue-400 transition-transform duration-300 group-hover:text-blue-600"
+                                    class="h-4 w-4 text-blue-400 transition-transform duration-300 group-hover:text-blue-600 rotate-180"
                                     viewBox="0 0 20 20" fill="currentColor">
                                     <path fill-rule="evenodd"
                                         d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
@@ -177,7 +177,7 @@
                                 </svg>
                             </button>
 
-                            <div id="cekKendaraanSubmenu" class="hidden space-y-1 pl-4">
+                            <div id="cekKendaraanSubmenu" class="space-y-1 pl-4">
                                 <div class="relative ml-4 space-y-1 border-l-2 border-slate-100 pl-4 py-1">
                                     <a href="{{ route('cek-kendaraan.input') }}"
                                         class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-blue-50 hover:text-blue-700">
@@ -190,13 +190,13 @@
                                         </svg>
                                     </a>
                                     <a href="{{ route('cek-kendaraan.daftar') }}"
-                                        class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-blue-50 hover:text-blue-700">
+                                        class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm transition-colors bg-blue-50 text-blue-700 font-semibold">
                                         <span>Daftar Pemeriksaan</span>
-                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                            class="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100"
-                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M12 4v16m8-8H4" />
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-blue-600"
+                                            viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd"
+                                                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                                clip-rule="evenodd" />
                                         </svg>
                                     </a>
                                 </div>
@@ -206,7 +206,7 @@
                         {{-- HSE Menu Accordion --}}
                         <div class="space-y-1 pt-2">
                             <button type="button" onclick="toggleHSEMenu()"
-                                class="group flex w-full items-center justify-between rounded-xl border border-transparent px-4 py-3 bg-emerald-50/50 text-emerald-700 transition-all hover:bg-emerald-50 hover:text-emerald-800">
+                                class="group flex w-full items-center justify-between rounded-xl border border-transparent px-4 py-3 text-slate-600 transition-all hover:bg-emerald-50/50 hover:text-emerald-700">
                                 <span class="flex items-center gap-3">
                                     <div
                                         class="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-100/50 text-emerald-600 transition-colors group-hover:bg-emerald-500 group-hover:text-white">
@@ -225,7 +225,7 @@
                                     </div>
                                 </span>
                                 <svg id="hseToggleIcon" xmlns="http://www.w3.org/2000/svg"
-                                    class="h-4 w-4 text-emerald-400 transition-transform duration-300 group-hover:text-emerald-600 rotate-180"
+                                    class="h-4 w-4 text-emerald-400 transition-transform duration-300 group-hover:text-emerald-600"
                                     viewBox="0 0 20 20" fill="currentColor">
                                     <path fill-rule="evenodd"
                                         d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
@@ -233,7 +233,7 @@
                                 </svg>
                             </button>
 
-                            <div id="hseSubmenu" class="space-y-1 pl-4">
+                            <div id="hseSubmenu" class="hidden space-y-1 pl-4">
                                 <div class="relative ml-4 space-y-1 border-l-2 border-slate-100 pl-4 py-1">
                                     <a href="{{ route('hse.input') }}"
                                         class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-emerald-50 hover:text-emerald-700">
@@ -246,13 +246,13 @@
                                         </svg>
                                     </a>
                                     <a href="{{ route('hse.daftar') }}"
-                                        class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm transition-colors bg-emerald-50 text-emerald-700 font-semibold">
+                                        class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-emerald-50 hover:text-emerald-700">
                                         <span>Daftar Laporan</span>
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-emerald-600"
-                                            viewBox="0 0 20 20" fill="currentColor">
-                                            <path fill-rule="evenodd"
-                                                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                                clip-rule="evenodd" />
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            class="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M13 7l5 5m0 0l-5 5m5-5H6" />
                                         </svg>
                                     </a>
                                 </div>
@@ -341,29 +341,30 @@
             </section>
 
             <header class="px-8 pt-12 sm:px-12 lg:px-24">
-                <div
-                    class="mx-auto max-w-7xl rounded-3xl bg-gradient-to-r from-emerald-500 to-emerald-600 p-10 shadow-xl">
+                <div class="mx-auto max-w-7xl rounded-3xl bg-gradient-to-r from-blue-500 to-blue-600 p-10 shadow-xl">
                     <div class="space-y-4 text-center">
                         <div class="flex items-center justify-center gap-3">
                             <div class="flex h-10 w-10 items-center justify-center rounded-full bg-white/20">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" viewBox="0 0 20 20"
                                     fill="currentColor">
+                                    <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
                                     <path fill-rule="evenodd"
-                                        d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                        d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm9.707 5.707a1 1 0 00-1.414-1.414L9 12.586l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
                                         clip-rule="evenodd" />
                                 </svg>
                             </div>
                             <p class="text-xs font-bold uppercase tracking-[0.5em] text-white">
-                                Daftar HSE
+                                Daftar Pemeriksaan
                             </p>
                         </div>
                         <h1 class="text-4xl font-bold text-white sm:text-5xl leading-tight">
-                            Health Safety Environment
+                            Vehicle Inspection
                         </h1>
                         <div class="mx-auto h-1 w-20 bg-white/50"></div>
                         <p class="mx-auto text-sm leading-relaxed text-white/90 max-w-2xl">
-                            Daftar lengkap data HSE yang telah tersimpan. Semua data dapat dilihat untuk keperluan
-                            dokumentasi dan audit.
+                            Daftar lengkap data pemeriksaan kendaraan yang telah tersimpan. Semua data dapat dilihat
+                            untuk
+                            keperluan dokumentasi dan audit.
                         </p>
                     </div>
                 </div>
@@ -373,9 +374,8 @@
                 <div class="mx-auto max-w-7xl">
                     @if (session('success'))
                         <div
-                            class="mb-8 flex items-center gap-3 rounded-2xl border border-emerald-100 bg-emerald-50/50 p-4 text-emerald-700 shadow-sm backdrop-blur-md">
-                            <div
-                                class="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
+                            class="mb-8 flex items-center gap-3 rounded-2xl border border-blue-100 bg-blue-50/50 p-4 text-blue-700 shadow-sm backdrop-blur-md">
+                            <div class="flex h-8 w-8 items-center justify-center rounded-full bg-blue-100 text-blue-600">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
                                     fill="currentColor">
                                     <path fill-rule="evenodd"
@@ -398,15 +398,15 @@
                                         clip-rule="evenodd" />
                                 </svg>
                             </div>
-                            <input type="text" placeholder="Cari laporan (Nama, Lokasi, ID)..."
-                                class="w-full rounded-2xl border-0 bg-white py-4 pl-12 pr-4 text-sm font-medium text-slate-600 shadow-lg shadow-slate-200/50 ring-1 ring-slate-100 transition focus:ring-2 focus:ring-emerald-500/50 outline-none placeholder:text-slate-400">
+                            <input type="text" placeholder="Cari data (Nopol, Supir, Perusahaan)..."
+                                class="w-full rounded-2xl border-0 bg-white py-4 pl-12 pr-4 text-sm font-medium text-slate-600 shadow-lg shadow-slate-200/50 ring-1 ring-slate-100 transition focus:ring-2 focus:ring-blue-500/50 outline-none placeholder:text-slate-400">
                         </div>
 
                         <div class="flex items-center gap-4">
                             <div class="text-xs font-bold uppercase tracking-wider text-slate-400">
-                                Total: <span class="text-emerald-600 text-lg ml-1">{{ $hseList->count() }}</span>
+                                Total: <span class="text-blue-600 text-lg ml-1">{{ $cekKendaraanList->count() }}</span>
                             </div>
-                            <a href="{{ route('hse.input') }}"
+                            <a href="{{ route('cek-kendaraan.input') }}"
                                 class="inline-flex items-center justify-center gap-2 rounded-2xl bg-slate-900 px-6 py-3.5 text-sm font-bold text-white shadow-xl shadow-slate-900/20 transition-all hover:bg-slate-800 hover:scale-105 active:scale-95">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
                                     fill="currentColor">
@@ -414,26 +414,27 @@
                                         d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
                                         clip-rule="evenodd" />
                                 </svg>
-                                Buat Laporan
+                                Input Pemeriksaan
                             </a>
                         </div>
                     </div>
 
-                    @if($hseList->isEmpty())
+                    @if($cekKendaraanList->isEmpty())
                         <div
                             class="flex flex-col items-center justify-center rounded-[2rem] border-2 border-dashed border-slate-200 bg-slate-50/50 py-24 text-center">
                             <div
                                 class="mb-6 flex h-24 w-24 items-center justify-center rounded-full bg-white shadow-xl shadow-slate-200/50">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-slate-300" viewBox="0 0 20 20"
                                     fill="currentColor">
-                                    <path fill-rule="evenodd"
-                                        d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H8z"
-                                        clip-rule="evenodd" />
+                                    <path
+                                        d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
+                                    <path
+                                        d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V5a1 1 0 00-1-1H3zM14 7a1 1 0 00-1 1v6.05A2.5 2.5 0 0115.95 16H17a1 1 0 001-1v-5a1 1 0 00-.293-.707l-2-2A1 1 0 0015 7h-1z" />
                                 </svg>
                             </div>
-                            <h3 class="text-xl font-bold text-slate-800">Belum Ada Laporan</h3>
-                            <p class="mt-2 text-slate-500 max-w-sm mx-auto">Data laporan HSE Anda akan muncul di sini. Mulai
-                                dengan membuat laporan baru.</p>
+                            <h3 class="text-xl font-bold text-slate-800">Belum Ada Data Pemeriksaan</h3>
+                            <p class="mt-2 text-slate-500 max-w-sm mx-auto">Data pemeriksaan kendaraan Anda akan muncul di
+                                sini. Mulai dengan menginput pemeriksaan baru.</p>
                         </div>
                     @else
                         {{-- Table Layout --}}
@@ -441,40 +442,45 @@
                             <div class="overflow-x-auto">
                                 <table class="w-full min-w-[1200px]">
                                     <thead>
-                                        <tr class="bg-gradient-to-r from-emerald-500 to-emerald-600 text-white">
+                                        <tr class="bg-gradient-to-r from-blue-500 to-blue-600 text-white">
                                             <th class="px-3 py-3 text-left text-xs font-bold uppercase tracking-wider w-12">
                                                 No
                                             </th>
-                                            <th class="px-3 py-3 text-left text-xs font-bold uppercase tracking-wider w-28">
-                                                Tanggal</th>
                                             <th class="px-3 py-3 text-left text-xs font-bold uppercase tracking-wider w-24">
+                                                Tanggal</th>
+                                            <th class="px-3 py-3 text-left text-xs font-bold uppercase tracking-wider w-20">
                                                 Waktu
                                             </th>
                                             <th class="px-3 py-3 text-left text-xs font-bold uppercase tracking-wider w-32">
-                                                Nama
-                                                Petugas</th>
-                                            <th class="px-3 py-3 text-left text-xs font-bold uppercase tracking-wider w-36">
-                                                Lokasi</th>
+                                                No. Polisi
+                                            </th>
+                                            <th class="px-3 py-3 text-left text-xs font-bold uppercase tracking-wider w-32">
+                                                Supir
+                                            </th>
+                                            <th class="px-3 py-3 text-left text-xs font-bold uppercase tracking-wider w-32">
+                                                Perusahaan
+                                            </th>
+                                            <th class="px-3 py-3 text-left text-xs font-bold uppercase tracking-wider w-24">
+                                                Jenis
+                                            </th>
                                             <th class="px-3 py-3 text-left text-xs font-bold uppercase tracking-wider w-28">
-                                                Kondisi APD</th>
-                                            <th class="px-3 py-3 text-left text-xs font-bold uppercase tracking-wider w-40">
-                                                Temuan</th>
-                                            <th class="px-3 py-3 text-left text-xs font-bold uppercase tracking-wider w-40">
-                                                Tindak Lanjut</th>
-                                            <th class="px-3 py-3 text-left text-xs font-bold uppercase tracking-wider w-36">
-                                                Penanggung Jawab</th>
+                                                Validation
+                                            </th>
+                                            <th class="px-3 py-3 text-left text-xs font-bold uppercase tracking-wider w-28">
+                                                Petugas
+                                            </th>
                                             <th
-                                                class="px-3 py-3 text-center text-xs font-bold uppercase tracking-wider w-32">
+                                                class="px-3 py-3 text-center text-xs font-bold uppercase tracking-wider w-24">
                                                 Action</th>
                                         </tr>
                                     </thead>
                                     <tbody class="divide-y divide-slate-100">
-                                        @foreach($hseList as $index => $hse)
+                                        @foreach($cekKendaraanList as $index => $item)
                                             @php
-                                                $statusColor = match ($hse->kondisi_apd) {
-                                                    'Lengkap' => 'emerald',
-                                                    'Tidak Lengkap' => 'amber',
-                                                    'Tidak Ada' => 'rose',
+                                                $statusColor = match ($item->hasil_pemeriksaan) {
+                                                    'Lolos' => 'emerald',
+                                                    'Lolos Bersyarat' => 'amber',
+                                                    'Tidak Lolos' => 'rose',
                                                     default => 'slate'
                                                 };
                                             @endphp
@@ -483,43 +489,41 @@
                                                     {{ $index + 1 }}
                                                 </td>
                                                 <td class="px-3 py-3 text-xs text-slate-600 whitespace-nowrap">
-                                                    {{ \Carbon\Carbon::parse($hse->tanggal)->format('d-m-Y') }}
+                                                    {{ $item->tanggal->format('d-m-Y') }}
                                                 </td>
                                                 <td class="px-3 py-3 text-xs text-slate-600 whitespace-nowrap">
-                                                    {{ $hse->waktu }}
+                                                    {{ $item->waktu_masuk->format('H:i') }}
                                                 </td>
-                                                <td class="px-3 py-3 text-xs font-medium text-slate-800 whitespace-nowrap">
-                                                    {{ $hse->nama_petugas }}
+                                                <td class="px-3 py-3 text-xs font-bold text-slate-800 whitespace-nowrap">
+                                                    {{ $item->nomor_polisi }}
                                                 </td>
                                                 <td class="px-3 py-3 text-xs text-slate-600 max-w-[140px]">
-                                                    <span class="line-clamp-2">{{ $hse->lokasi }}</span>
+                                                    <span class="line-clamp-1">{{ $item->nama_driver }}</span>
+                                                </td>
+                                                <td class="px-3 py-3 text-xs text-slate-600 max-w-[140px]">
+                                                    <span class="line-clamp-1">{{ $item->perusahaan ?? '-' }}</span>
+                                                </td>
+                                                <td class="px-3 py-3 text-xs text-slate-600">
+                                                    {{ $item->jenis_kendaraan }}
                                                 </td>
                                                 <td class="px-3 py-3 whitespace-nowrap">
                                                     <span
                                                         class="inline-flex items-center rounded-lg bg-{{ $statusColor }}-100 px-2 py-0.5 text-xs font-semibold text-{{ $statusColor }}-700">
-                                                        {{ $hse->kondisi_apd }}
+                                                        {{ $item->hasil_pemeriksaan }}
                                                     </span>
                                                 </td>
-                                                <td class="px-3 py-3 text-xs text-slate-600 max-w-[150px]">
-                                                    <span class="line-clamp-2">{{ $hse->temuan ?? '-' }}</span>
-                                                </td>
-                                                <td class="px-3 py-3 text-xs text-slate-600 max-w-[150px]">
-                                                    <span class="line-clamp-2">{{ $hse->tindak_lanjut ?? '-' }}</span>
-                                                </td>
-                                                <td class="px-3 py-3 text-xs text-slate-600 max-w-[140px]">
-                                                    <span class="line-clamp-2">{{ $hse->penanggung_jawab ?? '-' }}</span>
+                                                <td class="px-3 py-3 text-xs text-slate-600">
+                                                    {{ $item->nama_petugas }}
                                                 </td>
                                                 <td class="px-3 py-3 text-center whitespace-nowrap">
-                                                    <a href="{{ route('hse.show', $hse->id) }}" target="_blank"
-                                                        onclick="setTimeout(function(){ window.open('{{ route('hse.show', $hse->id) }}').print(); }, 500);"
-                                                        class="inline-flex items-center gap-1 rounded-lg bg-emerald-600 px-2.5 py-1.5 text-xs font-bold text-white shadow-sm transition-all hover:bg-emerald-700 hover:shadow-md active:scale-95">
+                                                    <a href="{{ route('cek-kendaraan.edit', $item->id) }}"
+                                                        class="inline-flex items-center gap-1 rounded-lg bg-blue-600 px-2.5 py-1.5 text-xs font-bold text-white shadow-sm transition-all hover:bg-blue-700 hover:shadow-md active:scale-95">
                                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5"
                                                             viewBox="0 0 20 20" fill="currentColor">
-                                                            <path fill-rule="evenodd"
-                                                                d="M5 4v3H4a2 2 0 00-2 2v3a2 2 0 002 2h1v2a2 2 0 002 2h6a2 2 0 002-2v-2h1a2 2 0 002-2V9a2 2 0 00-2-2h-1V4a2 2 0 00-2-2H7a2 2 0 00-2 2zm8 0H7v3h6V4zm0 8H7v4h6v-4z"
-                                                                clip-rule="evenodd" />
+                                                            <path
+                                                                d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
                                                         </svg>
-                                                        Cetak PDF
+                                                        Edit
                                                     </a>
                                                 </td>
                                             </tr>
@@ -568,8 +572,8 @@
         const sidebar = document.getElementById('sidebar');
         const sidebarToggle = document.getElementById('sidebarToggle');
         const sidebarOverlay = document.getElementById('sidebarOverlay');
-        const hseToggleIcon = document.getElementById('hseToggleIcon');
-        const hseSubmenu = document.getElementById('hseSubmenu');
+        const cekKendaraanToggleIcon = document.getElementById('cekKendaraanToggleIcon');
+        const cekKendaraanSubmenu = document.getElementById('cekKendaraanSubmenu');
         const logoutModal = document.getElementById('logoutModal');
         const logoutModalContent = logoutModal.querySelector('div.transform');
 
@@ -585,13 +589,16 @@
         }
 
         function toggleHSEMenu() {
-            const isHidden = hseSubmenu.classList.contains('hidden');
-            if (isHidden) {
-                hseSubmenu.classList.remove('hidden');
-                hseToggleIcon.classList.add('rotate-180');
-            } else {
-                hseSubmenu.classList.add('hidden');
-                hseToggleIcon.classList.remove('rotate-180');
+            const submenu = document.getElementById('hseSubmenu');
+            const icon = document.getElementById('hseToggleIcon');
+            if (submenu && icon) {
+                if (submenu.classList.contains('hidden')) {
+                    submenu.classList.remove('hidden');
+                    icon.classList.add('rotate-180');
+                } else {
+                    submenu.classList.add('hidden');
+                    icon.classList.remove('rotate-180');
+                }
             }
         }
 
@@ -610,16 +617,13 @@
         }
 
         function toggleCekKendaraanMenu() {
-            const submenu = document.getElementById('cekKendaraanSubmenu');
-            const icon = document.getElementById('cekKendaraanToggleIcon');
-            if (submenu && icon) {
-                if (submenu.classList.contains('hidden')) {
-                    submenu.classList.remove('hidden');
-                    icon.classList.add('rotate-180');
-                } else {
-                    submenu.classList.add('hidden');
-                    icon.classList.remove('rotate-180');
-                }
+            const isHidden = cekKendaraanSubmenu.classList.contains('hidden');
+            if (isHidden) {
+                cekKendaraanSubmenu.classList.remove('hidden');
+                cekKendaraanToggleIcon.classList.add('rotate-180');
+            } else {
+                cekKendaraanSubmenu.classList.add('hidden');
+                cekKendaraanToggleIcon.classList.remove('rotate-180');
             }
         }
 
@@ -638,8 +642,8 @@
         sidebarToggle.addEventListener('click', toggleSidebar);
         sidebarOverlay.addEventListener('click', toggleSidebar);
 
-        // Auto-expand HSE menu if active
-        // hseSubmenu.classList.remove('hidden'); 
+        // Auto-expand Cek Kendaraan menu if active
+        // cekKendaraanSubmenu.classList.remove('hidden');
     </script>
 </body>
 

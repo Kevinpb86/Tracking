@@ -53,6 +53,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/hse/daftar', [HseController::class, 'index'])->name('hse.daftar');
     Route::get('/hse/{id}', [HseController::class, 'show'])->name('hse.show');
 
+    Route::get('/cek-kendaraan/input', function () {
+        return view('navigasi.input-cek-kendaraan');
+    })->name('cek-kendaraan.input');
+
     Route::get('/dashboard', function () {
         $queues = session('queues', []);
         return view('dashboard', compact('queues'));

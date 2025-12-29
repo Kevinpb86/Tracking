@@ -84,49 +84,116 @@
                             <div class="h-1.5 w-1.5 rounded-full bg-white/90"></div>
                         </a>
 
-                        {{-- Antrian Link --}}
-                        <a href="#"
-                            class="group flex items-center justify-between rounded-xl border border-transparent px-4 py-3 text-slate-600 transition-all hover:bg-slate-50 hover:text-blue-600">
-                            <span class="flex items-center gap-3">
-                                <svg xmlns="http://www.w3.org/2000/svg"
-                                    class="h-5 w-5 text-slate-400 transition-colors group-hover:text-blue-500"
+                        {{-- Antrian Menu Accordion --}}
+                        <div class="space-y-1">
+                            <button type="button" onclick="toggleAntrianMenu()"
+                                class="group flex w-full items-center justify-between rounded-xl border border-transparent px-4 py-3 text-slate-600 transition-all hover:bg-blue-50/50 hover:text-blue-700">
+                                <span class="flex items-center gap-3">
+                                    <div
+                                        class="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-100/50 text-blue-600 transition-colors group-hover:bg-blue-500 group-hover:text-white">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
+                                            fill="currentColor">
+                                            <path
+                                                d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" />
+                                        </svg>
+                                    </div>
+                                    <div class="text-left font-medium text-sm">
+                                        <p class="text-xs font-bold uppercase tracking-wider text-blue-500/80">Antrian
+                                        </p>
+                                        <p>Queue Management</p>
+                                    </div>
+                                </span>
+                                <svg id="antrianToggleIcon" xmlns="http://www.w3.org/2000/svg"
+                                    class="h-4 w-4 text-blue-400 transition-transform duration-300 group-hover:text-blue-600"
                                     viewBox="0 0 20 20" fill="currentColor">
-                                    <path
-                                        d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" />
-                                </svg>
-                                <span class="font-medium text-sm">Daftar Antrian</span>
-                            </span>
-                            <svg xmlns="http://www.w3.org/2000/svg"
-                                class="h-4 w-4 text-slate-300 transition-transform group-hover:translate-x-1"
-                                viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd"
-                                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                        </a>
-
-                        {{-- Cek Kendaraan Link --}}
-                        <a href="#"
-                            class="group flex items-center justify-between rounded-xl border border-transparent px-4 py-3 text-slate-600 transition-all hover:bg-slate-50 hover:text-blue-600">
-                            <span class="flex items-center gap-3">
-                                <svg xmlns="http://www.w3.org/2000/svg"
-                                    class="h-5 w-5 text-slate-400 transition-colors group-hover:text-blue-500"
-                                    viewBox="0 0 20 20" fill="currentColor">
-                                    <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
                                     <path fill-rule="evenodd"
-                                        d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
                                         clip-rule="evenodd" />
                                 </svg>
-                                <span class="font-medium text-sm">Cek Kendaraan</span>
-                            </span>
-                            <svg xmlns="http://www.w3.org/2000/svg"
-                                class="h-4 w-4 text-slate-300 transition-transform group-hover:translate-x-1"
-                                viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd"
-                                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                        </a>
+                            </button>
+
+                            <div id="antrianSubmenu" class="hidden space-y-1 pl-4">
+                                <div class="relative ml-4 space-y-1 border-l-2 border-slate-100 pl-4 py-1">
+                                    <a href="#"
+                                        class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-blue-50 hover:text-blue-700">
+                                        <span>Input Antrian</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            class="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M12 4v16m8-8H4" />
+                                        </svg>
+                                    </a>
+                                    <a href="#"
+                                        class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-blue-50 hover:text-blue-700">
+                                        <span>Daftar Antrian</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            class="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- Cek Kendaraan Menu Accordion --}}
+                        <div class="space-y-1">
+                            <button type="button" onclick="toggleCekKendaraanMenu()"
+                                class="group flex w-full items-center justify-between rounded-xl border border-transparent px-4 py-3 text-slate-600 transition-all hover:bg-blue-50/50 hover:text-blue-700">
+                                <span class="flex items-center gap-3">
+                                    <div
+                                        class="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-100/50 text-blue-600 transition-colors group-hover:bg-blue-500 group-hover:text-white">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
+                                            fill="currentColor">
+                                            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                                            <path fill-rule="evenodd"
+                                                d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                    <div class="text-left font-medium text-sm">
+                                        <p class="text-xs font-bold uppercase tracking-wider text-blue-500/80">Cek
+                                            Kendaraan
+                                        </p>
+                                        <p>Vehicle Inspection</p>
+                                    </div>
+                                </span>
+                                <svg id="cekKendaraanToggleIcon" xmlns="http://www.w3.org/2000/svg"
+                                    class="h-4 w-4 text-blue-400 transition-transform duration-300 group-hover:text-blue-600"
+                                    viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </button>
+
+                            <div id="cekKendaraanSubmenu" class="hidden space-y-1 pl-4">
+                                <div class="relative ml-4 space-y-1 border-l-2 border-slate-100 pl-4 py-1">
+                                    <a href="{{ route('cek-kendaraan.input') }}"
+                                        class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-blue-50 hover:text-blue-700">
+                                        <span>Input Pemeriksaan</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            class="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M12 4v16m8-8H4" />
+                                        </svg>
+                                    </a>
+                                    <a href="#"
+                                        class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-blue-50 hover:text-blue-700">
+                                        <span>Daftar Pemeriksaan</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            class="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
 
                         {{-- HSE Menu Accordion --}}
                         <div class="space-y-1 pt-2">
@@ -478,7 +545,7 @@
                                         </svg>
                                     </div>
                                     <div>
-                                        <h3 class="font-bold text-slate-900">Daftar Antrian</h3>
+                                        <h3 class="font-bold text-slate-900">Antrian</h3>
                                         <p class="text-xs text-slate-500">Segera Hadir</p>
                                     </div>
                                 </button>
@@ -694,6 +761,36 @@
         function toggleHSEMenu() {
             const submenu = document.getElementById('hseSubmenu');
             const icon = document.getElementById('hseToggleIcon');
+            if (submenu && icon) {
+                if (submenu.classList.contains('hidden')) {
+                    submenu.classList.remove('hidden');
+                    icon.classList.add('rotate-180');
+                } else {
+                    submenu.classList.add('hidden');
+                    icon.classList.remove('rotate-180');
+                }
+            }
+        }
+
+        // Toggle Antrian menu (global function)
+        function toggleAntrianMenu() {
+            const submenu = document.getElementById('antrianSubmenu');
+            const icon = document.getElementById('antrianToggleIcon');
+            if (submenu && icon) {
+                if (submenu.classList.contains('hidden')) {
+                    submenu.classList.remove('hidden');
+                    icon.classList.add('rotate-180');
+                } else {
+                    submenu.classList.add('hidden');
+                    icon.classList.remove('rotate-180');
+                }
+            }
+        }
+
+        // Toggle Cek Kendaraan menu (global function)
+        function toggleCekKendaraanMenu() {
+            const submenu = document.getElementById('cekKendaraanSubmenu');
+            const icon = document.getElementById('cekKendaraanToggleIcon');
             if (submenu && icon) {
                 if (submenu.classList.contains('hidden')) {
                     submenu.classList.remove('hidden');

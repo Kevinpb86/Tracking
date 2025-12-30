@@ -30,9 +30,11 @@ class CekKendaraanController extends Controller
             'jenis_kendaraan' => 'required|string',
             'nama_driver' => 'required|string|max:255',
             'perusahaan' => 'nullable|string|max:255',
-            'tujuan' => 'required|string|max:255',
+
             'kondisi_ban' => 'required|string',
             'kondisi_lampu' => 'required|string',
+            'kondisi_rem' => 'required|string',
+            'kondisi_lampu_sen' => 'required|string',
             'hasil_pemeriksaan' => 'required|string',
             'nama_petugas' => 'required|string|max:255',
         ]);
@@ -44,7 +46,7 @@ class CekKendaraanController extends Controller
         $data['sim_valid'] = $request->has('sim_valid');
         $data['kir_valid'] = $request->has('kir_valid');
         $data['kaca_spion_lengkap'] = $request->has('kaca_spion_lengkap');
-        $data['ada_kebocoran'] = $request->has('ada_kebocoran');
+
 
         $cekKendaraan->update($data);
 

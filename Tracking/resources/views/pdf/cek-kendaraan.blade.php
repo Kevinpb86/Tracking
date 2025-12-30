@@ -150,10 +150,7 @@
                 <th>Perusahaan / Vendor</th>
                 <td>{{ $cekKendaraan->perusahaan ?? '-' }}</td>
             </tr>
-            <tr>
-                <th>Tujuan Kunjungan</th>
-                <td>{{ $cekKendaraan->tujuan }}</td>
-            </tr>
+
         </table>
     </div>
 
@@ -179,13 +176,13 @@
                 <td>
                     <div class="checkbox-item">Ban: <strong>{{ $cekKendaraan->kondisi_ban }}</strong></div>
                     <div class="checkbox-item">Lampu: <strong>{{ $cekKendaraan->kondisi_lampu }}</strong></div>
+                    <div class="checkbox-item">Rem: <strong>{{ $cekKendaraan->kondisi_rem }}</strong></div>
+                    <div class="checkbox-item">Sein: <strong>{{ $cekKendaraan->kondisi_lampu_sen }}</strong></div>
                     <br>
                     <div class="checkbox-item"><span
                             class="checkbox-symbol">{{ $cekKendaraan->kaca_spion_lengkap ? '☑' : '☐' }}</span> Spion
                         Lengkap</div>
-                    <div class="checkbox-item"><span
-                            class="checkbox-symbol">{{ $cekKendaraan->ada_kebocoran ? '⚠' : '✓' }}</span>
-                        {{ $cekKendaraan->ada_kebocoran ? 'Ada Kebocoran' : 'Tidak Ada Kebocoran' }}</div>
+
                 </td>
             </tr>
             <tr>

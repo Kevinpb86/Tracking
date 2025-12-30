@@ -393,10 +393,7 @@
                                                 <label for="perusahaan" class="form-label block text-sm font-semibold text-slate-700 mb-2">Perusahaan / Vendor</label>
                                                 <input type="text" id="perusahaan" name="perusahaan" class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3" value="{{ old('perusahaan', $cekKendaraan->perusahaan) }}">
                                             </div>
-                                            <div class="form-group md:col-span-2">
-                                                <label for="tujuan" class="form-label block text-sm font-semibold text-slate-700 mb-2">Tujuan Kunjungan <span class="text-red-500">*</span></label>
-                                                <input type="text" id="tujuan" name="tujuan" required class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3" value="{{ old('tujuan', $cekKendaraan->tujuan) }}">
-                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -427,7 +424,7 @@
                                     </div>
                                     <div class="p-6 sm:p-8">
                                         <div class="space-y-6">
-                                            @foreach(['kondisi_ban' => 'Kondisi Ban', 'kondisi_lampu' => 'Kondisi Lampu'] as $field => $label)
+                                            @foreach(['kondisi_ban' => 'Kondisi Ban', 'kondisi_lampu' => 'Kondisi Lampu', 'kondisi_rem' => 'Kondisi Rem', 'kondisi_lampu_sen' => 'Kondisi Lampu Sen'] as $field => $label)
                                             <div class="form-group">
                                                 <label class="form-label block text-sm font-semibold text-slate-700 mb-3">{{ $label }} <span class="text-red-500">*</span></label>
                                                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -450,14 +447,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="form-group">
-                                                <div class="radio-option rounded-lg border-2 border-slate-200 p-4 cursor-pointer hover:border-blue-400">
-                                                    <label class="flex items-center cursor-pointer">
-                                                        <input type="checkbox" name="ada_kebocoran" value="1" class="w-5 h-5 text-red-600 bg-slate-50 border-slate-300 rounded focus:ring-red-500" {{ old('ada_kebocoran', $cekKendaraan->ada_kebocoran) ? 'checked' : '' }}>
-                                                        <span class="ml-3 text-sm font-semibold text-slate-700">Ada Kebocoran (Oli / Bensin / Air)</span>
-                                                    </label>
-                                                </div>
-                                            </div>
+
                                         </div>
                                     </div>
                                 </div>

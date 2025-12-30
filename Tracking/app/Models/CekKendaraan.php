@@ -26,15 +26,16 @@ class CekKendaraan extends Model
         'jenis_kendaraan',
         'nama_driver',
         'perusahaan',
-        'tujuan',
+
         'surat_jalan',
         'stnk_valid',
         'sim_valid',
         'kir_valid',
         'kondisi_ban',
         'kondisi_lampu',
+        'kondisi_rem',
+        'kondisi_lampu_sen',
         'kaca_spion_lengkap',
-        'ada_kebocoran',
         'hasil_pemeriksaan',
         'catatan',
         'nama_petugas',
@@ -52,7 +53,6 @@ class CekKendaraan extends Model
         'sim_valid' => 'boolean',
         'kir_valid' => 'boolean',
         'kaca_spion_lengkap' => 'boolean',
-        'ada_kebocoran' => 'boolean',
     ];
 
     /**

@@ -33,7 +33,7 @@ return new class extends Migration {
             ]);
             $table->string('nama_driver', 100);
             $table->string('perusahaan', 100)->nullable();
-            $table->string('tujuan', 100);
+
 
             // Pemeriksaan Dokumen (Checklist)
             $table->boolean('surat_jalan')->default(false);
@@ -43,7 +43,10 @@ return new class extends Migration {
 
             // Pemeriksaan Kondisi Kendaraan
             $table->enum('kondisi_ban', ['Baik', 'Kurang Baik', 'Tidak Layak']);
+
             $table->enum('kondisi_lampu', ['Baik', 'Kurang Baik', 'Tidak Layak']);
+            $table->enum('kondisi_rem', ['Baik', 'Kurang Baik', 'Tidak Layak']);
+            $table->enum('kondisi_lampu_sen', ['Baik', 'Kurang Baik', 'Tidak Layak']);
             $table->boolean('kaca_spion_lengkap');
 
             // Status Hasil Pemeriksaan

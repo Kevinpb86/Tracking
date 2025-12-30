@@ -599,16 +599,7 @@
                                                     class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3 text-slate-700 focus:border-blue-500 focus:outline-none">
                                             </div>
 
-                                            <!-- Tujuan -->
-                                            <div class="form-group md:col-span-2">
-                                                <label for="tujuan"
-                                                    class="form-label block text-sm font-semibold text-slate-700 mb-2">
-                                                    Tujuan Kunjungan <span class="text-red-500">*</span>
-                                                </label>
-                                                <input type="text" id="tujuan" name="tujuan" required
-                                                    placeholder="Contoh: Kirim Barang, Ambil Barang, Kunjungan"
-                                                    class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3 text-slate-700 focus:border-blue-500 focus:outline-none">
-                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -772,6 +763,74 @@
                                                 </div>
                                             </div>
 
+                                            <!-- Kondisi Rem -->
+                                            <div class="form-group">
+                                                <label
+                                                    class="form-label block text-sm font-semibold text-slate-700 mb-3">
+                                                    Kondisi Rem <span class="text-red-500">*</span>
+                                                </label>
+                                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                                                    <label
+                                                        class="radio-option flex items-center justify-center rounded-lg border-2 border-slate-200 p-4 cursor-pointer hover:border-blue-400">
+                                                        <input type="radio" name="kondisi_rem" value="Baik" required
+                                                            checked
+                                                            class="w-5 h-5 text-blue-600 bg-slate-50 border-slate-300 focus:ring-blue-500">
+                                                        <span
+                                                            class="ml-3 text-sm font-semibold text-slate-700">Baik</span>
+                                                    </label>
+                                                    <label
+                                                        class="radio-option flex items-center justify-center rounded-lg border-2 border-slate-200 p-4 cursor-pointer hover:border-blue-400">
+                                                        <input type="radio" name="kondisi_rem" value="Kurang Baik"
+                                                            required
+                                                            class="w-5 h-5 text-blue-600 bg-slate-50 border-slate-300 focus:ring-blue-500">
+                                                        <span class="ml-3 text-sm font-semibold text-slate-700">Kurang
+                                                            Baik</span>
+                                                    </label>
+                                                    <label
+                                                        class="radio-option flex items-center justify-center rounded-lg border-2 border-slate-200 p-4 cursor-pointer hover:border-blue-400">
+                                                        <input type="radio" name="kondisi_rem" value="Tidak Layak"
+                                                            required
+                                                            class="w-5 h-5 text-blue-600 bg-slate-50 border-slate-300 focus:ring-blue-500">
+                                                        <span class="ml-3 text-sm font-semibold text-slate-700">Tidak
+                                                            Layak</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+
+                                            <!-- Kondisi Lampu Sen -->
+                                            <div class="form-group">
+                                                <label
+                                                    class="form-label block text-sm font-semibold text-slate-700 mb-3">
+                                                    Kondisi Lampu Sen <span class="text-red-500">*</span>
+                                                </label>
+                                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                                                    <label
+                                                        class="radio-option flex items-center justify-center rounded-lg border-2 border-slate-200 p-4 cursor-pointer hover:border-blue-400">
+                                                        <input type="radio" name="kondisi_lampu_sen" value="Baik"
+                                                            required checked
+                                                            class="w-5 h-5 text-blue-600 bg-slate-50 border-slate-300 focus:ring-blue-500">
+                                                        <span
+                                                            class="ml-3 text-sm font-semibold text-slate-700">Baik</span>
+                                                    </label>
+                                                    <label
+                                                        class="radio-option flex items-center justify-center rounded-lg border-2 border-slate-200 p-4 cursor-pointer hover:border-blue-400">
+                                                        <input type="radio" name="kondisi_lampu_sen" value="Kurang Baik"
+                                                            required
+                                                            class="w-5 h-5 text-blue-600 bg-slate-50 border-slate-300 focus:ring-blue-500">
+                                                        <span class="ml-3 text-sm font-semibold text-slate-700">Kurang
+                                                            Baik</span>
+                                                    </label>
+                                                    <label
+                                                        class="radio-option flex items-center justify-center rounded-lg border-2 border-slate-200 p-4 cursor-pointer hover:border-blue-400">
+                                                        <input type="radio" name="kondisi_lampu_sen" value="Tidak Layak"
+                                                            required
+                                                            class="w-5 h-5 text-blue-600 bg-slate-50 border-slate-300 focus:ring-blue-500">
+                                                        <span class="ml-3 text-sm font-semibold text-slate-700">Tidak
+                                                            Layak</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+
                                             <!-- Kaca & Spion -->
                                             <div class="form-group">
                                                 <div
@@ -787,19 +846,7 @@
                                                 </div>
                                             </div>
 
-                                            <!-- Ada Kebocoran -->
-                                            <div class="form-group">
-                                                <div
-                                                    class="radio-option rounded-lg border-2 border-slate-200 p-4 cursor-pointer hover:border-blue-400">
-                                                    <label class="flex items-center cursor-pointer">
-                                                        <input type="checkbox" name="ada_kebocoran" value="1"
-                                                            class="w-5 h-5 text-red-600 bg-slate-50 border-slate-300 rounded focus:ring-red-500">
-                                                        <span class="ml-3 text-sm font-semibold text-slate-700">
-                                                            Ada Kebocoran (Oli / Bensin / Air)
-                                                        </span>
-                                                    </label>
-                                                </div>
-                                            </div>
+
                                         </div>
                                     </div>
                                 </div>

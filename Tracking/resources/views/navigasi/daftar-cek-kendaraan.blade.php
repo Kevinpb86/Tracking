@@ -442,89 +442,148 @@
                             <div class="overflow-x-auto">
                                 <table class="w-full min-w-[1200px]">
                                     <thead>
-                                        <tr class="bg-gradient-to-r from-blue-500 to-blue-600 text-white">
-                                            <th class="px-3 py-3 text-left text-xs font-bold uppercase tracking-wider w-12">
+                                        <tr class="bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-sm">
+                                            <th
+                                                class="px-4 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider w-16">
                                                 No
                                             </th>
-                                            <th class="px-3 py-3 text-left text-xs font-bold uppercase tracking-wider w-24">
-                                                Tanggal</th>
-                                            <th class="px-3 py-3 text-left text-xs font-bold uppercase tracking-wider w-20">
-                                                Waktu
+                                            <th
+                                                class="px-4 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider w-24">
+                                                Tanggal
                                             </th>
-                                            <th class="px-3 py-3 text-left text-xs font-bold uppercase tracking-wider w-32">
+                                            <th
+                                                class="px-4 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider w-24">
+                                                Jam
+                                            </th>
+                                            <th
+                                                class="px-4 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider w-28">
                                                 No. Polisi
                                             </th>
-                                            <th class="px-3 py-3 text-left text-xs font-bold uppercase tracking-wider w-32">
+                                            <th
+                                                class="px-4 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider w-36">
                                                 Supir
                                             </th>
-                                            <th class="px-3 py-3 text-left text-xs font-bold uppercase tracking-wider w-32">
+                                            <th
+                                                class="px-4 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider w-32">
                                                 Perusahaan
                                             </th>
-                                            <th class="px-3 py-3 text-left text-xs font-bold uppercase tracking-wider w-24">
+                                            <th
+                                                class="px-4 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider w-28">
                                                 Jenis
                                             </th>
-                                            <th class="px-3 py-3 text-left text-xs font-bold uppercase tracking-wider w-28">
-                                                Validation
+                                            <th
+                                                class="px-4 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider w-32">
+                                                Hasil
                                             </th>
-                                            <th class="px-3 py-3 text-left text-xs font-bold uppercase tracking-wider w-28">
+                                            <th
+                                                class="px-4 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider w-32">
                                                 Petugas
                                             </th>
                                             <th
-                                                class="px-3 py-3 text-center text-xs font-bold uppercase tracking-wider w-24">
-                                                Action</th>
+                                                class="px-4 py-2.5 text-center text-[11px] font-bold uppercase tracking-wider w-20">
+                                                Action
+                                            </th>
                                         </tr>
                                     </thead>
                                     <tbody class="divide-y divide-slate-100">
                                         @foreach($cekKendaraanList as $index => $item)
                                             @php
-                                                $statusColor = match ($item->hasil_pemeriksaan) {
+                                                $hasilColor = match ($item->hasil_pemeriksaan) {
                                                     'Lolos' => 'emerald',
                                                     'Lolos Bersyarat' => 'amber',
                                                     'Tidak Lolos' => 'rose',
                                                     default => 'slate'
                                                 };
                                             @endphp
-                                            <tr class="bg-white hover:bg-slate-50 transition-colors duration-150">
-                                                <td class="px-3 py-3 text-sm font-semibold text-slate-700">
-                                                    {{ $index + 1 }}
-                                                </td>
-                                                <td class="px-3 py-3 text-xs text-slate-600 whitespace-nowrap">
-                                                    {{ $item->tanggal->format('d-m-Y') }}
-                                                </td>
-                                                <td class="px-3 py-3 text-xs text-slate-600 whitespace-nowrap">
-                                                    {{ $item->waktu_masuk->format('H:i') }}
-                                                </td>
-                                                <td class="px-3 py-3 text-xs font-bold text-slate-800 whitespace-nowrap">
-                                                    {{ $item->nomor_polisi }}
-                                                </td>
-                                                <td class="px-3 py-3 text-xs text-slate-600 max-w-[140px]">
-                                                    <span class="line-clamp-1">{{ $item->nama_driver }}</span>
-                                                </td>
-                                                <td class="px-3 py-3 text-xs text-slate-600 max-w-[140px]">
-                                                    <span class="line-clamp-1">{{ $item->perusahaan ?? '-' }}</span>
-                                                </td>
-                                                <td class="px-3 py-3 text-xs text-slate-600">
-                                                    {{ $item->jenis_kendaraan }}
-                                                </td>
-                                                <td class="px-3 py-3 whitespace-nowrap">
+                                            <tr class="bg-white hover:bg-slate-50/80 transition-colors duration-150 group">
+                                                <td class="px-4 py-2.5">
                                                     <span
-                                                        class="inline-flex items-center rounded-lg bg-{{ $statusColor }}-100 px-2 py-0.5 text-xs font-semibold text-{{ $statusColor }}-700">
-                                                        {{ $item->hasil_pemeriksaan }}
+                                                        class="inline-block font-bold text-slate-700 bg-slate-100 px-2 py-0.5 rounded text-xs border border-slate-200 group-hover:bg-white group-hover:border-blue-200 group-hover:text-blue-700 transition-colors">
+                                                        {{ $index + 1 }}
                                                     </span>
                                                 </td>
-                                                <td class="px-3 py-3 text-xs text-slate-600">
+                                                <td class="px-4 py-2.5 text-xs font-medium text-slate-500 whitespace-nowrap">
+                                                    {{ $item->tanggal->format('d-m-Y') }}
+                                                </td>
+                                                <td class="px-4 py-2.5 text-xs font-medium text-slate-500 whitespace-nowrap">
+                                                    {{ $item->waktu_masuk->format('H:i') }}
+                                                </td>
+                                                <td class="px-4 py-2.5">
+                                                    <span
+                                                        class="text-xs font-bold text-slate-700 font-mono bg-slate-50 px-1.5 py-0.5 rounded border border-slate-200">
+                                                        {{ $item->nomor_polisi }}
+                                                    </span>
+                                                </td>
+                                                <td class="px-4 py-2.5 text-xs font-medium text-slate-600 max-w-[150px]">
+                                                    <div class="flex items-center gap-2">
+                                                        <div
+                                                            class="h-5 w-5 rounded-full bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-500">
+                                                            {{ substr($item->nama_driver, 0, 1) }}
+                                                        </div>
+                                                        <span class="truncate">{{ $item->nama_driver }}</span>
+                                                    </div>
+                                                </td>
+                                                <td class="px-4 py-2.5 text-xs text-slate-600">
+                                                    {{ $item->perusahaan ?? '-' }}
+                                                </td>
+                                                <td class="px-4 py-2.5 text-xs text-slate-600">
+                                                    {{ $item->jenis_kendaraan }}
+                                                </td>
+                                                <td class="px-4 py-2.5 whitespace-nowrap">
+                                                    <span
+                                                        class="inline-flex items-center justify-center min-w-[80px] rounded-full bg-{{ $hasilColor }}-50 px-2.5 py-1 text-[11px] font-bold tracking-wide text-{{ $hasilColor }}-700 border border-{{ $hasilColor }}-200">
+                                                        {{ strtoupper($item->hasil_pemeriksaan) }}
+                                                    </span>
+                                                </td>
+                                                <td class="px-4 py-2.5 text-xs text-slate-600">
                                                     {{ $item->nama_petugas }}
                                                 </td>
-                                                <td class="px-3 py-3 text-center whitespace-nowrap">
-                                                    <a href="{{ route('cek-kendaraan.edit', $item->id) }}"
-                                                        class="inline-flex items-center gap-1 rounded-lg bg-blue-600 px-2.5 py-1.5 text-xs font-bold text-white shadow-sm transition-all hover:bg-blue-700 hover:shadow-md active:scale-95">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5"
-                                                            viewBox="0 0 20 20" fill="currentColor">
-                                                            <path
-                                                                d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
-                                                        </svg>
-                                                        Edit
-                                                    </a>
+                                                <td class="px-4 py-2.5 text-center whitespace-nowrap">
+                                                    <div class="relative" x-data="{ open: false }">
+                                                        <button @click="open = !open"
+                                                            class="text-slate-400 hover:text-blue-600 transition-colors p-1 rounded-full hover:bg-slate-100 focus:outline-none border border-transparent focus:border-blue-200 cursor-pointer">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                                                                viewBox="0 0 24 24" stroke="currentColor">
+                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                    stroke-width="2"
+                                                                    d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+                                                            </svg>
+                                                        </button>
+
+                                                        <!-- Dropdown Menu -->
+                                                        <div x-show="open" @click.away="open = false"
+                                                            x-transition:enter="transition ease-out duration-100"
+                                                            x-transition:enter-start="transform opacity-0 scale-95"
+                                                            x-transition:enter-end="transform opacity-100 scale-100"
+                                                            x-transition:leave="transition ease-in duration-75"
+                                                            x-transition:leave-start="transform opacity-100 scale-100"
+                                                            x-transition:leave-end="transform opacity-0 scale-95"
+                                                            class="absolute right-0 top-8 z-10 w-36 origin-top-right rounded-xl border border-slate-100 bg-white shadow-xl focus:outline-none overflow-hidden">
+                                                            <div class="py-1">
+                                                                <a href="{{ route('cek-kendaraan.edit', $item->id) }}"
+                                                                    class="flex items-center gap-2 px-4 py-2 text-xs font-semibold text-slate-600 hover:bg-blue-50 hover:text-blue-600 transition-colors cursor-pointer">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4"
+                                                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                                            stroke-width="2"
+                                                                            d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                                                    </svg>
+                                                                    Edit
+                                                                </a>
+                                                                <a href="{{ route('cek-kendaraan.export-pdf', $item->id) }}"
+                                                                    target="_blank"
+                                                                    class="flex items-center gap-2 px-4 py-2 text-xs font-semibold text-slate-600 hover:bg-blue-50 hover:text-blue-600 transition-colors border-t border-slate-100 cursor-pointer">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4"
+                                                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                                            stroke-width="2"
+                                                                            d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                                                    </svg>
+                                                                    Export PDF
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -645,6 +704,7 @@
         // Auto-expand Cek Kendaraan menu if active
         // cekKendaraanSubmenu.classList.remove('hidden');
     </script>
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 </body>
 
 </html>

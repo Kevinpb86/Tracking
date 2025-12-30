@@ -538,7 +538,7 @@
                                             Tanggal <span class="text-red-500">*</span>
                                         </label>
                                         <input type="date" id="tanggal" name="tanggal" value="{{ date('Y-m-d') }}" required
-                                            class="form-input w-full rounded-xl border-slate-300 bg-slate-50 px-4 py-3 text-slate-900 focus:border-emerald-500 focus:ring-emerald-500/20">
+                                            class="form-input w-full rounded-xl border-2 border-slate-400 bg-slate-50 px-4 py-3 text-slate-900 focus:border-emerald-500 focus:ring-emerald-500/20">
                                     </div>
 
                                     <!-- Waktu -->
@@ -547,7 +547,7 @@
                                             Waktu <span class="text-red-500">*</span>
                                         </label>
                                         <input type="time" id="waktu" name="waktu" value="{{ date('H:i') }}" required
-                                            class="form-input w-full rounded-xl border-slate-300 bg-slate-50 px-4 py-3 text-slate-900 focus:border-emerald-500 focus:ring-emerald-500/20">
+                                            class="form-input w-full rounded-xl border-2 border-slate-400 bg-slate-50 px-4 py-3 text-slate-900 focus:border-emerald-500 focus:ring-emerald-500/20">
                                     </div>
 
                                     <!-- Nama Petugas -->
@@ -557,7 +557,7 @@
                                         </label>
                                         <input type="text" id="nama_petugas" name="nama_petugas"
                                             value="{{ Auth::user()->name ?? '' }}" required
-                                            class="form-input w-full rounded-xl border-slate-300 bg-slate-50 px-4 py-3 text-slate-900 focus:border-emerald-500 focus:ring-emerald-500/20">
+                                            class="form-input w-full rounded-xl border-2 border-slate-400 bg-slate-50 px-4 py-3 text-slate-900 focus:border-emerald-500 focus:ring-emerald-500/20">
                                     </div>
 
                                     <!-- Divider -->
@@ -569,7 +569,7 @@
                                             Nomor Polisi
                                         </label>
                                         <input type="text" id="nomor_polisi" name="nomor_polisi"
-                                            class="form-input w-full rounded-xl border-slate-300 bg-slate-50 px-4 py-3 text-slate-900 focus:border-emerald-500 focus:ring-emerald-500/20"
+                                            class="form-input w-full rounded-xl border-2 border-slate-400 bg-slate-50 px-4 py-3 text-slate-900 focus:border-emerald-500 focus:ring-emerald-500/20"
                                             placeholder="Contoh: B 1234 CD">
                                     </div>
 
@@ -579,7 +579,7 @@
                                             Nama Driver
                                         </label>
                                         <input type="text" id="nama_driver" name="nama_driver"
-                                            class="form-input w-full rounded-xl border-slate-300 bg-slate-50 px-4 py-3 text-slate-900 focus:border-emerald-500 focus:ring-emerald-500/20"
+                                            class="form-input w-full rounded-xl border-2 border-slate-400 bg-slate-50 px-4 py-3 text-slate-900 focus:border-emerald-500 focus:ring-emerald-500/20"
                                             placeholder="Nama Lengkap Driver">
                                     </div>
 
@@ -589,7 +589,7 @@
                                             Perusahaan / Vendor
                                         </label>
                                         <input type="text" id="perusahaan" name="perusahaan"
-                                            class="form-input w-full rounded-xl border-slate-300 bg-slate-50 px-4 py-3 text-slate-900 focus:border-emerald-500 focus:ring-emerald-500/20"
+                                            class="form-input w-full rounded-xl border-2 border-slate-400 bg-slate-50 px-4 py-3 text-slate-900 focus:border-emerald-500 focus:ring-emerald-500/20"
                                             placeholder="Nama Perusahaan">
                                     </div>
                                 </div>
@@ -685,7 +685,7 @@
                                             Catatan Safety (Temuan)
                                         </label>
                                         <textarea id="catatan_safety" name="catatan_safety" rows="3"
-                                            class="form-input w-full rounded-xl border-slate-300 bg-slate-50 px-4 py-3 text-slate-900 focus:border-emerald-500 focus:ring-emerald-500/20"
+                                            class="form-input w-full rounded-xl border-2 border-slate-400 bg-slate-50 px-4 py-3 text-slate-900 focus:border-emerald-500 focus:ring-emerald-500/20"
                                             placeholder="Tuliskan temuan atau catatan keselamatan..."></textarea>
                                     </div>
 
@@ -695,7 +695,7 @@
                                             Tindak Lanjut
                                         </label>
                                         <textarea id="tindak_lanjut" name="tindak_lanjut" rows="3"
-                                            class="form-input w-full rounded-xl border-slate-300 bg-slate-50 px-4 py-3 text-slate-900 focus:border-emerald-500 focus:ring-emerald-500/20"
+                                            class="form-input w-full rounded-xl border-2 border-slate-400 bg-slate-50 px-4 py-3 text-slate-900 focus:border-emerald-500 focus:ring-emerald-500/20"
                                             placeholder="Rencana tindak lanjut jika ada temuan..."></textarea>
                                     </div>
 
@@ -704,28 +704,43 @@
                                         <label class="form-label block text-sm font-semibold text-slate-700 mb-3">
                                             Status Akhir <span class="text-red-500">*</span>
                                         </label>
-                                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                                            <label class="cursor-pointer relative">
+                                        <div class="grid grid-cols-3 gap-3">
+                                            <label class="cursor-pointer relative group">
                                                 <input type="radio" name="status" value="Lolos" checked class="peer sr-only">
-                                                <div class="p-4 rounded-xl border-2 border-slate-200 bg-white hover:bg-slate-50 peer-checked:border-green-500 peer-checked:bg-green-50 transition-all text-center">
-                                                    <span class="block font-bold text-slate-700 peer-checked:text-green-700">LOLOS</span>
-                                                    <span class="text-xs text-slate-500">Memenuhi Standar Safety</span>
+                                                <div class="h-full p-3 rounded-xl border border-slate-200 bg-white hover:border-emerald-300 hover:shadow-sm peer-checked:border-2 peer-checked:border-emerald-500 peer-checked:bg-emerald-50/50 peer-checked:shadow-md transition-all text-center flex flex-col justify-center items-center">
+                                                    <div class="mb-1 text-emerald-500 opacity-50 peer-checked:opacity-100 group-hover:scale-110 transition-transform">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                                        </svg>
+                                                    </div>
+                                                    <span class="block text-sm font-bold text-slate-600 group-hover:text-emerald-700 peer-checked:text-emerald-700 tracking-tight">LOLOS</span>
+                                                    <span class="text-[10px] font-medium uppercase tracking-wide text-slate-400 peer-checked:text-emerald-600/80 mt-0.5">Safety OK</span>
                                                 </div>
                                             </label>
 
-                                            <label class="cursor-pointer relative">
+                                            <label class="cursor-pointer relative group">
                                                 <input type="radio" name="status" value="Perbaikan" class="peer sr-only">
-                                                <div class="p-4 rounded-xl border-2 border-slate-200 bg-white hover:bg-slate-50 peer-checked:border-yellow-500 peer-checked:bg-yellow-50 transition-all text-center">
-                                                    <span class="block font-bold text-slate-700 peer-checked:text-yellow-700">PERBAIKAN</span>
-                                                    <span class="text-xs text-slate-500">Perlu Tindakan Korektif</span>
+                                                <div class="h-full p-3 rounded-xl border border-slate-200 bg-white hover:border-amber-300 hover:shadow-sm peer-checked:border-2 peer-checked:border-amber-500 peer-checked:bg-amber-50/50 peer-checked:shadow-md transition-all text-center flex flex-col justify-center items-center">
+                                                    <div class="mb-1 text-amber-500 opacity-50 peer-checked:opacity-100 group-hover:scale-110 transition-transform">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                                                            <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+                                                        </svg>
+                                                    </div>
+                                                    <span class="block text-sm font-bold text-slate-600 group-hover:text-amber-700 peer-checked:text-amber-700 tracking-tight">PERBAIKAN</span>
+                                                    <span class="text-[10px] font-medium uppercase tracking-wide text-slate-400 peer-checked:text-amber-600/80 mt-0.5">Tindakan Korektif</span>
                                                 </div>
                                             </label>
 
-                                            <label class="cursor-pointer relative">
+                                            <label class="cursor-pointer relative group">
                                                 <input type="radio" name="status" value="Ditolak" class="peer sr-only">
-                                                <div class="p-4 rounded-xl border-2 border-slate-200 bg-white hover:bg-slate-50 peer-checked:border-red-500 peer-checked:bg-red-50 transition-all text-center">
-                                                    <span class="block font-bold text-slate-700 peer-checked:text-red-700">DITOLAK</span>
-                                                    <span class="text-xs text-slate-500">Tidak Layak Masuk</span>
+                                                <div class="h-full p-3 rounded-xl border border-slate-200 bg-white hover:border-rose-300 hover:shadow-sm peer-checked:border-2 peer-checked:border-rose-500 peer-checked:bg-rose-50/50 peer-checked:shadow-md transition-all text-center flex flex-col justify-center items-center">
+                                                    <div class="mb-1 text-rose-500 opacity-50 peer-checked:opacity-100 group-hover:scale-110 transition-transform">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+                                                        </svg>
+                                                    </div>
+                                                    <span class="block text-sm font-bold text-slate-600 group-hover:text-rose-700 peer-checked:text-rose-700 tracking-tight">DITOLAK</span>
+                                                    <span class="text-[10px] font-medium uppercase tracking-wide text-slate-400 peer-checked:text-rose-600/80 mt-0.5">Tidak Layak</span>
                                                 </div>
                                             </label>
                                         </div>

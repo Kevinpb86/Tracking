@@ -86,7 +86,7 @@
                         </div>
                         <div class="flex-1">
                             <div class="text-[10px] font-bold uppercase tracking-wider text-blue-500">Cek DO</div>
-                            <div class="text-sm font-medium">Cek Delivery Order</div>
+                            <div class="text-sm font-medium">Delivery Order</div>
                         </div>
                     </a>
 

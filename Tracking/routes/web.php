@@ -72,7 +72,7 @@ Route::post('/cek-kendaraan', [CekKendaraanController::class, 'store'])->name('c
 Route::get('/cek-kendaraan/daftar', [CekKendaraanController::class, 'index'])->name('cek-kendaraan.daftar');
 Route::get('/cek-kendaraan/{cekKendaraan}/edit', [CekKendaraanController::class, 'edit'])->name('cek-kendaraan.edit');
 Route::put('/cek-kendaraan/{cekKendaraan}', [CekKendaraanController::class, 'update'])->name('cek-kendaraan.update');
-Route::get('/cek-kendaraan/{cekKendaraan}/pdf', [CekKendaraanController::class, 'exportPdf'])->name('cek-kendaraan.pdf');
+Route::get('/cek-kendaraan/{cekKendaraan}/pdf', [CekKendaraanController::class, 'exportPdf'])->name('cek-kendaraan.export-pdf');
 Route::get('/cek-kendaraan/{cekKendaraan}', [CekKendaraanController::class, 'show'])->name('cek-kendaraan.show');
 
 // HSE Routes

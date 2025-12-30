@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->string('nomor_polisi', 20);
             $table->string('nama_driver', 100);
             $table->string('jenis_antrian', 50); // Finish Product, Use Oil, Rawn Material, Drum.
-            $table->string('tujuan', 100); // Gate destination
+            $table->string('tujuan', 100);
 
             // Document References
             $table->string('emr', 100)->nullable();

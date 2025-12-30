@@ -9,30 +9,38 @@ class Hse extends Model
 {
     use HasFactory;
 
-    /**
-     * Nama tabel
-     */
     protected $table = 'hse';
 
-    /**
-     * Kolom yang dapat diisi
-     */
     protected $fillable = [
         'tanggal',
         'waktu',
         'nama_petugas',
-        'lokasi',
-        'kondisi_apd',
-        'temuan',
+        'nomor_polisi',
+        'nama_driver',
+        'perusahaan',
+        'helm_safety',
+        'sepatu_safety',
+        'rompi_safety',
+        'masker',
+        'sarung_tangan',
+        'kacamata_safety',
+        'apar_tersedia',
+        'kotak_p3k',
+        'catatan_safety',
         'tindak_lanjut',
-        'penanggung_jawab',
+        'status',
     ];
 
-    /**
-     * Cast tipe data
-     */
     protected $casts = [
         'tanggal' => 'date',
         'waktu' => 'datetime:H:i',
+        'helm_safety' => 'boolean',
+        'sepatu_safety' => 'boolean',
+        'rompi_safety' => 'boolean',
+        'masker' => 'boolean',
+        'sarung_tangan' => 'boolean',
+        'kacamata_safety' => 'boolean',
+        'apar_tersedia' => 'boolean',
+        'kotak_p3k' => 'boolean',
     ];
 }

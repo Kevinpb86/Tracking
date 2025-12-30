@@ -5,12 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
-    /**
-     * Run the migrations.
-     * 
-     * Tabel untuk mencatat pemeriksaan kendaraan di Pos 1
-     * Fokus pada validasi dokumen dan kondisi kendaraan
-     */
+
     public function up(): void
     {
         Schema::create('cek_kendaraan', function (Blueprint $table) {
@@ -43,7 +38,6 @@ return new class extends Migration {
 
             // Pemeriksaan Kondisi Kendaraan
             $table->enum('kondisi_ban', ['Baik', 'Kurang Baik', 'Tidak Layak']);
-
             $table->enum('kondisi_lampu', ['Baik', 'Kurang Baik', 'Tidak Layak']);
             $table->enum('kondisi_rem', ['Baik', 'Kurang Baik', 'Tidak Layak']);
             $table->enum('kondisi_lampu_sen', ['Baik', 'Kurang Baik', 'Tidak Layak']);

@@ -7,26 +7,17 @@ use Illuminate\Http\Request;
 
 class HseController extends Controller
 {
-    /**
-     * Display a listing of HSE records.
-     */
     public function index()
     {
         $hseList = Hse::orderBy('created_at', 'desc')->get();
         return view('navigasi.daftar-hse', compact('hseList'));
     }
 
-    /**
-     * Show the form for creating a new HSE record.
-     */
     public function create()
     {
         return view('navigasi.input-hse');
     }
 
-    /**
-     * Store a newly created HSE record in storage.
-     */
     public function store(Request $request)
     {
         // Validasi input
@@ -34,41 +25,44 @@ class HseController extends Controller
             'tanggal' => 'required|date',
             'waktu' => 'required',
             'nama_petugas' => 'required|string|max:255',
-            'lokasi' => 'required|string|max:255',
-            'kondisi_apd' => 'required|string|in:Lengkap,Tidak Lengkap,Tidak Ada',
-            'temuan' => 'nullable|string',
+            'nomor_polisi' => 'nullable|string|max:20',
+            'nama_driver' => 'nullable|string|max:255',
+            'perusahaan' => 'nullable|string|max:255',
+            'catatan_safety' => 'nullable|string',
             'tindak_lanjut' => 'nullable|string',
-            'penanggung_jawab' => 'nullable|string|max:255',
+            'status' => 'required|in:Lolos,Perbaikan,Ditolak',
         ]);
+
+        $data = $request->all();
+        // Handle boolean checkboxes
+        $booleanFields = [
+            'helm_safety',
+            'sepatu_safety',
+            'rompi_safety',
+            'masker',
+            'sarung_tangan',
+            'kacamata_safety',
+            'apar_tersedia',
+            'kotak_p3k',
+        ];
+
+        foreach ($booleanFields as $field) {
+            $data[$field] = $request->has($field);
+        }
 
         // Simpan data ke database
-        $hse = Hse::create([
-            'tanggal' => $validated['tanggal'],
-            'waktu' => $validated['waktu'],
-            'nama_petugas' => $validated['nama_petugas'],
-            'lokasi' => $validated['lokasi'],
-            'kondisi_apd' => $validated['kondisi_apd'],
-            'temuan' => $validated['temuan'] ?? null,
-            'tindak_lanjut' => $validated['tindak_lanjut'] ?? null,
-            'penanggung_jawab' => $validated['penanggung_jawab'] ?? null,
-        ]);
+        Hse::create($data);
 
         // Redirect dengan pesan sukses
-        return redirect()->route('hse.daftar')->with('success', 'Data HSE berhasil disimpan ke database!');
+        return redirect()->route('hse.daftar')->with('success', 'Data HSE Checking berhasil disimpan!');
     }
 
-    /**
-     * Display the specified HSE record.
-     */
     public function show($id)
     {
         $hse = Hse::findOrFail($id);
         return view('navigasi.detail-hse', compact('hse'));
     }
 
-    /**
-     * Display main dashboard with HSE statistics.
-     */
     public function mainDashboard()
     {
         $pos1Queues = session('pos1_queues', []);

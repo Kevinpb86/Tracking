@@ -133,7 +133,7 @@
 
                         {{-- Antrian Menu --}}
                          <div class="space-y-1">
-                            <div class="group flex w-full items-center justify-between rounded-xl border border-transparent px-4 py-3 text-slate-600 transition-all hover:bg-blue-50/50 hover:text-blue-700 cursor-pointer">
+                            <a href="{{ route('pos1.antrian.input') }}" class="group flex w-full items-center justify-between rounded-xl border border-transparent px-4 py-3 text-slate-600 transition-all hover:bg-blue-50/50 hover:text-blue-700">
                                 <span class="flex items-center gap-3">
                                     <div
                                         class="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-100/50 text-blue-600 transition-colors group-hover:bg-blue-500 group-hover:text-white">
@@ -148,7 +148,7 @@
                                         <p>Queue Management</p>
                                     </div>
                                 </span>
-                            </div>
+                            </a>
                         </div>
 
 

@@ -29,24 +29,22 @@ return new class extends Migration {
                 'Pickup',
                 'Mobil Box',
                 'Tangki',
-                'Motor',
                 'Lainnya'
             ]);
             $table->string('nama_driver', 100);
-            $table->string('perusahaan', 100)->nullable()->comment('Nama perusahaan/vendor');
-            $table->string('tujuan', 100)->comment('Tujuan kunjungan: Kirim Barang, Ambil Barang, dll');
+            $table->string('perusahaan', 100)->nullable();
+            $table->string('tujuan', 100);
 
             // Pemeriksaan Dokumen (Checklist)
             $table->boolean('surat_jalan')->default(false);
             $table->boolean('stnk_valid')->default(false);
             $table->boolean('sim_valid')->default(false);
-            $table->boolean('kir_valid')->default(false)->comment('Khusus kendaraan angkutan');
+            $table->boolean('kir_valid')->default(false);
 
             // Pemeriksaan Kondisi Kendaraan
-            $table->enum('kondisi_ban', ['Baik', 'Kurang Baik', 'Tidak Layak'])->default('Baik');
-            $table->enum('kondisi_lampu', ['Baik', 'Kurang Baik', 'Tidak Layak'])->default('Baik');
-            $table->boolean('kaca_spion_lengkap')->default(true);
-            $table->boolean('ada_kebocoran')->default(false)->comment('Bocor oli/bensin/air');
+            $table->enum('kondisi_ban', ['Baik', 'Kurang Baik', 'Tidak Layak']);
+            $table->enum('kondisi_lampu', ['Baik', 'Kurang Baik', 'Tidak Layak']);
+            $table->boolean('kaca_spion_lengkap');
 
             // Status Hasil Pemeriksaan
             $table->enum('hasil_pemeriksaan', [
@@ -55,7 +53,7 @@ return new class extends Migration {
                 'Tidak Lolos'
             ])->default('Lolos');
 
-            $table->text('catatan')->nullable()->comment('Catatan petugas atau alasan tidak lolos');
+            $table->text('catatan')->nullable();
 
             // Petugas yang Memeriksa
             $table->string('nama_petugas', 100);

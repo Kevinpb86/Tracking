@@ -1,0 +1,68 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class Pos1Controller extends Controller
+{
+    public function index()
+    {
+        return view('navigasi.pos1');
+    }
+
+    public function create()
+    {
+        return view('navigasi.input-antrian-pos1');
+    }
+
+    public function store(\Illuminate\Http\Request $request)
+    {
+        // 1. Validate Input
+        $validated = $request->validate([
+            'tgl_antrian' => 'required|date',
+            'jam_diizinkan_masuk' => 'required',
+            'nomor_polisi' => 'required|string|max:20',
+            'nama_driver' => 'required|string|max:100',
+            // Nullable inputs
+            'emr' => 'nullable|string|max:100',
+            'jenis_antrian' => 'nullable|string|max:50',
+            'tujuan' => 'nullable|string|max:100',
+        ]);
+
+        // 2. Generate Nomor Antrian Automated (Q-YYYYMMDD-XXX)
+        $dateCode = date('Ymd', strtotime($validated['tgl_antrian']));
+        $prefix = "Q-{$dateCode}-";
+
+        // Find last number for this day
+        $lastAntrian = \App\Models\AntrianPos1::where('no_antrian', 'like', "{$prefix}%")
+            ->orderBy('no_antrian', 'desc')
+            ->first();
+
+        if ($lastAntrian) {
+            $lastNumber = intval(substr($lastAntrian->no_antrian, -3));
+            $newNumber = $lastNumber + 1;
+        } else {
+            $newNumber = 1;
+        }
+
+        $nomorAntrian = $prefix . str_pad($newNumber, 3, '0', STR_PAD_LEFT);
+
+        // 3. Create Record
+        \App\Models\AntrianPos1::create([
+            'no_antrian' => $nomorAntrian,
+            'emr' => $validated['emr'],
+            'tgl_antrian' => $validated['tgl_antrian'],
+            'jam_diizinkan_masuk' => $validated['jam_diizinkan_masuk'],
+            'status' => 'Waiting', // Default status for new ticket
+            'jenis_antrian' => $validated['jenis_antrian'],
+            'nomor_polisi' => strtoupper($validated['nomor_polisi']),
+            'nama_driver' => $validated['nama_driver'],
+            'tujuan' => $validated['tujuan'],
+        ]);
+
+        // 4. Redirect with Success (Using simple redirect for now)
+        // Ideally: return redirect()->route('pos1.antrian.index')->with('success', 'Antrian berhasil dibuat!');
+        return redirect()->route('pos1.dashboard')->with('success', 'Antrian berhasil dibuat! Nomor: ' . $nomorAntrian);
+    }
+}

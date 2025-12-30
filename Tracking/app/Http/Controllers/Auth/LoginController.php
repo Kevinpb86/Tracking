@@ -35,7 +35,7 @@ class LoginController extends Controller
         if ($user && \Illuminate\Support\Facades\Hash::check($request->password, $user->password)) {
             Auth::login($user, $remember);
             $request->session()->regenerate();
-            
+
             // Redirect to intended URL or main dashboard
             return redirect()->intended(route('dashboard.main'));
         }
@@ -55,6 +55,6 @@ class LoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect()->route('login');
     }
 }

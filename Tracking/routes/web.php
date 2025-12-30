@@ -23,13 +23,39 @@ use App\Http\Controllers\Auth\LoginController;
 // Main Dashboard
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard.main');
 
+// Auth Routes
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login'])->name('login.post');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
+// Registration Routes
+use App\Http\Controllers\Auth\RegisterController;
+Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('/register', [RegisterController::class, 'register'])->name('register.post');
 
+// Password Reset Routes
+use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Auth\ResetPasswordController;
+
+Route::get('/forgot-password', [ForgotPasswordController::class, 'showForgotPasswordForm'])->name('password.forgot');
+Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetLink'])->name('password.email');
+Route::get('/reset-password/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+Route::post('/reset-password', [ResetPasswordController::class, 'reset'])->name('password.update');
+
+
+
+use App\Http\Controllers\Pos2Controller; // Import Pos2Controller
 
 // POS 1 Routes
 Route::prefix('pos1')->name('pos1.')->group(function () {
     Route::get('/dashboard', [Pos1Controller::class, 'index'])->name('dashboard');
+    Route::get('/antrian/input', [Pos1Controller::class, 'create'])->name('antrian.input');
+    Route::post('/antrian', [Pos1Controller::class, 'store'])->name('antrian.store');
+});
+
+// POS 2 Routes
+Route::prefix('pos2')->name('pos2.')->group(function () {
+    Route::get('/dashboard', [Pos2Controller::class, 'index'])->name('dashboard');
 });
 
 // Cek Kendaraan Routes

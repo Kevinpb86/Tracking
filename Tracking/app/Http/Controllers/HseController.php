@@ -17,6 +17,14 @@ class HseController extends Controller
     }
 
     /**
+     * Show the form for creating a new HSE record.
+     */
+    public function create()
+    {
+        return view('navigasi.input-hse');
+    }
+
+    /**
      * Store a newly created HSE record in storage.
      */
     public function store(Request $request)

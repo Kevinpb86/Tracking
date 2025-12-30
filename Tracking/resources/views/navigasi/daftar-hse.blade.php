@@ -122,7 +122,7 @@
 
                             <div id="antrianSubmenu" class="hidden space-y-1 pl-4">
                                 <div class="relative ml-4 space-y-1 border-l-2 border-slate-100 pl-4 py-1">
-                                    <a href="#"
+                                    <a href="{{ route('pos1.antrian.input') }}"
                                         class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-blue-50 hover:text-blue-700">
                                         <span>Input Antrian</span>
                                         <svg xmlns="http://www.w3.org/2000/svg"

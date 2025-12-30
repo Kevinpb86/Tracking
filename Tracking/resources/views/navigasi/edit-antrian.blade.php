@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Input Antrian - POS 1</title>
+    <title>Edit Antrian - POS 1</title>
     <link rel="icon" type="image/jpeg" href="{{ asset('images/wgilogo.jpg') }}">
 
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -39,23 +39,6 @@
             color: #2563eb;
         }
 
-        .radio-option {
-            transition: all 0.2s ease;
-        }
-
-        .radio-option:hover {
-            background-color: #eff6ff;
-            transform: translateX(4px);
-        }
-
-        .form-card {
-            transition: all 0.3s ease;
-        }
-
-        .form-card:hover {
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-
         .submit-btn {
             background-color: #2563eb !important;
             color: #ffffff !important;
@@ -66,26 +49,6 @@
             transform: translateY(-2px);
             box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.4);
             background-color: #1d4ed8 !important;
-        }
-
-        /* Print styles */
-        @media print {
-
-            #sidebar,
-            #sidebarToggle,
-            #sidebarOverlay,
-            .no-print {
-                display: none !important;
-            }
-
-            body {
-                background: white !important;
-            }
-
-            .form-card {
-                page-break-inside: avoid;
-                break-inside: avoid;
-            }
         }
     </style>
 </head>
@@ -182,9 +145,10 @@
                             <div id="antrianSubmenu" class="space-y-1 pl-4">
                                 <div class="relative ml-4 space-y-1 border-l-2 border-slate-100 pl-4 py-1">
                                     <a href="{{ route('pos1.antrian.input') }}"
-                                        class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm bg-blue-50 text-blue-700 font-semibold transition-colors">
+                                        class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-blue-50 hover:text-blue-700">
                                         <span>Input Antrian</span>
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-blue-600"
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            class="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100"
                                             viewBox="0 0 20 20" fill="currentColor">
                                             <path fill-rule="evenodd"
                                                 d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
@@ -406,30 +370,23 @@
                     </div>
                 </section>
 
-                <!-- PAGE CONTENT -->
-                <section class="relative mx-auto w-full flex-1 px-4 py-8 sm:px-6 lg:px-8">
-                    <!-- Header Section -->
+                <!-- Header Section -->
+                <section class="px-4 py-8 sm:px-6 lg:px-8">
                     <div
-                        class="mx-auto max-w-4xl rounded-3xl border border-blue-100 bg-blue-50 shadow-xl overflow-hidden mb-8">
+                        class="mx-auto max-w-4xl rounded-3xl border border-blue-600 bg-gradient-to-r from-blue-600 to-blue-700 shadow-xl overflow-hidden mb-8">
                         <div class="relative px-6 pt-10 pb-6 text-center sm:px-12">
-                            <div
-                                class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full overflow-hidden pointer-events-none opacity-40">
-                                <div
-                                    class="absolute top-[-50%] left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-blue-200/20 rounded-full blur-3xl">
-                                </div>
-                            </div>
                             <div class="relative z-10 flex flex-col items-center space-y-4">
                                 <div
-                                    class="inline-flex items-center gap-3 rounded-full bg-blue-100/50 px-4 py-1.5 border border-blue-200/50 backdrop-blur-sm">
-                                    <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-blue-800">Form
+                                    class="inline-flex items-center gap-3 rounded-full bg-blue-500/30 px-4 py-1.5 border border-blue-400/30 backdrop-blur-sm">
+                                    <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-blue-50">Edit
                                         Antrian</span>
                                 </div>
                                 <h1
-                                    class="text-4xl font-extrabold tracking-tight text-blue-600 sm:text-5xl lg:text-6xl text-center">
-                                    Input Antrian Pos 1
+                                    class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl text-center">
+                                    Edit Antrian Pos 1
                                 </h1>
-                                <p class="max-w-2xl text-lg font-medium text-slate-600 leading-relaxed">
-                                    Masukkan data kendaraan dan pengemudi untuk antrian baru.
+                                <p class="max-w-2xl text-lg font-medium text-blue-100 leading-relaxed">
+                                    Perbarui data antrian untuk {{ $antrian->no_antrian }}.
                                 </p>
                             </div>
                         </div>
@@ -437,12 +394,12 @@
 
                     <!-- Form Container -->
                     <div class="max-w-5xl mx-auto w-full pb-20">
-                        <form action="{{ route('pos1.antrian.store') }}" method="POST" class="space-y-6">
+                        <form action="{{ route('pos1.antrian.update', $antrian->id) }}" method="POST" class="space-y-6">
                             @csrf
+                            @method('PUT')
 
                             <!-- Section 1: Informasi Waktu & Tanggal -->
-                            <div
-                                class="form-card bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
+                            <div class="bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
                                 <div class="bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-4">
                                     <h3 class="text-xl font-bold text-white flex items-center gap-2">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
@@ -454,32 +411,30 @@
                                     </h3>
                                     <p class="text-blue-100 text-sm mt-1">Catat waktu masuk kendaraan</p>
                                 </div>
-                                <div class="p-6 sm:p-8">
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                        <div class="form-group">
-                                            <label for="tgl_antrian"
-                                                class="form-label block text-sm font-semibold text-slate-700 mb-2">Tanggal
-                                                Antrian <span class="text-red-500">*</span></label>
-                                            <input type="date" id="tgl_antrian" name="tgl_antrian" required
-                                                class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3 text-slate-700 focus:border-blue-500 focus:outline-none"
-                                                value="{{ date('Y-m-d') }}">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="jam_diizinkan_masuk"
-                                                class="form-label block text-sm font-semibold text-slate-700 mb-2">Jam
-                                                Diizinkan Masuk <span class="text-red-500">*</span></label>
-                                            <input type="time" id="jam_diizinkan_masuk" name="jam_diizinkan_masuk"
-                                                required
-                                                class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3 text-slate-700 focus:border-blue-500 focus:outline-none"
-                                                value="{{ date('H:i') }}">
-                                        </div>
+                                <div class="p-6 sm:p-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div class="form-group">
+                                        <label for="tgl_antrian"
+                                            class="block text-sm font-semibold text-slate-700 mb-2 cursor-pointer">Tanggal
+                                            Antrian
+                                            <span class="text-red-500">*</span></label>
+                                        <input type="date" id="tgl_antrian" name="tgl_antrian" required
+                                            class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3 text-slate-700 focus:border-blue-500 focus:outline-none cursor-pointer"
+                                            value="{{ old('tgl_antrian', $antrian->tgl_antrian) }}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="jam_diizinkan_masuk"
+                                            class="block text-sm font-semibold text-slate-700 mb-2 cursor-pointer">Jam
+                                            Diizinkan Masuk
+                                            <span class="text-red-500">*</span></label>
+                                        <input type="time" id="jam_diizinkan_masuk" name="jam_diizinkan_masuk" required
+                                            class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3 text-slate-700 focus:border-blue-500 focus:outline-none cursor-pointer"
+                                            value="{{ old('jam_diizinkan_masuk', $antrian->jam_diizinkan_masuk) }}">
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Section 2: Informasi Dokumen -->
-                            <div
-                                class="form-card bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
+                            <!-- Section 2: Informasi Dokumen & Status -->
+                            <div class="bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
                                 <div class="bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-4">
                                     <h3 class="text-xl font-bold text-white flex items-center gap-2">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
@@ -487,37 +442,54 @@
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                                         </svg>
-                                        Informasi Dokumen
+                                        Informasi Dokumen & Status
                                     </h3>
-                                    <p class="text-blue-100 text-sm mt-1">Detail dokumen pengiriman</p>
+                                    <p class="text-blue-100 text-sm mt-1">Detail dokumen dan status antrian</p>
                                 </div>
-                                <div class="p-6 sm:p-8">
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                        <div class="form-group">
-                                            <label for="emr"
-                                                class="form-label block text-sm font-semibold text-slate-700 mb-2">Emergency</label>
-                                            <input type="text" id="emr" name="emr" placeholder="Masukkan Emergency"
-                                                class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3 text-slate-700 focus:border-blue-500 focus:outline-none">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="jenis_antrian"
-                                                class="form-label block text-sm font-semibold text-slate-700 mb-2">Jenis
-                                                Antrian</label>
-                                            <select id="jenis_antrian" name="jenis_antrian"
-                                                class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3 text-slate-700 focus:border-blue-500 focus:outline-none">
-                                                <option value="Bongkar">Finish Product</option>
-                                                <option value="Muat">Use Oil</option>
-                                                <option value="Tamu">Raw Material</option>
-                                                <option value="Lainnya">Drum</option>
-                                            </select>
-                                        </div>
+                                <div class="p-6 sm:p-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div class="form-group">
+                                        <label for="emr"
+                                            class="block text-sm font-semibold text-slate-700 mb-2 cursor-pointer">Emergency
+                                            (Prioritas)</label>
+                                        <select id="emr" name="emr"
+                                            class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3 text-slate-700 focus:border-blue-500 focus:outline-none cursor-pointer">
+                                            <option value="">- Pilih Prioritas -</option>
+                                            <option value="Normal" {{ old('emr', $antrian->emr) == 'Normal' ? 'selected' : '' }}>Normal</option>
+                                            <option value="Urgent" {{ old('emr', $antrian->emr) == 'Urgent' ? 'selected' : '' }}>Urgent</option>
+                                            <option value="Critical" {{ old('emr', $antrian->emr) == 'Critical' ? 'selected' : '' }}>Critical</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="jenis_antrian"
+                                            class="block text-sm font-semibold text-slate-700 mb-2 cursor-pointer">Jenis
+                                            Antrian</label>
+                                        <select id="jenis_antrian" name="jenis_antrian"
+                                            class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3 text-slate-700 focus:border-blue-500 focus:outline-none cursor-pointer">
+                                            <option value="Bongkar" {{ old('jenis_antrian', $antrian->jenis_antrian) == 'Bongkar' ? 'selected' : '' }}>Finish Product
+                                            </option>
+                                            <option value="Muat" {{ old('jenis_antrian', $antrian->jenis_antrian) == 'Muat' ? 'selected' : '' }}>Use Oil</option>
+                                            <option value="Tamu" {{ old('jenis_antrian', $antrian->jenis_antrian) == 'Tamu' ? 'selected' : '' }}>Raw Material
+                                            </option>
+                                            <option value="Lainnya" {{ old('jenis_antrian', $antrian->jenis_antrian) == 'Lainnya' ? 'selected' : '' }}>Drum</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group md:col-span-2">
+                                        <label for="status"
+                                            class="block text-sm font-semibold text-slate-700 mb-2 cursor-pointer">Status
+                                            Antrian <span class="text-red-500">*</span></label>
+                                        <select id="status" name="status" required
+                                            class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3 text-slate-700 focus:border-blue-500 focus:outline-none cursor-pointer">
+                                            <option value="Waiting" {{ old('status', $antrian->status) == 'Waiting' ? 'selected' : '' }}>Waiting</option>
+                                            <option value="In Process" {{ old('status', $antrian->status) == 'In Process' ? 'selected' : '' }}>In Process</option>
+                                            <option value="Completed" {{ old('status', $antrian->status) == 'Completed' ? 'selected' : '' }}>Completed</option>
+                                            <option value="Cancelled" {{ old('status', $antrian->status) == 'Cancelled' ? 'selected' : '' }}>Cancelled</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Section 3: Kendaraan & Driver -->
-                            <div
-                                class="form-card bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
+                            <div class="bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
                                 <div class="bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-4">
                                     <h3 class="text-xl font-bold text-white flex items-center gap-2">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
@@ -529,31 +501,28 @@
                                     </h3>
                                     <p class="text-blue-100 text-sm mt-1">Data identitas kendaraan dan supir</p>
                                 </div>
-                                <div class="p-6 sm:p-8">
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                        <div class="form-group">
-                                            <label for="nomor_polisi"
-                                                class="form-label block text-sm font-semibold text-slate-700 mb-2">Nomor
-                                                Polisi <span class="text-red-500">*</span></label>
-                                            <input type="text" id="nomor_polisi" name="nomor_polisi" required
-                                                placeholder="B 1234 XX"
-                                                class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3 text-slate-700 focus:border-blue-500 focus:outline-none uppercase">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="nama_driver"
-                                                class="form-label block text-sm font-semibold text-slate-700 mb-2">Nama
-                                                Driver <span class="text-red-500">*</span></label>
-                                            <input type="text" id="nama_driver" name="nama_driver" required
-                                                placeholder="Nama Lengkap Sopir"
-                                                class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3 text-slate-700 focus:border-blue-500 focus:outline-none">
-                                        </div>
+                                <div class="p-6 sm:p-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div class="form-group">
+                                        <label for="nomor_polisi"
+                                            class="block text-sm font-semibold text-slate-700 mb-2 cursor-pointer">Nomor
+                                            Polisi <span class="text-red-500">*</span></label>
+                                        <input type="text" id="nomor_polisi" name="nomor_polisi" required
+                                            class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3 text-slate-700 focus:border-blue-500 focus:outline-none uppercase cursor-pointer"
+                                            value="{{ old('nomor_polisi', $antrian->nomor_polisi) }}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="nama_driver"
+                                            class="block text-sm font-semibold text-slate-700 mb-2 cursor-pointer">Nama
+                                            Driver <span class="text-red-500">*</span></label>
+                                        <input type="text" id="nama_driver" name="nama_driver" required
+                                            class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3 text-slate-700 focus:border-blue-500 focus:outline-none cursor-pointer"
+                                            value="{{ old('nama_driver', $antrian->nama_driver) }}">
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Section 4: Detail Tambahan -->
-                            <div
-                                class="form-card bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
+                            <div class="bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
                                 <div class="bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-4">
                                     <h3 class="text-xl font-bold text-white flex items-center gap-2">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
@@ -567,32 +536,27 @@
                                     </h3>
                                     <p class="text-blue-100 text-sm mt-1">Lokasi asal dan tujuan Gate</p>
                                 </div>
-                                <div class="p-6 sm:p-8">
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                        <div class="form-group">
-                                            <label for="tujuan"
-                                                class="form-label block text-sm font-semibold text-slate-700 mb-2">Tujuan
-                                                Gate</label>
-                                            <input type="text" id="tujuan" name="tujuan"
-                                                placeholder="Gudang / Produksi / Kantor"
-                                                class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3 text-slate-700 focus:border-blue-500 focus:outline-none">
-                                        </div>
+                                <div class="p-6 sm:p-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div class="form-group">
+                                        <label for="tujuan"
+                                            class="block text-sm font-semibold text-slate-700 mb-2 cursor-pointer">Tujuan
+                                            Gate</label>
+                                        <input type="text" id="tujuan" name="tujuan"
+                                            class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3 text-slate-700 focus:border-blue-500 focus:outline-none cursor-pointer"
+                                            value="{{ old('tujuan', $antrian->tujuan) }}">
                                     </div>
                                 </div>
                             </div>
 
-
-
-
                             <!-- Submit Actions -->
                             <div class="flex items-center justify-end gap-4 pt-4">
-                                <button type="reset"
-                                    class="px-6 py-3 rounded-xl border border-slate-200 text-slate-600 font-semibold hover:bg-slate-50 transition-colors">
-                                    Reset
-                                </button>
+                                <a href="{{ route('pos1.antrian.daftar') }}"
+                                    class="px-6 py-3 rounded-xl border border-slate-200 text-slate-600 font-semibold hover:bg-slate-50 transition-colors cursor-pointer">
+                                    Batal
+                                </a>
                                 <button type="submit"
-                                    class="submit-btn px-8 py-3 rounded-xl font-bold shadow-lg shadow-blue-500/20">
-                                    Simpan Antrian
+                                    class="submit-btn px-8 py-3 rounded-xl font-bold shadow-lg shadow-blue-500/20 cursor-pointer">
+                                    Simpan Perubahan
                                 </button>
                             </div>
 
@@ -600,36 +564,6 @@
                     </div>
                 </section>
             </main>
-        </div>
-    </div>
-
-    <!-- Logout Confirmation Modal -->
-    <div id="logoutModal"
-        class="fixed inset-0 z-50 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
-        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="closeLogoutModal()"></div>
-        <div
-            class="relative w-full max-w-sm rounded-2xl bg-white p-6 shadow-2xl transform scale-95 transition-transform duration-300">
-            <div class="mb-6 flex flex-col items-center text-center">
-                <div class="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-rose-100 text-rose-600">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-                    </svg>
-                </div>
-                <h3 class="text-xl font-bold text-slate-900">Konfirmasi Logout</h3>
-                <p class="mt-2 text-sm text-slate-500">Apakah Anda yakin ingin keluar dari aplikasi?</p>
-            </div>
-            <div class="flex gap-3">
-                <button type="button" onclick="closeLogoutModal()"
-                    class="flex-1 rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50">
-                    Batal
-                </button>
-                <button type="button" onclick="document.getElementById('logoutForm').submit()"
-                    class="flex-1 rounded-xl bg-rose-600 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-rose-600/20 transition hover:bg-rose-700">
-                    Ya, Keluar
-                </button>
-            </div>
         </div>
     </div>
 

@@ -124,7 +124,7 @@
                                                 d="M12 4v16m8-8H4" />
                                         </svg>
                                     </a>
-                                    <a href="#"
+                                    <a href="{{ route('pos1.antrian.daftar') }}"
                                         class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-blue-50 hover:text-blue-700">
                                         <span>Daftar Antrian</span>
                                         <svg xmlns="http://www.w3.org/2000/svg"

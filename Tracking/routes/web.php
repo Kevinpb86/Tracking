@@ -21,7 +21,7 @@ use App\Http\Controllers\Auth\LoginController;
 
 // Main Dashboard
 // Main Dashboard
-Route::get('/', [DashboardController::class, 'index'])->name('dashboard.main');
+Route::get('/', [DashboardController::class, 'index'])->name('dashboard.main')->middleware('auth');
 
 // Auth Routes
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
@@ -51,6 +51,11 @@ Route::prefix('pos1')->name('pos1.')->group(function () {
     Route::get('/dashboard', [Pos1Controller::class, 'index'])->name('dashboard');
     Route::get('/antrian/input', [Pos1Controller::class, 'create'])->name('antrian.input');
     Route::post('/antrian', [Pos1Controller::class, 'store'])->name('antrian.store');
+    Route::get('/antrian/daftar', [Pos1Controller::class, 'daftarAntrian'])->name('antrian.daftar');
+    Route::get('/antrian/{id}/edit', [Pos1Controller::class, 'edit'])->name('antrian.edit');
+    Route::put('/antrian/{id}', [Pos1Controller::class, 'update'])->name('antrian.update');
+    Route::delete('/antrian/{id}', [Pos1Controller::class, 'destroy'])->name('antrian.destroy');
+    Route::get('/antrian/{id}/print', [Pos1Controller::class, 'printTicket'])->name('antrian.print');
 });
 
 // POS 2 Routes

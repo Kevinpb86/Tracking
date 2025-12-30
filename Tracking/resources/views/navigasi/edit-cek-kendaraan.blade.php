@@ -132,8 +132,10 @@
                         </a>
 
                         {{-- Antrian Menu --}}
-                         <div class="space-y-1">
-                            <a href="{{ route('pos1.antrian.input') }}" class="group flex w-full items-center justify-between rounded-xl border border-transparent px-4 py-3 text-slate-600 transition-all hover:bg-blue-50/50 hover:text-blue-700">
+                        {{-- Antrian Menu Accordion --}}
+                        <div class="space-y-1">
+                            <button type="button" onclick="toggleAntrianMenu()"
+                                class="group flex w-full items-center justify-between rounded-xl border border-transparent px-4 py-3 text-slate-600 transition-all hover:bg-blue-50/50 hover:text-blue-700">
                                 <span class="flex items-center gap-3">
                                     <div
                                         class="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-100/50 text-blue-600 transition-colors group-hover:bg-blue-500 group-hover:text-white">
@@ -144,11 +146,44 @@
                                         </svg>
                                     </div>
                                     <div class="text-left font-medium text-sm">
-                                        <p class="text-xs font-bold uppercase tracking-wider text-blue-500/80">Antrian</p>
+                                        <p class="text-xs font-bold uppercase tracking-wider text-blue-500/80">Antrian
+                                        </p>
                                         <p>Queue Management</p>
                                     </div>
                                 </span>
-                            </a>
+                                <svg id="antrianToggleIcon" xmlns="http://www.w3.org/2000/svg"
+                                    class="h-4 w-4 text-blue-400 transition-transform duration-300 group-hover:text-blue-600"
+                                    viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </button>
+
+                            <div id="antrianSubmenu" class="hidden space-y-1 pl-4">
+                                <div class="relative ml-4 space-y-1 border-l-2 border-slate-100 pl-4 py-1">
+                                    <a href="{{ route('pos1.antrian.input') }}"
+                                        class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-blue-50 hover:text-blue-700">
+                                        <span>Input Antrian</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            class="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M12 4v16m8-8H4" />
+                                        </svg>
+                                    </a>
+                                    <a href="{{ route('pos1.antrian.daftar') }}"
+                                        class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-blue-50 hover:text-blue-700">
+                                        <span>Daftar Antrian</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            class="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
 
 

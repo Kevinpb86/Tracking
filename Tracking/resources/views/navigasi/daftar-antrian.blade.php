@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Daftar Pemeriksaan - POS 1</title>
+    <title>Daftar Antrian - POS 1</title>
     <link rel="icon" type="image/jpeg" href="{{ asset('images/wgilogo.jpg') }}">
 
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -95,7 +95,7 @@
                         {{-- Antrian Menu Accordion --}}
                         <div class="space-y-1">
                             <button type="button" onclick="toggleAntrianMenu()"
-                                class="group flex w-full items-center justify-between rounded-xl border border-transparent px-4 py-3 text-slate-600 transition-all hover:bg-blue-50/50 hover:text-blue-700">
+                                class="group flex w-full items-center justify-between rounded-xl border border-transparent px-4 py-3 bg-blue-50/50 text-blue-700 transition-all hover:bg-blue-50 hover:text-blue-800">
                                 <span class="flex items-center gap-3">
                                     <div
                                         class="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-100/50 text-blue-600 transition-colors group-hover:bg-blue-500 group-hover:text-white">
@@ -112,7 +112,7 @@
                                     </div>
                                 </span>
                                 <svg id="antrianToggleIcon" xmlns="http://www.w3.org/2000/svg"
-                                    class="h-4 w-4 text-blue-400 transition-transform duration-300 group-hover:text-blue-600"
+                                    class="h-4 w-4 text-blue-400 transition-transform duration-300 group-hover:text-blue-600 rotate-180"
                                     viewBox="0 0 20 20" fill="currentColor">
                                     <path fill-rule="evenodd"
                                         d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
@@ -120,7 +120,7 @@
                                 </svg>
                             </button>
 
-                            <div id="antrianSubmenu" class="hidden space-y-1 pl-4">
+                            <div id="antrianSubmenu" class="space-y-1 pl-4">
                                 <div class="relative ml-4 space-y-1 border-l-2 border-slate-100 pl-4 py-1">
                                     <a href="{{ route('pos1.antrian.input') }}"
                                         class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-blue-50 hover:text-blue-700">
@@ -133,13 +133,13 @@
                                         </svg>
                                     </a>
                                     <a href="{{ route('pos1.antrian.daftar') }}"
-                                        class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-blue-50 hover:text-blue-700">
+                                        class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm transition-colors bg-blue-50 text-blue-700 font-semibold">
                                         <span>Daftar Antrian</span>
-                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                            class="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100"
-                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M12 4v16m8-8H4" />
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-blue-600"
+                                            viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd"
+                                                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                                clip-rule="evenodd" />
                                         </svg>
                                     </a>
                                 </div>
@@ -149,7 +149,7 @@
                         {{-- Cek Kendaraan Menu Accordion --}}
                         <div class="space-y-1">
                             <button type="button" onclick="toggleCekKendaraanMenu()"
-                                class="group flex w-full items-center justify-between rounded-xl border border-transparent px-4 py-3 bg-blue-50/50 text-blue-700 transition-all hover:bg-blue-50 hover:text-blue-800">
+                                class="group flex w-full items-center justify-between rounded-xl border border-transparent px-4 py-3 text-slate-600 transition-all hover:bg-blue-50/50 hover:text-blue-700">
                                 <span class="flex items-center gap-3">
                                     <div
                                         class="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-100/50 text-blue-600 transition-colors group-hover:bg-blue-500 group-hover:text-white">
@@ -169,7 +169,7 @@
                                     </div>
                                 </span>
                                 <svg id="cekKendaraanToggleIcon" xmlns="http://www.w3.org/2000/svg"
-                                    class="h-4 w-4 text-blue-400 transition-transform duration-300 group-hover:text-blue-600 rotate-180"
+                                    class="h-4 w-4 text-blue-400 transition-transform duration-300 group-hover:text-blue-600"
                                     viewBox="0 0 20 20" fill="currentColor">
                                     <path fill-rule="evenodd"
                                         d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
@@ -177,7 +177,7 @@
                                 </svg>
                             </button>
 
-                            <div id="cekKendaraanSubmenu" class="space-y-1 pl-4">
+                            <div id="cekKendaraanSubmenu" class="hidden space-y-1 pl-4">
                                 <div class="relative ml-4 space-y-1 border-l-2 border-slate-100 pl-4 py-1">
                                     <a href="{{ route('cek-kendaraan.input') }}"
                                         class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-blue-50 hover:text-blue-700">
@@ -190,13 +190,13 @@
                                         </svg>
                                     </a>
                                     <a href="{{ route('cek-kendaraan.daftar') }}"
-                                        class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm transition-colors bg-blue-50 text-blue-700 font-semibold">
+                                        class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-blue-50 hover:text-blue-700">
                                         <span>Daftar Pemeriksaan</span>
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-blue-600"
-                                            viewBox="0 0 20 20" fill="currentColor">
-                                            <path fill-rule="evenodd"
-                                                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                                clip-rule="evenodd" />
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            class="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M12 4v16m8-8H4" />
                                         </svg>
                                     </a>
                                 </div>
@@ -347,24 +347,21 @@
                             <div class="flex h-10 w-10 items-center justify-center rounded-full bg-white/20">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" viewBox="0 0 20 20"
                                     fill="currentColor">
-                                    <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
-                                    <path fill-rule="evenodd"
-                                        d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm9.707 5.707a1 1 0 00-1.414-1.414L9 12.586l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                        clip-rule="evenodd" />
+                                    <path
+                                        d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" />
                                 </svg>
                             </div>
                             <p class="text-xs font-bold uppercase tracking-[0.5em] text-white">
-                                Daftar Pemeriksaan
+                                Daftar Antrian
                             </p>
                         </div>
                         <h1 class="text-4xl font-bold text-white sm:text-5xl leading-tight">
-                            Vehicle Inspection
+                            Queue Management
                         </h1>
                         <div class="mx-auto h-1 w-20 bg-white/50"></div>
                         <p class="mx-auto text-sm leading-relaxed text-white/90 max-w-2xl">
-                            Daftar lengkap data pemeriksaan kendaraan yang telah tersimpan. Semua data dapat dilihat
-                            untuk
-                            keperluan dokumentasi dan audit.
+                            Daftar lengkap antrian kendaraan yang terdaftar. Pantau status dan kelola antrian dengan
+                            efisien.
                         </p>
                     </div>
                 </div>
@@ -398,15 +395,15 @@
                                         clip-rule="evenodd" />
                                 </svg>
                             </div>
-                            <input type="text" placeholder="Cari data (Nopol, Supir, Perusahaan)..."
+                            <input type="text" placeholder="Cari data (Nopol, Supir, No. Antrian)..."
                                 class="w-full rounded-2xl border-0 bg-white py-4 pl-12 pr-4 text-sm font-medium text-slate-600 shadow-lg shadow-slate-200/50 ring-1 ring-slate-100 transition focus:ring-2 focus:ring-blue-500/50 outline-none placeholder:text-slate-400">
                         </div>
 
                         <div class="flex items-center gap-4">
                             <div class="text-xs font-bold uppercase tracking-wider text-slate-400">
-                                Total: <span class="text-blue-600 text-lg ml-1">{{ $cekKendaraanList->count() }}</span>
+                                Total: <span class="text-blue-600 text-lg ml-1">{{ $antrianList->count() }}</span>
                             </div>
-                            <a href="{{ route('cek-kendaraan.input') }}"
+                            <a href="{{ route('pos1.antrian.input') }}"
                                 class="inline-flex items-center justify-center gap-2 rounded-2xl bg-slate-900 px-6 py-3.5 text-sm font-bold text-white shadow-xl shadow-slate-900/20 transition-all hover:bg-slate-800 hover:scale-105 active:scale-95">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
                                     fill="currentColor">
@@ -414,12 +411,12 @@
                                         d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
                                         clip-rule="evenodd" />
                                 </svg>
-                                Input Pemeriksaan
+                                Input Antrian
                             </a>
                         </div>
                     </div>
 
-                    @if($cekKendaraanList->isEmpty())
+                    @if($antrianList->isEmpty())
                         <div
                             class="flex flex-col items-center justify-center rounded-[2rem] border-2 border-dashed border-slate-200 bg-slate-50/50 py-24 text-center">
                             <div
@@ -427,14 +424,12 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-slate-300" viewBox="0 0 20 20"
                                     fill="currentColor">
                                     <path
-                                        d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
-                                    <path
-                                        d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V5a1 1 0 00-1-1H3zM14 7a1 1 0 00-1 1v6.05A2.5 2.5 0 0115.95 16H17a1 1 0 001-1v-5a1 1 0 00-.293-.707l-2-2A1 1 0 0015 7h-1z" />
+                                        d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" />
                                 </svg>
                             </div>
-                            <h3 class="text-xl font-bold text-slate-800">Belum Ada Data Pemeriksaan</h3>
-                            <p class="mt-2 text-slate-500 max-w-sm mx-auto">Data pemeriksaan kendaraan Anda akan muncul di
-                                sini. Mulai dengan menginput pemeriksaan baru.</p>
+                            <h3 class="text-xl font-bold text-slate-800">Belum Ada Data Antrian</h3>
+                            <p class="mt-2 text-slate-500 max-w-sm mx-auto">Data antrian kendaraan akan muncul di
+                                sini. Mulai dengan menginput antrian baru.</p>
                         </div>
                     @else
                         {{-- Table Layout --}}
@@ -442,89 +437,172 @@
                             <div class="overflow-x-auto">
                                 <table class="w-full min-w-[1200px]">
                                     <thead>
-                                        <tr class="bg-gradient-to-r from-blue-500 to-blue-600 text-white">
-                                            <th class="px-3 py-3 text-left text-xs font-bold uppercase tracking-wider w-12">
-                                                No
-                                            </th>
-                                            <th class="px-3 py-3 text-left text-xs font-bold uppercase tracking-wider w-24">
-                                                Tanggal</th>
-                                            <th class="px-3 py-3 text-left text-xs font-bold uppercase tracking-wider w-20">
-                                                Waktu
-                                            </th>
-                                            <th class="px-3 py-3 text-left text-xs font-bold uppercase tracking-wider w-32">
-                                                No. Polisi
-                                            </th>
-                                            <th class="px-3 py-3 text-left text-xs font-bold uppercase tracking-wider w-32">
-                                                Supir
-                                            </th>
-                                            <th class="px-3 py-3 text-left text-xs font-bold uppercase tracking-wider w-32">
-                                                Perusahaan
-                                            </th>
-                                            <th class="px-3 py-3 text-left text-xs font-bold uppercase tracking-wider w-24">
-                                                Jenis
-                                            </th>
-                                            <th class="px-3 py-3 text-left text-xs font-bold uppercase tracking-wider w-28">
-                                                Validation
-                                            </th>
-                                            <th class="px-3 py-3 text-left text-xs font-bold uppercase tracking-wider w-28">
-                                                Petugas
+                                        <tr class="bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-sm">
+                                            <th
+                                                class="px-4 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider w-28">
+                                                No. Antrian
                                             </th>
                                             <th
-                                                class="px-3 py-3 text-center text-xs font-bold uppercase tracking-wider w-24">
-                                                Action</th>
+                                                class="px-4 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider w-24">
+                                                Tanggal
+                                            </th>
+                                            <th
+                                                class="px-4 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider w-24">
+                                                Jam
+                                            </th>
+                                            <th
+                                                class="px-4 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider w-28">
+                                                No. Polisi
+                                            </th>
+                                            <th
+                                                class="px-4 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider w-36">
+                                                Supir
+                                            </th>
+                                            <th
+                                                class="px-4 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider w-28">
+                                                Jenis
+                                            </th>
+                                            <th
+                                                class="px-4 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider w-28">
+                                                Tujuan
+                                            </th>
+                                            <th
+                                                class="px-4 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider w-24">
+                                                Prioritas
+                                            </th>
+
+                                            <th
+                                                class="px-4 py-2.5 text-center text-[11px] font-bold uppercase tracking-wider w-20">
+                                                Action
+                                            </th>
                                         </tr>
                                     </thead>
                                     <tbody class="divide-y divide-slate-100">
-                                        @foreach($cekKendaraanList as $index => $item)
+                                        @foreach($antrianList as $item)
                                             @php
-                                                $statusColor = match ($item->hasil_pemeriksaan) {
-                                                    'Lolos' => 'emerald',
-                                                    'Lolos Bersyarat' => 'amber',
-                                                    'Tidak Lolos' => 'rose',
+                                                $statusColor = match ($item->status) {
+                                                    'Waiting' => 'blue',
+                                                    'In Process' => 'amber',
+                                                    'Completed' => 'emerald',
+                                                    'Cancelled' => 'rose',
                                                     default => 'slate'
                                                 };
                                             @endphp
-                                            <tr class="bg-white hover:bg-slate-50 transition-colors duration-150">
-                                                <td class="px-3 py-3 text-sm font-semibold text-slate-700">
-                                                    {{ $index + 1 }}
-                                                </td>
-                                                <td class="px-3 py-3 text-xs text-slate-600 whitespace-nowrap">
-                                                    {{ $item->tanggal->format('d-m-Y') }}
-                                                </td>
-                                                <td class="px-3 py-3 text-xs text-slate-600 whitespace-nowrap">
-                                                    {{ $item->waktu_masuk->format('H:i') }}
-                                                </td>
-                                                <td class="px-3 py-3 text-xs font-bold text-slate-800 whitespace-nowrap">
-                                                    {{ $item->nomor_polisi }}
-                                                </td>
-                                                <td class="px-3 py-3 text-xs text-slate-600 max-w-[140px]">
-                                                    <span class="line-clamp-1">{{ $item->nama_driver }}</span>
-                                                </td>
-                                                <td class="px-3 py-3 text-xs text-slate-600 max-w-[140px]">
-                                                    <span class="line-clamp-1">{{ $item->perusahaan ?? '-' }}</span>
-                                                </td>
-                                                <td class="px-3 py-3 text-xs text-slate-600">
-                                                    {{ $item->jenis_kendaraan }}
-                                                </td>
-                                                <td class="px-3 py-3 whitespace-nowrap">
+                                            <tr class="bg-white hover:bg-slate-50/80 transition-colors duration-150 group">
+                                                <td class="px-4 py-2.5">
                                                     <span
-                                                        class="inline-flex items-center rounded-lg bg-{{ $statusColor }}-100 px-2 py-0.5 text-xs font-semibold text-{{ $statusColor }}-700">
-                                                        {{ $item->hasil_pemeriksaan }}
+                                                        class="inline-block font-bold text-slate-700 bg-slate-100 px-2 py-0.5 rounded text-xs border border-slate-200 group-hover:bg-white group-hover:border-blue-200 group-hover:text-blue-700 transition-colors">
+                                                        {{ $item->no_antrian }}
                                                     </span>
                                                 </td>
-                                                <td class="px-3 py-3 text-xs text-slate-600">
-                                                    {{ $item->nama_petugas }}
+                                                <td class="px-4 py-2.5 text-xs font-medium text-slate-500 whitespace-nowrap">
+                                                    {{ date('d-m-Y', strtotime($item->tgl_antrian)) }}
                                                 </td>
-                                                <td class="px-3 py-3 text-center whitespace-nowrap">
-                                                    <a href="{{ route('cek-kendaraan.edit', $item->id) }}"
-                                                        class="inline-flex items-center gap-1 rounded-lg bg-blue-600 px-2.5 py-1.5 text-xs font-bold text-white shadow-sm transition-all hover:bg-blue-700 hover:shadow-md active:scale-95">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5"
-                                                            viewBox="0 0 20 20" fill="currentColor">
-                                                            <path
-                                                                d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
-                                                        </svg>
-                                                        Edit
-                                                    </a>
+                                                <td class="px-4 py-2.5 text-xs font-medium text-slate-500 whitespace-nowrap">
+                                                    {{ $item->jam_diizinkan_masuk }}
+                                                </td>
+                                                <td class="px-4 py-2.5">
+                                                    <span
+                                                        class="text-xs font-bold text-slate-700 font-mono bg-slate-50 px-1.5 py-0.5 rounded border border-slate-200">
+                                                        {{ $item->nomor_polisi }}
+                                                    </span>
+                                                </td>
+                                                <td class="px-4 py-2.5 text-xs font-medium text-slate-600 max-w-[150px]">
+                                                    <div class="flex items-center gap-2">
+                                                        <div
+                                                            class="h-5 w-5 rounded-full bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-500">
+                                                            {{ substr($item->nama_driver, 0, 1) }}
+                                                        </div>
+                                                        <span class="truncate">{{ $item->nama_driver }}</span>
+                                                    </div>
+                                                </td>
+                                                <td class="px-4 py-2.5 text-xs text-slate-600">
+                                                    {{ $item->jenis_antrian ?? '-' }}
+                                                </td>
+                                                <td class="px-4 py-2.5 text-xs text-slate-600">
+                                                    {{ $item->tujuan ?? '-' }}
+                                                </td>
+                                                <td class="px-4 py-2.5 whitespace-nowrap">
+                                                    @php
+                                                        $priorityColor = match ($item->emr) {
+                                                            'Urgent' => 'amber',
+                                                            'Critical' => 'rose',
+                                                            default => 'sky'
+                                                        };
+
+                                                        $priorityLabel = $item->emr ?? 'Normal';
+                                                        if (strtolower($priorityLabel) === 'normal')
+                                                            $priorityColor = 'slate';
+                                                    @endphp
+                                                    <span
+                                                        class="inline-flex items-center justify-center min-w-[60px] rounded-full bg-{{ $priorityColor }}-50 px-2.5 py-1 text-[11px] font-bold tracking-wide text-{{ $priorityColor }}-700 border border-{{ $priorityColor }}-200">
+                                                        {{ strtoupper($priorityLabel) }}
+                                                    </span>
+                                                </td>
+
+                                                <td class="px-4 py-2.5 text-center whitespace-nowrap">
+                                                    <div class="relative" x-data="{ open: false }">
+                                                        <button @click="open = !open"
+                                                            class="text-slate-400 hover:text-blue-600 transition-colors p-1 rounded-full hover:bg-slate-100 focus:outline-none border border-transparent focus:border-blue-200">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                                                                viewBox="0 0 24 24" stroke="currentColor">
+                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                    stroke-width="2"
+                                                                    d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+                                                            </svg>
+                                                        </button>
+
+                                                        <!-- Dropdown Menu -->
+                                                        <div x-show="open" @click.away="open = false"
+                                                            x-transition:enter="transition ease-out duration-100"
+                                                            x-transition:enter-start="transform opacity-0 scale-95"
+                                                            x-transition:enter-end="transform opacity-100 scale-100"
+                                                            x-transition:leave="transition ease-in duration-75"
+                                                            x-transition:leave-start="transform opacity-100 scale-100"
+                                                            x-transition:leave-end="transform opacity-0 scale-95"
+                                                            class="absolute right-0 top-8 z-10 w-36 origin-top-right rounded-xl border border-slate-100 bg-white shadow-xl focus:outline-none overflow-hidden">
+                                                            <div class="py-1">
+                                                                <a href="{{ route('pos1.antrian.edit', $item->id) }}"
+                                                                    class="flex items-center gap-2 px-4 py-2 text-xs font-semibold text-slate-600 hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4"
+                                                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                                            stroke-width="2"
+                                                                            d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                                                    </svg>
+                                                                    Edit
+                                                                </a>
+                                                                <button type="button"
+                                                                    onclick="confirmDelete('{{ $item->id }}', '{{ $item->no_antrian }}')"
+                                                                    class="flex w-full items-center gap-2 px-4 py-2 text-xs font-semibold text-rose-600 hover:bg-rose-50 transition-colors">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4"
+                                                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                                            stroke-width="2"
+                                                                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                                    </svg>
+                                                                    Delete
+                                                                </button>
+                                                                <form id="delete-form-{{ $item->id }}"
+                                                                    action="{{ route('pos1.antrian.destroy', $item->id) }}"
+                                                                    method="POST" class="hidden">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                </form>
+                                                                <a href="{{ route('pos1.antrian.print', $item->id) }}"
+                                                                    target="_blank"
+                                                                    class="flex items-center gap-2 px-4 py-2 text-xs font-semibold text-slate-600 hover:bg-blue-50 hover:text-blue-600 transition-colors border-t border-slate-100">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4"
+                                                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                                            stroke-width="2"
+                                                                            d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+                                                                    </svg>
+                                                                    Print Ticket
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -568,6 +646,42 @@
         </div>
     </div>
 
+    <!-- Delete Confirmation Modal -->
+    <div id="deleteModal"
+        class="fixed inset-0 z-50 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="closeDeleteModal()"></div>
+        <div
+            class="relative w-full max-w-sm rounded-2xl bg-white p-6 shadow-2xl transform scale-95 transition-transform duration-300">
+            <div class="mb-6 flex flex-col items-center text-center">
+                <div class="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-rose-100 text-rose-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900">Hapus Antrian?</h3>
+                <p class="mt-2 text-sm text-slate-500">
+                    Anda yakin ingin menghapus antrian <span id="deleteAntrianNo"
+                        class="font-bold text-slate-800"></span>?
+                    Tindakan ini tidak dapat dibatalkan.
+                </p>
+            </div>
+            <div class="flex gap-3">
+                <button type="button" onclick="closeDeleteModal()"
+                    class="flex-1 rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50">
+                    Batal
+                </button>
+                <button type="button" id="confirmDeleteBtn"
+                    class="flex-1 rounded-xl bg-rose-600 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-rose-600/20 transition hover:bg-rose-700">
+                    Ya, Hapus
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
     <script>
         const sidebar = document.getElementById('sidebar');
         const sidebarToggle = document.getElementById('sidebarToggle');
@@ -576,6 +690,37 @@
         const cekKendaraanSubmenu = document.getElementById('cekKendaraanSubmenu');
         const logoutModal = document.getElementById('logoutModal');
         const logoutModalContent = logoutModal.querySelector('div.transform');
+
+        // Delete Modal Elements
+        const deleteModal = document.getElementById('deleteModal');
+        const deleteModalContent = deleteModal.querySelector('div.transform');
+        const deleteAntrianNo = document.getElementById('deleteAntrianNo');
+        const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
+        let deleteFormId = null;
+
+        function confirmDelete(id, noAntrian) {
+            deleteFormId = 'delete-form-' + id;
+            deleteAntrianNo.textContent = noAntrian;
+
+            deleteModal.classList.remove('opacity-0', 'pointer-events-none');
+            deleteModalContent.classList.remove('scale-95');
+            deleteModalContent.classList.add('scale-100');
+        }
+
+        function closeDeleteModal() {
+            deleteModal.classList.add('opacity-0', 'pointer-events-none');
+            deleteModalContent.classList.remove('scale-100');
+            deleteModalContent.classList.add('scale-95');
+            deleteFormId = null;
+        }
+
+        if (confirmDeleteBtn) {
+            confirmDeleteBtn.addEventListener('click', function () {
+                if (deleteFormId) {
+                    document.getElementById(deleteFormId).submit();
+                }
+            });
+        }
 
         function toggleSidebar() {
             const isClosed = sidebar.classList.contains('-translate-x-full');
@@ -642,8 +787,14 @@
         sidebarToggle.addEventListener('click', toggleSidebar);
         sidebarOverlay.addEventListener('click', toggleSidebar);
 
-        // Auto-expand Cek Kendaraan menu if active
-        // cekKendaraanSubmenu.classList.remove('hidden');
+        // Auto-expand Antrian menu if active
+        const antrianSubmenu = document.getElementById('antrianSubmenu');
+        if (antrianSubmenu.classList.contains('hidden')) {
+            antrianSubmenu.classList.remove('hidden');
+            const icon = document.getElementById('antrianToggleIcon');
+            if (icon) icon.classList.add('rotate-180');
+        }
+
     </script>
 </body>
 

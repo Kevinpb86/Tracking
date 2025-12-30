@@ -22,7 +22,7 @@ return new class extends Migration {
             // Scheduling & Status
             $table->date('tgl_antrian');
             $table->time('jam_diizinkan_masuk')->nullable();
-            $table->string('status', 50)->default('Waiting'); // Waiting, Processed, Completed
+            $table->string('status', 50)->nullable(); // Waiting, Processed, Completed
 
             $table->timestamps();
         });

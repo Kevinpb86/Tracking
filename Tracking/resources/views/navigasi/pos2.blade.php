@@ -50,69 +50,157 @@
                         <img src="{{ asset('images/wgilogo.jpg') }}" alt="Logo PT. WGI"
                             class="h-full w-full rounded-lg object-contain">
                     </div>
-                    <div class="flex-1 space-y-0.5">
-                        <span class="block text-[10px] font-bold uppercase tracking-[0.3em] text-slate-400">Tracking
-                            System</span>
-                        <span class="block text-sm font-bold leading-tight text-slate-900">PT. Wiraswasta Gemilang
-                            Indonesia</span>
+                    <div class="space-y-0.5">
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-emerald-600">Tracking System</p>
+                        <p
+                            class="text-sm font-bold text-slate-800 leading-tight group-hover:text-emerald-700 transition-colors">
+                            PT. Wiraswasta Gemilang Indonesia</p>
                     </div>
                 </a>
 
                 {{-- Navigation --}}
-                <nav class="space-y-2">
-                    <p class="px-2 text-[10px] font-bold uppercase tracking-[0.25em] text-slate-400">Menu Utama</p>
+                <div class="flex flex-col gap-1">
+                    <div class="mb-4 flex items-center justify-between px-2">
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Navigasi Pos 2</p>
+                        <span
+                            class="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-emerald-600">
+                            <span class="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                            Live
+                        </span>
+                    </div>
 
-                    <a href="{{ route('dashboard.main') }}"
-                        class="group flex items-center gap-3 rounded-xl px-4 py-3 text-slate-600 transition hover:bg-slate-50 hover:text-slate-900">
-                        <div
-                            class="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-100 text-slate-600 transition group-hover:bg-slate-200">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
-                                fill="currentColor">
-                                <path
-                                    d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
-                            </svg>
-                        </div>
-                        <span class="text-sm font-medium">Dashboard Utama</span>
-                    </a>
+                    <nav class="space-y-2">
+                        {{-- Active Dashboard Link --}}
+                        <a href="{{ route('pos2.dashboard') }}"
+                            class="flex items-center justify-between rounded-xl bg-emerald-600 px-4 py-3 text-white shadow-lg shadow-emerald-500/30 transition-all hover:bg-emerald-700 hover:shadow-emerald-600/40 hover:-translate-y-0.5">
+                            <span class="flex items-center gap-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
+                                    fill="currentColor">
+                                    <path
+                                        d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
+                                </svg>
+                                <span class="font-semibold text-sm">Dashboard</span>
+                            </span>
+                            <div class="h-1.5 w-1.5 rounded-full bg-white/90"></div>
+                        </a>
 
-                    <p class="px-2 pt-4 text-[10px] font-bold uppercase tracking-[0.25em] text-slate-400">Pos Checkpoint
-                    </p>
+                        {{-- Cek Barang Menu (Adapted from Antrian/CekKendaraan Logic) --}}
+                        <div class="space-y-1">
+                            <button type="button" onclick="toggleCekBarangMenu()"
+                                class="group flex w-full items-center justify-between rounded-xl border border-transparent px-4 py-3 text-slate-600 transition-all hover:bg-emerald-50/50 hover:text-emerald-700">
+                                <span class="flex items-center gap-3">
+                                    <div
+                                        class="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-100/50 text-emerald-600 transition-colors group-hover:bg-emerald-500 group-hover:text-white">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
+                                            fill="currentColor">
+                                            <path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4z" />
+                                            <path fill-rule="evenodd"
+                                                d="M3 8h14v7a2 2 0 01-2 2H5a2 2 0 01-2-2V8zm5 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                    <div class="text-left font-medium text-sm">
+                                        <p class="text-xs font-bold uppercase tracking-wider text-emerald-500/80">Cek
+                                            Barang
+                                        </p>
+                                        <p>Distribution Check</p>
+                                    </div>
+                                </span>
+                                <svg id="cekBarangToggleIcon" xmlns="http://www.w3.org/2000/svg"
+                                    class="h-4 w-4 text-emerald-400 transition-transform duration-300 group-hover:text-emerald-600"
+                                    viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </button>
 
-                    <a href="{{ route('pos1.dashboard') }}"
-                        class="group flex items-center gap-3 rounded-xl px-4 py-3 text-slate-600 transition hover:bg-blue-50 hover:text-blue-700">
-                        <div
-                            class="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-100 text-blue-600 transition group-hover:bg-blue-500 group-hover:text-white">
-                            <span class="text-sm font-bold">1</span>
-                        </div>
-                        <div class="flex-1">
-                            <div class="text-[10px] font-bold uppercase tracking-wider text-blue-500">Cek DO</div>
-                            <div class="text-sm font-medium">Delivery Order</div>
-                        </div>
-                    </a>
-
-                    <a href="{{ route('pos2.dashboard') }}"
-                        class="group flex items-center gap-3 rounded-xl bg-emerald-50 px-4 py-3 text-emerald-700 shadow-sm ring-1 ring-emerald-100">
-                        <div
-                            class="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-500 text-white shadow-sm">
-                            <span class="text-sm font-bold">2</span>
-                        </div>
-                        <div class="flex-1">
-                            <div class="text-[10px] font-bold uppercase tracking-wider text-emerald-600">Cek Barang
+                            <div id="cekBarangSubmenu" class="hidden space-y-1 pl-4">
+                                <div class="relative ml-4 space-y-1 border-l-2 border-slate-100 pl-4 py-1">
+                                    <a href="#"
+                                        class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-emerald-50 hover:text-emerald-700">
+                                        <span>Daftar Distribusi</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            class="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                                        </svg>
+                                    </a>
+                                </div>
                             </div>
-                            <div class="text-sm font-bold">Cek Barang</div>
                         </div>
-                    </a>
-                </nav>
 
-                {{-- Logout Button --}}
-                <button type="button" onclick="handleLogout()"
-                    class="group mt-auto flex items-center gap-3 rounded-xl bg-rose-50 px-4 py-3 text-rose-700 transition hover:bg-rose-100">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor" stroke-width="2">
+                        {{-- Cek DO Menu Accordion --}}
+                        <div class="space-y-1 pt-2">
+                            <button type="button" onclick="toggleCekDOMenu()"
+                                class="group flex w-full items-center justify-between rounded-xl border border-transparent px-4 py-3 text-slate-600 transition-all hover:bg-emerald-50/50 hover:text-emerald-700">
+                                <span class="flex items-center gap-3">
+                                    <div
+                                        class="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-100/50 text-emerald-600 transition-colors group-hover:bg-emerald-500 group-hover:text-white">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
+                                            fill="currentColor">
+                                            <path fill-rule="evenodd"
+                                                d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 00-1-1H6zm1 2h6v1H7V4zm-1 2a1 1 0 011 1v.01a1 1 0 11-2 0V7a1 1 0 011-1zm2 0h6v2H9V6zm-2 4a1 1 0 011 1v.01a1 1 0 11-2 0V11a1 1 0 011-1zm2 0h6v2H9v-2zm-2 4a1 1 0 011 1v.01a1 1 0 11-2 0V15a1 1 0 011-1zm2 0h6v2H9v-2z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                    <div class="text-left font-medium text-sm">
+                                        <p class="text-xs font-bold uppercase tracking-wider text-emerald-500/80">Cek
+                                            DO
+                                        </p>
+                                        <p>Delivery Order Check</p>
+                                    </div>
+                                </span>
+                                <svg id="cekDOToggleIcon" xmlns="http://www.w3.org/2000/svg"
+                                    class="h-4 w-4 text-emerald-400 transition-transform duration-300 group-hover:text-emerald-600"
+                                    viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </button>
+
+                            <div id="cekDOSubmenu" class="hidden space-y-1 pl-4">
+                                <div class="relative ml-4 space-y-1 border-l-2 border-slate-100 pl-4 py-1">
+                                    <a href="#"
+                                        class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-emerald-50 hover:text-emerald-700">
+                                        <span>Input Cek DO</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            class="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M12 4v16m8-8H4" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+
+            {{-- Footer / Profile Section --}}
+            <div class="mt-auto border-t border-slate-100 bg-slate-50/50 p-4">
+                <div class="mb-4 flex items-center gap-3 rounded-xl bg-white p-3 shadow-sm border border-slate-100">
+                    <div
+                        class="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-100 text-emerald-700 font-bold border border-emerald-200">
+                        {{ substr(Auth::user()->name ?? 'U', 0, 1) }}
+                    </div>
+                    <div class="overflow-hidden">
+                        <p class="truncate text-sm font-bold text-slate-900">{{ Auth::user()->name ?? 'Guest' }}</p>
+                        <p class="truncate text-xs text-slate-500">{{ Auth::user()->email ?? '' }}</p>
+                    </div>
+                </div>
+
+                <button type="button" onclick="showLogoutModal()"
+                    class="flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-white border border-rose-100 px-4 py-2.5 text-sm font-semibold text-rose-600 shadow-sm transition-all duration-200 hover:bg-rose-600 hover:text-white hover:border-rose-600 hover:shadow-lg hover:-translate-y-0.5 active:scale-95">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform group-hover:scale-110"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round"
                             d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
                     </svg>
-                    <span class="text-sm font-semibold">Sign Out</span>
+                    Sign Out
                 </button>
                 <form id="logoutForm" action="{{ route('logout') }}" method="POST" class="hidden">
                     @csrf
@@ -372,7 +460,57 @@
         </main>
     </div>
 
+    <!-- Logout Confirmation Modal -->
+    <div id="logoutModal"
+        class="fixed inset-0 z-[100] hidden items-center justify-center bg-slate-900/60 backdrop-blur-sm opacity-0 transition-opacity duration-300">
+        <div
+            class="relative w-full max-w-sm scale-95 transform overflow-hidden rounded-2xl bg-white text-center shadow-2xl transition-all duration-300">
+            <div class="p-8">
+                <div class="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-rose-50">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-rose-500" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                    </svg>
+                </div>
+                <h3 class="mb-2 text-xl font-bold text-slate-900">Konfirmasi Keluar</h3>
+                <p class="text-sm text-slate-500">Apakah Anda yakin ingin mengakhiri sesi ini? Anda harus login kembali
+                    untuk mengakses sistem.</p>
+            </div>
+            <div class="grid grid-cols-2 border-t border-slate-100 bg-slate-50">
+                <button onclick="closeLogoutModal()"
+                    class="cursor-pointer border-r border-slate-100 px-6 py-4 text-sm font-semibold text-slate-600 transition hover:bg-white hover:text-slate-900 focus:outline-none">
+                    Batal
+                </button>
+                <button onclick="document.getElementById('logoutForm').submit()"
+                    class="cursor-pointer px-6 py-4 text-sm font-bold text-rose-600 transition hover:bg-rose-50 focus:outline-none">
+                    Ya, Keluar
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script>
+        function showLogoutModal() {
+            const modal = document.getElementById('logoutModal');
+            modal.classList.remove('hidden');
+            // Trigger reflow to enable transition
+            void modal.offsetWidth;
+            modal.classList.remove('opacity-0');
+            modal.querySelector('div').classList.remove('scale-95');
+            modal.querySelector('div').classList.add('scale-100');
+        }
+
+        function closeLogoutModal() {
+            const modal = document.getElementById('logoutModal');
+            modal.classList.add('opacity-0');
+            modal.querySelector('div').classList.remove('scale-100');
+            modal.querySelector('div').classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300); // Wait for transition
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             const toggleButton = document.getElementById('sidebarToggle');
             const sidebar = document.getElementById('sidebar');
@@ -383,7 +521,8 @@
                 if (!isOpen) {
                     sidebar.classList.remove('-translate-x-full');
                     sidebar.classList.add('translate-x-0');
-                    overlay.classList.remove('pointer-events-none', 'opacity-0');
+                    overlay.classList.remove('pointer-events-none');
+                    overlay.classList.remove('opacity-0');
                     overlay.classList.add('pointer-events-auto', 'opacity-100');
                     toggleButton.setAttribute('aria-expanded', 'true');
                 } else {
@@ -413,7 +552,7 @@
 
                 const hours = String(wibTime.getHours()).padStart(2, '0');
                 const minutes = String(wibTime.getMinutes()).padStart(2, '0');
-                const timeString = `${hours}:${minutes} WIB`;
+                const timeString = `${hours}:${minutes}`;
 
                 const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
                 const months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus',
@@ -426,7 +565,7 @@
 
                 const timeElement = document.getElementById('currentTime');
                 const dateElement = document.getElementById('currentDate');
-                if (timeElement) timeElement.textContent = timeString.split(' ')[0];
+                if (timeElement) timeElement.textContent = timeString;
                 if (dateElement) dateElement.textContent = dateString;
             }
 
@@ -434,9 +573,33 @@
             setInterval(updateWIBTime, 1000);
         });
 
-        function handleLogout() {
-            if (confirm('Apakah Anda yakin ingin keluar?')) {
-                document.getElementById('logoutForm').submit();
+        // Toggle Cek DO menu (global function)
+        function toggleCekDOMenu() {
+            const submenu = document.getElementById('cekDOSubmenu');
+            const icon = document.getElementById('cekDOToggleIcon');
+            if (submenu && icon) {
+                if (submenu.classList.contains('hidden')) {
+                    submenu.classList.remove('hidden');
+                    icon.classList.add('rotate-180');
+                } else {
+                    submenu.classList.add('hidden');
+                    icon.classList.remove('rotate-180');
+                }
+            }
+        }
+
+        // Toggle Cek Barang menu
+        function toggleCekBarangMenu() {
+            const submenu = document.getElementById('cekBarangSubmenu');
+            const icon = document.getElementById('cekBarangToggleIcon');
+            if (submenu && icon) {
+                if (submenu.classList.contains('hidden')) {
+                    submenu.classList.remove('hidden');
+                    icon.classList.add('rotate-180');
+                } else {
+                    submenu.classList.add('hidden');
+                    icon.classList.remove('rotate-180');
+                }
             }
         }
     </script>

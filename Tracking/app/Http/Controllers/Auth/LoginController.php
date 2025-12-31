@@ -36,6 +36,14 @@ class LoginController extends Controller
             Auth::login($user, $remember);
             $request->session()->regenerate();
 
+            // POS Redirection Logic
+            if ($user->username === 'pos1') {
+                return redirect()->intended(route('pos1.dashboard'));
+            }
+            if ($user->username === 'pos2') {
+                return redirect()->intended(route('pos2.dashboard'));
+            }
+
             // Redirect to intended URL or main dashboard
             return redirect()->intended(route('dashboard.main'));
         }

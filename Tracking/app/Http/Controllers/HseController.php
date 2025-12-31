@@ -63,6 +63,55 @@ class HseController extends Controller
         return view('navigasi.detail-hse', compact('hse'));
     }
 
+    public function edit($id)
+    {
+        $hse = Hse::findOrFail($id);
+        return view('navigasi.edit-hse', compact('hse'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $hse = Hse::findOrFail($id);
+
+        $validated = $request->validate([
+            'tanggal' => 'required|date',
+            'waktu' => 'required',
+            'nama_petugas' => 'required|string|max:255',
+            'nomor_polisi' => 'nullable|string|max:20',
+            'nama_driver' => 'nullable|string|max:255',
+            'perusahaan' => 'nullable|string|max:255',
+            'catatan_safety' => 'nullable|string',
+            'tindak_lanjut' => 'nullable|string',
+            'status' => 'required|in:Lolos,Perbaikan,Ditolak',
+        ]);
+
+        $data = $request->all();
+        $booleanFields = [
+            'helm_safety',
+            'sepatu_safety',
+            'rompi_safety',
+            'masker',
+            'sarung_tangan',
+            'kacamata_safety',
+            'apar_tersedia',
+            'kotak_p3k',
+        ];
+
+        foreach ($booleanFields as $field) {
+            $data[$field] = $request->has($field);
+        }
+
+        $hse->update($data);
+
+        return redirect()->route('hse.daftar')->with('success', 'Data HSE berhasil diperbarui!');
+    }
+
+    public function exportPdf($id)
+    {
+        $hse = Hse::findOrFail($id);
+        return view('pdf.hse', compact('hse'));
+    }
+
     public function mainDashboard()
     {
         $pos1Queues = session('pos1_queues', []);

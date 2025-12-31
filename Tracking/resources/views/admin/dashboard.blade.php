@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Tracking Dashboard - Main View</title>
+    <title>Admin Dashboard - Tracking System</title>
     <link rel="icon" type="image/jpeg" href="{{ asset('images/wgilogo.jpg') }}">
 
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -64,7 +64,7 @@
                 {{-- Navigation --}}
                 <div class="flex flex-col gap-1">
                     <div class="mb-4 flex items-center justify-between px-2">
-                        <p class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Main Dashboard</p>
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Admin Panel</p>
                         <span
                             class="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-emerald-600">
                             <span class="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
@@ -73,20 +73,20 @@
                     </div>
 
                     <nav class="space-y-2">
-                        {{-- Admin Dashboard Link --}}
+                        {{-- Active Admin Dashboard Link --}}
                         <a href="{{ route('admin.dashboard') }}"
-                            class="group flex items-center justify-between rounded-xl border border-transparent px-4 py-3 text-slate-600 transition-all hover:bg-slate-50 hover:text-blue-600">
+                            class="flex items-center justify-between rounded-xl bg-blue-600 px-4 py-3 text-white shadow-lg shadow-blue-500/30 transition-all hover:bg-blue-700 hover:shadow-blue-600/40 hover:-translate-y-0.5">
                             <span class="flex items-center gap-3">
-                                <svg xmlns="http://www.w3.org/2000/svg"
-                                    class="h-5 w-5 text-slate-400 transition-colors group-hover:text-blue-500"
-                                    fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                         d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                         d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                                 </svg>
-                                <span class="font-medium text-sm">Admin Dashboard</span>
+                                <span class="font-semibold text-sm">Admin Dashboard</span>
                             </span>
+                            <div class="h-1.5 w-1.5 rounded-full bg-white/90"></div>
                         </a>
 
                         {{-- POS 1 Link --}}
@@ -281,6 +281,14 @@
                                 <p class="text-xs font-semibold uppercase tracking-[0.45em] text-blue-100">
                                     Dashboard Utama
                                 </p>
+                                <div class="flex items-center gap-2">
+                                    <span class="relative flex h-2 w-2">
+                                        <span
+                                            class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
+                                        <span class="relative inline-flex h-2 w-2 rounded-full bg-green-300"></span>
+                                    </span>
+                                    <span class="text-xs font-medium text-green-200">Sistem Online</span>
+                                </div>
                                 <div class="flex items-center gap-2">
                                     <span class="relative flex h-2 w-2">
                                         <span

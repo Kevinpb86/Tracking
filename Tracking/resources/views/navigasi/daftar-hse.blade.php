@@ -441,86 +441,149 @@
                             <div class="overflow-x-auto">
                                 <table class="w-full min-w-[1200px]">
                                     <thead>
-                                        <tr class="bg-gradient-to-r from-emerald-500 to-emerald-600 text-white">
-                                            <th class="px-3 py-3 text-left text-xs font-bold uppercase tracking-wider w-12">
+                                        <tr class="bg-gradient-to-r from-emerald-600 to-emerald-500 text-white shadow-sm">
+                                            <th
+                                                class="px-4 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider w-16">
                                                 No
                                             </th>
-                                            <th class="px-3 py-3 text-left text-xs font-bold uppercase tracking-wider w-28">
-                                                Tanggal</th>
-                                            <th class="px-3 py-3 text-left text-xs font-bold uppercase tracking-wider w-24">
-                                                Waktu
-                                            </th>
-                                            <th class="px-3 py-3 text-left text-xs font-bold uppercase tracking-wider w-32">
-                                                Nama
-                                                Petugas</th>
-                                            <th class="px-3 py-3 text-left text-xs font-bold uppercase tracking-wider w-36">
-                                                Lokasi</th>
-                                            <th class="px-3 py-3 text-left text-xs font-bold uppercase tracking-wider w-28">
-                                                Kondisi APD</th>
-                                            <th class="px-3 py-3 text-left text-xs font-bold uppercase tracking-wider w-40">
-                                                Temuan</th>
-                                            <th class="px-3 py-3 text-left text-xs font-bold uppercase tracking-wider w-40">
-                                                Tindak Lanjut</th>
-                                            <th class="px-3 py-3 text-left text-xs font-bold uppercase tracking-wider w-36">
-                                                Penanggung Jawab</th>
                                             <th
-                                                class="px-3 py-3 text-center text-xs font-bold uppercase tracking-wider w-32">
-                                                Action</th>
+                                                class="px-4 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider w-24">
+                                                Tanggal
+                                            </th>
+                                            <th
+                                                class="px-4 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider w-24">
+                                                Jam
+                                            </th>
+                                            <th
+                                                class="px-4 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider w-28">
+                                                No. Polisi
+                                            </th>
+                                            <th
+                                                class="px-4 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider w-36">
+                                                Supir
+                                            </th>
+                                            <th
+                                                class="px-4 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider w-32">
+                                                Perusahaan
+                                            </th>
+                                            <th
+                                                class="px-4 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider w-40">
+                                                Catatan
+                                            </th>
+                                            <th
+                                                class="px-4 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider w-32">
+                                                Status
+                                            </th>
+                                            <th
+                                                class="px-4 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider w-32">
+                                                Petugas
+                                            </th>
+                                            <th
+                                                class="px-4 py-2.5 text-center text-[11px] font-bold uppercase tracking-wider w-20">
+                                                Action
+                                            </th>
                                         </tr>
                                     </thead>
                                     <tbody class="divide-y divide-slate-100">
                                         @foreach($hseList as $index => $hse)
                                             @php
-                                                $statusColor = match ($hse->kondisi_apd) {
-                                                    'Lengkap' => 'emerald',
-                                                    'Tidak Lengkap' => 'amber',
-                                                    'Tidak Ada' => 'rose',
+                                                $statusColor = match ($hse->status) {
+                                                    'Lolos' => 'emerald',
+                                                    'Perbaikan' => 'amber',
+                                                    'Ditolak' => 'rose',
                                                     default => 'slate'
                                                 };
                                             @endphp
-                                            <tr class="bg-white hover:bg-slate-50 transition-colors duration-150">
-                                                <td class="px-3 py-3 text-sm font-semibold text-slate-700">
-                                                    {{ $index + 1 }}
-                                                </td>
-                                                <td class="px-3 py-3 text-xs text-slate-600 whitespace-nowrap">
-                                                    {{ \Carbon\Carbon::parse($hse->tanggal)->format('d-m-Y') }}
-                                                </td>
-                                                <td class="px-3 py-3 text-xs text-slate-600 whitespace-nowrap">
-                                                    {{ $hse->waktu }}
-                                                </td>
-                                                <td class="px-3 py-3 text-xs font-medium text-slate-800 whitespace-nowrap">
-                                                    {{ $hse->nama_petugas }}
-                                                </td>
-                                                <td class="px-3 py-3 text-xs text-slate-600 max-w-[140px]">
-                                                    <span class="line-clamp-2">{{ $hse->lokasi }}</span>
-                                                </td>
-                                                <td class="px-3 py-3 whitespace-nowrap">
+                                            <tr class="bg-white hover:bg-slate-50/80 transition-colors duration-150 group">
+                                                <td class="px-4 py-2.5">
                                                     <span
-                                                        class="inline-flex items-center rounded-lg bg-{{ $statusColor }}-100 px-2 py-0.5 text-xs font-semibold text-{{ $statusColor }}-700">
-                                                        {{ $hse->kondisi_apd }}
+                                                        class="inline-block font-bold text-slate-700 bg-slate-100 px-2 py-0.5 rounded text-xs border border-slate-200 group-hover:bg-white group-hover:border-emerald-200 group-hover:text-emerald-700 transition-colors">
+                                                        {{ $index + 1 }}
                                                     </span>
                                                 </td>
-                                                <td class="px-3 py-3 text-xs text-slate-600 max-w-[150px]">
-                                                    <span class="line-clamp-2">{{ $hse->temuan ?? '-' }}</span>
+                                                <td class="px-4 py-2.5 text-xs font-medium text-slate-500 whitespace-nowrap">
+                                                    {{ \Carbon\Carbon::parse($hse->tanggal)->format('d-m-Y') }}
                                                 </td>
-                                                <td class="px-3 py-3 text-xs text-slate-600 max-w-[150px]">
-                                                    <span class="line-clamp-2">{{ $hse->tindak_lanjut ?? '-' }}</span>
+                                                <td class="px-4 py-2.5 text-xs font-medium text-slate-500 whitespace-nowrap">
+                                                    {{ $hse->waktu }}
                                                 </td>
-                                                <td class="px-3 py-3 text-xs text-slate-600 max-w-[140px]">
-                                                    <span class="line-clamp-2">{{ $hse->penanggung_jawab ?? '-' }}</span>
+                                                <td class="px-4 py-2.5">
+                                                    <span
+                                                        class="text-xs font-bold text-slate-700 font-mono bg-slate-50 px-1.5 py-0.5 rounded border border-slate-200">
+                                                        {{ $hse->nomor_polisi ?? '-' }}
+                                                    </span>
                                                 </td>
-                                                <td class="px-3 py-3 text-center whitespace-nowrap">
-                                                    <a href="{{ route('hse.show', $hse->id) }}" target="_blank"
-                                                        onclick="setTimeout(function(){ window.open('{{ route('hse.show', $hse->id) }}').print(); }, 500);"
-                                                        class="inline-flex items-center gap-1 rounded-lg bg-emerald-600 px-2.5 py-1.5 text-xs font-bold text-white shadow-sm transition-all hover:bg-emerald-700 hover:shadow-md active:scale-95">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5"
-                                                            viewBox="0 0 20 20" fill="currentColor">
-                                                            <path fill-rule="evenodd"
-                                                                d="M5 4v3H4a2 2 0 00-2 2v3a2 2 0 002 2h1v2a2 2 0 002 2h6a2 2 0 002-2v-2h1a2 2 0 002-2V9a2 2 0 00-2-2h-1V4a2 2 0 00-2-2H7a2 2 0 00-2 2zm8 0H7v3h6V4zm0 8H7v4h6v-4z"
-                                                                clip-rule="evenodd" />
-                                                        </svg>
-                                                        Cetak PDF
-                                                    </a>
+                                                <td class="px-4 py-2.5 text-xs font-medium text-slate-600 max-w-[150px]">
+                                                    <div class="flex items-center gap-2">
+                                                        <div
+                                                            class="h-5 w-5 rounded-full bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-500">
+                                                            {{ substr($hse->nama_driver ?? '?', 0, 1) }}
+                                                        </div>
+                                                        <span class="truncate">{{ $hse->nama_driver ?? '-' }}</span>
+                                                    </div>
+                                                </td>
+                                                <td class="px-4 py-2.5 text-xs text-slate-600">
+                                                    {{ $hse->perusahaan ?? '-' }}
+                                                </td>
+                                                <td class="px-4 py-2.5 text-xs text-slate-600 max-w-[200px]">
+                                                    <span class="line-clamp-1"
+                                                        title="{{ $hse->catatan_safety }}">{{ $hse->catatan_safety ?? '-' }}</span>
+                                                </td>
+                                                <td class="px-4 py-2.5 whitespace-nowrap">
+                                                    <span
+                                                        class="inline-flex items-center justify-center min-w-[80px] rounded-full bg-{{ $statusColor }}-50 px-2.5 py-1 text-[11px] font-bold tracking-wide text-{{ $statusColor }}-700 border border-{{ $statusColor }}-200">
+                                                        {{ strtoupper($hse->status ?? 'N/A') }}
+                                                    </span>
+                                                </td>
+                                                <td class="px-4 py-2.5 text-xs text-slate-600">
+                                                    {{ $hse->nama_petugas }}
+                                                </td>
+                                                <td class="px-4 py-2.5 text-center whitespace-nowrap">
+                                                    <div class="relative" x-data="{ open: false }">
+                                                        <button @click="open = !open"
+                                                            class="text-slate-400 hover:text-emerald-600 transition-colors p-1 rounded-full hover:bg-slate-100 focus:outline-none border border-transparent focus:border-emerald-200 cursor-pointer">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                                                                viewBox="0 0 24 24" stroke="currentColor">
+                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                    stroke-width="2"
+                                                                    d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+                                                            </svg>
+                                                        </button>
+
+                                                        <!-- Dropdown Menu -->
+                                                        <div x-show="open" @click.away="open = false"
+                                                            x-transition:enter="transition ease-out duration-100"
+                                                            x-transition:enter-start="transform opacity-0 scale-95"
+                                                            x-transition:enter-end="transform opacity-100 scale-100"
+                                                            x-transition:leave="transition ease-in duration-75"
+                                                            x-transition:leave-start="transform opacity-100 scale-100"
+                                                            x-transition:leave-end="transform opacity-0 scale-95"
+                                                            class="absolute right-0 top-8 z-10 w-36 origin-top-right rounded-xl border border-slate-100 bg-white shadow-xl focus:outline-none overflow-hidden text-left">
+                                                            <div class="py-1">
+                                                                <a href="{{ route('hse.edit', $hse->id) }}"
+                                                                    class="flex items-center gap-2 px-4 py-2 text-xs font-semibold text-slate-600 hover:bg-emerald-50 hover:text-emerald-600 transition-colors cursor-pointer">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4"
+                                                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                                            stroke-width="2"
+                                                                            d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                                                    </svg>
+                                                                    Edit
+                                                                </a>
+                                                                <a href="{{ route('hse.export-pdf', $hse->id) }}"
+                                                                    target="_blank"
+                                                                    class="flex items-center gap-2 px-4 py-2 text-xs font-semibold text-slate-600 hover:bg-emerald-50 hover:text-emerald-600 transition-colors border-t border-slate-100 cursor-pointer">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4"
+                                                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                                            stroke-width="2"
+                                                                            d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                                                    </svg>
+                                                                    Export PDF
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -641,6 +704,7 @@
         // Auto-expand HSE menu if active
         // hseSubmenu.classList.remove('hidden'); 
     </script>
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 </body>
 
 </html>

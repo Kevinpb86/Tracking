@@ -206,6 +206,10 @@
 
                             <div id="scmSubmenu" class="space-y-1 pl-4">
                                 <div class="relative ml-4 space-y-1 border-l-2 border-slate-100 pl-4 py-1">
+                                    <a href="{{ route('scm.do-item.index') }}"
+                                        class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-purple-50 hover:text-purple-700">
+                                        <span>Daftar DO</span>
+                                    </a>
                                     <a href="{{ route('scm.do-item.input') }}"
                                         class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm bg-purple-50 text-purple-700 font-semibold transition-colors">
                                         <span>Input DO Item</span>
@@ -304,117 +308,280 @@
                 </section>
 
                 <!-- PAGE CONTENT -->
-                <section class="relative mx-auto w-full flex-1 px-4 py-8 sm:px-6 lg:px-8">
-                    <!-- Header Section -->
+                <section class="relative mx-auto w-full flex-1 px-4 py-8 sm:px-6 lg:px-8 max-w-7xl">
+                    <!-- Header Section - PREMIUM REDESIGN -->
                     <div
-                        class="mx-auto max-w-4xl rounded-3xl border border-purple-100 bg-purple-50 shadow-xl overflow-hidden mb-8">
-                        <div class="relative px-6 pt-10 pb-6 text-center sm:px-12">
-                            <div class="relative z-10 flex flex-col items-center space-y-4">
-                                <div
-                                    class="inline-flex items-center gap-3 rounded-full bg-purple-100/50 px-4 py-1.5 border border-purple-200/50 backdrop-blur-sm">
-                                    <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-purple-800">Form
-                                        DO Item</span>
+                        class="relative mb-8 overflow-hidden rounded-3xl bg-slate-900 border border-slate-800 shadow-2xl">
+                        {{-- Decorative Glows --}}
+                        <div class="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-purple-600/20 blur-[80px]">
+                        </div>
+                        <div class="absolute -left-24 -bottom-24 h-72 w-72 rounded-full bg-blue-600/10 blur-[80px]">
+                        </div>
+
+                        <div class="relative flex flex-col items-center px-8 py-10 text-center sm:px-16 lg:py-12">
+                            <div
+                                class="mb-4 inline-flex items-center gap-2 rounded-full bg-purple-500/10 px-4 py-1 border border-purple-500/20 backdrop-blur-md">
+                                <span class="relative flex h-1.5 w-1.5">
+                                    <span
+                                        class="absolute inline-flex h-full w-full animate-ping rounded-full bg-purple-400 opacity-75"></span>
+                                    <span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-purple-500"></span>
+                                </span>
+                                <span class="text-[9px] font-bold uppercase tracking-[0.2em] text-purple-300">SCM
+                                    Workspace</span>
+                            </div>
+
+                            <h1 class="mb-4 text-3xl font-black tracking-tight text-white sm:text-5xl leading-tight">
+                                Input <span
+                                    class="bg-gradient-to-r from-purple-400 to-indigo-400 bg-clip-text text-transparent">DO
+                                    Item</span>
+                            </h1>
+
+                            <p class="max-w-2xl text-base font-medium text-slate-400 leading-relaxed">
+                                Sistem manajemen rantai pasokan terpadu untuk efisiensi operasional.
+                                Pastikan validitas data dokumen <span class="text-purple-400">VBELN</span> dan <span
+                                    class="text-purple-400">POSNR</span>.
+                            </p>
+
+                            {{-- Stats/Info Bar --}}
+                            <div class="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-3 w-full max-w-2xl">
+                                <div class="rounded-xl bg-white/5 p-3 border border-white/10 backdrop-blur-md">
+                                    <p class="text-[9px] font-bold uppercase tracking-widest text-slate-500">Form
+                                        Status</p>
+                                    <p class="text-xs font-bold text-emerald-400">Ready</p>
                                 </div>
-                                <h1
-                                    class="text-4xl font-extrabold tracking-tight text-purple-600 sm:text-5xl lg:text-6xl text-center">
-                                    Input DO Item
-                                </h1>
-                                <p class="max-w-2xl text-lg font-medium text-slate-600 leading-relaxed">
-                                    Masukkan data item Delivery Order untuk keperluan SCM.
-                                </p>
+                                <div class="rounded-xl bg-white/5 p-3 border border-white/10 backdrop-blur-md">
+                                    <p class="text-[9px] font-bold uppercase tracking-widest text-slate-500">Module</p>
+                                    <p class="text-xs font-bold text-white">Supply Chain</p>
+                                </div>
+                                <div class="rounded-xl bg-white/5 p-3 border border-white/10 backdrop-blur-md">
+                                    <p class="text-[9px] font-bold uppercase tracking-widest text-slate-500">Integrity
+                                    </p>
+                                    <p class="text-xs font-bold text-blue-400">High Priority</p>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Form -->
-                    <div class="max-w-5xl mx-auto w-full pb-20">
-                        <form action="{{ route('scm.do-item.store') }}" method="POST" class="space-y-6">
-                            @csrf
-                            <div
-                                class="form-card bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
-                                <div class="bg-gradient-to-r from-purple-600 to-purple-700 px-6 py-4">
-                                    <h3 class="text-xl font-bold text-white flex items-center gap-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                    <div class="flex flex-col lg:flex-row gap-8">
+                        <!-- LEFT SIDE: Form Guideline -->
+                        <div class="lg:w-1/3 space-y-6">
+                            <div class="rounded-3xl bg-white p-8 shadow-sm border border-slate-100 h-fit sticky top-40">
+                                <h4 class="text-lg font-bold text-slate-900 mb-6 flex items-center gap-2">
+                                    <div
+                                        class="h-8 w-8 rounded-lg bg-purple-100 flex items-center justify-center text-purple-600">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
                                             viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                                                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                         </svg>
-                                        Detail DO Item
-                                    </h3>
-                                    <p class="text-purple-100 text-sm mt-1">Lengkapi informasi item di bawah ini</p>
+                                    </div>
+                                    Quick Guideline
+                                </h4>
+
+                                <ul class="space-y-4">
+                                    <li class="flex gap-4">
+                                        <div
+                                            class="flex-shrink-0 h-6 w-6 rounded-full bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-500">
+                                            01</div>
+                                        <p class="text-sm text-slate-600 leading-relaxed"><span
+                                                class="font-bold text-slate-900">VBELN</span> adalah Nomor Dokumen
+                                            Penjualan (10 digit).</p>
+                                    </li>
+                                    <li class="flex gap-4">
+                                        <div
+                                            class="flex-shrink-0 h-6 w-6 rounded-full bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-500">
+                                            02</div>
+                                        <p class="text-sm text-slate-600 leading-relaxed"><span
+                                                class="font-bold text-slate-900">POSNR</span> menunjukkan posisi item
+                                            dalam dokumen (biasanya kelipatan 10).</p>
+                                    </li>
+                                    <li class="flex gap-4">
+                                        <div
+                                            class="flex-shrink-0 h-6 w-6 rounded-full bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-500">
+                                            03</div>
+                                        <p class="text-sm text-slate-600 leading-relaxed"><span
+                                                class="font-bold text-slate-900">MATNR</span> adalah kode material
+                                            internal perusahaan.</p>
+                                    </li>
+                                </ul>
+
+                                <div class="mt-8 rounded-2xl bg-amber-50 p-4 border border-amber-100">
+                                    <div
+                                        class="flex items-center gap-2 text-amber-700 font-bold text-xs mb-2 uppercase tracking-wider">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                                        </svg>
+                                        Penting
+                                    </div>
+                                    <p class="text-xs text-amber-600 leading-relaxed">
+                                        Harap periksa kembali satuan ukuran (<span class="font-bold">VRKME</span>) untuk
+                                        menghindari kesalahan perhitungan stok.
+                                    </p>
                                 </div>
-                                <div class="p-6 sm:p-8">
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                        {{-- VBELN & POSNR --}}
-                                        <div class="form-group">
-                                            <label for="vbeln"
-                                                class="form-label block text-sm font-semibold text-slate-700 mb-2">No.
-                                                Dokumen Penjualan (VBELN) <span class="text-red-500">*</span></label>
-                                            <input type="text" id="vbeln" name="vbeln" required
-                                                class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3 text-slate-700 focus:border-purple-500 focus:outline-none"
-                                                placeholder="Contoh: 0020003923">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="posnr"
-                                                class="form-label block text-sm font-semibold text-slate-700 mb-2">No.
-                                                Posisi Item (POSNR) <span class="text-red-500">*</span></label>
-                                            <input type="text" id="posnr" name="posnr" required
-                                                class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3 text-slate-700 focus:border-purple-500 focus:outline-none"
-                                                placeholder="Contoh: 000010">
+                            </div>
+                        </div>
+
+                        <!-- RIGHT SIDE: Input Form -->
+                        <div class="lg:flex-1 pb-24">
+                            <form action="{{ route('scm.do-item.store') }}" method="POST" class="space-y-6">
+                                @csrf
+                                <div
+                                    class="group relative bg-white rounded-[2rem] shadow-xl shadow-slate-200/50 border border-slate-100 transition-all hover:shadow-2xl hover:shadow-purple-500/5 hover:-translate-y-1 overflow-hidden">
+                                    <div
+                                        class="h-2 w-full bg-gradient-to-r from-purple-500 via-indigo-500 to-purple-500">
+                                    </div>
+
+                                    <div class="p-8 sm:p-10">
+                                        <div class="mb-10">
+                                            <h3 class="text-2xl font-black text-slate-900">Form Detail Item</h3>
+                                            <p class="text-slate-500 text-sm mt-1">Lengkapi seluruh data mandatori yang
+                                                bertanda bintang (*)</p>
                                         </div>
 
-                                        {{-- MATNR --}}
-                                        <div class="form-group md:col-span-2">
-                                            <label for="matnr"
-                                                class="form-label block text-sm font-semibold text-slate-700 mb-2">Nomor
-                                                Material (MATNR) <span class="text-red-500">*</span></label>
-                                            <input type="text" id="matnr" name="matnr" required
-                                                class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3 text-slate-700 focus:border-purple-500 focus:outline-none"
-                                                placeholder="Contoh: M-101-222">
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                            {{-- VBELN --}}
+                                            <div class="space-y-2">
+                                                <label for="vbeln"
+                                                    class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">No.
+                                                    Penjualan (VBELN) <span class="text-rose-500">*</span></label>
+                                                <div class="relative group">
+                                                    <div
+                                                        class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-400 group-focus-within:text-purple-500 transition-colors">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
+                                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                stroke-width="2"
+                                                                d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+                                                        </svg>
+                                                    </div>
+                                                    <input type="text" id="vbeln" name="vbeln" required
+                                                        class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 pl-12 pr-4 font-bold text-slate-900 transition-all focus:border-purple-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-purple-500/5"
+                                                        placeholder="e.g. 0020003923">
+                                                </div>
+                                            </div>
+
+                                            {{-- POSNR --}}
+                                            <div class="space-y-2">
+                                                <label for="posnr"
+                                                    class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Posisi
+                                                    Item (POSNR) <span class="text-rose-500">*</span></label>
+                                                <div class="relative group">
+                                                    <div
+                                                        class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-400 group-focus-within:text-purple-500 transition-colors">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
+                                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                stroke-width="2"
+                                                                d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14" />
+                                                        </svg>
+                                                    </div>
+                                                    <input type="text" id="posnr" name="posnr" required
+                                                        class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 pl-12 pr-4 font-bold text-slate-900 transition-all focus:border-purple-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-purple-500/5"
+                                                        placeholder="e.g. 000010">
+                                                </div>
+                                            </div>
+
+                                            {{-- MATNR --}}
+                                            <div class="md:col-span-2 space-y-2">
+                                                <label for="matnr"
+                                                    class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Nomor
+                                                    Material (MATNR) <span class="text-rose-500">*</span></label>
+                                                <div class="relative group">
+                                                    <div
+                                                        class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-400 group-focus-within:text-purple-500 transition-colors">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
+                                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                stroke-width="2"
+                                                                d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                                                        </svg>
+                                                    </div>
+                                                    <input type="text" id="matnr" name="matnr" required
+                                                        class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 pl-12 pr-4 font-bold text-slate-900 transition-all focus:border-purple-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-purple-500/5"
+                                                        placeholder="e.g. MED-O-1001-L">
+                                                </div>
+                                            </div>
+
+                                            {{-- ARKTX (Description) --}}
+                                            <div class="md:col-span-2 space-y-2">
+                                                <label for="arktx"
+                                                    class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Deskripsi
+                                                    Item (ARKTX)</label>
+                                                <textarea id="arktx" name="arktx" rows="3"
+                                                    class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 px-6 py-4 font-medium text-slate-900 transition-all focus:border-purple-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-purple-500/5"
+                                                    placeholder="Contoh: Evalube Runner 4T 10W-30 API SL/JASO MA2..."></textarea>
+                                            </div>
+
+                                            {{-- IFIMG --}}
+                                            <div class="space-y-2">
+                                                <label for="ifimg"
+                                                    class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Kuantitas
+                                                    (IFIMG) <span class="text-rose-500">*</span></label>
+                                                <div class="relative group">
+                                                    <div
+                                                        class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-400 group-focus-within:text-purple-500 transition-colors">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
+                                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                stroke-width="2"
+                                                                d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                                                        </svg>
+                                                    </div>
+                                                    <input type="number" step="0.01" id="ifimg" name="ifimg" required
+                                                        class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 pl-12 pr-4 font-bold text-slate-900 transition-all focus:border-purple-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-purple-500/5"
+                                                        placeholder="0.00">
+                                                </div>
+                                            </div>
+
+                                            {{-- VRKME --}}
+                                            <div class="space-y-2">
+                                                <label for="vrkme"
+                                                    class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Satuan
+                                                    (VRKME) <span class="text-rose-500">*</span></label>
+                                                <div class="relative group">
+                                                    <div
+                                                        class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-400 group-focus-within:text-purple-500 transition-colors">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
+                                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                stroke-width="2"
+                                                                d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
+                                                        </svg>
+                                                    </div>
+                                                    <input type="text" id="vrkme" name="vrkme" required
+                                                        class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 pl-12 pr-4 font-bold text-slate-900 transition-all focus:border-purple-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-purple-500/5"
+                                                        placeholder="Contoh: L, KG, PCS">
+                                                </div>
+                                            </div>
                                         </div>
 
-                                        {{-- ARKTX (Description) --}}
-                                        <div class="form-group md:col-span-2">
-                                            <label for="arktx"
-                                                class="form-label block text-sm font-semibold text-slate-700 mb-2">Teks
-                                                Pendek (ARKTX)</label>
-                                            <textarea id="arktx" name="arktx" rows="3"
-                                                class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3 text-slate-700 focus:border-purple-500 focus:outline-none"
-                                                placeholder="Deskripsi item..."></textarea>
-                                        </div>
-
-                                        {{-- IFIMG & VRKME --}}
-                                        <div class="form-group">
-                                            <label for="ifimg"
-                                                class="form-label block text-sm font-semibold text-slate-700 mb-2">Kuantitas
-                                                Item (IFIMG) <span class="text-red-500">*</span></label>
-                                            <input type="number" step="0.01" id="ifimg" name="ifimg" required
-                                                class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3 text-slate-700 focus:border-purple-500 focus:outline-none"
-                                                placeholder="0.00">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="vrkme"
-                                                class="form-label block text-sm font-semibold text-slate-700 mb-2">Satuan
-                                                Ukuran (VRKME) <span class="text-red-500">*</span></label>
-                                            <input type="text" id="vrkme" name="vrkme" required
-                                                class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3 text-slate-700 focus:border-purple-500 focus:outline-none"
-                                                placeholder="Contoh: L, KG, PCS">
+                                        <div class="mt-12 flex items-center justify-end gap-5">
+                                            <button type="reset"
+                                                class="rounded-2xl border-2 border-slate-100 px-8 py-4 text-sm font-black uppercase tracking-widest text-slate-500 transition-all hover:bg-slate-50 hover:text-slate-800 active:scale-95">
+                                                Reset
+                                            </button>
+                                            <button type="submit"
+                                                class="group relative overflow-hidden rounded-2xl bg-purple-600 px-10 py-4 text-sm font-black uppercase tracking-widest text-white shadow-xl shadow-purple-500/30 transition-all hover:bg-purple-700 hover:shadow-purple-600/40 active:scale-95">
+                                                <span class="relative z-10 flex items-center gap-2">
+                                                    Simpan Data DO
+                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                        class="h-4 w-4 transition-transform group-hover:translate-x-1"
+                                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="3" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                                    </svg>
+                                                </span>
+                                                <div
+                                                    class="absolute inset-0 z-0 bg-gradient-to-r from-purple-400/20 to-transparent">
+                                                </div>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="flex items-center justify-end gap-4 pt-4">
-                                <button type="reset"
-                                    class="px-6 py-3 rounded-xl border border-slate-200 text-slate-600 font-semibold hover:bg-slate-50 transition-colors">
-                                    Reset
-                                </button>
-                                <button type="submit"
-                                    class="submit-btn px-8 py-3 rounded-xl font-bold shadow-lg shadow-purple-500/20">
-                                    Simpan DO Item
-                                </button>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </section>
             </main>

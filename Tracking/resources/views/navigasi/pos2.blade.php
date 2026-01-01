@@ -173,9 +173,9 @@
 
                             <div id="cekDOSubmenu" class="hidden space-y-1 pl-4">
                                 <div class="relative ml-4 space-y-1 border-l-2 border-slate-100 pl-4 py-1">
-                                    <a href="#"
+                                    <a href="{{ route('scm.do-item.index') }}"
                                         class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-emerald-50 hover:text-emerald-700">
-                                        <span>Input Cek DO</span>
+                                        <span>Daftar DO</span>
                                         <svg xmlns="http://www.w3.org/2000/svg"
                                             class="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100"
                                             fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -270,54 +270,74 @@
                 </div>
             </section>
 
-            {{-- Hero Section --}}
-            <header class="px-8 pt-12 sm:px-12 lg:px-24">
+            {{-- Hero Section - Compact Premium Design --}}
+            <header class="px-8 pt-8 sm:px-12 lg:px-24">
                 <div
-                    class="mx-auto rounded-[2rem] bg-gradient-to-br from-emerald-600 via-emerald-600 to-emerald-700 p-10 shadow-2xl">
-                    <div class="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
-                        <div class="max-w-2xl space-y-6">
+                    class="mx-auto rounded-3xl bg-gradient-to-r from-emerald-600 to-emerald-700 py-8 px-6 sm:px-10 shadow-2xl relative overflow-hidden group">
+                    {{-- Decorative Elements --}}
+                    <div
+                        class="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-white/10 blur-3xl group-hover:bg-white/20 transition-colors duration-700">
+                    </div>
+                    <div
+                        class="absolute -left-16 -bottom-16 h-48 w-48 rounded-full bg-white/5 blur-3xl group-hover:bg-white/15 transition-colors duration-700">
+                    </div>
+
+                    <div class="relative z-10 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+                        <div class="max-w-xl space-y-3">
                             <div class="flex items-center gap-3">
-                                <p class="text-xs font-semibold uppercase tracking-[0.45em] text-emerald-100">
-                                    Dashboard POS 2
-                                </p>
+                                <span
+                                    class="rounded-full bg-white/10 px-3 py-1 text-[8px] font-bold uppercase tracking-[0.3em] text-white border border-white/20">
+                                    Distribution Zone
+                                </span>
                                 <div class="flex items-center gap-2">
-                                    <span class="relative flex h-2 w-2">
+                                    <span class="relative flex h-1.5 w-1.5">
                                         <span
-                                            class="absolute inline-flex h-full w-full animate-ping rounded-full bg-yellow-400 opacity-75"></span>
-                                        <span class="relative inline-flex h-2 w-2 rounded-full bg-yellow-300"></span>
+                                            class="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-75"></span>
+                                        <span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-white"></span>
                                     </span>
-                                    <span class="text-xs font-medium text-yellow-200">Sistem Aktif</span>
+                                    <span class="text-[8px] font-bold uppercase tracking-widest text-white/80">POS 2
+                                        Active</span>
                                 </div>
                             </div>
-                            <h1 class="text-4xl font-bold text-white sm:text-5xl leading-tight">
-                                Selamat Datang di<br>Zona Distribusi
+                            <h1 class="text-2xl font-black text-white sm:text-4xl leading-tight tracking-tight">
+                                Integrated Monitoring<br><span class="text-emerald-100 italic">Distribution
+                                    Center</span>
                             </h1>
-                            <p class="text-base text-emerald-50 leading-relaxed">
-                                Kelola proses distribusi dan bongkar muat dengan efisien.<br>
-                                Pastikan semua prosedur keselamatan terlaksana dengan optimal.
+                            <p class="text-sm text-emerald-50/80 leading-relaxed max-w-lg">
+                                Selamat datang di Pusat Kendali POS 2. Kelola pemeriksaan barang,
+                                validasi distribusi, dan quality control PT. WGI secara tersentralisasi.
                             </p>
                         </div>
-                        <div
-                            class="flex-1 space-y-4 rounded-2xl border border-white/20 bg-white/10 backdrop-blur-sm p-6 text-sm lg:ml-8 lg:max-w-sm">
-                            <div class="space-y-3">
-                                <p class="text-xs font-semibold uppercase tracking-[0.35em] text-emerald-100">
-                                    Waktu Operasional
-                                </p>
-                                <div class="text-4xl font-bold text-white">
-                                    <span id="currentTime">{{ $now->format('H:i') }}</span>
-                                    <span class="text-2xl font-medium text-emerald-200">WIB</span>
-                                </div>
+
+                        <div class="grid grid-cols-2 gap-2 lg:w-64">
+                            <div
+                                class="rounded-2xl border border-white/10 bg-white/10 backdrop-blur-md p-3 text-center hover:bg-white/20 transition-colors">
+                                <p class="text-[8px] font-bold uppercase tracking-widest text-emerald-100/70 mb-1">Local
+                                    Time</p>
+                                <p id="heroTime" class="text-lg font-black text-white">00:00</p>
                             </div>
-                            <div class="border-t border-white/20 pt-3 space-y-2">
-                                <div class="flex items-center justify-between text-emerald-50">
-                                    <span class="text-xs uppercase tracking-[0.25em]">Tanggal</span>
-                                    <span id="currentDate"
-                                        class="text-sm font-semibold text-white">{{ $now->format('d F Y') }}</span>
+                            <div
+                                class="rounded-2xl border border-white/10 bg-white/10 backdrop-blur-md p-3 text-center hover:bg-white/20 transition-colors">
+                                <p class="text-[8px] font-bold uppercase tracking-widest text-emerald-100/70 mb-1">
+                                    Region
+                                </p>
+                                <p class="text-lg font-black text-white">WIB</p>
+                            </div>
+                            <div
+                                class="col-span-2 rounded-2xl border border-white/10 bg-white/10 backdrop-blur-md p-3 flex items-center justify-between hover:bg-white/20 transition-colors">
+                                <div class="text-left">
+                                    <p class="text-[8px] font-bold uppercase tracking-widest text-emerald-100/70">
+                                        Current
+                                        Date</p>
+                                    <p class="text-[10px] font-bold text-white">{{ $now->format('d F Y') }}</p>
                                 </div>
-                                <div class="flex items-center justify-between text-emerald-50">
-                                    <span class="text-xs uppercase tracking-[0.25em]">Pengguna</span>
-                                    <span
-                                        class="text-sm font-semibold text-white">{{ Auth::user()->name ?? 'Guest User' }}</span>
+                                <div
+                                    class="h-7 w-7 rounded-xl bg-white/20 flex items-center justify-center text-white shadow-lg">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                    </svg>
                                 </div>
                             </div>
                         </div>
@@ -330,139 +350,198 @@
                 <div class="grid gap-8 lg:grid-cols-3">
                     {{-- Stats Cards --}}
                     <div class="lg:col-span-2 grid gap-6 sm:grid-cols-2">
-                        <article class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-                            <div class="flex items-start gap-3">
-                                <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-100">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-emerald-600" fill="none"
-                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                </div>
-                                <div class="flex-1">
-                                    <p class="text-xs uppercase tracking-[0.3em] text-emerald-500 font-semibold">Total
-                                        Distribusi</p>
-                                    <p class="mt-1 text-2xl font-bold text-emerald-900">{{ count($pos2Queues ?? []) }}
-                                    </p>
-                                    <p class="mt-1 text-xs text-slate-600">
-                                        Kendaraan dalam proses distribusi
-                                    </p>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-                            <div class="flex items-start gap-3">
-                                <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-100">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-600" fill="none"
-                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                </div>
-                                <div class="flex-1">
-                                    <p class="text-xs uppercase tracking-[0.3em] text-amber-500 font-semibold">Waktu
-                                        Rata-rata</p>
-                                    <p class="mt-1 text-2xl font-bold text-amber-900">25 <span
-                                            class="text-base">Menit</span></p>
-                                    <p class="mt-1 text-xs text-slate-600">
-                                        Durasi proses bongkar muat
-                                    </p>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-                            <div class="flex items-start gap-3">
-                                <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-100">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600" fill="none"
-                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                                    </svg>
-                                </div>
-                                <div class="flex-1">
-                                    <p class="text-xs uppercase tracking-[0.3em] text-blue-500 font-semibold">
-                                        Keselamatan
-                                    </p>
-                                    <p class="mt-1 text-2xl font-bold text-blue-900">100%</p>
-                                    <p class="mt-1 text-xs text-slate-600">
-                                        Tingkat kepatuhan HSE
-                                    </p>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-                            <div class="flex items-start gap-3">
-                                <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-purple-100">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-600" fill="none"
-                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
+                        <article
+                            class="rounded-3xl border border-slate-100 bg-white p-6 shadow-sm hover:shadow-md transition-all">
+                            <div class="flex items-start gap-4">
+                                <div
+                                    class="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-100 text-emerald-600">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                                     </svg>
                                 </div>
                                 <div class="flex-1">
-                                    <p class="text-xs uppercase tracking-[0.3em] text-purple-500 font-semibold">
-                                        Dokumentasi
+                                    <p class="text-xs font-bold uppercase tracking-[0.2em] text-slate-400">Total
+                                        Distribusi</p>
+                                    <p class="mt-1 text-3xl font-black text-slate-900 tracking-tight">
+                                        {{ number_format($totalDistribusi) }}
                                     </p>
-                                    <p class="mt-1 text-2xl font-bold text-purple-900">Lengkap</p>
-                                    <p class="mt-1 text-xs text-slate-600">
-                                        Status verifikasi dokumen
+                                    <p class="mt-2 text-xs text-slate-500 flex items-center gap-1">
+                                        <span class="text-emerald-500 font-bold">Total Terdata</span> di sistem
                                     </p>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-
-                    {{-- Info Panel --}}
-                    <div class="space-y-8">
-                        <article class="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
-                            <div class="mb-6">
-                                <h2 class="text-xs font-semibold uppercase tracking-[0.35em] text-emerald-600">Info
-                                    Penting</h2>
-                                <p class="mt-2 text-lg font-bold text-slate-900">Panduan Operasional</p>
-                            </div>
-                            <div class="space-y-3">
-                                <div class="rounded-xl border-l-4 border-emerald-400 bg-emerald-50 p-4">
-                                    <p class="text-xs uppercase tracking-[0.3em] text-emerald-600 font-semibold mb-1">
-                                        Keselamatan</p>
-                                    <p class="text-sm font-semibold text-emerald-900">Pastikan semua pekerja menggunakan
-                                        APD lengkap.</p>
-                                </div>
-                                <div class="rounded-xl border-l-4 border-amber-400 bg-amber-50 p-4">
-                                    <p class="text-xs uppercase tracking-[0.3em] text-amber-600 font-semibold mb-1">
-                                        Prosedur</p>
-                                    <p class="text-sm font-semibold text-amber-900">Verifikasi dokumen sebelum memulai
-                                        proses bongkar muat.</p>
-                                </div>
-                                <div class="rounded-xl border-l-4 border-blue-400 bg-blue-50 p-4">
-                                    <p class="text-xs uppercase tracking-[0.3em] text-blue-600 font-semibold mb-1">
-                                        Koordinasi</p>
-                                    <p class="text-sm font-semibold text-blue-900">Komunikasi dengan POS 1 untuk update
-                                        status kendaraan.</p>
                                 </div>
                             </div>
                         </article>
 
                         <article
-                            class="rounded-2xl border border-emerald-200 bg-gradient-to-br from-emerald-50 to-white p-6 shadow-sm">
-                            <div class="flex items-center gap-3 mb-4">
+                            class="rounded-3xl border border-slate-100 bg-white p-6 shadow-sm hover:shadow-md transition-all">
+                            <div class="flex items-start gap-4">
                                 <div
-                                    class="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-500 text-white shadow-sm">
+                                    class="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-100 text-blue-600">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
                                 </div>
-                                <h3 class="text-sm font-bold uppercase tracking-wider text-emerald-700">Status Sistem
-                                </h3>
+                                <div class="flex-1">
+                                    <p class="text-xs font-bold uppercase tracking-[0.2em] text-slate-400">Hari Ini</p>
+                                    <p class="mt-1 text-3xl font-black text-slate-900 tracking-tight">
+                                        {{ $distribusiToday }}
+                                    </p>
+                                    <p class="mt-2 text-xs text-slate-500">
+                                        Pemeriksaan di <span
+                                            class="text-blue-500 font-bold">{{ now()->format('d M') }}</span>
+                                    </p>
+                                </div>
                             </div>
-                            <p class="text-2xl font-bold text-emerald-900 mb-2">✓ Beroperasi Normal</p>
-                            <p class="text-xs text-emerald-700">Semua sistem berjalan dengan baik. Tidak ada gangguan
-                                yang
-                                terdeteksi.</p>
+                        </article>
+
+                        <article
+                            class="rounded-3xl border border-slate-100 bg-white p-6 shadow-sm hover:shadow-md transition-all">
+                            <div class="flex items-start gap-4">
+                                <div
+                                    class="flex h-12 w-12 items-center justify-center rounded-2xl bg-amber-100 text-amber-600">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                                    </svg>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-xs font-bold uppercase tracking-[0.2em] text-slate-400">Kepatuhan</p>
+                                    <p class="mt-1 text-3xl font-black text-slate-900 tracking-tight">
+                                        {{ $lolosPercentage }}%
+                                    </p>
+                                    <p class="mt-2 text-xs text-slate-500">
+                                        Status <span class="text-emerald-500 font-bold">Lolos</span> pemeriksaan
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article
+                            class="rounded-3xl border border-slate-100 bg-white p-6 shadow-sm hover:shadow-md transition-all">
+                            <div class="flex items-start gap-4">
+                                <div
+                                    class="flex h-12 w-12 items-center justify-center rounded-2xl bg-purple-100 text-purple-600">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-xs font-bold uppercase tracking-[0.2em] text-slate-400">Sistem</p>
+                                    <p class="mt-1 text-3xl font-black text-slate-900 tracking-tight">Aktif</p>
+                                    <p class="mt-2 text-xs text-slate-500">
+                                        Data <span class="text-purple-500 font-bold">Terintegrasi</span> real-time
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+
+
+
+                        @include('navigasi.pos2_charts')
+                    </div>
+
+                    {{-- Info Panel & Quick Nav --}}
+                    <div class="space-y-6">
+                        {{-- Quick Navigation --}}
+                        <article class="rounded-3xl border border-slate-100 bg-white p-6 shadow-sm">
+                            <h3
+                                class="text-xs font-black uppercase tracking-[0.2em] text-slate-400 mb-6 flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                </svg>
+                                Akses Cepat
+                            </h3>
+                            <div class="grid gap-4">
+                                <a href="{{ route('cek-barang.create') }}"
+                                    class="group flex items-center gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-100 hover:bg-emerald-600 hover:border-emerald-500 transition-all duration-300">
+                                    <div
+                                        class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white text-emerald-600 shadow-sm group-hover:scale-110 transition-transform">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M12 4v16m8-8H4" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p
+                                            class="text-sm font-bold text-slate-800 group-hover:text-white transition-colors">
+                                            Input Distribusi</p>
+                                        <p
+                                            class="text-[10px] font-medium text-slate-400 group-hover:text-emerald-100 transition-colors tracking-wide">
+                                            Pemeriksaan Barang Baru</p>
+                                    </div>
+                                </a>
+
+                                <a href="{{ route('cek-barang.index') }}"
+                                    class="group flex items-center gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-100 hover:bg-blue-600 hover:border-blue-500 transition-all duration-300">
+                                    <div
+                                        class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white text-blue-600 shadow-sm group-hover:scale-110 transition-transform">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p
+                                            class="text-sm font-bold text-slate-800 group-hover:text-white transition-colors">
+                                            Daftar Distribusi</p>
+                                        <p
+                                            class="text-[10px] font-medium text-slate-400 group-hover:text-blue-100 transition-colors tracking-wide">
+                                            Rekap Data & Laporan</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </article>
+
+                        <article class="rounded-3xl border border-slate-100 bg-white p-6 shadow-sm">
+                            <h3
+                                class="text-xs font-black uppercase tracking-[0.2em] text-slate-400 mb-6 flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                Pengingat HSE
+                            </h3>
+                            <div class="space-y-4">
+                                <div class="flex gap-4">
+                                    <div class="h-1.5 w-1.5 mt-1.5 rounded-full bg-emerald-500 shrink-0"></div>
+                                    <p class="text-xs font-bold text-slate-600 leading-relaxed">
+                                        Wajib verifikasi <span class="text-emerald-600 font-extrabold">Seal
+                                            Tangki</span> sebelum proses bongkar.
+                                    </p>
+                                </div>
+                                <div class="flex gap-4">
+                                    <div class="h-1.5 w-1.5 mt-1.5 rounded-full bg-blue-500 shrink-0"></div>
+                                    <p class="text-xs font-bold text-slate-600 leading-relaxed">
+                                        Pastikan <span class="text-blue-600 font-extrabold">Grounding</span> terpasang
+                                        sempurna pada unit tangki.
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article
+                            class="rounded-3xl bg-gradient-to-br from-emerald-600 to-emerald-800 p-6 shadow-xl shadow-emerald-500/20 relative overflow-hidden group">
+                            <div
+                                class="absolute -right-4 -bottom-4 h-24 w-24 bg-white/10 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700">
+                            </div>
+                            <h3 class="text-[10px] font-black uppercase tracking-[0.3em] text-emerald-200/80 mb-2">
+                                Network Status</h3>
+                            <p class="text-xl font-black text-white mb-2 italic">✓ Secure & Sync</p>
+                            <p class="text-[10px] font-bold text-emerald-100/90 leading-relaxed">
+                                Koneksi ke server pusat terjamin aman. Seluruh data diverifikasi secara berkala.
+                            </p>
                         </article>
                     </div>
                 </div>
@@ -574,8 +653,10 @@
                 const dateString = `${day} ${month} ${year}`;
 
                 const timeElement = document.getElementById('currentTime');
+                const heroTimeElement = document.getElementById('heroTime');
                 const dateElement = document.getElementById('currentDate');
                 if (timeElement) timeElement.textContent = timeString;
+                if (heroTimeElement) heroTimeElement.textContent = timeString;
                 if (dateElement) dateElement.textContent = dateString;
             }
 
@@ -612,6 +693,234 @@
                 }
             }
         }
+    </script>
+
+    {{-- Chart.js Library --}}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize Distribution Trends Chart
+            const trendsCtx = document.getElementById('distributionTrendsChart');
+            if (trendsCtx) {
+                const monthLabels = @json($monthLabels ?? []);
+                const monthlyDistribusi = @json($monthlyDistribusi ?? []);
+                const monthlyLolos = @json($monthlyLolos ?? []);
+                const monthlyDitahan = @json($monthlyDitahan ?? []);
+
+                new Chart(trendsCtx, {
+                    type: 'line',
+                    data: {
+                        labels: monthLabels,
+                        datasets: [
+                            {
+                                label: 'Total Distribusi',
+                                data: monthlyDistribusi,
+                                borderColor: '#10b981',
+                                backgroundColor: (context) => {
+                                    const ctx = context.chart.ctx;
+                                    const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+                                    gradient.addColorStop(0, 'rgba(16, 185, 129, 0.3)');
+                                    gradient.addColorStop(1, 'rgba(16, 185, 129, 0.0)');
+                                    return gradient;
+                                },
+                                borderWidth: 4,
+                                pointRadius: 6,
+                                pointBackgroundColor: '#10b981',
+                                pointBorderColor: '#fff',
+                                pointBorderWidth: 3,
+                                pointHoverRadius: 9,
+                                pointHoverBorderWidth: 4,
+                                fill: true,
+                                tension: 0.4
+                            },
+                            {
+                                label: 'Lolos',
+                                data: monthlyLolos,
+                                borderColor: '#14b8a6',
+                                backgroundColor: (context) => {
+                                    const ctx = context.chart.ctx;
+                                    const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+                                    gradient.addColorStop(0, 'rgba(20, 184, 166, 0.2)');
+                                    gradient.addColorStop(1, 'rgba(20, 184, 166, 0.0)');
+                                    return gradient;
+                                },
+                                borderWidth: 3,
+                                pointRadius: 5,
+                                pointBackgroundColor: '#14b8a6',
+                                pointBorderColor: '#fff',
+                                pointBorderWidth: 2,
+                                pointHoverRadius: 8,
+                                fill: true,
+                                tension: 0.4
+                            },
+                            {
+                                label: 'Ditahan',
+                                data: monthlyDitahan,
+                                borderColor: '#f59e0b',
+                                backgroundColor: (context) => {
+                                    const ctx = context.chart.ctx;
+                                    const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+                                    gradient.addColorStop(0, 'rgba(245, 158, 11, 0.2)');
+                                    gradient.addColorStop(1, 'rgba(245, 158, 11, 0.0)');
+                                    return gradient;
+                                },
+                                borderWidth: 3,
+                                pointRadius: 5,
+                                pointBackgroundColor: '#f59e0b',
+                                pointBorderColor: '#fff',
+                                pointBorderWidth: 2,
+                                pointHoverRadius: 8,
+                                fill: true,
+                                tension: 0.4
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: true,
+                                position: 'top',
+                                align: 'end',
+                                labels: {
+                                    usePointStyle: true,
+                                    pointStyle: 'circle',
+                                    font: {
+                                        size: 13,
+                                        family: 'Inter, sans-serif',
+                                        weight: '700'
+                                    },
+                                    padding: 20,
+                                    color: '#334155',
+                                    boxWidth: 8,
+                                    boxHeight: 8
+                                }
+                            },
+                            tooltip: {
+                                backgroundColor: 'rgba(15, 23, 42, 0.95)',
+                                padding: 16,
+                                cornerRadius: 12,
+                                titleFont: {
+                                    size: 14,
+                                    family: 'Inter, sans-serif',
+                                    weight: '700'
+                                },
+                                bodyFont: {
+                                    size: 15,
+                                    family: 'Inter, sans-serif',
+                                    weight: 'bold'
+                                },
+                                borderColor: 'rgba(148, 163, 184, 0.2)',
+                                borderWidth: 1,
+                                displayColors: true,
+                                boxPadding: 6,
+                                callbacks: {
+                                    label: function (context) {
+                                        return ' ' + context.parsed.y + ' distribusi';
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    stepSize: 5,
+                                    font: {
+                                        size: 12,
+                                        family: 'Inter, sans-serif',
+                                        weight: '600'
+                                    },
+                                    color: '#64748b'
+                                },
+                                grid: {
+                                    color: 'rgba(148, 163, 184, 0.15)',
+                                    drawBorder: false,
+                                    lineWidth: 1
+                                }
+                            },
+                            x: {
+                                ticks: {
+                                    font: {
+                                        size: 12,
+                                        family: 'Inter, sans-serif',
+                                        weight: '600'
+                                    },
+                                    color: '#64748b'
+                                },
+                                grid: {
+                                    display: false
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // Initialize Quality Breakdown Donut Chart
+            const qualityCtx = document.getElementById('qualityBreakdownChart');
+            if (qualityCtx) {
+                const lolosCount = {{ $lolosCount ?? 0 }};
+                const ditahanCount = {{ $ditahanCount ?? 0 }};
+                const ditolakCount = {{ $ditolakCount ?? 0 }};
+
+                new Chart(qualityCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Lolos', 'Ditahan', 'Ditolak'],
+                        datasets: [{
+                            data: [lolosCount, ditahanCount, ditolakCount],
+                            backgroundColor: [
+                                'rgba(16, 185, 129, 0.8)',
+                                'rgba(245, 158, 11, 0.8)',
+                                'rgba(239, 68, 68, 0.8)'
+                            ],
+                            borderColor: [
+                                '#10b981',
+                                '#f59e0b',
+                                '#ef4444'
+                            ],
+                            borderWidth: 3,
+                            hoverOffset: 10
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        cutout: '65%',
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            tooltip: {
+                                backgroundColor: 'rgba(15, 23, 42, 0.95)',
+                                padding: 12,
+                                cornerRadius: 10,
+                                titleFont: {
+                                    size: 13,
+                                    family: 'Inter, sans-serif',
+                                    weight: '700'
+                                },
+                                bodyFont: {
+                                    size: 14,
+                                    family: 'Inter, sans-serif',
+                                    weight: 'bold'
+                                },
+                                callbacks: {
+                                    label: function (context) {
+                                        const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                        const percentage = total > 0 ? Math.round((context.parsed / total) * 100) : 0;
+                                        return ' ' + context.parsed + ' (' + percentage + '%)';
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        });
     </script>
 </body>
 

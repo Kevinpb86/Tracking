@@ -19,6 +19,12 @@
             padding-bottom: 10px;
         }
 
+        .header .logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 10px;
+        }
+
         .header h1 {
             font-size: 18px;
             margin: 0;
@@ -104,6 +110,12 @@
 
 <body>
     <div class="header">
+        @php
+            $logoPath = public_path('images/wgilogo.jpg');
+            $logoData = base64_encode(file_get_contents($logoPath));
+            $logoSrc = 'data:image/jpeg;base64,' . $logoData;
+        @endphp
+        <img src="{{ $logoSrc }}" alt="Logo PT WGI" class="logo">
         <h1>Laporan Pemeriksaan Kendaraan</h1>
         <p>PT. Wiraswasta Gemilang Indonesia</p>
         <p>Pos 1 - Security Gate Inspection</p>

@@ -199,9 +199,9 @@
 
                             <div id="cekDOSubmenu" class="hidden space-y-1 pl-4">
                                 <div class="relative ml-4 space-y-1 border-l-2 border-slate-100 pl-4 py-1">
-                                    <a href="#"
+                                    <a href="{{ route('scm.do-item.index') }}"
                                         class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-emerald-50 hover:text-emerald-700">
-                                        <span>Input Cek DO</span>
+                                        <span>Daftar DO</span>
                                         <svg xmlns="http://www.w3.org/2000/svg"
                                             class="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100"
                                             fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -287,326 +287,480 @@
                     </div>
                 </section>
 
-                <section class="relative mx-auto w-full flex-1 px-4 py-8 sm:px-6 lg:px-8">
+                <!-- PAGE CONTENT -->
+                <section class="relative mx-auto w-full flex-1 px-4 py-8 sm:px-6 lg:px-8 max-w-7xl">
+                    <!-- Header Section - PREMIUM REDESIGN -->
                     <div
-                        class="mx-auto max-w-4xl rounded-3xl border border-emerald-200 bg-gradient-to-br from-emerald-100 to-emerald-50 shadow-xl overflow-hidden mb-8">
-                        <div class="relative px-6 pt-10 pb-6 text-center sm:px-12">
-                            <div class="relative z-10 flex flex-col items-center space-y-4">
-                                <div
-                                    class="inline-flex items-center gap-3 rounded-full bg-emerald-100/50 px-4 py-1.5 border border-emerald-200/50 backdrop-blur-sm">
-                                    <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-800">Form
-                                        Distribusi</span>
+                        class="relative mb-8 overflow-hidden rounded-3xl bg-gradient-to-r from-emerald-500 to-emerald-600 border border-emerald-400/20 shadow-xl shadow-emerald-500/20">
+                        {{-- Decorative Glows --}}
+                        <div class="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-white/10 blur-[80px]">
+                        </div>
+                        <div class="absolute -left-24 -bottom-24 h-72 w-72 rounded-full bg-white/5 blur-[80px]">
+                        </div>
+
+                        <div class="relative flex flex-col items-center px-8 py-10 text-center sm:px-16 lg:py-12">
+                            <div
+                                class="mb-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1 border border-white/20 backdrop-blur-md">
+                                <span class="relative flex h-1.5 w-1.5">
+                                    <span
+                                        class="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-75"></span>
+                                    <span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-white"></span>
+                                </span>
+                                <span class="text-[9px] font-bold uppercase tracking-[0.2em] text-white">POS 2
+                                    Operations</span>
+                            </div>
+
+                            <h1 class="mb-4 text-3xl font-black tracking-tight text-white sm:text-5xl leading-tight">
+                                Formulir <span class="text-emerald-100 italic">Distribusi</span>
+                            </h1>
+
+                            <p class="max-w-2xl text-base font-medium text-white/80 leading-relaxed">
+                                Sistem validasi distribusi barang terpadu. Pastikan kepatuhan terhadap standar
+                                kualitas kemasan dan integritas dokumen operasional.
+                            </p>
+
+                            {{-- Stats/Info Bar --}}
+                            <div class="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-3 w-full max-w-2xl">
+                                <div class="rounded-xl bg-white/10 p-3 border border-white/10 backdrop-blur-md">
+                                    <p class="text-[9px] font-bold uppercase tracking-widest text-white/70">
+                                        Current Task</p>
+                                    <p class="text-xs font-bold text-white">Distribution Check</p>
                                 </div>
-                                <h1
-                                    class="text-4xl font-extrabold tracking-tight text-emerald-600 sm:text-5xl lg:text-6xl text-center">
-                                    Formulir Distribusi</h1>
-                                <p class="max-w-2xl text-lg font-medium text-slate-600 leading-relaxed">
-                                    Masukkan data pemeriksaan barang untuk distribusi. Lakukan pengecekan kondisi
-                                    kemasan, kesesuaian jumlah, dan kelengkapan dokumen.
-                                    Untuk truck tangki oli, pastikan tidak ada kebocoran dan seal dalam kondisi baik
-                                    sebelum proses bongkar muat dimulai.
-                                </p>
+                                <div class="rounded-xl bg-white/10 p-3 border border-white/10 backdrop-blur-md">
+                                    <p class="text-[9px] font-bold uppercase tracking-widest text-white/70">
+                                        Target</p>
+                                    <p class="text-xs font-bold text-white">Zero Defect</p>
+                                </div>
+                                <div class="rounded-xl bg-white/10 p-3 border border-white/10 backdrop-blur-md">
+                                    <p class="text-[9px] font-bold uppercase tracking-widest text-white/70">
+                                        Priority</p>
+                                    <p class="text-xs font-bold text-white">High Reliability</p>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="max-w-5xl mx-auto w-full pb-20">
-                        <form action="{{ route('cek-barang.store') }}" method="POST" class="space-y-6">
-                            @csrf
-
-                            <!-- Informasi Waktu -->
-                            <div
-                                class="form-card bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
-                                <div class="bg-gradient-to-r from-emerald-600 to-emerald-700 px-6 py-4">
-                                    <h3 class="text-xl font-bold text-white flex items-center gap-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                    <div class="flex flex-col lg:flex-row gap-8">
+                        <!-- LEFT SIDE: Operation Guidelines -->
+                        <div class="lg:w-1/3 space-y-6">
+                            <div class="rounded-3xl bg-white p-8 shadow-sm border border-slate-100 h-fit sticky top-40">
+                                <h4 class="text-lg font-bold text-slate-900 mb-6 flex items-center gap-2">
+                                    <div
+                                        class="h-8 w-8 rounded-lg bg-emerald-100 flex items-center justify-center text-emerald-600">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
                                             viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                                         </svg>
-                                        Informasi Waktu
-                                    </h3>
-                                    <p class="text-emerald-100 text-sm mt-1">Catat waktu pemeriksaan</p>
-                                </div>
-                                <div class="p-6 sm:p-8">
-                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                                        <div class="form-group">
-                                            <label for="tanggal"
-                                                class="form-label block text-sm font-semibold text-slate-700 mb-2">Tanggal
-                                                <span class="text-red-500">*</span></label>
-                                            <input type="date" id="tanggal" name="tanggal" required
-                                                class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3 text-slate-700 focus:border-emerald-500 focus:outline-none"
-                                                value="{{ date('Y-m-d') }}">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="waktu"
-                                                class="form-label block text-sm font-semibold text-slate-700 mb-2">Waktu
-                                                <span class="text-red-500">*</span></label>
-                                            <input type="time" id="waktu" name="waktu" required
-                                                class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3 text-slate-700 focus:border-emerald-500 focus:outline-none"
-                                                value="{{ date('H:i') }}">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="nama_pemeriksa"
-                                                class="form-label block text-sm font-semibold text-slate-700 mb-2">Nama
-                                                Pemeriksa <span class="text-red-500">*</span></label>
-                                            <input type="text" id="nama_pemeriksa" name="nama_pemeriksa" required
-                                                placeholder="Nama Lengkap"
-                                                class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3 text-slate-700 focus:border-emerald-500 focus:outline-none">
-                                        </div>
                                     </div>
-                                </div>
-                            </div>
+                                    Protocol Distribusi
+                                </h4>
 
-                            <!-- Informasi Kendaraan -->
-                            <div
-                                class="form-card bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
-                                <div class="bg-gradient-to-r from-emerald-600 to-emerald-700 px-6 py-4">
-                                    <h3 class="text-xl font-bold text-white flex items-center gap-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-                                            viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
-                                        </svg>
-                                        Kendaraan & Pengemudi
-                                    </h3>
-                                    <p class="text-emerald-100 text-sm mt-1">Data identitas kendaraan dan pengemudi</p>
-                                </div>
-                                <div class="p-6 sm:p-8">
-                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                                        <div class="form-group">
-                                            <label for="nomor_polisi"
-                                                class="form-label block text-sm font-semibold text-slate-700 mb-2">Nomor
-                                                Polisi <span class="text-red-500">*</span></label>
-                                            <input type="text" id="nomor_polisi" name="nomor_polisi" required
-                                                placeholder="B 1234 XX"
-                                                class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3 text-slate-700 focus:border-emerald-500 focus:outline-none uppercase">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="nama_pengemudi"
-                                                class="form-label block text-sm font-semibold text-slate-700 mb-2">Nama
-                                                Pengemudi <span class="text-red-500">*</span></label>
-                                            <input type="text" id="nama_pengemudi" name="nama_pengemudi" required
-                                                placeholder="Nama Lengkap"
-                                                class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3 text-slate-700 focus:border-emerald-500 focus:outline-none">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="nomor_do"
-                                                class="form-label block text-sm font-semibold text-slate-700 mb-2">Nomor
-                                                DO</label>
-                                            <input type="text" id="nomor_do" name="nomor_do"
-                                                placeholder="Nomor Delivery Order"
-                                                class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3 text-slate-700 focus:border-emerald-500 focus:outline-none">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                <ul class="space-y-4">
+                                    <li class="flex gap-4">
+                                        <div
+                                            class="flex-shrink-0 h-6 w-6 rounded-full bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-500">
+                                            01</div>
+                                        <p class="text-sm text-slate-600 leading-relaxed"><span
+                                                class="font-bold text-slate-900">Validasi Fisik</span>: Periksa kemasan
+                                            dari kebocoran, kelembapan, atau kerusakan mekanis.</p>
+                                    </li>
+                                    <li class="flex gap-4">
+                                        <div
+                                            class="flex-shrink-0 h-6 w-6 rounded-full bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-500">
+                                            02</div>
+                                        <p class="text-sm text-slate-600 leading-relaxed"><span
+                                                class="font-bold text-slate-900">Kesesuaian DO</span>: Pastikan jumlah
+                                            fisik barang sesuai dengan dokumen Delivery Order.</p>
+                                    </li>
+                                    <li class="flex gap-4">
+                                        <div
+                                            class="flex-shrink-0 h-6 w-6 rounded-full bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-500">
+                                            03</div>
+                                        <p class="text-sm text-slate-600 leading-relaxed"><span
+                                                class="font-bold text-slate-900">Special Case</span>: Untuk truck
+                                            tangki, wajib dilakukan pemeriksaan seal dan potensi rembesan oli.</p>
+                                    </li>
+                                </ul>
 
-                            <!-- Detail Barang -->
-                            <div
-                                class="form-card bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
-                                <div class="bg-gradient-to-r from-emerald-600 to-emerald-700 px-6 py-4">
-                                    <h3 class="text-xl font-bold text-white flex items-center gap-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-                                            viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-                                        </svg>
-                                        Detail Barang
-                                    </h3>
-                                    <p class="text-emerald-100 text-sm mt-1">Informasi barang yang dikirim</p>
-                                </div>
-                                <div class="p-6 sm:p-8">
-                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                                        <div class="form-group">
-                                            <label for="jenis_barang"
-                                                class="form-label block text-sm font-semibold text-slate-700 mb-2">Jenis
-                                                Barang <span class="text-red-500">*</span></label>
-                                            <input type="text" id="jenis_barang" name="jenis_barang" required
-                                                placeholder="Contoh: Oli Mesin"
-                                                class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3 text-slate-700 focus:border-emerald-500 focus:outline-none">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="jumlah_barang"
-                                                class="form-label block text-sm font-semibold text-slate-700 mb-2">Jumlah
-                                                <span class="text-red-500">*</span></label>
-                                            <input type="number" id="jumlah_barang" name="jumlah_barang" required
-                                                min="1" placeholder="0"
-                                                class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3 text-slate-700 focus:border-emerald-500 focus:outline-none">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="satuan"
-                                                class="form-label block text-sm font-semibold text-slate-700 mb-2">Satuan
-                                                <span class="text-red-500">*</span></label>
-                                            <input type="text" id="satuan" name="satuan" required
-                                                placeholder="L, KG, PCS"
-                                                class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3 text-slate-700 focus:border-emerald-500 focus:outline-none">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Pemeriksaan Barang -->
-                            <div
-                                class="form-card bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
-                                <div class="bg-gradient-to-r from-emerald-600 to-emerald-700 px-6 py-4">
-                                    <h3 class="text-xl font-bold text-white flex items-center gap-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-                                            viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                        </svg>
-                                        Pemeriksaan Barang
-                                    </h3>
-                                    <p class="text-emerald-100 text-sm mt-1">Hasil pemeriksaan kondisi barang</p>
-                                </div>
-                                <div class="p-6 sm:p-8">
-                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                                        <div class="form-group">
-                                            <label for="kondisi_kemasan"
-                                                class="form-label block text-sm font-semibold text-slate-700 mb-2">Kondisi
-                                                Kemasan <span class="text-red-500">*</span></label>
-                                            <select id="kondisi_kemasan" name="kondisi_kemasan" required
-                                                class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3 text-slate-700 focus:border-emerald-500 focus:outline-none">
-                                                <option value="Baik">Baik</option>
-                                                <option value="Rusak">Rusak</option>
-                                                <option value="Basah">Basah</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="kesesuaian_jumlah"
-                                                class="form-label block text-sm font-semibold text-slate-700 mb-2">Kesesuaian
-                                                Jumlah <span class="text-red-500">*</span></label>
-                                            <select id="kesesuaian_jumlah" name="kesesuaian_jumlah" required
-                                                class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3 text-slate-700 focus:border-emerald-500 focus:outline-none">
-                                                <option value="Sesuai">Sesuai</option>
-                                                <option value="Kurang">Kurang</option>
-                                                <option value="Lebih">Lebih</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="kelengkapan_dokumen"
-                                                class="form-label block text-sm font-semibold text-slate-700 mb-2">Kelengkapan
-                                                Dokumen <span class="text-red-500">*</span></label>
-                                            <select id="kelengkapan_dokumen" name="kelengkapan_dokumen" required
-                                                class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3 text-slate-700 focus:border-emerald-500 focus:outline-none">
-                                                <option value="Lengkap">Lengkap</option>
-                                                <option value="Tidak Lengkap">Tidak Lengkap</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Pemeriksaan Truck Tangki -->
-                            <div
-                                class="form-card bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
-                                <div class="bg-gradient-to-r from-emerald-600 to-emerald-700 px-6 py-4">
-                                    <h3 class="text-xl font-bold text-white flex items-center gap-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                <div class="mt-8 rounded-2xl bg-amber-50 p-4 border border-amber-100">
+                                    <div
+                                        class="flex items-center gap-2 text-amber-700 font-bold text-xs mb-2 uppercase tracking-wider">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
                                             viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                                         </svg>
-                                        Pemeriksaan Khusus Truck Tangki
-                                    </h3>
-                                    <p class="text-emerald-100 text-sm mt-1">Pemeriksaan kebocoran oli untuk truck
-                                        tangki</p>
+                                        Quality Assurance
+                                    </div>
+                                    <p class="text-xs text-amber-600 leading-relaxed">
+                                        Setiap temuan kerusakan <span class="font-bold">wajib</span> didokumentasikan
+                                        dan dilaporkan ke bagian supervisor sebelum kendaraan meninggalkan lokasi.
+                                    </p>
                                 </div>
-                                <div class="p-6 sm:p-8">
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                        <div class="form-group">
-                                            <label for="jenis_kendaraan"
-                                                class="form-label block text-sm font-semibold text-slate-700 mb-2">Jenis
-                                                Kendaraan <span class="text-red-500">*</span></label>
-                                            <select id="jenis_kendaraan" name="jenis_kendaraan" required
-                                                class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3 text-slate-700 focus:border-emerald-500 focus:outline-none">
-                                                <option value="Truck Biasa">Truck Biasa</option>
-                                                <option value="Truck Tangki">Truck Tangki</option>
-                                                <option value="Lainnya">Lainnya</option>
-                                            </select>
+                            </div>
+                        </div>
+
+                        <!-- RIGHT SIDE: Input Forms -->
+                        <div class="lg:flex-1 pb-24">
+                            <form action="{{ route('cek-barang.store') }}" method="POST" class="space-y-8">
+                                @csrf
+
+                                {{-- SECTION 1: WAKTU & PEMERIKSA --}}
+                                <div
+                                    class="group relative bg-white rounded-[2rem] shadow-xl shadow-slate-200/50 border border-slate-100 transition-all hover:shadow-2xl hover:shadow-emerald-500/5 hover:-translate-y-1 overflow-hidden">
+                                    <div
+                                        class="h-2 w-full bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-500">
+                                    </div>
+                                    <div class="p-8 sm:p-10">
+                                        <div class="mb-10 flex items-center justify-between">
+                                            <div>
+                                                <h3 class="text-2xl font-black text-slate-900">Waktu & Personalia</h3>
+                                                <p class="text-slate-500 text-sm mt-1">Identitas pencatat dan waktu
+                                                    pemeriksaan</p>
+                                            </div>
+                                            <div
+                                                class="h-12 w-12 rounded-2xl bg-emerald-50 flex items-center justify-center text-emerald-600">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                                    viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                </svg>
+                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="kebocoran_tangki"
-                                                class="form-label block text-sm font-semibold text-slate-700 mb-2">Kebocoran
-                                                Tangki</label>
-                                            <select id="kebocoran_tangki" name="kebocoran_tangki"
-                                                class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3 text-slate-700 focus:border-emerald-500 focus:outline-none">
-                                                <option value="Tidak Ada">Tidak Ada</option>
-                                                <option value="Ada Kebocoran Kecil">Ada Kebocoran Kecil</option>
-                                                <option value="Ada Kebocoran Besar">Ada Kebocoran Besar</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="kondisi_seal_tangki"
-                                                class="form-label block text-sm font-semibold text-slate-700 mb-2">Kondisi
-                                                Seal Tangki</label>
-                                            <select id="kondisi_seal_tangki" name="kondisi_seal_tangki"
-                                                class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3 text-slate-700 focus:border-emerald-500 focus:outline-none">
-                                                <option value="Baik">Baik</option>
-                                                <option value="Rusak">Rusak</option>
-                                                <option value="Tidak Ada">Tidak Ada</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="lokasi_kebocoran"
-                                                class="form-label block text-sm font-semibold text-slate-700 mb-2">Lokasi
-                                                Kebocoran</label>
-                                            <input type="text" id="lokasi_kebocoran" name="lokasi_kebocoran"
-                                                placeholder="Jika ada kebocoran, sebutkan lokasinya"
-                                                class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3 text-slate-700 focus:border-emerald-500 focus:outline-none">
+
+                                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                                            <div class="space-y-2">
+                                                <label for="tanggal"
+                                                    class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Tanggal
+                                                    <span class="text-rose-500">*</span></label>
+                                                <input type="date" id="tanggal" name="tanggal" required
+                                                    class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 px-6 font-bold text-slate-900 transition-all focus:border-emerald-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-emerald-500/5"
+                                                    value="{{ date('Y-m-d') }}">
+                                            </div>
+                                            <div class="space-y-2">
+                                                <label for="waktu"
+                                                    class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Waktu
+                                                    <span class="text-rose-500">*</span></label>
+                                                <input type="time" id="waktu" name="waktu" required
+                                                    class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 px-6 font-bold text-slate-900 transition-all focus:border-emerald-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-emerald-500/5"
+                                                    value="{{ date('H:i') }}">
+                                            </div>
+                                            <div class="space-y-2 lg:col-span-1">
+                                                <label for="nama_pemeriksa"
+                                                    class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Nama
+                                                    Pemeriksa <span class="text-rose-500">*</span></label>
+                                                <input type="text" id="nama_pemeriksa" name="nama_pemeriksa" required
+                                                    class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 px-6 font-bold text-slate-900 transition-all focus:border-emerald-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-emerald-500/5"
+                                                    placeholder="Nama Lengkap">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <!-- Catatan & Status -->
-                            <div
-                                class="form-card bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
-                                <div class="bg-gradient-to-r from-emerald-600 to-emerald-700 px-6 py-4">
-                                    <h3 class="text-xl font-bold text-white flex items-center gap-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-                                            viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                                        </svg>
-                                        Catatan & Status Akhir
-                                    </h3>
-                                    <p class="text-emerald-100 text-sm mt-1">Catatan tambahan dan keputusan akhir</p>
-                                </div>
-                                <div class="p-6 sm:p-8">
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                        <div class="form-group">
-                                            <label for="catatan"
-                                                class="form-label block text-sm font-semibold text-slate-700 mb-2">Catatan</label>
-                                            <textarea id="catatan" name="catatan" rows="3"
-                                                placeholder="Catatan tambahan..."
-                                                class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3 text-slate-700 focus:border-emerald-500 focus:outline-none"></textarea>
+                                {{-- SECTION 2: KENDARAAN & DRIVER --}}
+                                <div
+                                    class="group relative bg-white rounded-[2rem] shadow-xl shadow-slate-200/50 border border-slate-100 transition-all hover:shadow-2xl hover:shadow-emerald-500/5 hover:-translate-y-1 overflow-hidden">
+                                    <div
+                                        class="h-2 w-full bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-500">
+                                    </div>
+                                    <div class="p-8 sm:p-10">
+                                        <div class="mb-10 flex items-center justify-between">
+                                            <div>
+                                                <h3 class="text-2xl font-black text-slate-900">Armada & Pengemudi</h3>
+                                                <p class="text-slate-500 text-sm mt-1">Data identitas kendaraan dan
+                                                    personil</p>
+                                            </div>
+                                            <div
+                                                class="h-12 w-12 rounded-2xl bg-emerald-50 flex items-center justify-center text-emerald-600">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                                    viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
+                                                </svg>
+                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="status_akhir"
-                                                class="form-label block text-sm font-semibold text-slate-700 mb-2">Status
-                                                Akhir <span class="text-red-500">*</span></label>
-                                            <select id="status_akhir" name="status_akhir" required
-                                                class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3 text-slate-700 focus:border-emerald-500 focus:outline-none">
-                                                <option value="Lolos">Lolos</option>
-                                                <option value="Ditahan">Ditahan</option>
-                                                <option value="Ditolak">Ditolak</option>
-                                            </select>
+
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                            <div class="space-y-2">
+                                                <label for="nomor_polisi"
+                                                    class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Nomor
+                                                    Polisi <span class="text-rose-500">*</span></label>
+                                                <input type="text" id="nomor_polisi" name="nomor_polisi" required
+                                                    class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 px-6 font-bold text-slate-900 transition-all focus:border-emerald-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-emerald-500/5 uppercase"
+                                                    placeholder="B 1234 XX">
+                                            </div>
+                                            <div class="space-y-2">
+                                                <label for="nama_pengemudi"
+                                                    class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Nama
+                                                    Pengemudi <span class="text-rose-500">*</span></label>
+                                                <input type="text" id="nama_pengemudi" name="nama_pengemudi" required
+                                                    class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 px-6 font-bold text-slate-900 transition-all focus:border-emerald-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-emerald-500/5"
+                                                    placeholder="Nama Driver">
+                                            </div>
+                                            <div class="md:col-span-2 space-y-2">
+                                                <label for="nomor_do"
+                                                    class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Nomor
+                                                    Delivery Order (DO)</label>
+                                                <input type="text" id="nomor_do" name="nomor_do"
+                                                    class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 px-6 font-bold text-slate-900 transition-all focus:border-emerald-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-emerald-500/5"
+                                                    placeholder="e.g. 8000452391">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <!-- Submit Actions -->
-                            <div class="flex items-center justify-end gap-4 pt-4">
-                                <button type="reset"
-                                    class="px-6 py-3 rounded-xl border border-slate-200 text-slate-600 font-semibold hover:bg-slate-50 transition-colors">Reset</button>
-                                <button type="submit"
-                                    class="submit-btn px-8 py-3 rounded-xl font-bold shadow-lg shadow-emerald-500/20">Simpan
-                                    Data</button>
-                            </div>
-                        </form>
+                                {{-- SECTION 3: DETAIL BARANG --}}
+                                <div
+                                    class="group relative bg-white rounded-[2rem] shadow-xl shadow-slate-200/50 border border-slate-100 transition-all hover:shadow-2xl hover:shadow-emerald-500/5 hover:-translate-y-1 overflow-hidden">
+                                    <div
+                                        class="h-2 w-full bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-500">
+                                    </div>
+                                    <div class="p-8 sm:p-10">
+                                        <div class="mb-10 flex items-center justify-between">
+                                            <div>
+                                                <h3 class="text-2xl font-black text-slate-900">Spesifikasi Barang</h3>
+                                                <p class="text-slate-500 text-sm mt-1">Jenis dan volume muatan</p>
+                                            </div>
+                                            <div
+                                                class="h-12 w-12 rounded-2xl bg-emerald-50 flex items-center justify-center text-emerald-600">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                                    viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                                                </svg>
+                                            </div>
+                                        </div>
+
+                                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                                            <div class="space-y-2 lg:col-span-1">
+                                                <label for="jenis_barang"
+                                                    class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Jenis
+                                                    Barang <span class="text-rose-500">*</span></label>
+                                                <input type="text" id="jenis_barang" name="jenis_barang" required
+                                                    class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 px-6 font-bold text-slate-900 transition-all focus:border-emerald-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-emerald-500/5"
+                                                    placeholder="e.g. Oli Mesin">
+                                            </div>
+                                            <div class="space-y-2">
+                                                <label for="jumlah_barang"
+                                                    class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Jumlah
+                                                    <span class="text-rose-500">*</span></label>
+                                                <input type="number" id="jumlah_barang" name="jumlah_barang" required
+                                                    min="1"
+                                                    class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 px-6 font-bold text-slate-900 transition-all focus:border-emerald-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-emerald-500/5"
+                                                    placeholder="0">
+                                            </div>
+                                            <div class="space-y-2">
+                                                <label for="satuan"
+                                                    class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Satuan
+                                                    <span class="text-rose-500">*</span></label>
+                                                <input type="text" id="satuan" name="satuan" required
+                                                    class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 px-6 font-bold text-slate-900 transition-all focus:border-emerald-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-emerald-500/5"
+                                                    placeholder="L, KG, PCS">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {{-- SECTION 4: PEMERIKSAAN KUALITAS & KONDISI --}}
+                                <div
+                                    class="group relative bg-white rounded-[2rem] shadow-xl shadow-slate-200/50 border border-slate-100 transition-all hover:shadow-2xl hover:shadow-emerald-500/5 hover:-translate-y-1 overflow-hidden">
+                                    <div
+                                        class="h-2 w-full bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-500">
+                                    </div>
+                                    <div class="p-8 sm:p-10">
+                                        <div class="mb-10 flex items-center justify-between">
+                                            <div>
+                                                <h3 class="text-2xl font-black text-slate-900">Kualitas & Kondisi</h3>
+                                                <p class="text-slate-500 text-sm mt-1">Hasil evaluasi fisik dan
+                                                    administrasi</p>
+                                            </div>
+                                            <div
+                                                class="h-12 w-12 rounded-2xl bg-emerald-50 flex items-center justify-center text-emerald-600">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                                    viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                </svg>
+                                            </div>
+                                        </div>
+
+                                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                                            <div class="space-y-2">
+                                                <label for="kondisi_kemasan"
+                                                    class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Kondisi
+                                                    Kemasan <span class="text-rose-500">*</span></label>
+                                                <select id="kondisi_kemasan" name="kondisi_kemasan" required
+                                                    class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 px-6 font-bold text-slate-900 transition-all focus:border-emerald-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-emerald-500/5">
+                                                    <option value="Baik">Baik</option>
+                                                    <option value="Rusak">Rusak</option>
+                                                    <option value="Basah">Basah</option>
+                                                </select>
+                                            </div>
+                                            <div class="space-y-2">
+                                                <label for="kesesuaian_jumlah"
+                                                    class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Kesesuaian
+                                                    Jumlah <span class="text-rose-500">*</span></label>
+                                                <select id="kesesuaian_jumlah" name="kesesuaian_jumlah" required
+                                                    class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 px-6 font-bold text-slate-900 transition-all focus:border-emerald-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-emerald-500/5">
+                                                    <option value="Sesuai">Sesuai</option>
+                                                    <option value="Kurang">Kurang</option>
+                                                    <option value="Lebih">Lebih</option>
+                                                </select>
+                                            </div>
+                                            <div class="space-y-2">
+                                                <label for="kelengkapan_dokumen"
+                                                    class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Dokumen
+                                                    <span class="text-rose-500">*</span></label>
+                                                <select id="kelengkapan_dokumen" name="kelengkapan_dokumen" required
+                                                    class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 px-6 font-bold text-slate-900 transition-all focus:border-emerald-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-emerald-500/5">
+                                                    <option value="Lengkap">Lengkap</option>
+                                                    <option value="Tidak Lengkap">Tidak Lengkap</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {{-- SECTION 5: TRUCK TANGKI (CONDITIONAL) --}}
+                                <div
+                                    class="group relative bg-white rounded-[2rem] shadow-xl shadow-slate-200/50 border border-slate-100 transition-all hover:shadow-2xl hover:shadow-emerald-500/5 hover:-translate-y-1 overflow-hidden">
+                                    <div
+                                        class="h-2 w-full bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-500">
+                                    </div>
+                                    <div class="p-8 sm:p-10">
+                                        <div class="mb-10 flex items-center justify-between">
+                                            <div>
+                                                <h3 class="text-2xl font-black text-slate-900">Truck Tangki Specs</h3>
+                                                <p class="text-slate-500 text-sm mt-1">Pemeriksaan khusus keamanan
+                                                    cairan</p>
+                                            </div>
+                                            <div
+                                                class="h-12 w-12 rounded-2xl bg-emerald-50 flex items-center justify-center text-emerald-600">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                                    viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                                                </svg>
+                                            </div>
+                                        </div>
+
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                            <div class="space-y-2">
+                                                <label for="jenis_kendaraan"
+                                                    class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Jenis
+                                                    Kendaraan <span class="text-rose-500">*</span></label>
+                                                <select id="jenis_kendaraan" name="jenis_kendaraan" required
+                                                    class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 px-6 font-bold text-slate-900 transition-all focus:border-emerald-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-emerald-500/5">
+                                                    <option value="Truck Biasa">Truck Biasa</option>
+                                                    <option value="Truck Tangki">Truck Tangki</option>
+                                                    <option value="Lainnya">Lainnya</option>
+                                                </select>
+                                            </div>
+                                            <div class="space-y-2">
+                                                <label for="kebocoran_tangki"
+                                                    class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Kebocoran
+                                                    Tangki</label>
+                                                <select id="kebocoran_tangki" name="kebocoran_tangki"
+                                                    class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 px-6 font-bold text-slate-900 transition-all focus:border-emerald-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-emerald-500/5">
+                                                    <option value="Tidak Ada">Tidak Ada</option>
+                                                    <option value="Ada Kebocoran Kecil">Ada Kebocoran Kecil</option>
+                                                    <option value="Ada Kebocoran Besar">Ada Kebocoran Besar</option>
+                                                </select>
+                                            </div>
+                                            <div class="space-y-2">
+                                                <label for="kondisi_seal_tangki"
+                                                    class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Kondisi
+                                                    Seal</label>
+                                                <select id="kondisi_seal_tangki" name="kondisi_seal_tangki"
+                                                    class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 px-6 font-bold text-slate-900 transition-all focus:border-emerald-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-emerald-500/5">
+                                                    <option value="Baik">Baik</option>
+                                                    <option value="Rusak">Rusak</option>
+                                                    <option value="Tidak Ada">Tidak Ada</option>
+                                                </select>
+                                            </div>
+                                            <div class="space-y-2">
+                                                <label for="lokasi_kebocoran"
+                                                    class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Lokasi
+                                                    Kebocoran</label>
+                                                <input type="text" id="lokasi_kebocoran" name="lokasi_kebocoran"
+                                                    class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 px-6 font-bold text-slate-900 transition-all focus:border-emerald-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-emerald-500/5"
+                                                    placeholder="Deskripsi lokasi...">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {{-- SECTION 6: CATATAN & STATUS --}}
+                                <div
+                                    class="group relative bg-white rounded-[2rem] shadow-xl shadow-slate-200/50 border border-slate-100 transition-all hover:shadow-2xl hover:shadow-emerald-500/5 hover:-translate-y-1 overflow-hidden">
+                                    <div
+                                        class="h-2 w-full bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-500">
+                                    </div>
+                                    <div class="p-8 sm:p-10">
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-end">
+                                            <div class="space-y-2">
+                                                <label for="catatan"
+                                                    class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Catatan
+                                                    Tambahan</label>
+                                                <textarea id="catatan" name="catatan" rows="3"
+                                                    class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 px-6 font-medium text-slate-900 transition-all focus:border-emerald-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-emerald-500/5"
+                                                    placeholder="Informasi tambahan..."></textarea>
+                                            </div>
+                                            <div class="space-y-6">
+                                                <div class="space-y-2">
+                                                    <label for="status_akhir"
+                                                        class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Status
+                                                        Akhir <span class="text-rose-500">*</span></label>
+                                                    <select id="status_akhir" name="status_akhir" required
+                                                        class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 px-6 font-black text-slate-900 transition-all focus:border-emerald-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-emerald-500/5 text-center">
+                                                        <option value="Lolos">LOLOS (APPROVED)</option>
+                                                        <option value="Ditahan">DITAHAN (HOLD)</option>
+                                                        <option value="Ditolak">DITOLAK (REJECT)</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="flex items-center gap-4">
+                                                    <button type="reset"
+                                                        class="group flex-1 rounded-2xl border-2 border-slate-100 px-6 py-4 text-xs font-black uppercase tracking-widest text-slate-500 transition-all hover:bg-slate-50 hover:text-slate-800 flex items-center justify-center gap-2">
+                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                            class="h-4 w-4 transition-transform group-hover:rotate-180 duration-500"
+                                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                stroke-width="2.5"
+                                                                d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                                                        </svg>
+                                                        Reset
+                                                    </button>
+                                                    <button type="submit"
+                                                        class="flex-[2] group relative overflow-hidden rounded-2xl bg-emerald-600 px-8 py-4 text-xs font-black uppercase tracking-widest text-white shadow-xl shadow-emerald-500/30 transition-all hover:bg-emerald-700 hover:shadow-emerald-600/40 active:scale-95">
+                                                        <span
+                                                            class="relative z-10 flex items-center justify-center gap-2">
+                                                            Simpan Distribusi
+                                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                                class="h-4 w-4 transition-all group-hover:scale-110"
+                                                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                    stroke-width="2.5"
+                                                                    d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
+                                                            </svg>
+                                                        </span>
+                                                        <div
+                                                            class="absolute inset-0 z-0 bg-gradient-to-r from-emerald-400/20 to-transparent">
+                                                        </div>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </section>
             </main>

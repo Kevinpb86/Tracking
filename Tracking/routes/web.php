@@ -35,8 +35,12 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // SCM Routes
 Route::prefix('scm')->name('scm.')->group(function () {
+    Route::get('/do-item/daftar', [DoItemController::class, 'index'])->name('do-item.index');
     Route::get('/do-item/input', [DoItemController::class, 'create'])->name('do-item.input');
     Route::post('/do-item/store', [DoItemController::class, 'store'])->name('do-item.store');
+    Route::get('/do-item/{doItem}/edit', [DoItemController::class, 'edit'])->name('do-item.edit');
+    Route::put('/do-item/{doItem}', [DoItemController::class, 'update'])->name('do-item.update');
+    Route::delete('/do-item/{doItem}', [DoItemController::class, 'destroy'])->name('do-item.destroy');
 });
 
 // Registration Routes

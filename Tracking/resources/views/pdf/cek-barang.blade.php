@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Laporan HSE</title>
+    <title>Laporan Pemeriksaan Barang Distribusi</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -82,7 +82,7 @@
             background-color: #10b981;
         }
 
-        .status-perbaikan {
+        .status-ditahan {
             background-color: #f59e0b;
         }
 
@@ -105,6 +105,21 @@
         .checkbox-symbol {
             font-family: DejaVu Sans, sans-serif;
         }
+
+        .warning-section {
+            background-color: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+
+        .warning-section .section-title {
+            background-color: transparent;
+            border-left: none;
+            color: #92400e;
+            padding: 0;
+            margin-bottom: 5px;
+        }
     </style>
 </head>
 
@@ -116,9 +131,9 @@
             $logoSrc = 'data:image/jpeg;base64,' . $logoData;
         @endphp
         <img src="{{ $logoSrc }}" alt="Logo PT WGI" class="logo">
-        <h1>Laporan Health Safety Environment</h1>
+        <h1>Laporan Pemeriksaan Barang Distribusi</h1>
         <p>PT. Wiraswasta Gemilang Indonesia</p>
-        <p>Pos 1 - Security Gate Inspection</p>
+        <p>Pos 2 - Distribution Check</p>
     </div>
 
     <div class="section">
@@ -126,15 +141,15 @@
         <table>
             <tr>
                 <th>Tanggal Pemeriksaan</th>
-                <td>{{ \Carbon\Carbon::parse($hse->tanggal)->format('d F Y') }}</td>
+                <td>{{ date('d F Y', strtotime($cekBarang->tanggal)) }}</td>
             </tr>
             <tr>
-                <th>Jam</th>
-                <td>{{ $hse->waktu }}</td>
+                <th>Waktu Masuk</th>
+                <td>{{ substr($cekBarang->waktu, 0, 5) }}</td>
             </tr>
             <tr>
                 <th>Petugas Pemeriksa</th>
-                <td>{{ $hse->nama_petugas }}</td>
+                <td>{{ $cekBarang->nama_pemeriksa }}</td>
             </tr>
         </table>
     </div>
@@ -144,50 +159,33 @@
         <table>
             <tr>
                 <th>Nomor Polisi</th>
-                <td style="font-weight: bold; font-size: 14px;">{{ $hse->nomor_polisi ?? '-' }}</td>
+                <td style="font-weight: bold; font-size: 14px;">{{ $cekBarang->nomor_polisi }}</td>
             </tr>
             <tr>
-                <th>Nama Driver</th>
-                <td>{{ $hse->nama_driver ?? '-' }}</td>
+                <th>Jenis Kendaraan</th>
+                <td>{{ $cekBarang->jenis_kendaraan }}</td>
             </tr>
             <tr>
-                <th>Perusahaan / Vendor</th>
-                <td>{{ $hse->perusahaan ?? '-' }}</td>
+                <th>Nama Pengemudi</th>
+                <td>{{ $cekBarang->nama_pengemudi }}</td>
+            </tr>
+            <tr>
+                <th>Nomor DO</th>
+                <td>{{ $cekBarang->nomor_do ?? '-' }}</td>
             </tr>
         </table>
     </div>
 
     <div class="section">
-        <div class="section-title">Checklist Keselamatan</div>
+        <div class="section-title">Informasi Barang</div>
         <table>
             <tr>
-                <th>Alat Pelindung Diri (APD)</th>
-                <td>
-                    <div class="checkbox-item"><span class="checkbox-symbol">{{ $hse->helm_safety ? '☑' : '☐' }}</span>
-                        Helm Safety
-                    </div>
-                    <div class="checkbox-item"><span
-                            class="checkbox-symbol">{{ $hse->sepatu_safety ? '☑' : '☐' }}</span> Sepatu Safety</div>
-                    <div class="checkbox-item"><span class="checkbox-symbol">{{ $hse->rompi_safety ? '☑' : '☐' }}</span>
-                        Rompi Safety</div>
-                    <div class="checkbox-item"><span class="checkbox-symbol">{{ $hse->masker ? '☑' : '☐' }}</span>
-                        Masker</div>
-                    <br>
-                    <div class="checkbox-item"><span
-                            class="checkbox-symbol">{{ $hse->sarung_tangan ? '☑' : '☐' }}</span> Sarung Tangan</div>
-                    <div class="checkbox-item"><span
-                            class="checkbox-symbol">{{ $hse->kacamata_safety ? '☑' : '☐' }}</span> Kacamata Safety</div>
-                </td>
+                <th>Jenis Barang</th>
+                <td>{{ $cekBarang->jenis_barang }}</td>
             </tr>
             <tr>
-                <th>Perlengkapan Area / Kendaraan</th>
-                <td>
-                    <div class="checkbox-item"><span
-                            class="checkbox-symbol">{{ $hse->apar_tersedia ? '☑' : '☐' }}</span> APAR Tersedia
-                    </div>
-                    <div class="checkbox-item"><span class="checkbox-symbol">{{ $hse->kotak_p3k ? '☑' : '☐' }}</span>
-                        Kotak P3K</div>
-                </td>
+                <th>Jumlah</th>
+                <td><strong>{{ $cekBarang->jumlah_barang }} {{ $cekBarang->satuan }}</strong></td>
             </tr>
         </table>
     </div>
@@ -196,29 +194,61 @@
         <div class="section-title">Hasil Pemeriksaan</div>
         <table>
             <tr>
-                <th>Catatan Safety (Temuan)</th>
-                <td>{{ $hse->catatan_safety ?? '-' }}</td>
+                <th>Kondisi Kemasan</th>
+                <td><strong>{{ $cekBarang->kondisi_kemasan }}</strong></td>
             </tr>
             <tr>
-                <th>Tindak Lanjut</th>
-                <td>{{ $hse->tindak_lanjut ?? '-' }}</td>
+                <th>Kesesuaian Jumlah</th>
+                <td><strong>{{ $cekBarang->kesesuaian_jumlah }}</strong></td>
+            </tr>
+            <tr>
+                <th>Kelengkapan Dokumen</th>
+                <td><strong>{{ $cekBarang->kelengkapan_dokumen }}</strong></td>
             </tr>
             <tr>
                 <th>Status Akhir</th>
                 <td>
                     @php
-                        $statusClass = match ($hse->status) {
+                        $statusClass = match ($cekBarang->status_akhir) {
                             'Lolos' => 'status-lolos',
-                            'Perbaikan' => 'status-perbaikan',
+                            'Ditahan' => 'status-ditahan',
                             'Ditolak' => 'status-ditolak',
                             default => ''
                         };
                     @endphp
-                    <span class="status-badge {{ $statusClass }}">{{ $hse->status }}</span>
+                    <span class="status-badge {{ $statusClass }}">{{ $cekBarang->status_akhir }}</span>
                 </td>
             </tr>
+            @if($cekBarang->catatan)
+                <tr>
+                    <th>Catatan</th>
+                    <td>{{ $cekBarang->catatan }}</td>
+                </tr>
+            @endif
         </table>
     </div>
+
+    @if($cekBarang->jenis_kendaraan === 'Truck Tangki')
+        <div class="warning-section">
+            <div class="section-title">⚠ Pemeriksaan Khusus Truck Tangki</div>
+            <table>
+                <tr>
+                    <th>Kebocoran Tangki</th>
+                    <td><strong>{{ $cekBarang->kebocoran_tangki ?? '-' }}</strong></td>
+                </tr>
+                <tr>
+                    <th>Kondisi Seal Tangki</th>
+                    <td><strong>{{ $cekBarang->kondisi_seal_tangki ?? '-' }}</strong></td>
+                </tr>
+                @if($cekBarang->lokasi_kebocoran)
+                    <tr>
+                        <th>Lokasi Kebocoran</th>
+                        <td>{{ $cekBarang->lokasi_kebocoran }}</td>
+                    </tr>
+                @endif
+            </table>
+        </div>
+    @endif
 
     <div class="footer">
         <p>Dicetak pada: {{ now()->format('d/m/Y H:i:s') }}</p>
@@ -226,9 +256,9 @@
     </div>
 
     <script type="text/javascript">
-        window.onload = function () { // Wait for content to load
+        window.onload = function () {
             window.print();
-        }
+    }
     </script>
 </body>
 

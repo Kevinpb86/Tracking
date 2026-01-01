@@ -8,7 +8,29 @@ class Pos1Controller extends Controller
 {
     public function index()
     {
-        return view('navigasi.pos1');
+        // HSE Data for Chart - Pass vs Fail Comparison
+        $monthLabels = [];
+        $passedData = [];
+        $failedData = [];
+
+        for ($i = 5; $i >= 0; $i--) {
+            $date = now()->subMonths($i);
+            $monthLabels[] = $date->format('M');
+
+            // Count passed HSE (status = 'Lolos')
+            $passedData[] = \App\Models\Hse::whereYear('created_at', $date->year)
+                ->whereMonth('created_at', $date->month)
+                ->where('status', 'Lolos')
+                ->count();
+
+            // Count failed HSE (status = 'Perbaikan' or 'Ditolak')
+            $failedData[] = \App\Models\Hse::whereYear('created_at', $date->year)
+                ->whereMonth('created_at', $date->month)
+                ->whereIn('status', ['Perbaikan', 'Ditolak'])
+                ->count();
+        }
+
+        return view('navigasi.pos1', compact('monthLabels', 'passedData', 'failedData'));
     }
 
     public function create()

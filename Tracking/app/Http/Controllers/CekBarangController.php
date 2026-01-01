@@ -12,11 +12,11 @@ class CekBarangController extends Controller
      */
     public function index()
     {
-        $cekBarang = CekBarang::orderBy('tanggal', 'desc')
+        $cekBarangList = CekBarang::orderBy('tanggal', 'desc')
             ->orderBy('waktu', 'desc')
             ->get();
 
-        return view('navigasi.daftar-cek-barang', compact('cekBarang'));
+        return view('navigasi.daftar-cek-barang', compact('cekBarangList'));
     }
 
     /**

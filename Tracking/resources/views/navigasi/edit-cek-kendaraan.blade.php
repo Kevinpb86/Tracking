@@ -523,18 +523,29 @@
                                     </div>
                                 </div>
 
-                                <!-- Submit Button -->
-                                <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4">
-                                     <a href="{{ route('cek-kendaraan.daftar') }}" class="px-6 py-3 rounded-lg border-2 border-slate-300 text-slate-700 font-semibold hover:bg-slate-50 transition-all">Cancel</a>
-                                    <div class="flex gap-4">
-                                        <a href="{{ route('cek-kendaraan.pdf', $cekKendaraan->id) }}" target="_blank" class="px-6 py-3 rounded-lg border-2 border-slate-300 bg-white text-slate-700 font-bold shadow-sm hover:bg-slate-50 hover:border-slate-400 transition-all flex items-center gap-2">
+                                <!-- Submit Actions -->
+                                <div class="flex items-center justify-between gap-4 pt-4">
+                                    <a href="{{ route('cek-kendaraan.daftar') }}"
+                                        class="submit-btn inline-flex items-center gap-2 px-8 py-3 rounded-xl font-bold shadow-lg shadow-blue-500/20">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+                                        </svg>
+                                        Kembali
+                                    </a>
+                                    <div class="flex items-center gap-4">
+                                        <button type="reset"
+                                            class="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-slate-200 bg-white text-slate-600 font-semibold shadow-lg shadow-slate-200/50 hover:bg-slate-50 hover:shadow-xl hover:shadow-slate-300/50 hover:-translate-y-0.5 transition-all duration-200 active:scale-95">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                                <path fill-rule="evenodd" d="M5 4v3H4a2 2 0 00-2 2v3a2 2 0 002 2h1v2a2 2 0 002 2h6a2 2 0 002-2v-2h1a2 2 0 002-2V9a2 2 0 00-2-2h-1V4a2 2 0 00-2-2H7a2 2 0 00-2 2zm8 0H7v3h6V4zm0 8H7v4h6v-4z" clip-rule="evenodd" />
+                                                <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd" />
                                             </svg>
-                                            Cetak PDF
-                                        </a>
-                                        <button type="submit" class="submit-btn px-8 py-3 rounded-lg bg-blue-600 text-white font-bold shadow-lg hover:shadow-xl transition-all">
-                                            Simpan Perubahan
+                                            Reset
+                                        </button>
+                                        <button type="submit"
+                                            class="submit-btn inline-flex items-center gap-2 px-8 py-3 rounded-xl font-bold shadow-lg shadow-blue-500/20">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                                <path d="M7.707 10.293a1 1 0 10-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 11.586V6h5a2 2 0 012 2v7a2 2 0 01-2 2H4a2 2 0 01-2-2V8a2 2 0 012-2h5v5.586l-1.293-1.293zM9 4a1 1 0 012 0v2H9V4z" />
+                                            </svg>
+                                            Update Data
                                         </button>
                                     </div>
                                 </div>

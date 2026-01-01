@@ -32,6 +32,12 @@
             margin-bottom: 20px;
         }
 
+        .header .logo-img {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 10px;
+        }
+
         .logo {
             font-weight: bold;
             font-size: 18px;
@@ -104,6 +110,12 @@
 <body onload="window.print()">
     <div class="ticket-container">
         <div class="header">
+            @php
+                $logoPath = public_path('images/wgilogo.jpg');
+                $logoData = base64_encode(file_get_contents($logoPath));
+                $logoSrc = 'data:image/jpeg;base64,' . $logoData;
+            @endphp
+            <img src="{{ $logoSrc }}" alt="Logo PT WGI" class="logo-img">
             <div class="logo">PT. WGI</div>
             <div class="sub-logo">Tracking System - Pos 1</div>
         </div>

@@ -337,224 +337,376 @@
 
 
             <section class="relative mx-auto w-full flex-1 px-8 py-12 sm:px-12 lg:px-24">
-                {{-- Hero Section --}}
+                {{-- Hero Section - PREMIUM REDESIGN --}}
                 <div
-                    class="mb-12 rounded-3xl bg-gradient-to-r from-blue-600 to-blue-700 p-10 text-white shadow-2xl relative overflow-hidden">
-                    <div class="absolute top-0 right-0 -mt-10 -mr-10 h-64 w-64 rounded-full bg-white/10 blur-3xl"></div>
-                    <div class="absolute bottom-0 left-0 -mb-10 -ml-10 h-64 w-64 rounded-full bg-white/10 blur-3xl">
+                    class="mb-8 rounded-3xl bg-gradient-to-r from-blue-600 to-blue-700 py-8 px-6 sm:px-10 shadow-2xl relative overflow-hidden group">
+                    {{-- Decorative Elements --}}
+                    <div
+                        class="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-white/10 blur-3xl group-hover:bg-white/20 transition-colors duration-700">
+                    </div>
+                    <div
+                        class="absolute -left-16 -bottom-16 h-48 w-48 rounded-full bg-white/5 blur-3xl group-hover:bg-white/15 transition-colors duration-700">
                     </div>
 
-                    <div class="relative z-10 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-                        <div>
-                            <div class="mb-2 flex items-center gap-2">
+                    <div class="relative z-10 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+                        <div class="max-w-xl space-y-3">
+                            <div class="flex items-center gap-3">
                                 <span
-                                    class="rounded-full bg-blue-500/30 px-3 py-1 text-xs font-bold uppercase tracking-wider backdrop-blur-sm border border-white/20">
-                                    Dashboard Utama
+                                    class="rounded-full bg-white/10 px-3 py-1 text-[8px] font-bold uppercase tracking-[0.3em] text-white border border-white/20">
+                                    Checkpoint Station
                                 </span>
-                                <span class="flex h-2 w-2 rounded-full bg-blue-400"></span>
-                                <span class="text-xs font-medium text-blue-100">Sistem Online</span>
+                                <div class="flex items-center gap-2">
+                                    <span class="relative flex h-1.5 w-1.5">
+                                        <span
+                                            class="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-75"></span>
+                                        <span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-white"></span>
+                                    </span>
+                                    <span class="text-[8px] font-bold uppercase tracking-widest text-white/80">POS 1
+                                        Active</span>
+                                </div>
                             </div>
-                            <h1 class="text-4xl font-bold leading-tight sm:text-5xl">
-                                Selamat Datang di <br />
-                                <span class="text-blue-200">Checkpoint Pos 1</span>
+                            <h1 class="text-2xl font-black text-white sm:text-4xl leading-tight tracking-tight">
+                                Integrated Monitoring<br><span class="text-blue-100 italic">Terminal Arrival</span>
                             </h1>
-                            <p class="mt-4 max-w-xl text-lg text-blue-100/90 font-light">
-                                Kelola validasi kendaraan dan pemeriksaan HSE dengan efisien. Pantau aktivitas terkini
-                                dan akses menu cepat di satu tempat.
+                            <p class="text-sm text-blue-50/80 leading-relaxed max-w-lg">
+                                Selamat datang di Pusat Kendali POS 1. Kelola validasi kendaraan,
+                                pemeriksaan HSE, dan antrian logistik PT. WGI secara tersentralisasi.
                             </p>
                         </div>
 
-                        <div
-                            class="flex flex-col gap-4 rounded-2xl bg-white/10 p-6 backdrop-blur-md border border-white/20 min-w-[280px]">
-                            <div>
-                                <p class="text-xs font-bold uppercase tracking-widest text-blue-200">Waktu Operasional
-                                </p>
-                                <p id="heroTime" class="text-3xl font-bold tracking-tight">{{ $now->format('H:i') }}
-                                    <span class="text-lg font-medium text-blue-300">WIB</span>
-                                </p>
+                        <div class="grid grid-cols-2 gap-2 lg:w-64">
+                            <div
+                                class="rounded-2xl border border-white/10 bg-white/10 backdrop-blur-md p-3 text-center hover:bg-white/20 transition-colors">
+                                <p class="text-[8px] font-bold uppercase tracking-widest text-blue-100/70 mb-1">Local
+                                    Time</p>
+                                <p id="heroTime" class="text-lg font-black text-white">00:00</p>
                             </div>
-                            <div class="h-px w-full bg-white/20"></div>
-                            <div>
-                                <p class="text-xs font-bold uppercase tracking-widest text-blue-200">Tanggal</p>
-                                <p class="text-lg font-medium">{{ $now->format('d F Y') }}</p>
+                            <div
+                                class="rounded-2xl border border-white/10 bg-white/10 backdrop-blur-md p-3 text-center hover:bg-white/20 transition-colors">
+                                <p class="text-[8px] font-bold uppercase tracking-widest text-blue-100/70 mb-1">Region
+                                </p>
+                                <p class="text-lg font-black text-white">WIB</p>
+                            </div>
+                            <div
+                                class="col-span-2 rounded-2xl border border-white/10 bg-white/10 backdrop-blur-md p-3 flex items-center justify-between hover:bg-white/20 transition-colors">
+                                <div class="text-left">
+                                    <p class="text-[8px] font-bold uppercase tracking-widest text-blue-100/70">Current
+                                        Date</p>
+                                    <p class="text-[10px] font-bold text-white">{{ $now->format('d F Y') }}</p>
+                                </div>
+                                <div
+                                    class="h-7 w-7 rounded-xl bg-white/20 flex items-center justify-center text-white shadow-lg">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2-2v12a2 2 0 002 2z" />
+                                    </svg>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                {{-- Quick Stats Grid --}}
-                <div class="mb-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                    <!-- Stat Card 1 -->
+                {{-- Quick Stats Grid - PREMIUM REDESIGN --}}
+                <div class="mb-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                    <!-- Stat Card 1: Total Kendaraan -->
                     <div
-                        class="group relative overflow-hidden rounded-2xl border border-slate-100 bg-white p-6 shadow-lg transition-all hover:-translate-y-1 hover:shadow-xl">
+                        class="group relative overflow-hidden rounded-3xl border border-slate-100 bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                         <div
-                            class="absolute right-0 top-0 h-24 w-24 translate-x-8 translate-y-[-20%] rounded-full bg-blue-50 transition-all group-hover:scale-110">
+                            class="absolute -right-6 -top-6 h-28 w-28 rounded-full bg-blue-50/50 transition-transform duration-500 group-hover:scale-110">
                         </div>
                         <div class="relative z-10">
                             <div
-                                class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100 text-blue-600 shadow-sm group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                                class="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-600 text-white shadow-lg shadow-blue-200 transition-transform group-hover:rotate-12">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                                     stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
                                 </svg>
                             </div>
-                            <p class="text-xs font-bold uppercase tracking-wider text-slate-500">Total Kendaraan</p>
-                            <p class="mt-2 text-3xl font-bold text-slate-900">24</p>
-                            <div class="mt-2 flex items-center text-xs font-medium text-blue-600">
-                                <svg class="mr-1 h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
-                                </svg>
-                                +12% dari kemarin
+                            <div class="space-y-1">
+                                <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Total Kendaraan
+                                </p>
+                                <div class="flex items-baseline gap-2">
+                                    <p class="text-3xl font-black text-slate-900 tracking-tight">24</p>
+                                    <span class="text-xs font-bold text-blue-600">+12%</span>
+                                </div>
+                                <div class="h-1 w-full bg-slate-100 rounded-full overflow-hidden">
+                                    <div class="h-full bg-blue-600 rounded-full" style="width: 65%"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Stat Card 2 -->
+                    <!-- Stat Card 2: Validasi OK -->
                     <div
-                        class="group relative overflow-hidden rounded-2xl border border-slate-100 bg-white p-6 shadow-lg transition-all hover:-translate-y-1 hover:shadow-xl">
+                        class="group relative overflow-hidden rounded-3xl border border-slate-100 bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                         <div
-                            class="absolute right-0 top-0 h-24 w-24 translate-x-8 translate-y-[-20%] rounded-full bg-blue-50 transition-all group-hover:scale-110">
+                            class="absolute -right-6 -top-6 h-28 w-28 rounded-full bg-emerald-50/50 transition-transform duration-500 group-hover:scale-110">
                         </div>
                         <div class="relative z-10">
                             <div
-                                class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100 text-blue-600 shadow-sm group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                                class="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-500 text-white shadow-lg shadow-emerald-100 transition-transform group-hover:rotate-12">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                                     stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
                             </div>
-                            <p class="text-xs font-bold uppercase tracking-wider text-slate-500">Validasi OK</p>
-                            <p class="mt-2 text-3xl font-bold text-slate-900">100%</p>
-                            <div class="mt-2 flex items-center text-xs font-medium text-slate-400">
-                                Semua dokumen lengkap
+                            <div class="space-y-1">
+                                <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Validasi OK</p>
+                                <div class="flex items-baseline gap-2">
+                                    <p class="text-3xl font-black text-slate-900 tracking-tight">100%</p>
+                                    <span class="text-[10px] font-medium text-emerald-600">Perfect</span>
+                                </div>
+                                <div class="h-1 w-full bg-slate-100 rounded-full overflow-hidden">
+                                    <div class="h-full bg-emerald-500 rounded-full" style="width: 100%"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Stat Card 3 -->
+                    <!-- Stat Card 3: Peringatan HSE -->
                     <div
-                        class="group relative overflow-hidden rounded-2xl border border-slate-100 bg-white p-6 shadow-lg transition-all hover:-translate-y-1 hover:shadow-xl">
+                        class="group relative overflow-hidden rounded-3xl border border-slate-100 bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                         <div
-                            class="absolute right-0 top-0 h-24 w-24 translate-x-8 translate-y-[-20%] rounded-full bg-amber-50 transition-all group-hover:scale-110">
+                            class="absolute -right-6 -top-6 h-28 w-28 rounded-full bg-amber-50 transition-transform duration-500 group-hover:scale-110">
                         </div>
                         <div class="relative z-10">
                             <div
-                                class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-amber-100 text-amber-600 shadow-sm group-hover:bg-amber-600 group-hover:text-white transition-colors">
+                                class="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-amber-500 text-white shadow-lg shadow-amber-100 transition-transform group-hover:rotate-12">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                                     stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                                 </svg>
                             </div>
-                            <p class="text-xs font-bold uppercase tracking-wider text-slate-500">Peringatan HSE</p>
-                            <p class="mt-2 text-3xl font-bold text-slate-900">0</p>
-                            <div class="mt-2 flex items-center text-xs font-medium text-blue-600">
-                                Aman terkendali
+                            <div class="space-y-1">
+                                <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Peringatan HSE
+                                </p>
+                                <div class="flex items-baseline gap-2">
+                                    <p class="text-3xl font-black text-slate-900 tracking-tight">0</p>
+                                    <span class="text-[10px] font-medium text-blue-500">Secured</span>
+                                </div>
+                                <div class="h-1 w-full bg-slate-100 rounded-full overflow-hidden">
+                                    <div class="h-full bg-blue-400 rounded-full" style="width: 0%"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Stat Card 4 -->
+                    <!-- Stat Card 4: Avg. Waktu -->
                     <div
-                        class="group relative overflow-hidden rounded-2xl border border-slate-100 bg-white p-6 shadow-lg transition-all hover:-translate-y-1 hover:shadow-xl">
+                        class="group relative overflow-hidden rounded-3xl border border-slate-100 bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                         <div
-                            class="absolute right-0 top-0 h-24 w-24 translate-x-8 translate-y-[-20%] rounded-full bg-indigo-50 transition-all group-hover:scale-110">
+                            class="absolute -right-6 -top-6 h-28 w-28 rounded-full bg-indigo-50 transition-transform duration-500 group-hover:scale-110">
                         </div>
                         <div class="relative z-10">
                             <div
-                                class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-100 text-indigo-600 shadow-sm group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                                class="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-indigo-600 text-white shadow-lg shadow-indigo-100 transition-transform group-hover:rotate-12">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                                     stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
                             </div>
-                            <p class="text-xs font-bold uppercase tracking-wider text-slate-500">Avg. Waktu</p>
-                            <p class="mt-2 text-3xl font-bold text-slate-900">5 <span
-                                    class="text-base font-medium text-slate-500">Menit</span></p>
-                            <div class="mt-2 flex items-center text-xs font-medium text-blue-600">
-                                <svg class="mr-1 h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
-                                </svg>
-                                Lebih cepat 2m
+                            <div class="space-y-1">
+                                <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Avg. Service
+                                    Time</p>
+                                <div class="flex items-baseline gap-2">
+                                    <p class="text-3xl font-black text-slate-900 tracking-tight">5.2</p>
+                                    <span class="text-xs font-bold text-indigo-600">min</span>
+                                </div>
+                                <div class="h-1 w-full bg-slate-100 rounded-full overflow-hidden">
+                                    <div class="h-full bg-indigo-600 rounded-full" style="width: 45%"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
+                </div>
+
+                {{-- HSE Compliance Trends Chart --}}
+                <div class="mb-10">
+                    <article
+                        class="group relative overflow-hidden rounded-[2.5rem] border border-slate-200 bg-gradient-to-br from-white via-blue-50/30 to-indigo-50/30 p-10 shadow-xl shadow-slate-200/50 hover:shadow-2xl hover:shadow-slate-300/50 transition-all duration-500">
+                        {{-- Decorative Background Elements --}}
+                        <div
+                            class="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-gradient-to-br from-blue-400/10 to-indigo-400/10 blur-3xl group-hover:scale-110 transition-transform duration-700">
+                        </div>
+                        <div
+                            class="absolute -left-20 -bottom-20 h-64 w-64 rounded-full bg-gradient-to-tr from-indigo-400/10 to-blue-400/10 blur-3xl group-hover:scale-110 transition-transform duration-700">
+                        </div>
+
+                        <div class="relative z-10">
+                            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
+                                <div>
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <div
+                                            class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 shadow-lg shadow-blue-200">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white"
+                                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                                            </svg>
+                                        </div>
+                                        <h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-blue-600">
+                                            HSE Analytics</h2>
+                                    </div>
+                                    <p class="text-2xl font-black text-slate-900 tracking-tight">HSE Compliance Trends
+                                    </p>
+                                    <p class="text-xs text-slate-500 mt-1 font-medium">Perbandingan supir lulus vs tidak
+                                        lulus - 6 bulan terakhir</p>
+                                </div>
+                                <div
+                                    class="flex items-center gap-2 rounded-xl bg-white/80 backdrop-blur-sm border border-slate-200/50 p-1 shadow-sm">
+                                    <button
+                                        class="px-4 py-2 text-xs font-bold text-white bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg shadow-md shadow-blue-200">Monthly</button>
+                                    <button
+                                        class="px-4 py-2 text-xs font-bold text-slate-400 hover:text-slate-600 hover:bg-slate-50 rounded-lg transition-all">Weekly</button>
+                                </div>
+                            </div>
+
+                            {{-- Chart Container with Premium Styling --}}
+                            <div
+                                class="relative rounded-2xl bg-white/60 backdrop-blur-sm border border-slate-200/50 p-6 shadow-inner">
+                                <div class="relative h-[400px]">
+                                    <canvas id="hseLineChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
                 </div>
 
                 {{-- Two Column Layout: Quick Actions & Activity --}}
                 <div class="grid gap-8 lg:grid-cols-12">
                     {{-- Left Column: Quick Actions & Menus --}}
                     <div class="lg:col-span-8 space-y-8">
-                        <div class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
-                            <div class="mb-6 flex items-center justify-between">
+                        <div
+                            class="rounded-[2.5rem] border border-slate-200 bg-white p-10 shadow-sm relative overflow-hidden">
+                            <div
+                                class="absolute right-0 top-0 h-40 w-40 bg-blue-50/50 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl">
+                            </div>
+
+                            <div class="mb-10 flex items-center justify-between relative z-10">
                                 <div>
-                                    <h2 class="text-xl font-bold text-slate-900">Akses Cepat</h2>
-                                    <p class="text-sm text-slate-500">Jalan pintas untuk tugas harian Anda</p>
+                                    <h2 class="text-2xl font-black text-slate-900 tracking-tight">Operations Control
+                                    </h2>
+                                    <p class="text-sm font-medium text-slate-500">Akses cepat modul operasional Terminal
+                                        POS 1</p>
+                                </div>
+                                <div
+                                    class="h-12 w-12 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                                    </svg>
                                 </div>
                             </div>
 
-                            <div class="grid gap-4 sm:grid-cols-2">
+                            <div class="grid gap-6 sm:grid-cols-2 relative z-10">
+                                {{-- HSE Entry --}}
                                 <a href="{{ route('hse.input') }}"
-                                    class="group relative flex items-center gap-4 overflow-hidden rounded-2xl border-2 border-slate-100 bg-white p-5 transition-all hover:border-blue-500 hover:shadow-md hover:shadow-emerald-500/10">
+                                    class="group relative flex flex-col gap-4 rounded-3xl border border-slate-100 bg-white p-6 transition-all duration-300 hover:border-blue-200 hover:shadow-xl hover:-translate-y-1">
                                     <div
-                                        class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-blue-100 text-blue-600 transition-colors group-hover:bg-blue-600 group-hover:text-white">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 20 20"
+                                        class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-blue-50 text-blue-600 transition-colors group-hover:bg-blue-600 group-hover:text-white group-hover:shadow-lg group-hover:shadow-blue-200">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20"
                                             fill="currentColor">
                                             <path
                                                 d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
                                         </svg>
                                     </div>
                                     <div>
-                                        <h3 class="font-bold text-slate-900 group-hover:text-blue-700">Input HSE Baru
-                                        </h3>
-                                        <p class="text-xs text-slate-500">Catat pemeriksaan keselamatan</p>
+                                        <h3
+                                            class="font-black text-slate-900 group-hover:text-blue-600 transition-colors">
+                                            Input HSE Baru</h3>
+                                        <p class="text-xs font-medium text-slate-400 leading-relaxed mt-1">Registrasi
+                                            pemeriksaan kesehatan dan keselamatan kerja.</p>
+                                    </div>
+                                    <div class="mt-2 flex items-center justify-between">
+                                        <span
+                                            class="text-[10px] font-bold uppercase tracking-widest text-blue-500">Security
+                                            Check</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            class="h-4 w-4 text-slate-300 group-hover:text-blue-500 transition-colors"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                        </svg>
                                     </div>
                                 </a>
 
+                                {{-- HSE List --}}
                                 <a href="{{ route('hse.daftar') }}"
-                                    class="group relative flex items-center gap-4 overflow-hidden rounded-2xl border-2 border-slate-100 bg-white p-5 transition-all hover:border-blue-500 hover:shadow-md hover:shadow-blue-500/10">
+                                    class="group relative flex flex-col gap-4 rounded-3xl border border-slate-100 bg-white p-6 transition-all duration-300 hover:border-blue-200 hover:shadow-xl hover:-translate-y-1">
                                     <div
-                                        class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-blue-100 text-blue-600 transition-colors group-hover:bg-blue-600 group-hover:text-white">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 20 20"
+                                        class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-indigo-50 text-indigo-600 transition-colors group-hover:bg-indigo-600 group-hover:text-white group-hover:shadow-lg group-hover:shadow-indigo-200">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20"
                                             fill="currentColor">
                                             <path
                                                 d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" />
                                         </svg>
                                     </div>
                                     <div>
-                                        <h3 class="font-bold text-slate-900 group-hover:text-blue-700">Daftar Laporan
-                                        </h3>
-                                        <p class="text-xs text-slate-500">Lihat history data HSE</p>
+                                        <h3
+                                            class="font-black text-slate-900 group-hover:text-indigo-600 transition-colors">
+                                            Daftar Laporan</h3>
+                                        <p class="text-xs font-medium text-slate-400 leading-relaxed mt-1">Pantau dan
+                                            kelola riwayat pemeriksaan berkala.</p>
+                                    </div>
+                                    <div class="mt-2 flex items-center justify-between">
+                                        <span
+                                            class="text-[10px] font-bold uppercase tracking-widest text-indigo-500">Data
+                                            Logs</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            class="h-4 w-4 text-slate-300 group-hover:text-indigo-500 transition-colors"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                        </svg>
                                     </div>
                                 </a>
 
-                                <button
-                                    class="group relative flex items-center gap-4 overflow-hidden rounded-2xl border-2 border-slate-100 bg-slate-50 p-5 transition-all hover:border-slate-300">
+                                {{-- Vehicle Check --}}
+                                <a href="{{ route('cek-kendaraan.input') }}"
+                                    class="group relative flex flex-col gap-4 rounded-3xl border border-slate-100 bg-white p-6 transition-all duration-300 hover:border-sky-200 hover:shadow-xl hover:-translate-y-1">
                                     <div
-                                        class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-slate-200 text-slate-500 transition-colors group-hover:bg-slate-600 group-hover:text-white">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 20 20"
+                                        class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-sky-50 text-sky-600 transition-colors group-hover:bg-sky-600 group-hover:text-white group-hover:shadow-lg group-hover:shadow-sky-200">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20"
                                             fill="currentColor">
-                                            <path fill-rule="evenodd"
-                                                d="M3 4.25A2.25 2.25 0 0 1 5.25 2h9.5A2.25 2.25 0 0 1 17 4.25v11.5A2.25 2.25 0 0 1 14.75 18h-9.5A2.25 2.25 0 0 1 3 15.75V4.25Z"
-                                                clip-rule="evenodd" />
+                                            <path
+                                                d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
+                                            <path
+                                                d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V5a1 1 0 00-1-1H3zM14 7a1 1 0 00-1 1v8.05a2.5 2.5 0 014.9 0H19a1 1 0 001-1v-5a1 1 0 00-.293-.707l-2-2A1 1 0 0017 7h-3z" />
                                         </svg>
                                     </div>
                                     <div>
-                                        <h3 class="font-bold text-slate-900">Antrian</h3>
-                                        <p class="text-xs text-slate-500">Segera Hadir</p>
+                                        <h3
+                                            class="font-black text-slate-900 group-hover:text-sky-600 transition-colors">
+                                            Cek Kendaraan</h3>
+                                        <p class="text-xs font-medium text-slate-400 leading-relaxed mt-1">Validasi
+                                            kelayakan dan keamanan armada pengangkut.</p>
                                     </div>
-                                </button>
+                                    <div class="mt-2 flex items-center justify-between">
+                                        <span class="text-[10px] font-bold uppercase tracking-widest text-sky-500">Fleet
+                                            Control</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            class="h-4 w-4 text-slate-300 group-hover:text-sky-500 transition-colors"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                        </svg>
+                                    </div>
+                                </a>
 
-                                <button
-                                    class="group relative flex items-center gap-4 overflow-hidden rounded-2xl border-2 border-slate-100 bg-slate-50 p-5 transition-all hover:border-slate-300">
+                                {{-- Help/Support --}}
+                                <a href="#"
+                                    class="group relative flex flex-col gap-4 rounded-3xl border border-slate-100 bg-slate-50 p-6 transition-all duration-300 hover:border-slate-200 hover:shadow-xl hover:-translate-y-1">
                                     <div
-                                        class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-slate-200 text-slate-500 transition-colors group-hover:bg-slate-600 group-hover:text-white">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 20 20"
+                                        class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-white border border-slate-100 text-slate-400 transition-all group-hover:bg-slate-900 group-hover:text-white group-hover:shadow-lg group-hover:shadow-slate-200">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20"
                                             fill="currentColor">
                                             <path fill-rule="evenodd"
                                                 d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
@@ -562,65 +714,99 @@
                                         </svg>
                                     </div>
                                     <div>
-                                        <h3 class="font-bold text-slate-900">Bantuan</h3>
-                                        <p class="text-xs text-slate-500">Dokumentasi & Panduan</p>
+                                        <h3
+                                            class="font-black text-slate-900 group-hover:text-slate-900 transition-colors">
+                                            Bantuan Sistem</h3>
+                                        <p class="text-xs font-medium text-slate-400 leading-relaxed mt-1">Panduan
+                                            penggunaan dan support teknis operasional.</p>
                                     </div>
-                                </button>
+                                    <div class="mt-2 flex items-center justify-between">
+                                        <span
+                                            class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Documentation</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            class="h-4 w-4 text-slate-300 group-hover:text-slate-900 transition-colors"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                        </svg>
+                                    </div>
+                                </a>
                             </div>
                         </div>
                     </div>
 
                     {{-- Right Column: Activity or Info --}}
-                    <div class="lg:col-span-4 space-y-8">
-                        <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-                            <h3 class="mb-4 text-sm font-bold uppercase tracking-wider text-slate-500">Aktivitas Terkini
-                            </h3>
-                            <div class="relative pl-6 border-l-2 border-slate-100 space-y-8">
-                                <div class="relative">
-                                    <span
-                                        class="absolute -left-[29px] top-1 flex h-4 w-4 items-center justify-center rounded-full bg-blue-100 ring-4 ring-white">
-                                        <span class="h-2 w-2 rounded-full bg-blue-500"></span>
-                                    </span>
-                                    <p class="text-sm font-semibold text-slate-900">Sistem Siap</p>
-                                    <p class="text-xs text-slate-500">Hari ini, {{ $now->format('H:i') }}</p>
+                    <div class="lg:col-span-4 space-y-6">
+                        <div class="rounded-[2.5rem] border border-slate-200 bg-white p-8 shadow-sm">
+                            <div class="mb-8 flex items-center justify-between">
+                                <h3 class="text-sm font-black uppercase tracking-widest text-slate-400">Live Activity
+                                </h3>
+                                <span class="flex h-2 w-2 rounded-full bg-blue-500 animate-pulse"></span>
+                            </div>
+
+                            <div
+                                class="space-y-8 relative before:absolute before:left-[11px] before:top-2 before:bottom-2 before:w-0.5 before:bg-slate-100">
+                                <div class="relative pl-8">
+                                    <div
+                                        class="absolute left-0 top-1 h-6 w-6 rounded-full bg-blue-600 border-4 border-white shadow-md">
+                                    </div>
+                                    <p class="text-sm font-black text-slate-800 tracking-tight">System Operational</p>
+                                    <p class="text-[10px] font-bold text-blue-500 uppercase tracking-widest mt-0.5">
+                                        Today, {{ $now->format('H:i') }}</p>
                                 </div>
-                                <div class="relative">
-                                    <span
-                                        class="absolute -left-[29px] top-1 flex h-4 w-4 items-center justify-center rounded-full bg-blue-100 ring-4 ring-white">
-                                        <span class="h-2 w-2 rounded-full bg-blue-500"></span>
-                                    </span>
-                                    <p class="text-sm font-semibold text-slate-900">Login Petugas</p>
-                                    <p class="text-xs text-slate-500">{{ Auth::user()->name }} masuk ke sistem</p>
+                                <div class="relative pl-8">
+                                    <div
+                                        class="absolute left-0 top-1 h-6 w-6 rounded-full bg-slate-200 border-4 border-white shadow-md">
+                                    </div>
+                                    <p class="text-sm font-bold text-slate-600 tracking-tight">Session Authenticated</p>
+                                    <p class="text-[10px] font-medium text-slate-400 mt-0.5">{{ Auth::user()->name }}
+                                        Logged In</p>
                                 </div>
-                                <div class="relative">
-                                    <span
-                                        class="absolute -left-[29px] top-1 flex h-4 w-4 items-center justify-center rounded-full bg-slate-100 ring-4 ring-white">
-                                        <span class="h-2 w-2 rounded-full bg-slate-400"></span>
-                                    </span>
-                                    <p class="text-sm font-semibold text-slate-900">Maintenance</p>
-                                    <p class="text-xs text-slate-500">Kemarin, 14:00</p>
+                                <div class="relative pl-8">
+                                    <div
+                                        class="absolute left-0 top-1 h-6 w-6 rounded-full bg-slate-100 border-4 border-white shadow-md">
+                                    </div>
+                                    <p class="text-sm font-bold text-slate-400 tracking-tight">Security Protocol Active
+                                    </p>
+                                    <p class="text-[10px] font-medium text-slate-400 mt-0.5">Terminal Standard Applied
+                                    </p>
+                                </div>
+                            </div>
+
+                            <button
+                                class="mt-10 w-full rounded-2xl bg-slate-50 border border-slate-100 py-3 text-xs font-bold text-slate-500 hover:bg-slate-100 transition-colors">
+                                View Security Logs
+                            </button>
+                        </div>
+
+                        <div
+                            class="group relative overflow-hidden rounded-[2.5rem] bg-slate-900 p-8 text-white shadow-xl">
+                            <div
+                                class="absolute -right-10 -top-10 h-32 w-32 bg-blue-600/20 rounded-full blur-2xl group-hover:bg-blue-600/30 transition-colors duration-500">
+                            </div>
+
+                            <div class="relative z-10">
+                                <div
+                                    class="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 border border-white/20 backdrop-blur-md">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-400" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </div>
+                                <h3 class="text-xl font-black tracking-tight mb-3">Core Policy</h3>
+                                <p class="text-sm text-slate-400 leading-relaxed mb-6 font-medium">
+                                    Pastikan seluruh armada mematuhi standar HSE demi keamanan operasional PT. WGI.
+                                    Laporkan ketidaksesuaian segera.
+                                </p>
+                                <div
+                                    class="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-blue-400">
+                                    <span>Safety First</span>
+                                    <span class="h-1 w-1 rounded-full bg-blue-500"></span>
+                                    <span>Zero Incident</span>
                                 </div>
                             </div>
                         </div>
-
-                        <article
-                            class="rounded-3xl bg-gradient-to-br from-slate-900 to-slate-800 p-6 text-white shadow-lg">
-                            <div class="flex items-center gap-3 mb-4">
-                                <div class="p-2 bg-white/10 rounded-lg backdrop-blur-sm">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-400"
-                                        viewBox="0 0 20 20" fill="currentColor">
-                                        <path fill-rule="evenodd"
-                                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                </div>
-                                <h3 class="font-bold">Info Penting</h3>
-                            </div>
-                            <p class="text-sm text-slate-300 leading-relaxed">
-                                Pastikan APD lengkap saat memasuki area produksi. Gunakan formulir HSE untuk melaporkan
-                                ketidaksesuaian.
-                            </p>
-                        </article>
                     </div>
                 </div>
             </section>
@@ -801,6 +987,157 @@
                 }
             }
         }
+    </script>
+
+    {{-- Chart.js Library --}}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize HSE Line Chart - Pass vs Fail Comparison
+            const ctx = document.getElementById('hseLineChart');
+            if (ctx) {
+                // Get data from backend
+                const monthLabels = @json($monthLabels ?? []);
+                const passedData = @json($passedData ?? []);
+                const failedData = @json($failedData ?? []);
+
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: monthLabels,
+                        datasets: [
+                            {
+                                label: 'Supir Lulus HSE',
+                                data: passedData,
+                                borderColor: '#3b82f6',
+                                backgroundColor: (context) => {
+                                    const ctx = context.chart.ctx;
+                                    const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+                                    gradient.addColorStop(0, 'rgba(59, 130, 246, 0.3)');
+                                    gradient.addColorStop(1, 'rgba(59, 130, 246, 0.0)');
+                                    return gradient;
+                                },
+                                borderWidth: 4,
+                                pointRadius: 6,
+                                pointBackgroundColor: '#3b82f6',
+                                pointBorderColor: '#fff',
+                                pointBorderWidth: 3,
+                                pointHoverRadius: 9,
+                                pointHoverBorderWidth: 4,
+                                pointHoverBackgroundColor: '#3b82f6',
+                                pointHoverBorderColor: '#fff',
+                                fill: true,
+                                tension: 0.4
+                            },
+                            {
+                                label: 'Supir Tidak Lulus HSE',
+                                data: failedData,
+                                borderColor: '#ef4444',
+                                backgroundColor: (context) => {
+                                    const ctx = context.chart.ctx;
+                                    const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+                                    gradient.addColorStop(0, 'rgba(239, 68, 68, 0.3)');
+                                    gradient.addColorStop(1, 'rgba(239, 68, 68, 0.0)');
+                                    return gradient;
+                                },
+                                borderWidth: 4,
+                                pointRadius: 6,
+                                pointBackgroundColor: '#ef4444',
+                                pointBorderColor: '#fff',
+                                pointBorderWidth: 3,
+                                pointHoverRadius: 9,
+                                pointHoverBorderWidth: 4,
+                                pointHoverBackgroundColor: '#ef4444',
+                                pointHoverBorderColor: '#fff',
+                                fill: true,
+                                tension: 0.4
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: true,
+                                position: 'top',
+                                align: 'end',
+                                labels: {
+                                    usePointStyle: true,
+                                    pointStyle: 'circle',
+                                    font: {
+                                        size: 13,
+                                        family: 'Inter, sans-serif',
+                                        weight: '700'
+                                    },
+                                    padding: 20,
+                                    color: '#334155',
+                                    boxWidth: 8,
+                                    boxHeight: 8
+                                }
+                            },
+                            tooltip: {
+                                backgroundColor: 'rgba(15, 23, 42, 0.95)',
+                                padding: 16,
+                                cornerRadius: 12,
+                                titleFont: {
+                                    size: 14,
+                                    family: 'Inter, sans-serif',
+                                    weight: '700'
+                                },
+                                bodyFont: {
+                                    size: 15,
+                                    family: 'Inter, sans-serif',
+                                    weight: 'bold'
+                                },
+                                borderColor: 'rgba(148, 163, 184, 0.2)',
+                                borderWidth: 1,
+                                displayColors: true,
+                                boxPadding: 6,
+                                callbacks: {
+                                    label: function (context) {
+                                        return ' ' + context.parsed.y + ' supir';
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    stepSize: 5,
+                                    font: {
+                                        size: 12,
+                                        family: 'Inter, sans-serif',
+                                        weight: '600'
+                                    },
+                                    color: '#64748b'
+                                },
+                                grid: {
+                                    color: 'rgba(148, 163, 184, 0.15)',
+                                    drawBorder: false,
+                                    lineWidth: 1
+                                }
+                            },
+                            x: {
+                                ticks: {
+                                    font: {
+                                        size: 12,
+                                        family: 'Inter, sans-serif',
+                                        weight: '600'
+                                    },
+                                    color: '#64748b'
+                                },
+                                grid: {
+                                    display: false
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        });
     </script>
 </body>
 

@@ -229,9 +229,7 @@
                 <div class="overflow-hidden border-b border-slate-200 bg-white text-slate-700 shadow-sm">
                     <div class="h-3 w-full bg-[#2736a3]"></div>
                     <div class="flex flex-wrap items-center gap-6 px-6 py-6 pl-20 sm:px-10 sm:pl-28">
-                        <a href="{{ route('dashboard.main') }}"
-                            class="flex min-w-[220px] flex-1 items-center gap-5 text-blue-900 transition hover:opacity-80"
-                            aria-label="Halaman utama">
+                        <div class="flex min-w-[220px] flex-1 items-center gap-5 text-blue-900">
                             <div
                                 class="flex h-16 w-16 items-center justify-center rounded-full border border-blue-900/20 bg-white p-2 shadow-lg shadow-blue-900/20">
                                 <img src="{{ asset('images/wgilogo.jpg') }}"
@@ -246,7 +244,7 @@
                                     <span class="block whitespace-nowrap">Indonesia</span>
                                 </div>
                             </div>
-                        </a>
+                        </div>
                         <div class="hidden h-14 w-0.5 bg-slate-900 sm:ml-5 sm:block lg:ml-10"></div>
                         <div class="flex min-w-[200px] flex-1 justify-center text-center sm:justify-start sm:text-left">
                             <span
@@ -255,10 +253,10 @@
                             </span>
                         </div>
                         <div class="hidden h-14 w-0.5 bg-slate-900 sm:ml-7 sm:block lg:ml-16 xl:ml-20"></div>
-                        <div class="flex min-w-[160px] flex-1 justify-center sm:justify-end">
+                        <div class="flex min-w-[160px] flex-1 justify-center sm:justify-center">
                             @if ($evalubeLogoExists)
                                 <img src="{{ asset('images/evalube.png') }}" alt="Evalube Lubricants"
-                                    class="h-12 w-auto object-contain">
+                                    class="h-10 w-auto object-contain sm:h-12">
                             @else
                                 <div class="flex flex-col items-center text-center sm:items-end sm:text-right">
                                     <span

@@ -498,10 +498,8 @@
                 <section class="fixed inset-x-0 top-0 z-40">
                     <div class="overflow-hidden border-b border-slate-200 bg-white text-slate-700 shadow-sm">
                         <div class="h-3 w-full bg-[#2736a3]"></div>
-                        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                            <div class="flex flex-wrap items-center justify-between gap-6 py-6">
-                                {{-- Left: WGI Logo --}}
-                                <div class="flex items-center gap-5 text-emerald-900">
+                        <div class="flex flex-wrap items-center gap-6 px-6 py-6 pl-20 sm:px-10 sm:pl-28">
+                            <div class="flex min-w-[220px] flex-1 items-center gap-5 text-emerald-900">
                                     <div
                                         class="flex h-16 w-16 items-center justify-center rounded-full border border-emerald-900/20 bg-white p-2 shadow-lg shadow-emerald-900/20">
                                         <img src="{{ asset('images/wgilogo.jpg') }}"
@@ -513,24 +511,23 @@
                                             class="block text-xs font-semibold uppercase tracking-[0.55em] text-slate-500">Tracking
                                             System</span>
                                         <div class="text-lg font-bold italic leading-tight text-emerald-900">
-                                            <span class="block text-xs sm:text-lg">PT Wiraswasta Gemilang</span>
-                                            <span class="block whitespace-nowrap text-xs sm:text-lg">Indonesia</span>
+                                        <span class="block">PT Wiraswasta Gemilang</span>
+                                        <span class="block whitespace-nowrap">Indonesia</span>
                                         </div>
                                     </div>
                                 </div>
 
-                                {{-- Middle: Title (Hidden on small screens or centered) --}}
-                                <div class="hidden h-14 w-0.5 bg-slate-200 lg:block"></div>
-                                <div class="hidden flex-1 items-center justify-center text-center lg:flex">
+                            <div class="hidden h-14 w-0.5 bg-slate-900 sm:ml-5 sm:block lg:ml-10"></div>
+                            <div
+                                class="flex min-w-[200px] flex-1 justify-center text-center sm:justify-start sm:text-left">
                                     <span
-                                        class="text-sm font-medium uppercase tracking-[0.45em] text-slate-500 whitespace-nowrap lg:text-base">
+                                    class="text-base font-medium uppercase tracking-[0.45em] text-slate-500 whitespace-nowrap">
                                         Tracking Information System
                                     </span>
-                                </div>
-                                <div class="hidden h-14 w-0.5 bg-slate-200 lg:block"></div>
+                            </div>
+                            <div class="hidden h-14 w-0.5 bg-slate-900 sm:ml-7 sm:block lg:ml-16 xl:ml-20"></div>
 
-                                {{-- Right: Evalube Logo --}}
-                                <div class="flex items-center justify-end">
+                            <div class="flex min-w-[160px] flex-1 justify-center sm:justify-center">
                                     @if ($evalubeLogoExists)
                                         <img src="{{ asset('images/evalube.png') }}" alt="Evalube Lubricants"
                                             class="h-10 w-auto object-contain sm:h-12">
@@ -543,7 +540,6 @@
                                         </div>
                                     @endif
                                 </div>
-                            </div>
                         </div>
                     </div>
                 </section>
@@ -559,9 +555,9 @@
                         <div class="absolute -left-24 -bottom-24 h-72 w-72 rounded-full bg-white/5 blur-[80px]">
                         </div>
 
-                        <div class="relative flex flex-col items-center px-8 py-10 text-center sm:px-16 lg:py-12">
+                        <div class="relative flex flex-col items-center px-6 py-6 text-center sm:px-12 sm:py-8">
                             <div
-                                class="mb-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1 border border-white/20 backdrop-blur-md">
+                                class="mb-3 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-0.5 border border-white/20 backdrop-blur-md">
                                 <span class="relative flex h-1.5 w-1.5">
                                     <span
                                         class="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-75"></span>
@@ -571,28 +567,28 @@
                                     Operations</span>
                             </div>
 
-                            <h1 class="mb-4 text-3xl font-black tracking-tight text-white sm:text-5xl leading-tight">
+                            <h1 class="mb-2 text-2xl font-black tracking-tight text-white sm:text-4xl leading-tight">
                                 Formulir <span class="text-emerald-100 italic">HSE Compliance</span>
                             </h1>
 
-                            <p class="max-w-2xl text-base font-medium text-white/80 leading-relaxed">
+                            <p class="max-w-2xl text-sm font-medium text-white/80 leading-relaxed">
                                 Sistem pemantauan Kesehatan, Keselamatan, dan Keamanan Lingkungan. Pastikan kepatuhan
                                 terhadap standar APD dan protokol keselamatan harian.
                             </p>
 
                             {{-- Stats/Info Bar --}}
-                            <div class="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-3 w-full max-w-2xl">
-                                <div class="rounded-xl bg-white/10 p-3 border border-white/10 backdrop-blur-md">
+                            <div class="mt-5 grid grid-cols-1 gap-2 sm:grid-cols-3 w-full max-w-2xl">
+                                <div class="rounded-xl bg-white/10 p-2.5 border border-white/10 backdrop-blur-md">
                                     <p class="text-[9px] font-bold uppercase tracking-widest text-white/70">
                                         Current Task</p>
                                     <p class="text-xs font-bold text-white">Safety Verification</p>
                                 </div>
-                                <div class="rounded-xl bg-white/10 p-3 border border-white/10 backdrop-blur-md">
+                                <div class="rounded-xl bg-white/10 p-2.5 border border-white/10 backdrop-blur-md">
                                     <p class="text-[9px] font-bold uppercase tracking-widest text-white/70">
                                         Target</p>
                                     <p class="text-xs font-bold text-white">Zero Accident</p>
                                 </div>
-                                <div class="rounded-xl bg-white/10 p-3 border border-white/10 backdrop-blur-md">
+                                <div class="rounded-xl bg-white/10 p-2.5 border border-white/10 backdrop-blur-md">
                                     <p class="text-[9px] font-bold uppercase tracking-widest text-white/70">
                                         Priority</p>
                                     <p class="text-xs font-bold text-white">Safety Excellence</p>

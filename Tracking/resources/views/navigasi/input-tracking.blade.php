@@ -743,22 +743,36 @@
                                             </div>
                                         </div>
 
-                                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                                             <div class="space-y-2">
                                                 <label for="lokasi"
                                                     class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Lokasi
-                                                    Asal <span class="text-rose-500">*</span></label>
-                                                <input type="text" id="lokasi" name="lokasi" required
-                                                    placeholder="Contoh: Jakarta, Surabaya, dll"
-                                                    class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 px-6 font-bold text-slate-900 transition-all focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-blue-500/5">
+                                                    Pos / Gate <span class="text-rose-500">*</span></label>
+                                                <select id="lokasi" name="lokasi" required
+                                                    class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 px-6 font-bold text-slate-900 transition-all focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-blue-500/5 appearance-none">
+                                                    <option value="">-- Pilih Lokasi Pos / Gate --</option>
+                                                    <option value="Pos 1">Pos 1</option>
+                                                    <option value="Pos 2">Pos 2</option>
+                                                    <option value="Gate A">Gate 1</option>
+                                                    <option value="Gate B">Gate 2</option>
+                                                    <option value="Gate C">Gate 3</option>
+
+                                                </select>
                                             </div>
                                             <div class="space-y-2">
                                                 <label for="jenis_muatan"
                                                     class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Jenis
                                                     Muatan</label>
-                                                <input type="text" id="jenis_muatan" name="jenis_muatan"
-                                                    placeholder="Contoh: Oli, Drum, dll"
-                                                    class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 px-6 font-bold text-slate-900 transition-all focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-blue-500/5">
+                                                <select id="jenis_muatan" name="jenis_muatan"
+                                                    class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 px-6 font-bold text-slate-900 transition-all focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-blue-500/5 appearance-none">
+                                                    <option value="">-- Pilih Jenis Muatan --</option>
+                                                    <option value="Oli">Oli</option>
+                                                    <option value="Grease">Grease</option>
+                                                    <option value="Drum Kosong">Drum Kosong</option>
+                                                    <option value="Bahan Baku">Bahan Baku</option>
+                                                    <option value="Produk Jadi">Produk Jadi</option>
+                                                    <option value="Lainnya">Lainnya</option>
+                                                </select>
                                             </div>
                                             <div class="space-y-2">
                                                 <label for="nomor_do"
@@ -771,10 +785,14 @@
                                             <div class="space-y-2">
                                                 <label for="tujuan"
                                                     class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Tujuan
-                                                    Gate / Area</label>
-                                                <input type="text" id="tujuan" name="tujuan"
-                                                    placeholder="Gudang / Produksi / Kantor"
-                                                    class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 px-6 font-bold text-slate-900 transition-all focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-blue-500/5">
+                                                    Gate</label>
+                                                <select id="tujuan" name="tujuan"
+                                                    class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 px-6 font-bold text-slate-900 transition-all focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-blue-500/5 appearance-none">
+                                                    <option value="">-- Pilih Tujuan Gate --</option>
+                                                    <option value="Gate 1">Gate 1</option>
+                                                    <option value="Gate 2">Gate 2</option>
+                                                    <option value="Gate 3">Gate 3</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>

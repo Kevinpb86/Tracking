@@ -118,8 +118,8 @@
                                         class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-emerald-50 hover:text-emerald-700">
                                         <span>Form Distribusi</span>
                                         <svg xmlns="http://www.w3.org/2000/svg"
-                                            class="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100"
-                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            class="h-3 w-3 text-slate-400 group-hover:text-emerald-600" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M12 4v16m8-8H4" />
                                         </svg>
@@ -173,10 +173,10 @@
                                         class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-emerald-50 hover:text-emerald-700">
                                         <span>History DO</span>
                                         <svg xmlns="http://www.w3.org/2000/svg"
-                                            class="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100"
-                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            class="h-3 w-3 text-slate-400 group-hover:text-emerald-600" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M12 4v16m8-8H4" />
+                                                d="M4 6h16M4 10h16M4 14h16M4 18h16" />
                                         </svg>
                                     </a>
                                 </div>
@@ -216,22 +216,12 @@
 
                             <div id="trackingSubmenu" class="hidden space-y-1 pl-4">
                                 <div class="relative ml-4 space-y-1 border-l-2 border-slate-100 pl-4 py-1">
-                                    <a href="{{ route('tracking.create') }}"
-                                        class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-emerald-50 hover:text-emerald-700">
-                                        <span>Form Tracking</span>
-                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                            class="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100"
-                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M12 4v16m8-8H4" />
-                                        </svg>
-                                    </a>
                                     <a href="{{ route('tracking.index') }}"
                                         class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-emerald-50 hover:text-emerald-700">
                                         <span>History Tracking</span>
                                         <svg xmlns="http://www.w3.org/2000/svg"
-                                            class="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100"
-                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            class="h-3 w-3 text-slate-400 group-hover:text-emerald-600" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                                         </svg>

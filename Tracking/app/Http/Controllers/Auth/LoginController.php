@@ -36,6 +36,11 @@ class LoginController extends Controller
             Auth::login($user, $remember);
             $request->session()->regenerate();
 
+            // Role-based Redirection Logic
+            if ($user->role === 'admin') {
+                return redirect()->intended(route('admin.dashboard'));
+            }
+
             // POS Redirection Logic
             if ($user->username === 'pos1') {
                 return redirect()->intended(route('pos1.dashboard'));

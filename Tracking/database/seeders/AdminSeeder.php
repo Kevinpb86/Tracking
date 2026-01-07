@@ -13,22 +13,28 @@ class AdminSeeder extends Seeder
      */
     public function run(): void
     {
-        // Create admin user
-        User::create([
-            'name' => 'Administrator',
-            'username' => 'admin',
-            'email' => 'admin@wgi.com',
-            'password' => Hash::make('admin123'),
-            'email_verified_at' => now(),
-        ]);
+        // Create or update admin user
+        User::updateOrCreate(
+            ['email' => 'admin@wgi.com'],
+            [
+                'name' => 'Administrator',
+                'username' => 'admin',
+                'password' => Hash::make('admin123'),
+                'role' => 'admin',
+                'email_verified_at' => now(),
+            ]
+        );
 
-        // Create additional admin user (optional)
-        User::create([
-            'name' => 'Kevin Pratama Bintang',
-            'username' => 'kevin',
-            'email' => 'kevin@wgi.com',
-            'password' => Hash::make('kevin123'),
-            'email_verified_at' => now(),
-        ]);
+        // Create or update additional admin user
+        User::updateOrCreate(
+            ['email' => 'kevin@wgi.com'],
+            [
+                'name' => 'Kevin Pratama Bintang',
+                'username' => 'kevin',
+                'password' => Hash::make('kevin123'),
+                'role' => 'admin',
+                'email_verified_at' => now(),
+            ]
+        );
     }
 }

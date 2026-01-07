@@ -262,7 +262,7 @@
                                             d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z"
                                             clip-rule="evenodd" />
                                     </svg>
-                                    Kembali ke Daftar HSE
+                                    Kembali ke History HSE
                                 </a>
                                 <button onclick="window.print()"
                                     class="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-600 px-6 py-3 text-sm font-bold text-white shadow-lg transition-all hover:bg-emerald-700 hover:scale-105 active:scale-95">

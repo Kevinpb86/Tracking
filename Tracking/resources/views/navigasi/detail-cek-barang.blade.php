@@ -75,7 +75,7 @@
                                     d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z"
                                     clip-rule="evenodd" />
                             </svg>
-                            Kembali ke Daftar Distribusi
+                            Kembali ke History Distribusi
                         </a>
                     </div>
 
@@ -138,12 +138,14 @@
                                     <p class="text-xs font-semibold uppercase tracking-wider text-slate-400">Tanggal
                                         Pemeriksaan</p>
                                     <p class="mt-1 text-sm font-medium text-slate-700">
-                                        {{ date('d F Y', strtotime($cekBarang->tanggal)) }}</p>
+                                        {{ date('d F Y', strtotime($cekBarang->tanggal)) }}
+                                    </p>
                                 </div>
                                 <div>
                                     <p class="text-xs font-semibold uppercase tracking-wider text-slate-400">Waktu</p>
                                     <p class="mt-1 text-sm font-medium text-slate-700">
-                                        {{ substr($cekBarang->waktu, 0, 5) }} WIB</p>
+                                        {{ substr($cekBarang->waktu, 0, 5) }} WIB
+                                    </p>
                                 </div>
                                 <div>
                                     <p class="text-xs font-semibold uppercase tracking-wider text-slate-400">Nama
@@ -155,7 +157,8 @@
                                     <p class="text-xs font-semibold uppercase tracking-wider text-slate-400">Nomor DO
                                     </p>
                                     <p class="mt-1 text-sm font-medium text-slate-700 font-mono">
-                                        {{ $cekBarang->nomor_do ?? '-' }}</p>
+                                        {{ $cekBarang->nomor_do ?? '-' }}
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -181,7 +184,8 @@
                                         Polisi</p>
                                     <p
                                         class="mt-1 text-sm font-bold font-mono text-slate-700 bg-slate-50 px-2 py-1 rounded border border-slate-200 inline-block">
-                                        {{ $cekBarang->nomor_polisi }}</p>
+                                        {{ $cekBarang->nomor_polisi }}
+                                    </p>
                                 </div>
                                 <div>
                                     <p class="text-xs font-semibold uppercase tracking-wider text-slate-400">Nama
@@ -223,7 +227,8 @@
                                 <div>
                                     <p class="text-xs font-semibold uppercase tracking-wider text-slate-400">Jumlah</p>
                                     <p class="mt-1 text-sm font-medium text-slate-700">{{ $cekBarang->jumlah_barang }}
-                                        {{ $cekBarang->satuan }}</p>
+                                        {{ $cekBarang->satuan }}
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -319,7 +324,8 @@
                                                 Kebocoran</p>
                                             <p
                                                 class="mt-1 text-sm text-amber-800 bg-white rounded-lg p-3 border border-amber-200">
-                                                {{ $cekBarang->lokasi_kebocoran }}</p>
+                                                {{ $cekBarang->lokasi_kebocoran }}
+                                            </p>
                                         </div>
                                     @endif
                                 </div>
@@ -343,7 +349,8 @@
                                 </h2>
                                 <p
                                     class="text-sm text-slate-700 leading-relaxed bg-slate-50 rounded-lg p-4 border border-slate-200">
-                                    {{ $cekBarang->catatan }}</p>
+                                    {{ $cekBarang->catatan }}
+                                </p>
                             </div>
                         @endif
 

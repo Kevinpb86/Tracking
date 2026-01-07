@@ -109,3 +109,30 @@ Route::put('/cek-barang/{cekBarang}', [CekBarangController::class, 'update'])->n
 Route::delete('/cek-barang/{cekBarang}', [CekBarangController::class, 'destroy'])->name('cek-barang.destroy');
 Route::get('/cek-barang/{cekBarang}', [CekBarangController::class, 'show'])->name('cek-barang.show');
 Route::get('/cek-barang/{cekBarang}/pdf', [CekBarangController::class, 'exportPdf'])->name('cek-barang.export-pdf');
+
+// Tracking Routes
+use App\Http\Controllers\TrackingController;
+Route::prefix('tracking')->name('tracking.')->group(function () {
+    Route::get('/dashboard', [TrackingController::class, 'dashboard'])->name('dashboard');
+    Route::get('/', [TrackingController::class, 'index'])->name('index');
+    Route::get('/create', [TrackingController::class, 'create'])->name('create');
+    Route::post('/', [TrackingController::class, 'store'])->name('store');
+    Route::get('/{tracking}', [TrackingController::class, 'show'])->name('show');
+    Route::get('/{tracking}/edit', [TrackingController::class, 'edit'])->name('edit');
+    Route::put('/{tracking}', [TrackingController::class, 'update'])->name('update');
+    Route::delete('/{tracking}', [TrackingController::class, 'destroy'])->name('destroy');
+
+    // Additional tracking actions
+    Route::post('/{tracking}/update-lokasi', [TrackingController::class, 'updateLokasi'])->name('update-lokasi');
+    Route::post('/{tracking}/link-antrian', [TrackingController::class, 'linkAntrian'])->name('link-antrian');
+    Route::post('/{tracking}/link-cek-kendaraan', [TrackingController::class, 'linkCekKendaraan'])->name('link-cek-kendaraan');
+    Route::post('/{tracking}/link-hse', [TrackingController::class, 'linkHse'])->name('link-hse');
+    Route::post('/{tracking}/link-cek-do', [TrackingController::class, 'linkCekDo'])->name('link-cek-do');
+    Route::post('/{tracking}/link-cek-barang', [TrackingController::class, 'linkCekBarang'])->name('link-cek-barang');
+    Route::post('/{tracking}/mark-selesai', [TrackingController::class, 'markSelesai'])->name('mark-selesai');
+
+    // API endpoints
+    Route::get('/api/by-nomor-polisi', [TrackingController::class, 'getByNomorPolisi'])->name('api.by-nomor-polisi');
+    Route::get('/api/export', [TrackingController::class, 'export'])->name('api.export');
+    Route::get('/api/statistics', [TrackingController::class, 'statistics'])->name('api.statistics');
+});

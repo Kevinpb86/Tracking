@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Input Antrian - POS 1</title>
+    <title>Input Tracking - POS 1</title>
     <link rel="icon" type="image/jpeg" href="{{ asset('images/wgilogo.jpg') }}">
 
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -318,10 +318,10 @@
                             </div>
                         </div>
 
-                        {{-- Tracking Menu Accordion --}}
+                        {{-- Tracking Menu Accordion - ACTIVE --}}
                         <div class="space-y-1 pt-2">
                             <button type="button" onclick="toggleTrackingMenu()"
-                                class="group flex w-full items-center justify-between rounded-xl border border-transparent px-4 py-3 text-slate-600 transition-all hover:bg-blue-50/50 hover:text-blue-800">
+                                class="group flex w-full items-center justify-between rounded-xl border border-transparent px-4 py-3 text-blue-700 bg-blue-50/50 transition-all hover:bg-blue-50/80 hover:text-blue-800">
                                 <span class="flex items-center gap-3">
                                     <div
                                         class="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-100/50 text-blue-600 transition-colors group-hover:bg-blue-500 group-hover:text-white">
@@ -334,14 +334,13 @@
                                         </svg>
                                     </div>
                                     <div class="text-left font-medium text-sm">
-                                        <p class="text-xs font-bold uppercase tracking-wider text-blue-500/80">
-                                            Tracking
+                                        <p class="text-xs font-bold uppercase tracking-wider text-blue-500/80">Tracking
                                         </p>
                                         <p>Vehicle Monitoring</p>
                                     </div>
                                 </span>
                                 <svg id="trackingToggleIcon" xmlns="http://www.w3.org/2000/svg"
-                                    class="h-4 w-4 text-blue-400 transition-transform duration-300 group-hover:text-blue-600"
+                                    class="h-4 w-4 text-blue-400 transition-transform duration-300 group-hover:text-blue-600 rotate-180"
                                     viewBox="0 0 20 20" fill="currentColor">
                                     <path fill-rule="evenodd"
                                         d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
@@ -349,16 +348,16 @@
                                 </svg>
                             </button>
 
-                            <div id="trackingSubmenu" class="hidden space-y-1 pl-4">
+                            <div id="trackingSubmenu" class="space-y-1 pl-4">
                                 <div class="relative ml-4 space-y-1 border-l-2 border-slate-100 pl-4 py-1">
                                     <a href="{{ route('tracking.create') }}"
-                                        class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-blue-50 hover:text-blue-700">
+                                        class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm bg-blue-50 text-blue-700 font-semibold transition-colors">
                                         <span>Form Tracking</span>
-                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                            class="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100"
-                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M12 4v16m8-8H4" />
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-blue-600"
+                                            viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd"
+                                                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                                clip-rule="evenodd" />
                                         </svg>
                                     </a>
                                     <a href="{{ route('tracking.index') }}"
@@ -368,7 +367,7 @@
                                             class="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100"
                                             fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                                         </svg>
                                     </a>
                                 </div>
@@ -487,12 +486,12 @@
                             </div>
 
                             <h1 class="mb-2 text-2xl font-black tracking-tight text-white sm:text-4xl leading-tight">
-                                Formulir <span class="text-blue-100 italic">Antrian Unit</span>
+                                Formulir <span class="text-blue-100 italic">Tracking Pos 1</span>
                             </h1>
 
                             <p class="max-w-2xl text-sm font-medium text-white/80 leading-relaxed">
-                                Sistem pendaftaran dan manajemen antrian kendaraan. Pastikan seluruh data identitas
-                                driver dan armada tercatat dengan akurat.
+                                Sistem pencatatan dan monitoring pergerakan kendaraan. Pastikan seluruh data operasional
+                                tercatat dengan akurat untuk tracking sistem.
                             </p>
 
                             {{-- Stats/Info Bar --}}
@@ -529,7 +528,7 @@
                                                 d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                                         </svg>
                                     </div>
-                                    Protokol Antrian
+                                    Protokol Tracking
                                 </h4>
 
                                 <ul class="space-y-4">
@@ -579,7 +578,7 @@
 
                         <!-- RIGHT SIDE: Input Forms -->
                         <div class="lg:flex-1 pb-24">
-                            <form action="{{ route('pos1.antrian.store') }}" method="POST" class="space-y-8">
+                            <form action="{{ route('tracking.store') }}" method="POST" class="space-y-8">
                                 @csrf
 
                                 {{-- SECTION 1: WAKTU & OPERATOR --}}
@@ -607,19 +606,18 @@
 
                                         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                                             <div class="space-y-2">
-                                                <label for="tgl_antrian"
+                                                <label for="tanggal"
                                                     class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Tanggal
-                                                    Antrian <span class="text-rose-500">*</span></label>
-                                                <input type="date" id="tgl_antrian" name="tgl_antrian" required
+                                                    Tracking <span class="text-rose-500">*</span></label>
+                                                <input type="date" id="tanggal" name="tanggal" required
                                                     class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 px-6 font-bold text-slate-900 transition-all focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-blue-500/5"
                                                     value="{{ date('Y-m-d') }}">
                                             </div>
                                             <div class="space-y-2">
-                                                <label for="jam_diizinkan_masuk"
+                                                <label for="waktu_masuk"
                                                     class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Jam
                                                     Masuk <span class="text-rose-500">*</span></label>
-                                                <input type="time" id="jam_diizinkan_masuk" name="jam_diizinkan_masuk"
-                                                    required
+                                                <input type="time" id="waktu_masuk" name="waktu_masuk" required
                                                     class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 px-6 font-bold text-slate-900 transition-all focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-blue-500/5"
                                                     value="{{ date('H:i') }}">
                                             </div>
@@ -652,23 +650,24 @@
 
                                         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                                             <div class="space-y-2">
-                                                <label for="emr"
-                                                    class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Emergency
-                                                    (EMR)</label>
-                                                <input type="text" id="emr" name="emr"
-                                                    placeholder="Contoh: Urgent / Normal"
+                                                <label for="perusahaan"
+                                                    class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Perusahaan
+                                                    / Transportir</label>
+                                                <input type="text" id="perusahaan" name="perusahaan"
+                                                    placeholder="Nama Perusahaan"
                                                     class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 px-6 font-bold text-slate-900 transition-all focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-blue-500/5">
                                             </div>
                                             <div class="space-y-2">
-                                                <label for="jenis_antrian"
+                                                <label for="jenis_kendaraan"
                                                     class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Jenis
-                                                    Antrian <span class="text-rose-500">*</span></label>
-                                                <select id="jenis_antrian" name="jenis_antrian" required
+                                                    Kendaraan <span class="text-rose-500">*</span></label>
+                                                <select id="jenis_kendaraan" name="jenis_kendaraan" required
                                                     class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 px-6 font-bold text-slate-900 transition-all focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-blue-500/5 appearance-none">
-                                                    <option value="Bongkar">Finish Product</option>
-                                                    <option value="Muat">Use Oil</option>
-                                                    <option value="Tamu">Raw Material</option>
-                                                    <option value="Lainnya">Drum</option>
+                                                    <option value="Truk">Truk</option>
+                                                    <option value="Pickup">Pickup</option>
+                                                    <option value="Mobil Box">Mobil Box</option>
+                                                    <option value="Tangki">Tangki</option>
+                                                    <option value="Lainnya">Lainnya</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -744,7 +743,31 @@
                                             </div>
                                         </div>
 
-                                        <div class="grid grid-cols-1 gap-8">
+                                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                                            <div class="space-y-2">
+                                                <label for="lokasi"
+                                                    class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Lokasi
+                                                    Asal <span class="text-rose-500">*</span></label>
+                                                <input type="text" id="lokasi" name="lokasi" required
+                                                    placeholder="Contoh: Jakarta, Surabaya, dll"
+                                                    class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 px-6 font-bold text-slate-900 transition-all focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-blue-500/5">
+                                            </div>
+                                            <div class="space-y-2">
+                                                <label for="jenis_muatan"
+                                                    class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Jenis
+                                                    Muatan</label>
+                                                <input type="text" id="jenis_muatan" name="jenis_muatan"
+                                                    placeholder="Contoh: Oli, Drum, dll"
+                                                    class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 px-6 font-bold text-slate-900 transition-all focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-blue-500/5">
+                                            </div>
+                                            <div class="space-y-2">
+                                                <label for="nomor_do"
+                                                    class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Nomor
+                                                    DO</label>
+                                                <input type="text" id="nomor_do" name="nomor_do"
+                                                    placeholder="Input nomor DO"
+                                                    class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 px-6 font-bold text-slate-900 transition-all focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-blue-500/5">
+                                            </div>
                                             <div class="space-y-2">
                                                 <label for="tujuan"
                                                     class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Tujuan
@@ -771,7 +794,7 @@
                                                 d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                                                 clip-rule="evenodd" />
                                         </svg>
-                                        Simpan Antrian Unit
+                                        Simpan Tracking Pos 1
                                     </button>
                                 </div>
                             </form>
@@ -859,20 +882,6 @@
             }
         }
 
-        function toggleTrackingMenu() {
-            const submenu = document.getElementById('trackingSubmenu');
-            const icon = document.getElementById('trackingToggleIcon');
-            if (submenu && icon) {
-                if (submenu.classList.contains('hidden')) {
-                    submenu.classList.remove('hidden');
-                    icon.classList.add('rotate-180');
-                } else {
-                    submenu.classList.add('hidden');
-                    icon.classList.remove('rotate-180');
-                }
-            }
-        }
-
         function toggleCekKendaraanMenu() {
             const isHidden = cekKendaraanSubmenu.classList.contains('hidden');
             if (isHidden) {
@@ -897,6 +906,20 @@
                 logoutModal.classList.add('opacity-0', 'pointer-events-none');
                 logoutModalContent.classList.remove('scale-100');
                 logoutModalContent.classList.add('scale-95');
+            }
+        }
+
+        function toggleTrackingMenu() {
+            const submenu = document.getElementById('trackingSubmenu');
+            const icon = document.getElementById('trackingToggleIcon');
+            if (submenu && icon) {
+                if (submenu.classList.contains('hidden')) {
+                    submenu.classList.remove('hidden');
+                    icon.classList.add('rotate-180');
+                } else {
+                    submenu.classList.add('hidden');
+                    icon.classList.remove('rotate-180');
+                }
             }
         }
 

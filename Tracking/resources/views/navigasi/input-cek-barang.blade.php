@@ -155,7 +155,7 @@
                                     </a>
                                     <a href="{{ route('cek-barang.index') }}"
                                         class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-emerald-50 hover:text-emerald-700">
-                                        <span>Daftar Distribusi</span>
+                                        <span>History Distribusi</span>
                                         <svg xmlns="http://www.w3.org/2000/svg"
                                             class="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100"
                                             fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -201,12 +201,69 @@
                                 <div class="relative ml-4 space-y-1 border-l-2 border-slate-100 pl-4 py-1">
                                     <a href="{{ route('scm.do-item.index') }}"
                                         class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-emerald-50 hover:text-emerald-700">
-                                        <span>Daftar DO</span>
+                                        <span>History DO</span>
                                         <svg xmlns="http://www.w3.org/2000/svg"
                                             class="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100"
                                             fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M12 4v16m8-8H4" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- Tracking Menu Accordion --}}
+                        <div class="space-y-1 pt-2">
+                            <button type="button" onclick="toggleTrackingMenu()"
+                                class="group flex w-full items-center justify-between rounded-xl border border-transparent px-4 py-3 text-slate-600 transition-all hover:bg-emerald-50/50 hover:text-emerald-700">
+                                <span class="flex items-center gap-3">
+                                    <div
+                                        class="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-100/50 text-emerald-600 transition-colors group-hover:bg-emerald-500 group-hover:text-white">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
+                                            fill="currentColor">
+                                            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                                            <path fill-rule="evenodd"
+                                                d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                    <div class="text-left font-medium text-sm">
+                                        <p class="text-xs font-bold uppercase tracking-wider text-emerald-500/80">
+                                            Tracking
+                                        </p>
+                                        <p>Vehicle Monitoring</p>
+                                    </div>
+                                </span>
+                                <svg id="trackingToggleIcon" xmlns="http://www.w3.org/2000/svg"
+                                    class="h-4 w-4 text-emerald-400 transition-transform duration-300 group-hover:text-emerald-600"
+                                    viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </button>
+
+                            <div id="trackingSubmenu" class="hidden space-y-1 pl-4">
+                                <div class="relative ml-4 space-y-1 border-l-2 border-slate-100 pl-4 py-1">
+                                    <a href="{{ route('tracking.create') }}"
+                                        class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-emerald-50 hover:text-emerald-700">
+                                        <span>Form Tracking</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            class="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M12 4v16m8-8H4" />
+                                        </svg>
+                                    </a>
+                                    <a href="{{ route('tracking.index') }}"
+                                        class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-emerald-50 hover:text-emerald-700">
+                                        <span>History Tracking</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            class="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                                         </svg>
                                     </a>
                                 </div>
@@ -819,6 +876,19 @@
 
         if (sidebarToggle) sidebarToggle.addEventListener('click', toggleSidebar);
         if (sidebarOverlay) sidebarOverlay.addEventListener('click', toggleSidebar);
+        function toggleTrackingMenu() {
+            const submenu = document.getElementById('trackingSubmenu');
+            const icon = document.getElementById('trackingToggleIcon');
+            if (submenu && icon) {
+                if (submenu.classList.contains('hidden')) {
+                    submenu.classList.remove('hidden');
+                    icon.classList.add('rotate-180');
+                } else {
+                    submenu.classList.add('hidden');
+                    icon.classList.remove('rotate-180');
+                }
+            }
+        }
     </script>
 </body>
 

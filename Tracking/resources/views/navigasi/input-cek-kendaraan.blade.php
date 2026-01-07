@@ -98,6 +98,69 @@
                 break-inside: avoid;
             }
         }
+
+        /* 3D Checkbox Effect - BLUE */
+        .checkbox-3d-container {
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 0 #e2e8f0;
+        }
+
+        .checkbox-3d-container:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 0 #cbd5e1;
+            border-color: #3b82f6;
+        }
+
+        .checkbox-3d-container:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 #e2e8f0;
+        }
+
+        .checkbox-3d-container.checked {
+            background-color: #eff6ff;
+            border-color: #3b82f6;
+            box-shadow: 0 4px 0 #2563eb;
+        }
+
+        .checkbox-3d-container.checked:hover {
+            box-shadow: 0 6px 0 #1d4ed8;
+        }
+
+        .checkbox-3d-input {
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+            appearance: none;
+            background-color: #fff;
+            margin: 0;
+            font: inherit;
+            color: currentColor;
+            width: 1.5em;
+            height: 1.5em;
+            border: 2px solid #cbd5e1;
+            border-radius: 0.5em;
+            display: grid;
+            place-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .checkbox-3d-input::before {
+            content: "";
+            width: 0.75em;
+            height: 0.75em;
+            transform: scale(0);
+            transition: 120ms transform ease-in-out;
+            box-shadow: inset 1em 1em #3b82f6;
+            clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+        }
+
+        .checkbox-3d-input:checked {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+        }
+
+        .checkbox-3d-input:checked::before {
+            transform: scale(1);
+        }
     </style>
 </head>
 
@@ -194,7 +257,7 @@
                                 <div class="relative ml-4 space-y-1 border-l-2 border-slate-100 pl-4 py-1">
                                     <a href="{{ route('pos1.antrian.input') }}"
                                         class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-blue-50 hover:text-blue-700">
-                                        <span>Input Antrian</span>
+                                        <span>Form Antrian</span>
                                         <svg xmlns="http://www.w3.org/2000/svg"
                                             class="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100"
                                             fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -204,7 +267,7 @@
                                     </a>
                                     <a href="{{ route('pos1.antrian.daftar') }}"
                                         class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-blue-50 hover:text-blue-700">
-                                        <span>Daftar Antrian</span>
+                                        <span>History Antrian</span>
                                         <svg xmlns="http://www.w3.org/2000/svg"
                                             class="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100"
                                             fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -251,7 +314,7 @@
                                 <div class="relative ml-4 space-y-1 border-l-2 border-slate-100 pl-4 py-1">
                                     <a href="{{ route('cek-kendaraan.input') }}"
                                         class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm transition-colors bg-blue-50 text-blue-700 font-semibold">
-                                        <span>Input Pemeriksaan</span>
+                                        <span>Form Pemeriksaan</span>
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-blue-600"
                                             viewBox="0 0 20 20" fill="currentColor">
                                             <path fill-rule="evenodd"
@@ -261,7 +324,7 @@
                                     </a>
                                     <a href="{{ route('cek-kendaraan.daftar') }}"
                                         class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-blue-50 hover:text-blue-700">
-                                        <span>Daftar Pemeriksaan</span>
+                                        <span>History Pemeriksaan</span>
                                         <svg xmlns="http://www.w3.org/2000/svg"
                                             class="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100"
                                             fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -307,7 +370,7 @@
                                 <div class="relative ml-4 space-y-1 border-l-2 border-slate-100 pl-4 py-1">
                                     <a href="{{ route('hse.input') }}"
                                         class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-emerald-50 hover:text-emerald-700">
-                                        <span>Input HSE</span>
+                                        <span>Form HSE</span>
                                         <svg xmlns="http://www.w3.org/2000/svg"
                                             class="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100"
                                             fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -317,7 +380,64 @@
                                     </a>
                                     <a href="{{ route('hse.daftar') }}"
                                         class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-emerald-50 hover:text-emerald-700">
-                                        <span>Daftar Laporan</span>
+                                        <span>History Laporan</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            class="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- Tracking Menu Accordion --}}
+                        <div class="space-y-1 pt-2">
+                            <button type="button" onclick="toggleTrackingMenu()"
+                                class="group flex w-full items-center justify-between rounded-xl border border-transparent px-4 py-3 text-slate-600 transition-all hover:bg-blue-50/50 hover:text-blue-800">
+                                <span class="flex items-center gap-3">
+                                    <div
+                                        class="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-100/50 text-blue-600 transition-colors group-hover:bg-blue-500 group-hover:text-white">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
+                                            fill="currentColor">
+                                            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                                            <path fill-rule="evenodd"
+                                                d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                    <div class="text-left font-medium text-sm">
+                                        <p class="text-xs font-bold uppercase tracking-wider text-blue-500/80">
+                                            Tracking
+                                        </p>
+                                        <p>Vehicle Monitoring</p>
+                                    </div>
+                                </span>
+                                <svg id="trackingToggleIcon" xmlns="http://www.w3.org/2000/svg"
+                                    class="h-4 w-4 text-blue-400 transition-transform duration-300 group-hover:text-blue-600"
+                                    viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </button>
+
+                            <div id="trackingSubmenu" class="hidden space-y-1 pl-4">
+                                <div class="relative ml-4 space-y-1 border-l-2 border-slate-100 pl-4 py-1">
+                                    <a href="{{ route('tracking.create') }}"
+                                        class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-blue-50 hover:text-blue-700">
+                                        <span>Form Tracking</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            class="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M12 4v16m8-8H4" />
+                                        </svg>
+                                    </a>
+                                    <a href="{{ route('tracking.index') }}"
+                                        class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-blue-50 hover:text-blue-700">
+                                        <span>History Tracking</span>
                                         <svg xmlns="http://www.w3.org/2000/svg"
                                             class="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100"
                                             fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -423,152 +543,211 @@
 
                 <!-- PAGE CONTENT -->
                 <section class="relative mx-auto w-full flex-1 px-4 py-8 sm:px-6 lg:px-8">
-                    <div class="mx-auto max-w-4xl">
+                    <div class="max-w-7xl mx-auto">
+                        {{-- Header Section - PREMIUM REDESIGN --}}
                         <div
-                            class="mx-auto max-w-4xl rounded-3xl border border-blue-100 bg-blue-50 shadow-xl overflow-hidden mb-8">
+                            class="relative mb-8 overflow-hidden rounded-3xl bg-gradient-to-r from-blue-500 to-blue-600 border border-blue-400/20 shadow-xl shadow-blue-500/20">
+                            {{-- Decorative Glows --}}
+                            <div class="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-white/10 blur-[80px]">
+                            </div>
+                            <div class="absolute -left-24 -bottom-24 h-72 w-72 rounded-full bg-white/5 blur-[80px]">
+                            </div>
 
-                            {{-- Unified Header Section --}}
-                            <div class="relative px-6 pt-10 pb-6 text-center sm:px-12">
-                                {{-- Background Decoration --}}
+                            <div class="relative flex flex-col items-center px-6 py-6 text-center sm:px-12 sm:py-8">
                                 <div
-                                    class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full overflow-hidden pointer-events-none opacity-40">
-                                    <div
-                                        class="absolute top-[-50%] left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-blue-200/20 rounded-full blur-3xl">
-                                    </div>
+                                    class="mb-3 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-0.5 border border-white/20 backdrop-blur-md">
+                                    <span class="relative flex h-1.5 w-1.5">
+                                        <span
+                                            class="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-75"></span>
+                                        <span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-white"></span>
+                                    </span>
+                                    <span class="text-[9px] font-bold uppercase tracking-[0.2em] text-white">POS 1
+                                        Operations</span>
                                 </div>
 
-                                <div class="relative z-10 flex flex-col items-center space-y-4">
-                                    {{-- Logo --}}
-                                    <div
-                                        class="inline-flex items-center gap-3 rounded-full bg-blue-100/50 px-4 py-1.5 border border-blue-200/50 backdrop-blur-sm">
-                                        <span class="flex h-6 w-6 items-center justify-center rounded-full bg-blue-600">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-white"
-                                                viewBox="0 0 20 20" fill="currentColor">
-                                                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-                                                <path fill-rule="evenodd"
-                                                    d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
-                                                    clip-rule="evenodd" />
-                                            </svg>
-                                        </span>
-                                        <span
-                                            class="text-[10px] font-bold uppercase tracking-[0.2em] text-blue-800">Input
-                                            Pemeriksaan</span>
+                                <h1 class="mb-2 text-2xl font-black tracking-tight text-white sm:text-4xl leading-tight">
+                                    Vehicle <span class="text-blue-100 italic">Inspection</span>
+                                </h1>
+
+                                <p class="max-w-2xl text-sm font-medium text-white/80 leading-relaxed">
+                                    Lakukan pemeriksaan fisik dan validasi dokumen armada secara menyeluruh untuk
+                                    memastikan kepatuhan operasional.
+                                </p>
+
+                                {{-- Stats/Info Bar --}}
+                                <div class="mt-5 grid grid-cols-1 gap-2 sm:grid-cols-3 w-full max-w-2xl">
+                                    <div class="rounded-xl bg-white/10 p-2.5 border border-white/10 backdrop-blur-md">
+                                        <p class="text-[9px] font-bold uppercase tracking-widest text-white/70">
+                                            Current Time</p>
+                                        <p id="currentTime" class="text-xs font-bold text-white">{{ date('H:i') }} WIB</p>
                                     </div>
-
-                                    {{-- Title --}}
-                                    <div class="space-y-4">
-                                        <h1
-                                            class="text-4xl font-extrabold tracking-tight text-blue-600 sm:text-5xl lg:text-6xl text-center">
-                                            Vehicle Inspection
-                                        </h1>
-                                        <div
-                                            class="mx-auto h-1.5 w-24 rounded-full bg-blue-500 shadow-lg shadow-blue-500/30">
-                                        </div>
+                                    <div class="rounded-xl bg-white/10 p-2.5 border border-white/10 backdrop-blur-md">
+                                        <p class="text-[9px] font-bold uppercase tracking-widest text-white/70">
+                                            Status</p>
+                                        <p class="text-xs font-bold text-white">Validating</p>
                                     </div>
-
-                                    <p class="max-w-2xl text-lg font-medium text-slate-600 leading-relaxed">
-                                        Kelola validasi kendaraan dan pemeriksaan dengan efisien.
-                                        Pantau aktivitas terkini dan akses menu cepat di satu tempat.
-                                    </p>
-
+                                    <div class="rounded-xl bg-white/10 p-2.5 border border-white/10 backdrop-blur-md">
+                                        <p class="text-[9px] font-bold uppercase tracking-widest text-white/70">
+                                            Mode</p>
+                                        <p class="text-xs font-bold text-white">High Priority</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Form Container -->
-                        <div class="max-w-5xl mx-auto">
-                            <form action="#" method="POST" class="space-y-6">
-                                @csrf
-
-                                <!-- Section 1: Informasi Waktu -->
-                                <div
-                                    class="form-card bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
-                                    <div class="bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-4">
-                                        <h3 class="text-xl font-bold text-white flex items-center gap-2">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                        <div class="flex flex-col lg:flex-row gap-8">
+                            <!-- LEFT SIDE: Operation Guidelines -->
+                            <div class="lg:w-1/3 space-y-6">
+                                <div class="rounded-3xl bg-white p-8 shadow-sm border border-slate-100 h-fit sticky top-40">
+                                    <h4 class="text-lg font-bold text-slate-900 mb-6 flex items-center gap-2">
+                                        <div
+                                            class="h-8 w-8 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
                                                 viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                                             </svg>
-                                            Informasi Waktu Pemeriksaan
-                                        </h3>
-                                        <p class="text-blue-100 text-sm mt-1">Catat waktu masuk kendaraan</p>
-                                    </div>
+                                        </div>
+                                        Protokol Pemeriksaan
+                                    </h4>
 
-                                    <div class="p-6 sm:p-8">
-                                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                                            <!-- Tanggal -->
-                                            <div class="form-group">
+                                    <ul class="space-y-4">
+                                        <li class="flex gap-4">
+                                            <div
+                                                class="flex-shrink-0 h-6 w-6 rounded-full bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-500">
+                                                01</div>
+                                            <p class="text-sm text-slate-600 leading-relaxed"><span
+                                                    class="font-bold text-slate-900">Validasi Dokumen</span>: Periksa kelengkapan STNK, SIM, dan KIR driver.</p>
+                                        </li>
+                                        <li class="flex gap-4">
+                                            <div
+                                                class="flex-shrink-0 h-6 w-6 rounded-full bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-500">
+                                                02</div>
+                                            <p class="text-sm text-slate-600 leading-relaxed"><span
+                                                    class="font-bold text-slate-900">Cek Fisik</span>: Lakukan pemeriksaan visual pada ban, lampu, dan rem.</p>
+                                        </li>
+                                        <li class="flex gap-4">
+                                            <div
+                                                class="flex-shrink-0 h-6 w-6 rounded-full bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-500">
+                                                03</div>
+                                            <p class="text-sm text-slate-600 leading-relaxed"><span
+                                                    class="font-bold text-slate-900">Input Status</span>: Tentukan hasil akhir kelaikan armada di sistem.</p>
+                                        </li>
+                                    </ul>
+
+                                    {{-- NEW: Inspection Alert Box --}}
+                                    <div class="mt-8 rounded-2xl bg-blue-50 p-4 border border-blue-100">
+                                        <div
+                                            class="flex items-center gap-2 text-blue-700 font-bold text-xs mb-2 uppercase tracking-wider">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                                                viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            </svg>
+                                            Inspection Alert
+                                        </div>
+                                        <p class="text-xs text-blue-600 leading-relaxed lowercase first-letter:uppercase">
+                                            Pastikan seluruh aspek keselamatan telah diperiksa dengan teliti sebelum memberikan status lolos.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- RIGHT SIDE: Input Forms -->
+                            <div class="lg:flex-1 pb-24">
+                                <form action="#" method="POST" class="space-y-8">
+                                @csrf
+
+                                {{-- SECTION 1: INFORMASI WAKTU --}}
+                                <div
+                                    class="group relative bg-white rounded-[2rem] shadow-xl shadow-slate-200/50 border border-slate-100 transition-all hover:shadow-2xl hover:shadow-blue-500/5 hover:-translate-y-1 overflow-hidden">
+                                    <div class="h-2 w-full bg-gradient-to-r from-blue-500 via-indigo-500 to-blue-500">
+                                    </div>
+                                    <div class="p-8 sm:p-10">
+                                        <div class="mb-10 flex items-center justify-between">
+                                            <div>
+                                                <h3 class="text-2xl font-black text-slate-900">Informasi Waktu</h3>
+                                                <p class="text-slate-500 text-sm mt-1">Status waktu pemeriksaan
+                                                    kendaraan</p>
+                                            </div>
+                                            <div
+                                                class="h-12 w-12 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                                    viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                </svg>
+                                            </div>
+                                        </div>
+
+                                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                                            <div class="space-y-2">
                                                 <label for="tanggal"
-                                                    class="form-label block text-sm font-semibold text-slate-700 mb-2">
-                                                    Tanggal <span class="text-red-500">*</span>
-                                                </label>
+                                                    class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Tanggal
+                                                    <span class="text-rose-500">*</span></label>
                                                 <input type="date" id="tanggal" name="tanggal" required
-                                                    class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3 text-slate-700 focus:border-blue-500 focus:outline-none"
+                                                    class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 px-6 font-bold text-slate-900 transition-all focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-blue-500/5"
                                                     value="{{ date('Y-m-d') }}">
                                             </div>
-
-                                            <!-- Waktu Masuk -->
-                                            <div class="form-group">
+                                            <div class="space-y-2">
                                                 <label for="waktu_masuk"
-                                                    class="form-label block text-sm font-semibold text-slate-700 mb-2">
-                                                    Waktu Masuk <span class="text-red-500">*</span>
-                                                </label>
+                                                    class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Waktu
+                                                    Masuk <span class="text-rose-500">*</span></label>
                                                 <input type="time" id="waktu_masuk" name="waktu_masuk" required
-                                                    class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3 text-slate-700 focus:border-blue-500 focus:outline-none"
+                                                    class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 px-6 font-bold text-slate-900 transition-all focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-blue-500/5"
                                                     value="{{ date('H:i') }}">
                                             </div>
-
-                                            <!-- Waktu Keluar -->
-                                            <div class="form-group">
+                                            <div class="space-y-2">
                                                 <label for="waktu_keluar"
-                                                    class="form-label block text-sm font-semibold text-slate-700 mb-2">
-                                                    Waktu Keluar
-                                                </label>
+                                                    class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Waktu
+                                                    Keluar</label>
                                                 <input type="time" id="waktu_keluar" name="waktu_keluar"
-                                                    class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3 text-slate-700 focus:border-blue-500 focus:outline-none">
+                                                    class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 px-6 font-bold text-slate-900 transition-all focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-blue-500/5">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <!-- Section 2: Informasi Kendaraan -->
+                                {{-- SECTION 2: ARMADA & DRIVER --}}
                                 <div
-                                    class="form-card bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
-                                    <div class="bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-4">
-                                        <h3 class="text-xl font-bold text-white flex items-center gap-2">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-                                                viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                                            </svg>
-                                            Informasi Kendaraan & Driver
-                                        </h3>
-                                        <p class="text-blue-100 text-sm mt-1">Data identitas kendaraan dan pengemudi</p>
+                                    class="group relative bg-white rounded-[2rem] shadow-xl shadow-slate-200/50 border border-slate-100 transition-all hover:shadow-2xl hover:shadow-blue-500/5 hover:-translate-y-1 overflow-hidden">
+                                    <div class="h-2 w-full bg-gradient-to-r from-blue-500 via-indigo-500 to-blue-500">
                                     </div>
-
-                                    <div class="p-6 sm:p-8">
-                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                            <!-- Nomor Polisi -->
-                                            <div class="form-group">
-                                                <label for="nomor_polisi"
-                                                    class="form-label block text-sm font-semibold text-slate-700 mb-2">
-                                                    Nomor Polisi <span class="text-red-500">*</span>
-                                                </label>
-                                                <input type="text" id="nomor_polisi" name="nomor_polisi" required
-                                                    placeholder="Contoh: B 1234 XYZ"
-                                                    class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3 text-slate-700 focus:border-blue-500 focus:outline-none uppercase">
+                                    <div class="p-8 sm:p-10">
+                                        <div class="mb-10 flex items-center justify-between">
+                                            <div>
+                                                <h3 class="text-2xl font-black text-slate-900">Armada & Driver</h3>
+                                                <p class="text-slate-500 text-sm mt-1">Identitas fisik dan operator
+                                                    kendaraan</p>
                                             </div>
+                                            <div
+                                                class="h-12 w-12 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                                    viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                                </svg>
+                                            </div>
+                                        </div>
 
-                                            <!-- Jenis Kendaraan -->
-                                            <div class="form-group">
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                            <div class="space-y-2">
+                                                <label for="nomor_polisi"
+                                                    class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Nomor
+                                                    Polisi <span class="text-rose-500">*</span></label>
+                                                <input type="text" id="nomor_polisi" name="nomor_polisi" required
+                                                    placeholder="B 1234 XYZ"
+                                                    class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 px-6 font-bold text-slate-900 transition-all focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-blue-500/5 uppercase">
+                                            </div>
+                                            <div class="space-y-2">
                                                 <label for="jenis_kendaraan"
-                                                    class="form-label block text-sm font-semibold text-slate-700 mb-2">
-                                                    Jenis Kendaraan <span class="text-red-500">*</span>
-                                                </label>
+                                                    class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Jenis
+                                                    Kendaraan <span class="text-rose-500">*</span></label>
                                                 <select id="jenis_kendaraan" name="jenis_kendaraan" required
-                                                    class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3 text-slate-700 focus:border-blue-500 focus:outline-none">
-                                                    <option value="">-- Pilih Jenis Kendaraan --</option>
+                                                    class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 px-6 font-bold text-slate-900 transition-all focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-blue-500/5 appearance-none">
+                                                    <option value="">-- Pilih Jenis --</option>
                                                     <option value="Truk">Truk</option>
                                                     <option value="Pickup">Pickup</option>
                                                     <option value="Mobil Box">Mobil Box</option>
@@ -576,385 +755,225 @@
                                                     <option value="Lainnya">Lainnya</option>
                                                 </select>
                                             </div>
-
-                                            <!-- Nama Driver -->
-                                            <div class="form-group">
+                                            <div class="space-y-2">
                                                 <label for="nama_driver"
-                                                    class="form-label block text-sm font-semibold text-slate-700 mb-2">
-                                                    Nama Driver <span class="text-red-500">*</span>
-                                                </label>
+                                                    class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Nama
+                                                    Driver <span class="text-rose-500">*</span></label>
                                                 <input type="text" id="nama_driver" name="nama_driver" required
-                                                    placeholder="Masukkan nama lengkap driver"
-                                                    class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3 text-slate-700 focus:border-blue-500 focus:outline-none">
+                                                    placeholder="Nama Lengkap"
+                                                    class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 px-6 font-bold text-slate-900 transition-all focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-blue-500/5">
                                             </div>
-
-                                            <!-- Perusahaan -->
-                                            <div class="form-group">
+                                            <div class="space-y-2">
                                                 <label for="perusahaan"
-                                                    class="form-label block text-sm font-semibold text-slate-700 mb-2">
-                                                    Perusahaan / Vendor
-                                                </label>
+                                                    class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Perusahaan
+                                                    / Vendor</label>
                                                 <input type="text" id="perusahaan" name="perusahaan"
-                                                    placeholder="Nama perusahaan atau vendor"
-                                                    class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3 text-slate-700 focus:border-blue-500 focus:outline-none">
+                                                    placeholder="Nama Perusahaan"
+                                                    class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 px-6 font-bold text-slate-900 transition-all focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-blue-500/5">
                                             </div>
-
-
                                         </div>
                                     </div>
                                 </div>
 
-                                <!-- Section 3: Pemeriksaan Dokumen -->
+                                {{-- SECTION 3: PEMERIKSAAN DOKUMEN --}}
                                 <div
-                                    class="form-card bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
-                                    <div class="bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-4">
-                                        <h3 class="text-xl font-bold text-white flex items-center gap-2">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-                                                viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                                            </svg>
-                                            Pemeriksaan Dokumen
-                                        </h3>
-                                        <p class="text-blue-100 text-sm mt-1">Checklist validitas dokumen yang
-                                            diperlukan
-                                        </p>
+                                    class="group relative bg-white rounded-[2rem] shadow-xl shadow-slate-200/50 border border-slate-100 transition-all hover:shadow-2xl hover:shadow-blue-500/5 hover:-translate-y-1 overflow-hidden">
+                                    <div class="h-2 w-full bg-gradient-to-r from-blue-500 via-indigo-500 to-blue-500">
                                     </div>
-
-                                    <div class="p-6 sm:p-8">
-                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                            <!-- Surat Jalan -->
+                                    <div class="p-8 sm:p-10">
+                                        <div class="mb-10 flex items-center justify-between">
+                                            <div>
+                                                <h3 class="text-2xl font-black text-slate-900">Pemeriksaan Dokumen</h3>
+                                                <p class="text-slate-500 text-sm mt-1">Checklist validitas dokumen
+                                                    operasional</p>
+                                            </div>
                                             <div
-                                                class="radio-option rounded-lg border-2 border-slate-200 p-4 cursor-pointer hover:border-blue-400">
-                                                <label class="flex items-center cursor-pointer">
-                                                    <input type="checkbox" name="surat_jalan" value="1"
-                                                        class="w-5 h-5 text-blue-600 bg-slate-50 border-slate-300 rounded focus:ring-blue-500">
-                                                    <span class="ml-3 text-sm font-semibold text-slate-700">
-                                                        Surat Jalan Tersedia
-                                                    </span>
-                                                </label>
-                                            </div>
-
-                                            <!-- STNK Valid -->
-                                            <div
-                                                class="radio-option rounded-lg border-2 border-slate-200 p-4 cursor-pointer hover:border-blue-400">
-                                                <label class="flex items-center cursor-pointer">
-                                                    <input type="checkbox" name="stnk_valid" value="1"
-                                                        class="w-5 h-5 text-blue-600 bg-slate-50 border-slate-300 rounded focus:ring-blue-500">
-                                                    <span class="ml-3 text-sm font-semibold text-slate-700">
-                                                        STNK Valid (Aktif)
-                                                    </span>
-                                                </label>
-                                            </div>
-
-                                            <!-- SIM Valid -->
-                                            <div
-                                                class="radio-option rounded-lg border-2 border-slate-200 p-4 cursor-pointer hover:border-blue-400">
-                                                <label class="flex items-center cursor-pointer">
-                                                    <input type="checkbox" name="sim_valid" value="1"
-                                                        class="w-5 h-5 text-blue-600 bg-slate-50 border-slate-300 rounded focus:ring-blue-500">
-                                                    <span class="ml-3 text-sm font-semibold text-slate-700">
-                                                        SIM Valid (Aktif)
-                                                    </span>
-                                                </label>
-                                            </div>
-
-                                            <!-- KIR Valid -->
-                                            <div
-                                                class="radio-option rounded-lg border-2 border-slate-200 p-4 cursor-pointer hover:border-blue-400">
-                                                <label class="flex items-center cursor-pointer">
-                                                    <input type="checkbox" name="kir_valid" value="1"
-                                                        class="w-5 h-5 text-blue-600 bg-slate-50 border-slate-300 rounded focus:ring-blue-500">
-                                                    <span class="ml-3 text-sm font-semibold text-slate-700">
-                                                        KIR Valid (Khusus Angkutan)
-                                                    </span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Section 4: Kondisi Kendaraan -->
-                                <div
-                                    class="form-card bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
-                                    <div class="bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-4">
-                                        <h3 class="text-xl font-bold text-white flex items-center gap-2">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-                                                viewBox="0 0 24 24" stroke="currentColor">
-                                                <path
-                                                    d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
-                                            </svg>
-                                            Pemeriksaan Kondisi Kendaraan
-                                        </h3>
-                                        <p class="text-blue-100 text-sm mt-1">Evaluasi kondisi fisik dan kelaikan
-                                            kendaraan
-                                        </p>
-                                    </div>
-
-                                    <div class="p-6 sm:p-8">
-                                        <div class="space-y-6">
-                                            <!-- Kondisi Ban -->
-                                            <div class="form-group">
-                                                <label
-                                                    class="form-label block text-sm font-semibold text-slate-700 mb-3">
-                                                    Kondisi Ban <span class="text-red-500">*</span>
-                                                </label>
-                                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                                                    <label
-                                                        class="radio-option flex items-center justify-center rounded-lg border-2 border-slate-200 p-4 cursor-pointer hover:border-blue-400">
-                                                        <input type="radio" name="kondisi_ban" value="Baik" required
-                                                            checked
-                                                            class="w-5 h-5 text-blue-600 bg-slate-50 border-slate-300 focus:ring-blue-500">
-                                                        <span
-                                                            class="ml-3 text-sm font-semibold text-slate-700">Baik</span>
-                                                    </label>
-                                                    <label
-                                                        class="radio-option flex items-center justify-center rounded-lg border-2 border-slate-200 p-4 cursor-pointer hover:border-blue-400">
-                                                        <input type="radio" name="kondisi_ban" value="Kurang Baik"
-                                                            required
-                                                            class="w-5 h-5 text-blue-600 bg-slate-50 border-slate-300 focus:ring-blue-500">
-                                                        <span class="ml-3 text-sm font-semibold text-slate-700">Kurang
-                                                            Baik</span>
-                                                    </label>
-                                                    <label
-                                                        class="radio-option flex items-center justify-center rounded-lg border-2 border-slate-200 p-4 cursor-pointer hover:border-blue-400">
-                                                        <input type="radio" name="kondisi_ban" value="Tidak Layak"
-                                                            required
-                                                            class="w-5 h-5 text-blue-600 bg-slate-50 border-slate-300 focus:ring-blue-500">
-                                                        <span class="ml-3 text-sm font-semibold text-slate-700">Tidak
-                                                            Layak</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-
-                                            <!-- Kondisi Lampu -->
-                                            <div class="form-group">
-                                                <label
-                                                    class="form-label block text-sm font-semibold text-slate-700 mb-3">
-                                                    Kondisi Lampu <span class="text-red-500">*</span>
-                                                </label>
-                                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                                                    <label
-                                                        class="radio-option flex items-center justify-center rounded-lg border-2 border-slate-200 p-4 cursor-pointer hover:border-blue-400">
-                                                        <input type="radio" name="kondisi_lampu" value="Baik" required
-                                                            checked
-                                                            class="w-5 h-5 text-blue-600 bg-slate-50 border-slate-300 focus:ring-blue-500">
-                                                        <span
-                                                            class="ml-3 text-sm font-semibold text-slate-700">Baik</span>
-                                                    </label>
-                                                    <label
-                                                        class="radio-option flex items-center justify-center rounded-lg border-2 border-slate-200 p-4 cursor-pointer hover:border-blue-400">
-                                                        <input type="radio" name="kondisi_lampu" value="Kurang Baik"
-                                                            required
-                                                            class="w-5 h-5 text-blue-600 bg-slate-50 border-slate-300 focus:ring-blue-500">
-                                                        <span class="ml-3 text-sm font-semibold text-slate-700">Kurang
-                                                            Baik</span>
-                                                    </label>
-                                                    <label
-                                                        class="radio-option flex items-center justify-center rounded-lg border-2 border-slate-200 p-4 cursor-pointer hover:border-blue-400">
-                                                        <input type="radio" name="kondisi_lampu" value="Tidak Layak"
-                                                            required
-                                                            class="w-5 h-5 text-blue-600 bg-slate-50 border-slate-300 focus:ring-blue-500">
-                                                        <span class="ml-3 text-sm font-semibold text-slate-700">Tidak
-                                                            Layak</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-
-                                            <!-- Kondisi Rem -->
-                                            <div class="form-group">
-                                                <label
-                                                    class="form-label block text-sm font-semibold text-slate-700 mb-3">
-                                                    Kondisi Rem <span class="text-red-500">*</span>
-                                                </label>
-                                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                                                    <label
-                                                        class="radio-option flex items-center justify-center rounded-lg border-2 border-slate-200 p-4 cursor-pointer hover:border-blue-400">
-                                                        <input type="radio" name="kondisi_rem" value="Baik" required
-                                                            checked
-                                                            class="w-5 h-5 text-blue-600 bg-slate-50 border-slate-300 focus:ring-blue-500">
-                                                        <span
-                                                            class="ml-3 text-sm font-semibold text-slate-700">Baik</span>
-                                                    </label>
-                                                    <label
-                                                        class="radio-option flex items-center justify-center rounded-lg border-2 border-slate-200 p-4 cursor-pointer hover:border-blue-400">
-                                                        <input type="radio" name="kondisi_rem" value="Kurang Baik"
-                                                            required
-                                                            class="w-5 h-5 text-blue-600 bg-slate-50 border-slate-300 focus:ring-blue-500">
-                                                        <span class="ml-3 text-sm font-semibold text-slate-700">Kurang
-                                                            Baik</span>
-                                                    </label>
-                                                    <label
-                                                        class="radio-option flex items-center justify-center rounded-lg border-2 border-slate-200 p-4 cursor-pointer hover:border-blue-400">
-                                                        <input type="radio" name="kondisi_rem" value="Tidak Layak"
-                                                            required
-                                                            class="w-5 h-5 text-blue-600 bg-slate-50 border-slate-300 focus:ring-blue-500">
-                                                        <span class="ml-3 text-sm font-semibold text-slate-700">Tidak
-                                                            Layak</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-
-                                            <!-- Kondisi Lampu Sen -->
-                                            <div class="form-group">
-                                                <label
-                                                    class="form-label block text-sm font-semibold text-slate-700 mb-3">
-                                                    Kondisi Lampu Sen <span class="text-red-500">*</span>
-                                                </label>
-                                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                                                    <label
-                                                        class="radio-option flex items-center justify-center rounded-lg border-2 border-slate-200 p-4 cursor-pointer hover:border-blue-400">
-                                                        <input type="radio" name="kondisi_lampu_sen" value="Baik"
-                                                            required checked
-                                                            class="w-5 h-5 text-blue-600 bg-slate-50 border-slate-300 focus:ring-blue-500">
-                                                        <span
-                                                            class="ml-3 text-sm font-semibold text-slate-700">Baik</span>
-                                                    </label>
-                                                    <label
-                                                        class="radio-option flex items-center justify-center rounded-lg border-2 border-slate-200 p-4 cursor-pointer hover:border-blue-400">
-                                                        <input type="radio" name="kondisi_lampu_sen" value="Kurang Baik"
-                                                            required
-                                                            class="w-5 h-5 text-blue-600 bg-slate-50 border-slate-300 focus:ring-blue-500">
-                                                        <span class="ml-3 text-sm font-semibold text-slate-700">Kurang
-                                                            Baik</span>
-                                                    </label>
-                                                    <label
-                                                        class="radio-option flex items-center justify-center rounded-lg border-2 border-slate-200 p-4 cursor-pointer hover:border-blue-400">
-                                                        <input type="radio" name="kondisi_lampu_sen" value="Tidak Layak"
-                                                            required
-                                                            class="w-5 h-5 text-blue-600 bg-slate-50 border-slate-300 focus:ring-blue-500">
-                                                        <span class="ml-3 text-sm font-semibold text-slate-700">Tidak
-                                                            Layak</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-
-                                            <!-- Kaca & Spion -->
-                                            <div class="form-group">
-                                                <div
-                                                    class="radio-option rounded-lg border-2 border-slate-200 p-4 cursor-pointer hover:border-blue-400">
-                                                    <label class="flex items-center cursor-pointer">
-                                                        <input type="checkbox" name="kaca_spion_lengkap" value="1"
-                                                            checked
-                                                            class="w-5 h-5 text-blue-600 bg-slate-50 border-slate-300 rounded focus:ring-blue-500">
-                                                        <span class="ml-3 text-sm font-semibold text-slate-700">
-                                                            Kaca & Spion Lengkap
-                                                        </span>
-                                                    </label>
-                                                </div>
-                                            </div>
-
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Section 5: Hasil Pemeriksaan -->
-                                <div
-                                    class="form-card bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
-                                    <div class="bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-4">
-                                        <h3 class="text-xl font-bold text-white flex items-center gap-2">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-                                                viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                            </svg>
-                                            Hasil Pemeriksaan
-                                        </h3>
-                                        <p class="text-blue-100 text-sm mt-1">Kesimpulan hasil pemeriksaan kendaraan</p>
-                                    </div>
-
-                                    <div class="p-6 sm:p-8">
-                                        <div class="space-y-6">
-                                            <!-- Hasil Pemeriksaan -->
-                                            <div class="form-group">
-                                                <label
-                                                    class="form-label block text-sm font-semibold text-slate-700 mb-3">
-                                                    Status Hasil Pemeriksaan <span class="text-red-500">*</span>
-                                                </label>
-                                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                                                    <label
-                                                        class="radio-option flex items-center justify-center rounded-lg border-2 border-slate-200 p-4 cursor-pointer hover:border-blue-400">
-                                                        <input type="radio" name="hasil_pemeriksaan" value="Lolos"
-                                                            required checked
-                                                            class="w-5 h-5 text-green-600 bg-slate-50 border-slate-300 focus:ring-green-500">
-                                                        <span class="ml-3 text-sm font-semibold text-slate-700">✓
-                                                            Lolos</span>
-                                                    </label>
-                                                    <label
-                                                        class="radio-option flex items-center justify-center rounded-lg border-2 border-slate-200 p-4 cursor-pointer hover:border-blue-400">
-                                                        <input type="radio" name="hasil_pemeriksaan"
-                                                            value="Lolos Bersyarat" required
-                                                            class="w-5 h-5 text-yellow-600 bg-slate-50 border-slate-300 focus:ring-yellow-500">
-                                                        <span class="ml-3 text-sm font-semibold text-slate-700">⚠ Lolos
-                                                            Bersyarat</span>
-                                                    </label>
-                                                    <label
-                                                        class="radio-option flex items-center justify-center rounded-lg border-2 border-slate-200 p-4 cursor-pointer hover:border-blue-400">
-                                                        <input type="radio" name="hasil_pemeriksaan" value="Tidak Lolos"
-                                                            required
-                                                            class="w-5 h-5 text-red-600 bg-slate-50 border-slate-300 focus:ring-red-500">
-                                                        <span class="ml-3 text-sm font-semibold text-slate-700">✕ Tidak
-                                                            Lolos</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-
-                                            <!-- Catatan -->
-                                            <div class="form-group">
-                                                <label for="catatan"
-                                                    class="form-label block text-sm font-semibold text-slate-700 mb-2">
-                                                    Catatan / Keterangan
-                                                </label>
-                                                <textarea id="catatan" name="catatan" rows="4"
-                                                    placeholder="Tulis catatan tambahan atau alasan tidak lolos (jika ada)..."
-                                                    class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3 text-slate-700 focus:border-blue-500 focus:outline-none resize-none"></textarea>
-                                            </div>
-
-                                            <!-- Nama Petugas -->
-                                            <div class="form-group">
-                                                <label for="nama_petugas"
-                                                    class="form-label block text-sm font-semibold text-slate-700 mb-2">
-                                                    Nama Petugas <span class="text-red-500">*</span>
-                                                </label>
-                                                <input type="text" id="nama_petugas" name="nama_petugas" required
-                                                    value="{{ Auth::user()->name ?? '' }}"
-                                                    placeholder="Nama petugas yang memeriksa"
-                                                    class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3 text-slate-700 focus:border-blue-500 focus:outline-none">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Submit Button -->
-                                <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4">
-                                    <p class="text-sm text-slate-600">
-                                        <span class="font-semibold text-red-500">*</span> Wajib diisi
-                                    </p>
-                                    <div class="flex gap-3">
-                                        <button type="reset"
-                                            class="px-6 py-3 rounded-lg border-2 border-slate-300 text-slate-700 font-semibold hover:bg-slate-50 transition-all">
-                                            Reset Form
-                                        </button>
-                                        <button type="submit"
-                                            class="submit-btn px-8 py-3 rounded-lg bg-blue-600 text-white font-bold shadow-lg hover:shadow-xl transition-all">
-                                            <span class="flex items-center gap-2">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
-                                                    viewBox="0 0 20 20" fill="currentColor">
-                                                    <path fill-rule="evenodd"
-                                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                                        clip-rule="evenodd" />
+                                                class="h-12 w-12 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                                    viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                                                 </svg>
-                                                Simpan Data Pemeriksaan
-                                            </span>
-                                        </button>
+                                            </div>
+                                        </div>
+
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                            @foreach ([
+                                                    'surat_jalan' => 'Surat Jalan Tersedia',
+                                                    'stnk_valid' => 'STNK Valid (Aktif)',
+                                                    'sim_valid' => 'SIM Valid (Aktif)',
+                                                    'kir_valid' => 'KIR Valid'
+                                                ] as $name => $label)
+                                                    <label class="checkbox-3d-container group relative flex items-center gap-4 rounded-2xl border-2 border-slate-200 bg-white p-6 transition-all cursor-pointer">
+                                                        <div class="relative flex h-6 w-6 items-center justify-center">
+                                                            <input id="{{ $name }}" name="{{ $name }}" type="checkbox" value="1"
+                                                                onchange="this.closest('.checkbox-3d-container').classList.toggle('checked', this.checked)"
+                                                                class="checkbox-3d-input peer h-6 w-6">
+                                                        </div>
+                                                        <span class="font-bold text-slate-700 group-hover:text-blue-900 transition-colors uppercase text-sm tracking-wide">{{ $label }}</span>
+                                                    </label>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {{-- SECTION 4: KONDISI KENDARAAN --}}
+                                <div
+                                    class="group relative bg-white rounded-[2rem] shadow-xl shadow-slate-200/50 border border-slate-100 transition-all hover:shadow-2xl hover:shadow-blue-500/5 hover:-translate-y-1 overflow-hidden">
+                                    <div class="h-2 w-full bg-gradient-to-r from-blue-500 via-indigo-500 to-blue-500">
+                                    </div>
+                                    <div class="p-8 sm:p-10">
+                                        <div class="mb-10 flex items-center justify-between">
+                                            <div>
+                                                <h3 class="text-2xl font-black text-slate-900">Kondisi Kendaraan</h3>
+                                                <p class="text-slate-500 text-sm mt-1">Evaluasi fisik kelaikan jalan
+                                                    armada</p>
+                                            </div>
+                                            <div
+                                                class="h-12 w-12 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                                    viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1" />
+                                                </svg>
+                                            </div>
+                                        </div>
+
+                                        <div class="space-y-8">
+                                            @foreach(['kondisi_ban' => 'Kondisi Ban', 'kondisi_lampu' => 'Kondisi Lampu', 'kondisi_rem' => 'Kondisi Rem', 'kondisi_lampu_sen' => 'Lampu Sen'] as $field => $label)
+                                                <div class="space-y-4">
+                                                    <label
+                                                        class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">{{ $label }}
+                                                        <span class="text-rose-500">*</span></label>
+                                                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                                                        @foreach(['Baik', 'Kurang Baik', 'Tidak Layak'] as $status)
+                                                            <label
+                                                                class="group/radio relative flex cursor-pointer items-center justify-center rounded-2xl border-2 border-slate-50 bg-slate-50 p-4 transition-all hover:border-blue-200 has-[:checked]:border-blue-500 has-[:checked]:bg-blue-50/50">
+                                                                <input type="radio" name="{{ $field }}" value="{{ $status }}"
+                                                                    required {{ $status == 'Baik' ? 'checked' : '' }}
+                                                                    class="peer hidden">
+                                                                <span
+                                                                    class="font-bold text-slate-700 peer-checked:text-blue-700 text-sm">{{ $status }}</span>
+                                                            </label>
+                                                        @endforeach
+                                                    </div>
+                                                </div>
+                                            @endforeach
+
+                                            <label class="checkbox-3d-container checked group relative flex items-center gap-4 rounded-2xl border-2 border-blue-500 bg-blue-50 p-6 transition-all cursor-pointer">
+                                                <div class="relative flex h-6 w-6 items-center justify-center">
+                                                    <input id="kaca_spion_lengkap" name="kaca_spion_lengkap" type="checkbox" value="1" checked
+                                                        onchange="this.closest('.checkbox-3d-container').classList.toggle('checked', this.checked)"
+                                                        class="checkbox-3d-input peer h-6 w-6">
+                                                </div>
+                                                <span class="font-bold text-blue-900 transition-colors uppercase text-sm tracking-wide">Kaca & Spion Lengkap</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {{-- SECTION 5: HASIL PEMERIKSAAN --}}
+                                <div
+                                    class="group relative bg-white rounded-[2rem] shadow-xl shadow-slate-200/50 border border-slate-100 transition-all hover:shadow-2xl hover:shadow-blue-500/5 hover:-translate-y-1 overflow-hidden">
+                                    <div
+                                        class="h-2 w-full bg-gradient-to-r from-blue-500 via-indigo-500 to-blue-500">
+                                    </div>
+                                    <div class="p-8 sm:p-10">
+                                        <div class="mb-10 flex items-center justify-between">
+                                            <div>
+                                                <h3 class="text-2xl font-black text-slate-900">Hasil Pemeriksaan</h3>
+                                                <p class="text-slate-500 text-sm mt-1">Kesimpulan akhir kelaikan armada</p>
+                                            </div>
+                                            <div
+                                                class="h-12 w-12 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                                    viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                </svg>
+                                            </div>
+                                        </div>
+
+                                        <div class="space-y-8">
+                                            <div class="space-y-4">
+                                                <label class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Status Kelulusan <span class="text-rose-500">*</span></label>
+                                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                                    <label class="group/radio relative flex cursor-pointer items-center justify-center rounded-2xl border-2 border-slate-50 bg-slate-50 p-6 transition-all hover:border-emerald-200 has-[:checked]:border-emerald-500 has-[:checked]:bg-emerald-50/50">
+                                                        <input type="radio" name="hasil_pemeriksaan" value="Lolos" required checked class="peer hidden">
+                                                        <div class="flex flex-col items-center gap-2">
+                                                            <span class="font-bold text-slate-700 peer-checked:text-emerald-700">Lolos</span>
+                                                        </div>
+                                                    </label>
+                                                    <label class="group/radio relative flex cursor-pointer items-center justify-center rounded-2xl border-2 border-slate-50 bg-slate-50 p-6 transition-all hover:border-amber-200 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50/50">
+                                                        <input type="radio" name="hasil_pemeriksaan" value="Lolos Bersyarat" required class="peer hidden">
+                                                        <div class="flex flex-col items-center gap-2">
+                                                            <span class="font-bold text-slate-700 peer-checked:text-amber-700 text-center">Lolos Bersyarat</span>
+                                                        </div>
+                                                    </label>
+                                                    <label class="group/radio relative flex cursor-pointer items-center justify-center rounded-2xl border-2 border-slate-50 bg-slate-50 p-6 transition-all hover:border-rose-200 has-[:checked]:border-rose-500 has-[:checked]:bg-rose-50/50">
+                                                        <input type="radio" name="hasil_pemeriksaan" value="Tidak Lolos" required class="peer hidden">
+                                                        <div class="flex flex-col items-center gap-2">
+                                                            <span class="font-bold text-slate-700 peer-checked:text-rose-700">Tidak Lolos</span>
+                                                        </div>
+                                                    </label>
+                                                </div>
+                                            </div>
+
+                                            <div class="space-y-2">
+                                                <label for="catatan" class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Catatan Tambahan</label>
+                                                <textarea id="catatan" name="catatan" rows="4" placeholder="Tulis catatan atau temuan khusus di sini..." class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 px-6 font-bold text-slate-900 transition-all focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-blue-500/5 resize-none"></textarea>
+                                            </div>
+
+                                            <div class="space-y-2">
+                                                <label for="nama_petugas" class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Nama Petugas Pemeriksa <span class="text-rose-500">*</span></label>
+                                                <input type="text" id="nama_petugas" name="nama_petugas" required value="{{ Auth::user()->name ?? '' }}" class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 px-6 font-bold text-slate-900 transition-all focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-blue-500/5">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {{-- FORM ACTIONS --}}
+                                <div
+                                    class="relative mt-12 bg-white rounded-[2rem] p-8 shadow-xl border border-slate-100 overflow-hidden">
+                                    <div class="absolute top-0 left-0 h-1 w-full bg-blue-500/10"></div>
+                                    <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+                                        <div class="flex items-center gap-4">
+                                            <div
+                                                class="h-12 w-12 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                                    viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <p class="text-slate-900 font-bold text-lg">Konfirmasi Data</p>
+                                                <p class="text-slate-500 text-sm">Pastikan seluruh checklist pemeriksaan telah terisi</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center gap-4 w-full md:w-auto">
+                                            <button type="reset"
+                                                class="flex-1 md:flex-none px-8 py-4 rounded-2xl border-2 border-slate-100 text-slate-400 font-bold hover:bg-slate-50 hover:text-slate-600 transition-all uppercase tracking-wider text-sm">
+                                                Reset
+                                            </button>
+                                            <button type="submit"
+                                                class="flex-1 md:flex-none px-10 py-4 rounded-2xl bg-blue-600 text-white font-black shadow-lg shadow-blue-500/25 hover:bg-blue-700 hover:-translate-y-1 transition-all uppercase tracking-wider text-sm">
+                                                Simpan Pemeriksaan
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </form>
                         </div>
                     </div>
+                </div>
                 </section>
             </main>
         </div>
@@ -1045,6 +1064,20 @@
         function toggleCekKendaraanMenu() {
             const submenu = document.getElementById('cekKendaraanSubmenu');
             const icon = document.getElementById('cekKendaraanToggleIcon');
+            if (submenu && icon) {
+                if (submenu.classList.contains('hidden')) {
+                    submenu.classList.remove('hidden');
+                    icon.classList.add('rotate-180');
+                } else {
+                    submenu.classList.add('hidden');
+                    icon.classList.remove('rotate-180');
+                }
+            }
+        }
+
+        function toggleTrackingMenu() {
+            const submenu = document.getElementById('trackingSubmenu');
+            const icon = document.getElementById('trackingToggleIcon');
             if (submenu && icon) {
                 if (submenu.classList.contains('hidden')) {
                     submenu.classList.remove('hidden');

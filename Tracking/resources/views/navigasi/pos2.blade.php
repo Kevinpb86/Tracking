@@ -129,7 +129,7 @@
                                     </a>
                                     <a href="{{ route('cek-barang.index') }}"
                                         class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-emerald-50 hover:text-emerald-700">
-                                        <span>Daftar Distribusi</span>
+                                        <span>History Distribusi</span>
                                         <svg xmlns="http://www.w3.org/2000/svg"
                                             class="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100"
                                             fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -175,7 +175,7 @@
                                 <div class="relative ml-4 space-y-1 border-l-2 border-slate-100 pl-4 py-1">
                                     <a href="{{ route('scm.do-item.index') }}"
                                         class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-emerald-50 hover:text-emerald-700">
-                                        <span>Daftar DO</span>
+                                        <span>History DO</span>
                                         <svg xmlns="http://www.w3.org/2000/svg"
                                             class="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100"
                                             fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -494,7 +494,7 @@
                                     <div>
                                         <p
                                             class="text-sm font-bold text-slate-800 group-hover:text-white transition-colors">
-                                            Daftar Distribusi</p>
+                                            History Distribusi</p>
                                         <p
                                             class="text-[10px] font-medium text-slate-400 group-hover:text-blue-100 transition-colors tracking-wide">
                                             Rekap Data & Laporan</p>

@@ -123,17 +123,17 @@
                             <div id="antrianSubmenu" class="space-y-1 pl-4">
                                 <div class="relative ml-4 space-y-1 border-l-2 border-slate-100 pl-4 py-1">
                                     <a href="{{ route('pos1.antrian.input') }}"
-                                        class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm bg-blue-50 text-blue-700 font-semibold transition-colors">
+                                        class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-blue-50 hover:text-blue-700">
                                         <span>Form Antrian</span>
                                         <svg xmlns="http://www.w3.org/2000/svg"
-                                            class="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100"
-                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            class="h-3 w-3 text-slate-400 group-hover:text-blue-600" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M12 4v16m8-8H4" />
                                         </svg>
                                     </a>
                                     <a href="{{ route('pos1.antrian.daftar') }}"
-                                        class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm transition-colors bg-blue-50 text-blue-700 font-semibold">
+                                        class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm bg-blue-50 text-blue-700 font-semibold">
                                         <span>History Antrian</span>
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-blue-600"
                                             viewBox="0 0 20 20" fill="currentColor">
@@ -180,11 +180,11 @@
                             <div id="cekKendaraanSubmenu" class="hidden space-y-1 pl-4">
                                 <div class="relative ml-4 space-y-1 border-l-2 border-slate-100 pl-4 py-1">
                                     <a href="{{ route('cek-kendaraan.input') }}"
-                                        class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm bg-blue-50 text-blue-700 font-semibold transition-colors">
+                                        class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-blue-50 hover:text-blue-700">
                                         <span>Form Pemeriksaan</span>
                                         <svg xmlns="http://www.w3.org/2000/svg"
-                                            class="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100"
-                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            class="h-3 w-3 text-slate-400 group-hover:text-blue-600" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M12 4v16m8-8H4" />
                                         </svg>
@@ -193,10 +193,11 @@
                                         class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-blue-50 hover:text-blue-700">
                                         <span>History Pemeriksaan</span>
                                         <svg xmlns="http://www.w3.org/2000/svg"
-                                            class="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100"
-                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M12 4v16m8-8H4" />
+                                            class="h-3 w-3 text-slate-400 group-hover:text-blue-600" viewBox="0 0 20 20"
+                                            fill="currentColor">
+                                            <path fill-rule="evenodd"
+                                                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                                clip-rule="evenodd" />
                                         </svg>
                                     </a>
                                 </div>
@@ -239,8 +240,8 @@
                                         class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-emerald-50 hover:text-emerald-700">
                                         <span>Input HSE</span>
                                         <svg xmlns="http://www.w3.org/2000/svg"
-                                            class="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100"
-                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            class="h-3 w-3 text-slate-400 group-hover:text-emerald-600" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M12 4v16m8-8H4" />
                                         </svg>
@@ -249,10 +250,11 @@
                                         class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-emerald-50 hover:text-emerald-700">
                                         <span>History Laporan</span>
                                         <svg xmlns="http://www.w3.org/2000/svg"
-                                            class="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100"
-                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                            class="h-3 w-3 text-slate-400 group-hover:text-emerald-600"
+                                            viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd"
+                                                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                                clip-rule="evenodd" />
                                         </svg>
                                     </a>
                                 </div>
@@ -296,8 +298,8 @@
                                         class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-blue-50 hover:text-blue-700">
                                         <span>Form Tracking</span>
                                         <svg xmlns="http://www.w3.org/2000/svg"
-                                            class="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100"
-                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            class="h-3 w-3 text-slate-400 group-hover:text-blue-600" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M12 4v16m8-8H4" />
                                         </svg>
@@ -306,10 +308,10 @@
                                         class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-blue-50 hover:text-blue-700">
                                         <span>History Tracking</span>
                                         <svg xmlns="http://www.w3.org/2000/svg"
-                                            class="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100"
-                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            class="h-3 w-3 text-slate-400 group-hover:text-blue-600" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                                         </svg>
                                     </a>
                                 </div>
@@ -617,10 +619,10 @@
                                                             x-transition:leave="transition ease-in duration-75"
                                                             x-transition:leave-start="transform opacity-100 scale-100"
                                                             x-transition:leave-end="transform opacity-0 scale-95"
-                                                            class="absolute right-0 top-8 z-10 w-36 origin-top-right rounded-xl border border-slate-100 bg-white shadow-xl focus:outline-none overflow-hidden">
+                                                            class="absolute right-0 top-8 z-10 w-44 origin-top-right rounded-xl border border-slate-100 bg-white shadow-xl focus:outline-none overflow-hidden text-left">
                                                             <div class="py-1">
                                                                 <a href="{{ route('pos1.antrian.edit', $item->id) }}"
-                                                                    class="flex items-center gap-2 px-4 py-2 text-xs font-semibold text-slate-600 hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                                                                    class="flex items-center gap-2 px-4 py-2 text-xs font-semibold text-blue-600 hover:bg-blue-50 transition-colors cursor-pointer">
                                                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4"
                                                                         fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -629,9 +631,10 @@
                                                                     </svg>
                                                                     Edit
                                                                 </a>
+
                                                                 <button type="button"
-                                                                    onclick="confirmDelete('{{ $item->id }}', '{{ $item->no_antrian }}')"
-                                                                    class="flex w-full items-center gap-2 px-4 py-2 text-xs font-semibold text-rose-600 hover:bg-rose-50 transition-colors">
+                                                                    @click="open = false; confirmDelete('{{ $item->id }}', '{{ $item->no_antrian }}')"
+                                                                    class="flex w-full items-center gap-2 px-4 py-2 text-xs font-semibold text-rose-600 hover:bg-rose-50 transition-colors cursor-pointer border-t border-slate-50">
                                                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4"
                                                                         fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -640,25 +643,27 @@
                                                                     </svg>
                                                                     Delete
                                                                 </button>
-                                                                <form id="delete-form-{{ $item->id }}"
-                                                                    action="{{ route('pos1.antrian.destroy', $item->id) }}"
-                                                                    method="POST" class="hidden">
-                                                                    @csrf
-                                                                    @method('DELETE')
-                                                                </form>
+
                                                                 <a href="{{ route('pos1.antrian.print', $item->id) }}"
                                                                     target="_blank"
-                                                                    class="flex items-center gap-2 px-4 py-2 text-xs font-semibold text-slate-600 hover:bg-blue-50 hover:text-blue-600 transition-colors border-t border-slate-100">
+                                                                    class="flex items-center gap-2 px-4 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-50 transition-colors border-t border-slate-100 cursor-pointer">
                                                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4"
                                                                         fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                                         <path stroke-linecap="round" stroke-linejoin="round"
                                                                             stroke-width="2"
                                                                             d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
                                                                     </svg>
-                                                                    Print Ticket
+                                                                    Export PDF
                                                                 </a>
                                                             </div>
                                                         </div>
+
+                                                        <form id="delete-form-{{ $item->id }}"
+                                                            action="{{ route('pos1.antrian.destroy', $item->id) }}"
+                                                            method="POST" class="hidden">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                        </form>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -717,20 +722,20 @@
                             d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                     </svg>
                 </div>
-                <h3 class="text-xl font-bold text-slate-900">Hapus Antrian?</h3>
+                <h3 class="text-xl font-bold text-slate-900">Hapus Data Antrian</h3>
                 <p class="mt-2 text-sm text-slate-500">
-                    Anda yakin ingin menghapus antrian <span id="deleteAntrianNo"
-                        class="font-bold text-slate-800"></span>?
-                    Tindakan ini tidak dapat dibatalkan.
+                    Apakah Anda yakin ingin menghapus antrian <span id="deleteAntrianNo"
+                        class="font-bold text-slate-900"></span>?
                 </p>
+                <p class="text-xs text-rose-500 mt-1">Tindakan ini tidak dapat dibatalkan.</p>
             </div>
             <div class="flex gap-3">
                 <button type="button" onclick="closeDeleteModal()"
-                    class="flex-1 rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50">
+                    class="flex-1 rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 cursor-pointer">
                     Batal
                 </button>
                 <button type="button" id="confirmDeleteBtn"
-                    class="flex-1 rounded-xl bg-rose-600 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-rose-600/20 transition hover:bg-rose-700">
+                    class="flex-1 rounded-xl bg-rose-600 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-rose-600/20 transition hover:bg-rose-700 cursor-pointer">
                     Ya, Hapus
                 </button>
             </div>

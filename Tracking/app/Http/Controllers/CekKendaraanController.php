@@ -58,6 +58,12 @@ class CekKendaraanController extends Controller
         // Detail view logic will be added here
     }
 
+    public function destroy(CekKendaraan $cekKendaraan)
+    {
+        $cekKendaraan->delete();
+        return redirect()->route('cek-kendaraan.daftar')->with('success', 'Data Pemeriksaan Berhasil Dihapus!');
+    }
+
     public function exportPdf(CekKendaraan $cekKendaraan)
     {
         return view('pdf.cek-kendaraan', compact('cekKendaraan'));

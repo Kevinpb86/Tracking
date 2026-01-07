@@ -84,10 +84,14 @@ Route::get('/cek-kendaraan/input', function () {
 })->name('cek-kendaraan.input');
 
 Route::post('/cek-kendaraan', [CekKendaraanController::class, 'store'])->name('cek-kendaraan.store');
-Route::get('/cek-kendaraan/daftar', [CekKendaraanController::class, 'index'])->name('cek-kendaraan.daftar');
-Route::get('/cek-kendaraan/{cekKendaraan}/edit', [CekKendaraanController::class, 'edit'])->name('cek-kendaraan.edit');
-Route::put('/cek-kendaraan/{cekKendaraan}', [CekKendaraanController::class, 'update'])->name('cek-kendaraan.update');
-Route::get('/cek-kendaraan/{cekKendaraan}/pdf', [CekKendaraanController::class, 'exportPdf'])->name('cek-kendaraan.export-pdf');
+Route::get('/history-pemeriksaan', [CekKendaraanController::class, 'index'])->name('cek-kendaraan.daftar');
+Route::redirect('/cek-kendaraan/daftar', '/history-pemeriksaan', 301);
+Route::redirect('/cek-kendaraan/{id}/edit', '/history-pemeriksaan/{id}/edit', 301);
+Route::redirect('/cek-kendaraan/{id}/export-pdf', '/history-pemeriksaan/{id}/export-pdf', 301);
+Route::get('/history-pemeriksaan/{cekKendaraan}/edit', [CekKendaraanController::class, 'edit'])->name('cek-kendaraan.edit');
+Route::put('/history-pemeriksaan/{cekKendaraan}', [CekKendaraanController::class, 'update'])->name('cek-kendaraan.update');
+Route::delete('/history-pemeriksaan/{cekKendaraan}', [CekKendaraanController::class, 'destroy'])->name('cek-kendaraan.destroy');
+Route::get('/history-pemeriksaan/{cekKendaraan}/export-pdf', [CekKendaraanController::class, 'exportPdf'])->name('cek-kendaraan.export-pdf');
 Route::get('/cek-kendaraan/{cekKendaraan}', [CekKendaraanController::class, 'show'])->name('cek-kendaraan.show');
 
 // HSE Routes
@@ -97,6 +101,7 @@ Route::get('/hse/daftar', [HSEController::class, 'index'])->name('hse.daftar');
 Route::get('/hse/{hse}/edit', [HSEController::class, 'edit'])->name('hse.edit');
 Route::put('/hse/{hse}', [HSEController::class, 'update'])->name('hse.update');
 Route::get('/hse/{hse}/pdf', [HSEController::class, 'exportPdf'])->name('hse.export-pdf');
+Route::delete('/hse/{hse}', [HSEController::class, 'destroy'])->name('hse.destroy');
 Route::get('/hse/{hse}', [HSEController::class, 'show'])->name('hse.show');
 
 // Cek Barang Routes

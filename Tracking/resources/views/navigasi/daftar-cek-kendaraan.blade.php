@@ -126,8 +126,8 @@
                                         class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-blue-50 hover:text-blue-700">
                                         <span>Form Antrian</span>
                                         <svg xmlns="http://www.w3.org/2000/svg"
-                                            class="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100"
-                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            class="h-3 w-3 text-slate-400 group-hover:text-blue-600" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M12 4v16m8-8H4" />
                                         </svg>
@@ -136,10 +136,11 @@
                                         class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-blue-50 hover:text-blue-700">
                                         <span>History Antrian</span>
                                         <svg xmlns="http://www.w3.org/2000/svg"
-                                            class="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100"
-                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M12 4v16m8-8H4" />
+                                            class="h-3 w-3 text-slate-400 group-hover:text-blue-600" viewBox="0 0 20 20"
+                                            fill="currentColor">
+                                            <path fill-rule="evenodd"
+                                                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                                clip-rule="evenodd" />
                                         </svg>
                                     </a>
                                 </div>
@@ -183,8 +184,8 @@
                                         class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-blue-50 hover:text-blue-700">
                                         <span>Input Pemeriksaan</span>
                                         <svg xmlns="http://www.w3.org/2000/svg"
-                                            class="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100"
-                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            class="h-3 w-3 text-slate-400 group-hover:text-blue-600" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M12 4v16m8-8H4" />
                                         </svg>
@@ -239,8 +240,8 @@
                                         class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-emerald-50 hover:text-emerald-700">
                                         <span>Input HSE</span>
                                         <svg xmlns="http://www.w3.org/2000/svg"
-                                            class="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100"
-                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            class="h-3 w-3 text-slate-400 group-hover:text-emerald-600" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M12 4v16m8-8H4" />
                                         </svg>
@@ -249,10 +250,11 @@
                                         class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-emerald-50 hover:text-emerald-700">
                                         <span>History Laporan</span>
                                         <svg xmlns="http://www.w3.org/2000/svg"
-                                            class="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100"
-                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                            class="h-3 w-3 text-slate-400 group-hover:text-emerald-600"
+                                            viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd"
+                                                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                                clip-rule="evenodd" />
                                         </svg>
                                     </a>
                                 </div>
@@ -296,8 +298,8 @@
                                         class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-blue-50 hover:text-blue-700">
                                         <span>Form Tracking</span>
                                         <svg xmlns="http://www.w3.org/2000/svg"
-                                            class="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100"
-                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            class="h-3 w-3 text-slate-400 group-hover:text-blue-600" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M12 4v16m8-8H4" />
                                         </svg>
@@ -306,10 +308,10 @@
                                         class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-blue-50 hover:text-blue-700">
                                         <span>History Tracking</span>
                                         <svg xmlns="http://www.w3.org/2000/svg"
-                                            class="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100"
-                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            class="h-3 w-3 text-slate-400 group-hover:text-blue-600" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                                         </svg>
                                     </a>
                                 </div>
@@ -615,10 +617,10 @@
                                                             x-transition:leave="transition ease-in duration-75"
                                                             x-transition:leave-start="transform opacity-100 scale-100"
                                                             x-transition:leave-end="transform opacity-0 scale-95"
-                                                            class="absolute right-0 top-8 z-10 w-36 origin-top-right rounded-xl border border-slate-100 bg-white shadow-xl focus:outline-none overflow-hidden">
+                                                            class="absolute right-0 top-8 z-10 w-44 origin-top-right rounded-xl border border-slate-100 bg-white shadow-xl focus:outline-none overflow-hidden text-left">
                                                             <div class="py-1">
                                                                 <a href="{{ route('cek-kendaraan.edit', $item->id) }}"
-                                                                    class="flex items-center gap-2 px-4 py-2 text-xs font-semibold text-slate-600 hover:bg-blue-50 hover:text-blue-600 transition-colors cursor-pointer">
+                                                                    class="flex items-center gap-2 px-4 py-2 text-xs font-semibold text-blue-600 hover:bg-blue-50 transition-colors cursor-pointer">
                                                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4"
                                                                         fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -627,19 +629,39 @@
                                                                     </svg>
                                                                     Edit
                                                                 </a>
-                                                                <a href="{{ route('cek-kendaraan.export-pdf', $item->id) }}"
-                                                                    target="_blank"
-                                                                    class="flex items-center gap-2 px-4 py-2 text-xs font-semibold text-slate-600 hover:bg-blue-50 hover:text-blue-600 transition-colors border-t border-slate-100 cursor-pointer">
+
+                                                                <button type="button"
+                                                                    @click="open = false; confirmDeleteVehicle({{ $item->id }}, '{{ $item->nomor_polisi }}')"
+                                                                    class="flex w-full items-center gap-2 px-4 py-2 text-xs font-semibold text-rose-600 hover:bg-rose-50 transition-colors cursor-pointer border-t border-slate-50">
                                                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4"
                                                                         fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                                         <path stroke-linecap="round" stroke-linejoin="round"
                                                                             stroke-width="2"
-                                                                            d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                                                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                                    </svg>
+                                                                    Delete
+                                                                </button>
+
+                                                                <a href="{{ route('cek-kendaraan.export-pdf', $item->id) }}"
+                                                                    target="_blank"
+                                                                    class="flex items-center gap-2 px-4 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-50 transition-colors border-t border-slate-100 cursor-pointer">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4"
+                                                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                                            stroke-width="2"
+                                                                            d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
                                                                     </svg>
                                                                     Export PDF
                                                                 </a>
                                                             </div>
                                                         </div>
+
+                                                        <form id="delete-vehicle-form-{{ $item->id }}"
+                                                            action="{{ route('cek-kendaraan.destroy', $item->id) }}"
+                                                            method="POST" class="hidden">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                        </form>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -684,6 +706,37 @@
         </div>
     </div>
 
+    <!-- Delete Confirmation Modal -->
+    <div id="deleteVehicleModal"
+        class="fixed inset-0 z-50 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="closeDeleteVehicleModal()"></div>
+        <div
+            class="relative w-full max-w-sm rounded-2xl bg-white p-6 shadow-2xl transform scale-95 transition-transform duration-300">
+            <div class="mb-6 flex flex-col items-center text-center">
+                <div class="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-rose-100 text-rose-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900">Hapus Data Pemeriksaan</h3>
+                <p class="mt-2 text-sm text-slate-500">Apakah Anda yakin ingin menghapus data pemeriksaan untuk kendaraan <span id="deleteVehicleNopol" class="font-bold text-slate-900"></span>?</p>
+                <p class="text-xs text-rose-500 mt-1">Tindakan ini tidak dapat dibatalkan.</p>
+            </div>
+            <div class="flex gap-3">
+                <button type="button" onclick="closeDeleteVehicleModal()"
+                    class="flex-1 rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50">
+                    Batal
+                </button>
+                <button type="button" id="confirmDeleteVehicleBtn"
+                    class="flex-1 rounded-xl bg-rose-600 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-rose-600/20 transition hover:bg-rose-700">
+                    Ya, Hapus
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script>
         const sidebar = document.getElementById('sidebar');
         const sidebarToggle = document.getElementById('sidebarToggle');
@@ -692,6 +745,11 @@
         const cekKendaraanSubmenu = document.getElementById('cekKendaraanSubmenu');
         const logoutModal = document.getElementById('logoutModal');
         const logoutModalContent = logoutModal.querySelector('div.transform');
+
+        const deleteVehicleModal = document.getElementById('deleteVehicleModal');
+        const deleteVehicleModalContent = deleteVehicleModal.querySelector('div.transform');
+        const deleteVehicleNopol = document.getElementById('deleteVehicleNopol');
+        const confirmDeleteVehicleBtn = document.getElementById('confirmDeleteVehicleBtn');
 
         function toggleSidebar() {
             const isClosed = sidebar.classList.contains('-translate-x-full');
@@ -767,6 +825,23 @@
             logoutModal.classList.add('opacity-0', 'pointer-events-none');
             logoutModalContent.classList.remove('scale-100');
             logoutModalContent.classList.add('scale-95');
+        }
+
+        function confirmDeleteVehicle(id, nopol) {
+            deleteVehicleNopol.textContent = nopol || '-';
+            confirmDeleteVehicleBtn.onclick = () => {
+                document.getElementById(`delete-vehicle-form-${id}`).submit();
+            };
+            
+            deleteVehicleModal.classList.remove('opacity-0', 'pointer-events-none');
+            deleteVehicleModalContent.classList.remove('scale-95');
+            deleteVehicleModalContent.classList.add('scale-100');
+        }
+
+        function closeDeleteVehicleModal() {
+            deleteVehicleModal.classList.add('opacity-0', 'pointer-events-none');
+            deleteVehicleModalContent.classList.remove('scale-100');
+            deleteVehicleModalContent.classList.add('scale-95');
         }
 
         sidebarToggle.addEventListener('click', toggleSidebar);

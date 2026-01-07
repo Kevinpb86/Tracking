@@ -112,6 +112,14 @@ class HseController extends Controller
         return view('pdf.hse', compact('hse'));
     }
 
+    public function destroy($id)
+    {
+        $hse = Hse::findOrFail($id);
+        $hse->delete();
+
+        return redirect()->route('hse.daftar')->with('success', 'Data HSE berhasil dihapus!');
+    }
+
     public function mainDashboard()
     {
         $pos1Queues = session('pos1_queues', []);

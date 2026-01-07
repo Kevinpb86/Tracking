@@ -26,7 +26,11 @@ Route::get('/', [DashboardController::class, 'index'])->name('dashboard.main')->
 
 // Admin Dashboard
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdministratorController;
 Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard')->middleware('auth');
+Route::get('/admin/users', [AdministratorController::class, 'index'])->name('admin.users')->middleware('auth');
+Route::get('/admin/users/{user}/edit', [AdministratorController::class, 'edit'])->name('admin.users.edit')->middleware('auth');
+Route::delete('/admin/users/{user}', [AdministratorController::class, 'destroy'])->name('admin.users.destroy')->middleware('auth');
 
 // Auth Routes
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');

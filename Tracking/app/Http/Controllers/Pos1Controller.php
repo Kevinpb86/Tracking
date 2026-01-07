@@ -8,7 +8,7 @@ class Pos1Controller extends Controller
 {
     public function index()
     {
-        // HSE Data for Chart - Pass vs Fail Comparison
+        // 1. HSE Data for Chart - Pass vs Fail Comparison (Current Logic)
         $monthLabels = [];
         $passedData = [];
         $failedData = [];
@@ -30,7 +30,38 @@ class Pos1Controller extends Controller
                 ->count();
         }
 
-        return view('navigasi.pos1', compact('monthLabels', 'passedData', 'failedData'));
+        // 2. Antrian Trends (Last 30 Days)
+        $antrianLabels = [];
+        $antrianData = [];
+        for ($i = 29; $i >= 0; $i--) {
+            $date = now()->subDays($i);
+            $antrianLabels[] = $date->format('d M');
+            $antrianData[] = \App\Models\AntrianPos1::whereDate('created_at', $date)->count();
+        }
+
+        // 3. Cek Kendaraan Distribution (Last 2 Months)
+        $startDate = now()->subMonth()->startOfMonth();
+        $cekLolos = \App\Models\CekKendaraan::where('tanggal', '>=', $startDate)
+            ->where('hasil_pemeriksaan', 'Lolos')
+            ->count();
+        $cekLolosBersyarat = \App\Models\CekKendaraan::where('tanggal', '>=', $startDate)
+            ->where('hasil_pemeriksaan', 'Lolos Bersyarat')
+            ->count();
+        $cekTidakLolos = \App\Models\CekKendaraan::where('tanggal', '>=', $startDate)
+            ->where('hasil_pemeriksaan', 'Tidak Lolos')
+            ->count();
+
+        $cekData = [$cekLolos, $cekLolosBersyarat, $cekTidakLolos];
+
+        return view('navigasi.pos1', compact(
+            'monthLabels',
+            'passedData',
+            'failedData',
+            'antrianLabels',
+            'antrianData',
+            'cekData',
+            'startDate'
+        ));
     }
 
     public function create()

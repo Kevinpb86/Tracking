@@ -67,6 +67,69 @@
             box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.4);
             background-color: #1d4ed8 !important;
         }
+
+        /* 3D Checkbox Effect - BLUE */
+        .checkbox-3d-container {
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 0 #e2e8f0;
+        }
+
+        .checkbox-3d-container:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 0 #cbd5e1;
+            border-color: #3b82f6;
+        }
+
+        .checkbox-3d-container:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 #e2e8f0;
+        }
+
+        .checkbox-3d-container.checked {
+            background-color: #eff6ff;
+            border-color: #3b82f6;
+            box-shadow: 0 4px 0 #2563eb;
+        }
+
+        .checkbox-3d-container.checked:hover {
+            box-shadow: 0 6px 0 #1d4ed8;
+        }
+
+        .checkbox-3d-input {
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+            appearance: none;
+            background-color: #fff;
+            margin: 0;
+            font: inherit;
+            color: currentColor;
+            width: 1.5em;
+            height: 1.5em;
+            border: 2px solid #cbd5e1;
+            border-radius: 0.5em;
+            display: grid;
+            place-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .checkbox-3d-input::before {
+            content: "";
+            width: 0.75em;
+            height: 0.75em;
+            transform: scale(0);
+            transition: 120ms transform ease-in-out;
+            box-shadow: inset 1em 1em #3b82f6;
+            clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+        }
+
+        .checkbox-3d-input:checked {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+        }
+
+        .checkbox-3d-input:checked::before {
+            transform: scale(1);
+        }
     </style>
 </head>
 
@@ -399,218 +462,436 @@
                         </div>
                     </div>
                 </section>
-                 <!-- PAGE CONTENT -->
+                <!-- PAGE CONTENT -->
                 <section class="relative mx-auto w-full flex-1 px-4 py-8 sm:px-6 lg:px-8">
-                    <div class="mx-auto max-w-4xl">
+                    <div class="max-w-7xl mx-auto">
+                        {{-- Header Section - PREMIUM REDESIGN --}}
                         <div
-                            class="mx-auto max-w-4xl rounded-3xl border border-blue-100 bg-blue-50 shadow-xl overflow-hidden mb-8">
-                            <div class="relative px-6 pt-16 pb-10 text-center sm:px-12">
-                                <div class="relative z-10 flex flex-col items-center space-y-8">
-                                     <div
-                                        class="inline-flex items-center gap-3 rounded-full bg-blue-100/50 px-4 py-1.5 border border-blue-200/50 backdrop-blur-sm">
-                                        <span class="flex h-6 w-6 items-center justify-center rounded-full bg-blue-600">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-white"
-                                                viewBox="0 0 20 20" fill="currentColor">
-                                                <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
-                                            </svg>
-                                        </span>
-                                        <span
-                                            class="text-[10px] font-bold uppercase tracking-[0.2em] text-blue-800">Edit Pemeriksaan</span>
-                                    </div>
+                            class="relative mb-8 overflow-hidden rounded-3xl bg-gradient-to-r from-blue-500 to-blue-600 border border-blue-400/20 shadow-xl shadow-blue-500/20">
+                            {{-- Decorative Glows --}}
+                            <div class="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-white/10 blur-[80px]">
+                            </div>
+                            <div class="absolute -left-24 -bottom-24 h-72 w-72 rounded-full bg-white/5 blur-[80px]">
+                            </div>
 
-                                    <div class="space-y-4">
-                                        <h1
-                                            class="text-4xl font-extrabold tracking-tight text-blue-600 sm:text-5xl lg:text-6xl text-center">
-                                            Edit Vehicle Inspection
-                                        </h1>
-                                        <div
-                                            class="mx-auto h-1.5 w-24 rounded-full bg-blue-500 shadow-lg shadow-blue-500/30">
-                                        </div>
+                            <div class="relative flex flex-col items-center px-6 py-6 text-center sm:px-12 sm:py-8">
+                                <div
+                                    class="mb-3 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-0.5 border border-white/20 backdrop-blur-md">
+                                    <span class="relative flex h-1.5 w-1.5">
+                                        <span
+                                            class="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-75"></span>
+                                        <span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-white"></span>
+                                    </span>
+                                    <span class="text-[9px] font-bold uppercase tracking-[0.2em] text-white">POS 1
+                                        Operations</span>
+                                </div>
+
+                                <h1 class="mb-2 text-2xl font-black tracking-tight text-white sm:text-4xl leading-tight">
+                                    Edit Vehicle <span class="text-blue-100 italic">Inspection</span>
+                                </h1>
+
+                                <p class="max-w-2xl text-sm font-medium text-white/80 leading-relaxed">
+                                    Perbarui hasil pemeriksaan fisik dan validasi dokumen armada untuk
+                                    memastikan kepatuhan operasional yang akurat.
+                                </p>
+
+                                {{-- Stats/Info Bar --}}
+                                <div class="mt-5 grid grid-cols-1 gap-2 sm:grid-cols-3 w-full max-w-2xl">
+                                    <div class="rounded-xl bg-white/10 p-2.5 border border-white/10 backdrop-blur-md">
+                                        <p class="text-[9px] font-bold uppercase tracking-widest text-white/70">
+                                            Current Time</p>
+                                        <p id="currentTime" class="text-xs font-bold text-white">{{ date('H:i') }} WIB</p>
+                                    </div>
+                                    <div class="rounded-xl bg-white/10 p-2.5 border border-white/10 backdrop-blur-md">
+                                        <p class="text-[9px] font-bold uppercase tracking-widest text-white/70">
+                                            Status</p>
+                                        <p class="text-xs font-bold text-white">Editing Mode</p>
+                                    </div>
+                                    <div class="rounded-xl bg-white/10 p-2.5 border border-white/10 backdrop-blur-md">
+                                        <p class="text-[9px] font-bold uppercase tracking-widest text-white/70">
+                                            Priority</p>
+                                        <p class="text-xs font-bold text-white">High</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Form Container -->
-                        <div class="max-w-5xl mx-auto">
-                            <form action="{{ route('cek-kendaraan.update', $cekKendaraan) }}" method="POST" class="space-y-6">
+                        <div class="flex flex-col lg:flex-row gap-8">
+                            <!-- LEFT SIDE: Operation Guidelines -->
+                            <div class="lg:w-1/3 space-y-6">
+                                <div class="rounded-3xl bg-white p-8 shadow-sm border border-slate-100 h-fit sticky top-40">
+                                    <h4 class="text-lg font-bold text-slate-900 mb-6 flex items-center gap-2">
+                                        <div
+                                            class="h-8 w-8 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                                                viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                            </svg>
+                                        </div>
+                                        Panduan Koreksi
+                                    </h4>
+
+                                    <ul class="space-y-4">
+                                        <li class="flex gap-4">
+                                            <div
+                                                class="flex-shrink-0 h-6 w-6 rounded-full bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-500">
+                                                01</div>
+                                            <p class="text-sm text-slate-600 leading-relaxed"><span
+                                                    class="font-bold text-slate-900">Review Data</span>: Pastikan alasan revisi data telah sesuai dengan temuan terbaru.</p>
+                                        </li>
+                                        <li class="flex gap-4">
+                                            <div
+                                                class="flex-shrink-0 h-6 w-6 rounded-full bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-500">
+                                                02</div>
+                                            <p class="text-sm text-slate-600 leading-relaxed"><span
+                                                    class="font-bold text-slate-900">Verifikasi Ulang</span>: Lakukan pengecekan fisik kembali jika diperlukan sebelum update.</p>
+                                        </li>
+                                        <li class="flex gap-4">
+                                            <div
+                                                class="flex-shrink-0 h-6 w-6 rounded-full bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-500">
+                                                03</div>
+                                            <p class="text-sm text-slate-600 leading-relaxed"><span
+                                                    class="font-bold text-slate-900">Update Status</span>: Simpan perubahan untuk memperbarui laporan kelaikan.</p>
+                                        </li>
+                                    </ul>
+
+                                    {{-- NEW: Inspection Alert Box --}}
+                                    <div class="mt-8 rounded-2xl bg-blue-50 p-4 border border-blue-100">
+                                        <div
+                                            class="flex items-center gap-2 text-blue-700 font-bold text-xs mb-2 uppercase tracking-wider">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                                                viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            </svg>
+                                            Editing Alert
+                                        </div>
+                                        <p class="text-xs text-blue-600 leading-relaxed lowercase first-letter:uppercase">
+                                            Setiap perubahan data akan tercatat dalam log aktivitas sistem untuk audit keselamatan.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- RIGHT SIDE: Input Forms -->
+                            <div class="lg:flex-1 pb-24">
+                                <form action="{{ route('cek-kendaraan.update', $cekKendaraan) }}" method="POST" class="space-y-8">
                                 @csrf
                                 @method('PUT')
 
-                                <!-- Section 1: Informasi Waktu -->
+                                {{-- SECTION 1: INFORMASI WAKTU --}}
                                 <div
-                                    class="form-card bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
-                                    <div class="bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-4">
-                                        <h3 class="text-xl font-bold text-white flex items-center gap-2">
-                                            Informasi Waktu Pemeriksaan
-                                        </h3>
+                                    class="group relative bg-white rounded-[2rem] shadow-xl shadow-slate-200/50 border border-slate-100 transition-all hover:shadow-2xl hover:shadow-blue-500/5 hover:-translate-y-1 overflow-hidden">
+                                    <div class="h-2 w-full bg-gradient-to-r from-blue-500 via-indigo-500 to-blue-500">
                                     </div>
+                                    <div class="p-8 sm:p-10">
+                                        <div class="mb-10 flex items-center justify-between">
+                                            <div>
+                                                <h3 class="text-2xl font-black text-slate-900">Informasi Waktu</h3>
+                                                <p class="text-slate-500 text-sm mt-1">Status waktu pemeriksaan
+                                                    kendaraan</p>
+                                            </div>
+                                            <div
+                                                class="h-12 w-12 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                                    viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                </svg>
+                                            </div>
+                                        </div>
 
-                                    <div class="p-6 sm:p-8">
-                                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                                            <div class="form-group">
-                                                <label for="tanggal" class="form-label block text-sm font-semibold text-slate-700 mb-2">Tanggal <span class="text-red-500">*</span></label>
-                                                <input type="date" id="tanggal" name="tanggal" required class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3" value="{{ old('tanggal', $cekKendaraan->tanggal->format('Y-m-d')) }}">
+                                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                                            <div class="space-y-2">
+                                                <label for="tanggal"
+                                                    class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Tanggal
+                                                    <span class="text-rose-500">*</span></label>
+                                                <input type="date" id="tanggal" name="tanggal" required
+                                                    class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 px-6 font-bold text-slate-900 transition-all focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-blue-500/5"
+                                                    value="{{ old('tanggal', $cekKendaraan->tanggal->format('Y-m-d')) }}">
                                             </div>
-                                            <div class="form-group">
-                                                <label for="waktu_masuk" class="form-label block text-sm font-semibold text-slate-700 mb-2">Waktu Masuk <span class="text-red-500">*</span></label>
-                                                <input type="time" id="waktu_masuk" name="waktu_masuk" required class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3" value="{{ old('waktu_masuk', $cekKendaraan->waktu_masuk->format('H:i')) }}">
+                                            <div class="space-y-2">
+                                                <label for="waktu_masuk"
+                                                    class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Waktu
+                                                    Masuk <span class="text-rose-500">*</span></label>
+                                                <input type="time" id="waktu_masuk" name="waktu_masuk" required
+                                                    class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 px-6 font-bold text-slate-900 transition-all focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-blue-500/5"
+                                                    value="{{ old('waktu_masuk', $cekKendaraan->waktu_masuk->format('H:i')) }}">
                                             </div>
-                                            <div class="form-group">
-                                                <label for="waktu_keluar" class="form-label block text-sm font-semibold text-slate-700 mb-2">Waktu Keluar</label>
-                                                <input type="time" id="waktu_keluar" name="waktu_keluar" class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3" value="{{ old('waktu_keluar', $cekKendaraan->waktu_keluar ? $cekKendaraan->waktu_keluar->format('H:i') : '') }}">
+                                            <div class="space-y-2">
+                                                <label for="waktu_keluar"
+                                                    class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Waktu
+                                                    Keluar</label>
+                                                <input type="time" id="waktu_keluar" name="waktu_keluar"
+                                                    class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 px-6 font-bold text-slate-900 transition-all focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-blue-500/5"
+                                                    value="{{ old('waktu_keluar', $cekKendaraan->waktu_keluar ? $cekKendaraan->waktu_keluar->format('H:i') : '') }}">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <!-- Section 2: Informasi Kendaraan -->
-                                <div class="form-card bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
-                                    <div class="bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-4">
-                                        <h3 class="text-xl font-bold text-white flex items-center gap-2">Informasi Kendaraan & Driver</h3>
+                                {{-- SECTION 2: ARMADA & DRIVER --}}
+                                <div
+                                    class="group relative bg-white rounded-[2rem] shadow-xl shadow-slate-200/50 border border-slate-100 transition-all hover:shadow-2xl hover:shadow-blue-500/5 hover:-translate-y-1 overflow-hidden">
+                                    <div class="h-2 w-full bg-gradient-to-r from-blue-500 via-indigo-500 to-blue-500">
                                     </div>
-                                    <div class="p-6 sm:p-8">
-                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                            <div class="form-group">
-                                                <label for="nomor_polisi" class="form-label block text-sm font-semibold text-slate-700 mb-2">Nomor Polisi <span class="text-red-500">*</span></label>
-                                                <input type="text" id="nomor_polisi" name="nomor_polisi" required class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3 uppercase" value="{{ old('nomor_polisi', $cekKendaraan->nomor_polisi) }}">
+                                    <div class="p-8 sm:p-10">
+                                        <div class="mb-10 flex items-center justify-between">
+                                            <div>
+                                                <h3 class="text-2xl font-black text-slate-900">Armada & Driver</h3>
+                                                <p class="text-slate-500 text-sm mt-1">Identitas fisik dan operator
+                                                    kendaraan</p>
                                             </div>
-                                            <div class="form-group">
-                                                <label for="jenis_kendaraan" class="form-label block text-sm font-semibold text-slate-700 mb-2">Jenis Kendaraan <span class="text-red-500">*</span></label>
-                                                 <select id="jenis_kendaraan" name="jenis_kendaraan" required class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3">
-                                                    <option value="">-- Pilih Jenis Kendaraan --</option>
-                                                    @foreach(['Truk', 'Pickup', 'Mobil Box', 'Tangki', 'Motor', 'Lainnya'] as $jenis)
+                                            <div
+                                                class="h-12 w-12 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                                    viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                                </svg>
+                                            </div>
+                                        </div>
+
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                            <div class="space-y-2">
+                                                <label for="nomor_polisi"
+                                                    class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Nomor
+                                                    Polisi <span class="text-rose-500">*</span></label>
+                                                <input type="text" id="nomor_polisi" name="nomor_polisi" required
+                                                    placeholder="B 1234 XYZ"
+                                                    class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 px-6 font-bold text-slate-900 transition-all focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-blue-500/5 uppercase"
+                                                    value="{{ old('nomor_polisi', $cekKendaraan->nomor_polisi) }}">
+                                            </div>
+                                            <div class="space-y-2">
+                                                <label for="jenis_kendaraan"
+                                                    class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Jenis
+                                                    Kendaraan <span class="text-rose-500">*</span></label>
+                                                <select id="jenis_kendaraan" name="jenis_kendaraan" required
+                                                    class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 px-6 font-bold text-slate-900 transition-all focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-blue-500/5 appearance-none">
+                                                    <option value="">-- Pilih Jenis --</option>
+                                                    @foreach(['Truk', 'Pickup', 'Mobil Box', 'Tangki', 'Lainnya'] as $jenis)
                                                         <option value="{{ $jenis }}" {{ old('jenis_kendaraan', $cekKendaraan->jenis_kendaraan) == $jenis ? 'selected' : '' }}>{{ $jenis }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
-                                            <div class="form-group">
-                                                <label for="nama_driver" class="form-label block text-sm font-semibold text-slate-700 mb-2">Nama Driver <span class="text-red-500">*</span></label>
-                                                <input type="text" id="nama_driver" name="nama_driver" required class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3" value="{{ old('nama_driver', $cekKendaraan->nama_driver) }}">
+                                            <div class="space-y-2">
+                                                <label for="nama_driver"
+                                                    class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Nama
+                                                    Driver <span class="text-rose-500">*</span></label>
+                                                <input type="text" id="nama_driver" name="nama_driver" required
+                                                    placeholder="Nama Lengkap"
+                                                    class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 px-6 font-bold text-slate-900 transition-all focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-blue-500/5"
+                                                    value="{{ old('nama_driver', $cekKendaraan->nama_driver) }}">
                                             </div>
-                                            <div class="form-group">
-                                                <label for="perusahaan" class="form-label block text-sm font-semibold text-slate-700 mb-2">Perusahaan / Vendor</label>
-                                                <input type="text" id="perusahaan" name="perusahaan" class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3" value="{{ old('perusahaan', $cekKendaraan->perusahaan) }}">
+                                            <div class="space-y-2">
+                                                <label for="perusahaan"
+                                                    class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Perusahaan
+                                                    / Vendor</label>
+                                                <input type="text" id="perusahaan" name="perusahaan"
+                                                    placeholder="Nama Perusahaan"
+                                                    class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 px-6 font-bold text-slate-900 transition-all focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-blue-500/5"
+                                                    value="{{ old('perusahaan', $cekKendaraan->perusahaan) }}">
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
 
-                                <!-- Section 3: Pemeriksaan Dokumen -->
-                                <div class="form-card bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
-                                    <div class="bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-4">
-                                        <h3 class="text-xl font-bold text-white flex items-center gap-2">Pemeriksaan Dokumen</h3>
+                                {{-- SECTION 3: PEMERIKSAAN DOKUMEN --}}
+                                <div
+                                    class="group relative bg-white rounded-[2rem] shadow-xl shadow-slate-200/50 border border-slate-100 transition-all hover:shadow-2xl hover:shadow-blue-500/5 hover:-translate-y-1 overflow-hidden">
+                                    <div class="h-2 w-full bg-gradient-to-r from-blue-500 via-indigo-500 to-blue-500">
                                     </div>
-                                    <div class="p-6 sm:p-8">
-                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                            @foreach(['surat_jalan' => 'Surat Jalan Tersedia', 'stnk_valid' => 'STNK Valid (Aktif)', 'sim_valid' => 'SIM Valid (Aktif)', 'kir_valid' => 'KIR Valid (Khusus Angkutan)'] as $field => $label)
-                                            <div class="radio-option rounded-lg border-2 border-slate-200 p-4 cursor-pointer hover:border-blue-400">
-                                                <label class="flex items-center cursor-pointer">
-                                                    <input type="checkbox" name="{{ $field }}" value="1" class="w-5 h-5 text-blue-600 bg-slate-50 border-slate-300 rounded focus:ring-blue-500" {{ old($field, $cekKendaraan->$field) ? 'checked' : '' }}>
-                                                    <span class="ml-3 text-sm font-semibold text-slate-700">{{ $label }}</span>
+                                    <div class="p-8 sm:p-10">
+                                        <div class="mb-10 flex items-center justify-between">
+                                            <div>
+                                                <h3 class="text-2xl font-black text-slate-900">Pemeriksaan Dokumen</h3>
+                                                <p class="text-slate-500 text-sm mt-1">Checklist validitas dokumen
+                                                    operasional</p>
+                                            </div>
+                                            <div
+                                                class="h-12 w-12 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                                    viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                                </svg>
+                                            </div>
+                                        </div>
+
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                            @foreach ([
+                                                'surat_jalan' => 'Surat Jalan Tersedia',
+                                                'stnk_valid' => 'STNK Valid (Aktif)',
+                                                'sim_valid' => 'SIM Valid (Aktif)',
+                                                'kir_valid' => 'KIR Valid'
+                                            ] as $name => $label)
+                                                @php $isChecked = old($name, $cekKendaraan->$name); @endphp
+                                                <label class="checkbox-3d-container group relative flex items-center gap-4 rounded-2xl border-2 {{ $isChecked ? 'border-blue-500 bg-blue-50 checked' : 'border-slate-200 bg-white' }} p-6 transition-all cursor-pointer">
+                                                    <div class="relative flex h-6 w-6 items-center justify-center">
+                                                        <input id="{{ $name }}" name="{{ $name }}" type="checkbox" value="1"
+                                                            {{ $isChecked ? 'checked' : '' }}
+                                                            onchange="this.closest('.checkbox-3d-container').classList.toggle('checked', this.checked); this.closest('.checkbox-3d-container').classList.toggle('border-blue-500', this.checked); this.closest('.checkbox-3d-container').classList.toggle('bg-blue-50', this.checked); this.closest('.checkbox-3d-container').classList.toggle('border-slate-200', !this.checked); this.closest('.checkbox-3d-container').classList.toggle('bg-white', !this.checked);"
+                                                            class="checkbox-3d-input peer h-6 w-6">
+                                                    </div>
+                                                    <span class="font-bold {{ $isChecked ? 'text-blue-900' : 'text-slate-700' }} group-hover:text-blue-900 transition-colors uppercase text-sm tracking-wide">{{ $label }}</span>
                                                 </label>
-                                            </div>
                                             @endforeach
                                         </div>
                                     </div>
                                 </div>
 
-                                <!-- Section 4: Kondisi Kendaraan -->
-                                <div class="form-card bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
-                                     <div class="bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-4">
-                                        <h3 class="text-xl font-bold text-white flex items-center gap-2">Pemeriksaan Kondisi Kendaraan</h3>
+                                {{-- SECTION 4: KONDISI KENDARAAN --}}
+                                <div
+                                    class="group relative bg-white rounded-[2rem] shadow-xl shadow-slate-200/50 border border-slate-100 transition-all hover:shadow-2xl hover:shadow-blue-500/5 hover:-translate-y-1 overflow-hidden">
+                                    <div class="h-2 w-full bg-gradient-to-r from-blue-500 via-indigo-500 to-blue-500">
                                     </div>
-                                    <div class="p-6 sm:p-8">
-                                        <div class="space-y-6">
-                                            @foreach(['kondisi_ban' => 'Kondisi Ban', 'kondisi_lampu' => 'Kondisi Lampu', 'kondisi_rem' => 'Kondisi Rem', 'kondisi_lampu_sen' => 'Kondisi Lampu Sen'] as $field => $label)
-                                            <div class="form-group">
-                                                <label class="form-label block text-sm font-semibold text-slate-700 mb-3">{{ $label }} <span class="text-red-500">*</span></label>
-                                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                                                    @foreach(['Baik', 'Kurang Baik', 'Tidak Layak'] as $value)
-                                                    <label class="radio-option flex items-center justify-center rounded-lg border-2 border-slate-200 p-4 cursor-pointer hover:border-blue-400">
-                                                        <input type="radio" name="{{ $field }}" value="{{ $value }}" required class="w-5 h-5 text-blue-600 bg-slate-50 border-slate-300 focus:ring-blue-500" {{ old($field, $cekKendaraan->$field) == $value ? 'checked' : '' }}>
-                                                        <span class="ml-3 text-sm font-semibold text-slate-700">{{ $value }}</span>
-                                                    </label>
-                                                    @endforeach
-                                                </div>
+                                    <div class="p-8 sm:p-10">
+                                        <div class="mb-10 flex items-center justify-between">
+                                            <div>
+                                                <h3 class="text-2xl font-black text-slate-900">Kondisi Kendaraan</h3>
+                                                <p class="text-slate-500 text-sm mt-1">Evaluasi fisik kelaikan jalan
+                                                    armada</p>
                                             </div>
+                                            <div
+                                                class="h-12 w-12 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                                    viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1" />
+                                                </svg>
+                                            </div>
+                                        </div>
+
+                                        <div class="space-y-8">
+                                            @foreach(['kondisi_ban' => 'Kondisi Ban', 'kondisi_lampu' => 'Kondisi Lampu', 'kondisi_rem' => 'Kondisi Rem', 'kondisi_lampu_sen' => 'Lampu Sen'] as $field => $label)
+                                                <div class="space-y-4">
+                                                    <label
+                                                        class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">{{ $label }}
+                                                        <span class="text-rose-500">*</span></label>
+                                                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                                                        @foreach(['Baik', 'Kurang Baik', 'Tidak Layak'] as $status)
+                                                            <label
+                                                                class="group/radio relative flex cursor-pointer items-center justify-center rounded-2xl border-2 border-slate-50 bg-slate-50 p-4 transition-all hover:border-blue-200 has-[:checked]:border-blue-500 has-[:checked]:bg-blue-50/50">
+                                                                <input type="radio" name="{{ $field }}" value="{{ $status }}"
+                                                                    required {{ old($field, $cekKendaraan->$field) == $status ? 'checked' : '' }}
+                                                                    class="peer hidden">
+                                                                <span
+                                                                    class="font-bold text-slate-700 peer-checked:text-blue-700 text-sm">{{ $status }}</span>
+                                                            </label>
+                                                        @endforeach
+                                                    </div>
+                                                </div>
                                             @endforeach
 
-                                             <div class="form-group">
-                                                <div class="radio-option rounded-lg border-2 border-slate-200 p-4 cursor-pointer hover:border-blue-400">
-                                                    <label class="flex items-center cursor-pointer">
-                                                        <input type="checkbox" name="kaca_spion_lengkap" value="1" class="w-5 h-5 text-blue-600 bg-slate-50 border-slate-300 rounded focus:ring-blue-500" {{ old('kaca_spion_lengkap', $cekKendaraan->kaca_spion_lengkap) ? 'checked' : '' }}>
-                                                        <span class="ml-3 text-sm font-semibold text-slate-700">Kaca & Spion Lengkap</span>
-                                                    </label>
+                                            @php $spionChecked = old('kaca_spion_lengkap', $cekKendaraan->kaca_spion_lengkap); @endphp
+                                            <label class="checkbox-3d-container group relative flex items-center gap-4 rounded-2xl border-2 {{ $spionChecked ? 'border-blue-500 bg-blue-50 checked' : 'border-slate-200 bg-white' }} p-6 transition-all cursor-pointer">
+                                                <div class="relative flex h-6 w-6 items-center justify-center">
+                                                    <input id="kaca_spion_lengkap" name="kaca_spion_lengkap" type="checkbox" value="1" 
+                                                        {{ $spionChecked ? 'checked' : '' }}
+                                                        onchange="this.closest('.checkbox-3d-container').classList.toggle('checked', this.checked); this.closest('.checkbox-3d-container').classList.toggle('border-blue-500', this.checked); this.closest('.checkbox-3d-container').classList.toggle('bg-blue-50', this.checked); this.closest('.checkbox-3d-container').classList.toggle('border-slate-200', !this.checked); this.closest('.checkbox-3d-container').classList.toggle('bg-white', !this.checked);"
+                                                        class="checkbox-3d-input peer h-6 w-6">
                                                 </div>
-                                            </div>
-
-
+                                                <span class="font-bold {{ $spionChecked ? 'text-blue-900' : 'text-slate-700' }} transition-colors uppercase text-sm tracking-wide">Kaca & Spion Lengkap</span>
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
 
-                                <!-- Section 5: Hasil Pemeriksaan -->
-                                <div class="form-card bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
-                                     <div class="bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-4">
-                                        <h3 class="text-xl font-bold text-white flex items-center gap-2">Hasil Pemeriksaan</h3>
+                                {{-- SECTION 5: HASIL PEMERIKSAAN --}}
+                                <div
+                                    class="group relative bg-white rounded-[2rem] shadow-xl shadow-slate-200/50 border border-slate-100 transition-all hover:shadow-2xl hover:shadow-blue-500/5 hover:-translate-y-1 overflow-hidden">
+                                    <div
+                                        class="h-2 w-full bg-gradient-to-r from-blue-500 via-indigo-500 to-blue-500">
                                     </div>
-                                    <div class="p-6 sm:p-8">
-                                        <div class="space-y-6">
-                                            <div class="form-group">
-                                                <label class="form-label block text-sm font-semibold text-slate-700 mb-3">Status Hasil Pemeriksaan <span class="text-red-500">*</span></label>
-                                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                                    <div class="p-8 sm:p-10">
+                                        <div class="mb-10 flex items-center justify-between">
+                                            <div>
+                                                <h3 class="text-2xl font-black text-slate-900">Hasil Pemeriksaan</h3>
+                                                <p class="text-slate-500 text-sm mt-1">Kesimpulan akhir kelaikan armada</p>
+                                            </div>
+                                            <div
+                                                class="h-12 w-12 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                                    viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                </svg>
+                                            </div>
+                                        </div>
+
+                                        <div class="space-y-8">
+                                            <div class="space-y-4">
+                                                <label class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Status Kelulusan <span class="text-rose-500">*</span></label>
+                                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                                                     @foreach([
-                                                        'Lolos' => ['text-green-600', 'focus:ring-green-500', '✓ Lolos'],
-                                                        'Lolos Bersyarat' => ['text-yellow-600', 'focus:ring-yellow-500', '⚠ Lolos Bersyarat'],
-                                                        'Tidak Lolos' => ['text-red-600', 'focus:ring-red-500', '✕ Tidak Lolos']
-                                                    ] as $value => $props)
-                                                    <label class="radio-option flex items-center justify-center rounded-lg border-2 border-slate-200 p-4 cursor-pointer hover:border-blue-400">
-                                                        <input type="radio" name="hasil_pemeriksaan" value="{{ $value }}" required class="w-5 h-5 {{ $props[0] }} bg-slate-50 border-slate-300 {{ $props[1] }}" {{ old('hasil_pemeriksaan', $cekKendaraan->hasil_pemeriksaan) == $value ? 'checked' : '' }}>
-                                                        <span class="ml-3 text-sm font-semibold text-slate-700">{{ $props[2] }}</span>
-                                                    </label>
+                                                        'Lolos' => 'emerald',
+                                                        'Lolos Bersyarat' => 'amber',
+                                                        'Tidak Lolos' => 'rose'
+                                                    ] as $status => $color)
+                                                        <label class="group/radio relative flex cursor-pointer items-center justify-center rounded-2xl border-2 border-slate-50 bg-slate-50 p-6 transition-all hover:border-{{ $color }}-200 has-[:checked]:border-{{ $color }}-500 has-[:checked]:bg-{{ $color }}-50/50">
+                                                            <input type="radio" name="hasil_pemeriksaan" value="{{ $status }}" required 
+                                                                {{ old('hasil_pemeriksaan', $cekKendaraan->hasil_pemeriksaan) == $status ? 'checked' : '' }}
+                                                                class="peer hidden">
+                                                            <div class="flex flex-col items-center gap-2">
+                                                                <span class="font-bold text-slate-700 peer-checked:text-{{ $color }}-700 text-center uppercase tracking-wide text-sm">{{ $status }}</span>
+                                                            </div>
+                                                        </label>
                                                     @endforeach
                                                 </div>
                                             </div>
 
-                                            <div class="form-group">
-                                                <label for="catatan" class="form-label block text-sm font-semibold text-slate-700 mb-2">Catatan / Keterangan</label>
-                                                <textarea id="catatan" name="catatan" rows="4" class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3 resize-none">{{ old('catatan', $cekKendaraan->catatan) }}</textarea>
+                                            <div class="space-y-2">
+                                                <label for="catatan" class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Catatan Tambahan</label>
+                                                <textarea id="catatan" name="catatan" rows="4" placeholder="Tulis catatan atau temuan khusus di sini..." class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 px-6 font-bold text-slate-900 transition-all focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-blue-500/5 resize-none">{{ old('catatan', $cekKendaraan->catatan) }}</textarea>
                                             </div>
 
-                                            <div class="form-group">
-                                                <label for="nama_petugas" class="form-label block text-sm font-semibold text-slate-700 mb-2">Nama Petugas <span class="text-red-500">*</span></label>
-                                                <input type="text" id="nama_petugas" name="nama_petugas" required class="form-input w-full rounded-lg border-2 border-slate-200 px-4 py-3" value="{{ old('nama_petugas', $cekKendaraan->nama_petugas) }}">
+                                            <div class="space-y-2">
+                                                <label for="nama_petugas" class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Nama Petugas Pemeriksa <span class="text-rose-500">*</span></label>
+                                                <input type="text" id="nama_petugas" name="nama_petugas" required readonly value="{{ old('nama_petugas', $cekKendaraan->nama_petugas) }}" class="w-full rounded-2xl border-2 border-slate-100 bg-slate-100 py-4 px-6 font-bold text-slate-500 transition-all cursor-not-allowed">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <!-- Submit Actions -->
-                                <div class="flex items-center justify-between gap-4 pt-4">
-                                    <a href="{{ route('cek-kendaraan.daftar') }}"
-                                        class="submit-btn inline-flex items-center gap-2 px-8 py-3 rounded-xl font-bold shadow-lg shadow-blue-500/20">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                            <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
-                                        </svg>
-                                        Kembali
-                                    </a>
-                                    <div class="flex items-center gap-4">
-                                        <button type="reset"
-                                            class="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-slate-200 bg-white text-slate-600 font-semibold shadow-lg shadow-slate-200/50 hover:bg-slate-50 hover:shadow-xl hover:shadow-slate-300/50 hover:-translate-y-0.5 transition-all duration-200 active:scale-95">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                                <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd" />
-                                            </svg>
-                                            Reset
-                                        </button>
-                                        <button type="submit"
-                                            class="submit-btn inline-flex items-center gap-2 px-8 py-3 rounded-xl font-bold shadow-lg shadow-blue-500/20">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                                <path d="M7.707 10.293a1 1 0 10-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 11.586V6h5a2 2 0 012 2v7a2 2 0 01-2 2H4a2 2 0 01-2-2V8a2 2 0 012-2h5v5.586l-1.293-1.293zM9 4a1 1 0 012 0v2H9V4z" />
-                                            </svg>
-                                            Update Data
-                                        </button>
+                                {{-- FORM ACTIONS --}}
+                                <div
+                                    class="relative mt-12 bg-white rounded-[2rem] p-8 shadow-xl border border-slate-100 overflow-hidden">
+                                    <div class="absolute top-0 left-0 h-1 w-full bg-blue-500/10"></div>
+                                    <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+                                        <div class="flex items-center gap-4">
+                                            <div
+                                                class="h-12 w-12 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                                    viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <p class="text-slate-900 font-bold text-lg">Konfirmasi Perubahan</p>
+                                                <p class="text-slate-500 text-sm">Pastikan seluruh koreksi data telah akurat</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center gap-4 w-full md:w-auto">
+                                            <a href="{{ route('cek-kendaraan.daftar') }}"
+                                                class="flex-1 md:flex-none px-8 py-4 rounded-2xl border-2 border-slate-100 text-center text-slate-400 font-bold hover:bg-slate-50 hover:text-slate-600 transition-all uppercase tracking-wider text-sm">
+                                                Batal
+                                            </a>
+                                            <button type="submit"
+                                                class="flex-1 md:flex-none px-10 py-4 rounded-2xl bg-blue-600 text-white font-black shadow-lg shadow-blue-500/25 hover:bg-blue-700 hover:-translate-y-1 transition-all uppercase tracking-wider text-sm">
+                                                Simpan Perubahan
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </form>
@@ -652,24 +933,58 @@
     </div>
 
     <script>
-        const sidebar = document.getElementById('sidebar');
-        const sidebarToggle = document.getElementById('sidebarToggle');
-        const sidebarOverlay = document.getElementById('sidebarOverlay');
-        const cekKendaraanToggleIcon = document.getElementById('cekKendaraanToggleIcon');
-        const cekKendaraanSubmenu = document.getElementById('cekKendaraanSubmenu');
-        const logoutModal = document.getElementById('logoutModal');
-        const logoutModalContent = logoutModal ? logoutModal.querySelector('div.transform') : null;
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleButton = document.getElementById('sidebarToggle');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
 
-        function toggleSidebar() {
-            const isClosed = sidebar.classList.contains('-translate-x-full');
-            if (isClosed) {
-                sidebar.classList.remove('-translate-x-full');
-                sidebarOverlay.classList.remove('opacity-0', 'pointer-events-none');
-            } else {
-                sidebar.classList.add('-translate-x-full');
-                sidebarOverlay.classList.add('opacity-0', 'pointer-events-none');
+            const toggleSidebar = (forceOpen = null) => {
+                const isOpen = forceOpen !== null ? forceOpen : sidebar.classList.contains('translate-x-0');
+                if (!isOpen) {
+                    sidebar.classList.remove('-translate-x-full');
+                    sidebar.classList.add('translate-x-0');
+                    overlay.classList.remove('pointer-events-none');
+                    overlay.classList.remove('opacity-0');
+                    overlay.classList.add('pointer-events-auto', 'opacity-100');
+                    if(toggleButton) toggleButton.setAttribute('aria-expanded', 'true');
+                } else {
+                    sidebar.classList.add('-translate-x-full');
+                    sidebar.classList.remove('translate-x-0');
+                    overlay.classList.remove('pointer-events-auto', 'opacity-100');
+                    overlay.classList.add('pointer-events-none', 'opacity-0');
+                    if(toggleButton) toggleButton.setAttribute('aria-expanded', 'false');
+                }
+            };
+
+            if(toggleButton) toggleButton.addEventListener('click', () => toggleSidebar());
+            if(overlay) overlay.addEventListener('click', () => toggleSidebar(true));
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape' && sidebar.classList.contains('translate-x-0')) {
+                    toggleSidebar(true);
+                }
+            });
+
+            // Real-time clock for WIB timezone
+            function updateWIBTime() {
+                const now = new Date();
+                const wibOffset = 7 * 60;
+                const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+                const wibTime = new Date(utc + (wibOffset * 60000));
+
+                const hours = String(wibTime.getHours()).padStart(2, '0');
+                const minutes = String(wibTime.getMinutes()).padStart(2, '0');
+                const timeString = `${hours}:${minutes}`;
+
+                const heroTimeElement = document.getElementById('currentTime');
+                if (heroTimeElement) {
+                    heroTimeElement.textContent = `${timeString} WIB`;
+                }
             }
-        }
+
+            updateWIBTime();
+            setInterval(updateWIBTime, 60000);
+        });
 
         function toggleHSEMenu() {
             const submenu = document.getElementById('hseSubmenu');
@@ -700,44 +1015,19 @@
         }
 
         function toggleCekKendaraanMenu() {
-            const isHidden = cekKendaraanSubmenu.classList.contains('hidden');
-            if (isHidden) {
-                cekKendaraanSubmenu.classList.remove('hidden');
-                cekKendaraanToggleIcon.classList.add('rotate-180');
-            } else {
-                cekKendaraanSubmenu.classList.add('hidden');
-                cekKendaraanToggleIcon.classList.remove('rotate-180');
+            const submenu = document.getElementById('cekKendaraanSubmenu');
+            const icon = document.getElementById('cekKendaraanToggleIcon');
+            if (submenu && icon) {
+                if (submenu.classList.contains('hidden')) {
+                    submenu.classList.remove('hidden');
+                    icon.classList.add('rotate-180');
+                } else {
+                    submenu.classList.add('hidden');
+                    icon.classList.remove('rotate-180');
+                }
             }
         }
 
-        function showLogoutModal() {
-            if(logoutModal) {
-                logoutModal.classList.remove('opacity-0', 'pointer-events-none');
-                logoutModalContent.classList.remove('scale-95');
-                logoutModalContent.classList.add('scale-100');
-            }
-        }
-
-        function closeLogoutModal() {
-            if(logoutModal) {
-                logoutModal.classList.add('opacity-0', 'pointer-events-none');
-                logoutModalContent.classList.remove('scale-100');
-                logoutModalContent.classList.add('scale-95');
-            }
-        }
-
-        if(sidebarToggle) {
-            sidebarToggle.addEventListener('click', toggleSidebar);
-        }
-        if(sidebarOverlay) {
-            sidebarOverlay.addEventListener('click', toggleSidebar);
-        }
-
-        // Ensure Cek Kendaraan menu is open by default on this page
-        if (cekKendaraanSubmenu && cekKendaraanSubmenu.classList.contains('hidden')) {
-            cekKendaraanSubmenu.classList.remove('hidden');
-            if(cekKendaraanToggleIcon) cekKendaraanToggleIcon.classList.add('rotate-180');
-        }
         function toggleTrackingMenu() {
             const submenu = document.getElementById('trackingSubmenu');
             const icon = document.getElementById('trackingToggleIcon');

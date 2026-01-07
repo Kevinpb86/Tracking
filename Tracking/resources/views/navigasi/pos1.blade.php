@@ -446,7 +446,7 @@
                                 class="rounded-2xl border border-white/10 bg-white/10 backdrop-blur-md p-3 text-center hover:bg-white/20 transition-colors">
                                 <p class="text-[8px] font-bold uppercase tracking-widest text-blue-100/70 mb-1">Region
                                 </p>
-                                <p class="text-lg font-black text-white">WIB</p>
+                                <p class="text-lg font-black text-white">Cibitung</p>
                             </div>
                             <div
                                 class="col-span-2 rounded-2xl border border-white/10 bg-white/10 backdrop-blur-md p-3 flex items-center justify-between hover:bg-white/20 transition-colors">
@@ -634,6 +634,79 @@
                                 class="relative rounded-2xl bg-white/60 backdrop-blur-sm border border-slate-200/50 p-6 shadow-inner">
                                 <div class="relative h-[400px]">
                                     <canvas id="hseLineChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                {{-- Antrian & Cek Kendaraan Analytics --}}
+                <div class="mb-10 grid gap-8 lg:grid-cols-2">
+                    {{-- Antrian trends --}}
+                    <article
+                        class="group relative overflow-hidden rounded-[2.5rem] border border-slate-200 bg-white p-8 shadow-xl transition-all duration-500 hover:shadow-2xl">
+                        <div
+                            class="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-blue-50/50 blur-3xl group-hover:scale-110 transition-transform duration-700">
+                        </div>
+                        <div class="relative z-10">
+                            <div class="flex items-center gap-3 mb-6">
+                                <div
+                                    class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 shadow-lg shadow-blue-200">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-blue-600">Queue
+                                        Analytics</h2>
+                                    <p class="text-xl font-black text-slate-900 tracking-tight">Antrian Registration
+                                        Trends</p>
+                                    <p class="text-[10px] text-slate-500 mt-0.5 font-bold uppercase tracking-widest">
+                                        Last 30 Days</p>
+                                </div>
+                            </div>
+                            <div class="relative rounded-2xl bg-slate-50 border border-slate-100 p-4 shadow-inner">
+                                <div class="relative h-[300px]">
+                                    <canvas id="antrianBarChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    {{-- Cek Kendaraan Distribution --}}
+                    <article
+                        class="group relative overflow-hidden rounded-[2.5rem] border border-slate-200 bg-white p-8 shadow-xl transition-all duration-500 hover:shadow-2xl">
+                        <div
+                            class="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-indigo-50/50 blur-3xl group-hover:scale-110 transition-transform duration-700">
+                        </div>
+                        <div class="relative z-10">
+                            <div class="flex items-center gap-3 mb-6">
+                                <div
+                                    class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 to-indigo-600 shadow-lg shadow-indigo-200">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-indigo-600">
+                                        Inspection Analytics</h2>
+                                    <p class="text-xl font-black text-slate-900 tracking-tight">Cek Kendaraan
+                                        Distribution
+                                    </p>
+                                    <p class="text-[10px] text-slate-500 mt-0.5 font-bold uppercase tracking-widest">
+                                        {{ $startDate->format('M Y') }} - {{ now()->format('M Y') }}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="relative rounded-2xl bg-slate-50 border border-slate-100 p-4 shadow-inner">
+                                <div class="relative h-[300px]">
+                                    <canvas id="cekDoughnutChart"></canvas>
                                 </div>
                             </div>
                         </div>
@@ -1207,6 +1280,137 @@
                                 },
                                 grid: {
                                     display: false
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // --- NEW: Antrian Bar Chart ---
+            const antrianCtx = document.getElementById('antrianBarChart');
+            if (antrianCtx) {
+                const antrianLabels = @json($antrianLabels ?? []);
+                const antrianData = @json($antrianData ?? []);
+
+                new Chart(antrianCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: antrianLabels,
+                        datasets: [{
+                            label: 'Pendaftaran Antrian',
+                            data: antrianData,
+                            backgroundColor: '#3b82f6',
+                            hoverBackgroundColor: '#2563eb',
+                            borderRadius: 12,
+                            borderSkipped: false,
+                            barThickness: 24,
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: {
+                                backgroundColor: 'rgba(15, 23, 42, 0.95)',
+                                padding: 16,
+                                cornerRadius: 12,
+                                titleFont: { size: 14, family: 'Inter, sans-serif', weight: '700' },
+                                bodyFont: { size: 15, family: 'Inter, sans-serif', weight: 'bold' },
+                                borderColor: 'rgba(148, 163, 184, 0.2)',
+                                borderWidth: 1,
+                                displayColors: true,
+                                boxPadding: 6,
+                                callbacks: {
+                                    label: function (context) {
+                                        return ' ' + context.parsed.y + ' Kendaraan';
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                grid: {
+                                    color: 'rgba(148, 163, 184, 0.1)',
+                                    drawBorder: false
+                                },
+                                ticks: {
+                                    font: { family: 'Inter, sans-serif', weight: '600' },
+                                    color: '#94a3b8'
+                                }
+                            },
+                            x: {
+                                grid: { display: false },
+                                ticks: {
+                                    font: { family: 'Inter, sans-serif', weight: '600' },
+                                    color: '#64748b'
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // --- NEW: Cek Kendaraan Doughnut Chart ---
+            const cekCtx = document.getElementById('cekDoughnutChart');
+            if (cekCtx) {
+                const cekData = @json($cekData ?? []);
+
+                new Chart(cekCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Lolos', 'Lolos Bersyarat', 'Tidak Lolos'],
+                        datasets: [{
+                            data: cekData,
+                            backgroundColor: [
+                                '#10b981', // emerald-500
+                                '#f59e0b', // amber-500
+                                '#ef4444'  // rose-500
+                            ],
+                            hoverOffset: 15,
+                            borderWidth: 8,
+                            borderColor: '#ffffff',
+                            borderRadius: 10,
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        cutout: '75%',
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    usePointStyle: true,
+                                    pointStyle: 'circle',
+                                    padding: 25,
+                                    font: {
+                                        family: 'Inter, sans-serif',
+                                        weight: 'bold',
+                                        size: 11
+                                    },
+                                    color: '#475569'
+                                }
+                            },
+                            tooltip: {
+                                backgroundColor: 'rgba(15, 23, 42, 0.95)',
+                                padding: 16,
+                                cornerRadius: 12,
+                                titleFont: { size: 14, family: 'Inter, sans-serif', weight: '700' },
+                                bodyFont: { size: 15, family: 'Inter, sans-serif', weight: 'bold' },
+                                borderColor: 'rgba(148, 163, 184, 0.2)',
+                                borderWidth: 1,
+                                displayColors: true,
+                                boxPadding: 8,
+                                usePointStyle: true,
+                                callbacks: {
+                                    label: function (context) {
+                                        const label = context.label || '';
+                                        const value = context.parsed || 0;
+                                        return ' ' + label + ': ' + value + ' Kendaraan';
+                                    }
                                 }
                             }
                         }

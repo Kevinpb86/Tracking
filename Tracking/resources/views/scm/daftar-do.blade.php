@@ -66,6 +66,59 @@
                     </div>
 
                     <nav class="space-y-2">
+                        {{-- Admin Dashboard Link --}}
+                        <a href="{{ route('admin.dashboard') }}"
+                            class="group flex items-center justify-between rounded-xl border border-transparent px-4 py-3 text-slate-600 transition-all hover:bg-blue-50 hover:text-blue-600">
+                            <span class="flex items-center gap-3">
+                                <div
+                                    class="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-100 text-blue-600 transition-colors group-hover:bg-blue-500 group-hover:text-white">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                                    </svg>
+                                </div>
+                                <span class="font-medium text-sm">Admin Dashboard</span>
+                            </span>
+                        </a>
+
+                        {{-- Administrator Menu Accordion --}}
+                        <div class="space-y-1">
+                            <button type="button" onclick="toggleAdminMenu()"
+                                class="group flex w-full items-center justify-between rounded-xl border border-transparent px-4 py-3 text-slate-600 transition-all hover:bg-blue-50/50 hover:text-blue-700">
+                                <span class="flex items-center gap-3">
+                                    <div
+                                        class="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-100/50 text-blue-600 transition-colors group-hover:bg-blue-500 group-hover:text-white">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                                        </svg>
+                                    </div>
+                                    <div class="text-left font-medium text-sm">
+                                        <p class="text-[10px] font-bold uppercase tracking-widest text-blue-500/80">System</p>
+                                        <p>Administrator</p>
+                                    </div>
+                                </span>
+                                <svg id="adminToggleIcon" xmlns="http://www.w3.org/2000/svg"
+                                    class="h-4 w-4 text-slate-300 transition-transform duration-300 group-hover:text-blue-600"
+                                    viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </button>
+
+                            <div id="adminSubmenu" class="space-y-1 pl-4 hidden">
+                                <div class="relative ml-4 space-y-1 border-l-2 border-slate-100 pl-4 py-1">
+                                    <a href="{{ route('admin.users') }}"
+                                        class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-blue-50 hover:text-blue-700">
+                                        <span>User Management</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
                         <a href="{{ route('pos2.dashboard') }}"
                             class="group flex items-center justify-between rounded-xl border border-transparent px-4 py-3 text-slate-600 transition-all hover:bg-slate-50 hover:text-emerald-600">
                             <span class="flex items-center gap-3">
@@ -684,6 +737,20 @@
             modal.classList.add('opacity-0', 'pointer-events-none');
             modalContent.classList.remove('scale-100');
             modalContent.classList.add('scale-95');
+        }
+
+        // Admin Menu Toggle Function
+        function toggleAdminMenu() {
+            const submenu = document.getElementById('adminSubmenu');
+            const icon = document.getElementById('adminToggleIcon');
+
+            if (submenu.classList.contains('hidden')) {
+                submenu.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                submenu.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
         }
 
         // Toggle Tracking menu

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 use Carbon\Carbon;
 
 class DoItemSeeder extends Seeder
@@ -13,6 +14,9 @@ class DoItemSeeder extends Seeder
      */
     public function run(): void
     {
+        Schema::disableForeignKeyConstraints();
+        DB::table('do_items')->truncate();
+        Schema::enableForeignKeyConstraints();
         $doItems = [
             [
                 'vbeln' => '8000123456',

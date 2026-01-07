@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 use Carbon\Carbon;
 use App\Models\AntrianPos1;
 use App\Models\DoItem;
@@ -15,6 +16,9 @@ class CekBarangSeeder extends Seeder
      */
     public function run(): void
     {
+        Schema::disableForeignKeyConstraints();
+        DB::table('cek_barang')->truncate();
+        Schema::enableForeignKeyConstraints();
         // Ambil data dari antrian_pos1
         $antrianList = AntrianPos1::limit(10)->get();
 

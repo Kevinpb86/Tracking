@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 use App\Models\Hse;
 use App\Models\AntrianPos1;
 use Carbon\Carbon;
@@ -15,6 +16,9 @@ class HSESeeder extends Seeder
      */
     public function run(): void
     {
+        Schema::disableForeignKeyConstraints();
+        DB::table('hse')->truncate();
+        Schema::enableForeignKeyConstraints();
         // Ensure Antrian data exists
         if (AntrianPos1::count() === 0) {
             $this->call(AntrianPos1Seeder::class);

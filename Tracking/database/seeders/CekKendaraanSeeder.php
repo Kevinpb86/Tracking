@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 use Carbon\Carbon;
 
 class CekKendaraanSeeder extends Seeder
@@ -13,7 +14,9 @@ class CekKendaraanSeeder extends Seeder
      */
     public function run(): void
     {
+        Schema::disableForeignKeyConstraints();
         DB::table('cek_kendaraan')->truncate();
+        Schema::enableForeignKeyConstraints();
 
         $data = [
             // 1. Matches ANT-001: B 1234 ABC, Budi Santoso
@@ -47,7 +50,7 @@ class CekKendaraanSeeder extends Seeder
                 'waktu_keluar' => '08:45:00',
                 'nomor_polisi' => 'B 5678 DEF',
                 'jenis_kendaraan' => 'Tangki', // Mapped from Use Oil
-                'nama_driver' => 'Joko Widodo',
+                'nama_driver' => 'Bambang Prasetyo',
                 'perusahaan' => 'PT Oil Trans',
                 'surat_jalan' => true,
                 'stnk_valid' => true,
@@ -71,7 +74,7 @@ class CekKendaraanSeeder extends Seeder
                 'waktu_keluar' => null, // Still inside
                 'nomor_polisi' => 'B 9012 GHI',
                 'jenis_kendaraan' => 'Truk', // Mapped from Raw Material
-                'nama_driver' => 'Siti Aminah',
+                'nama_driver' => 'Anisa Putri',
                 'perusahaan' => 'CV Raw Material Jaya',
                 'surat_jalan' => true,
                 'stnk_valid' => true,
@@ -95,7 +98,7 @@ class CekKendaraanSeeder extends Seeder
                 'waktu_keluar' => null,
                 'nomor_polisi' => 'B 3456 JKL',
                 'jenis_kendaraan' => 'Mobil Box', // Mapped from Drum
-                'nama_driver' => 'Rudi Hartono',
+                'nama_driver' => 'Deddy Setiawan',
                 'perusahaan' => 'PT Drum Corp',
                 'surat_jalan' => true,
                 'stnk_valid' => true,
@@ -119,7 +122,7 @@ class CekKendaraanSeeder extends Seeder
                 'waktu_keluar' => '09:10:00',
                 'nomor_polisi' => 'B 7890 MNO',
                 'jenis_kendaraan' => 'Truk', // Finish Product
-                'nama_driver' => 'Dewi Sartika',
+                'nama_driver' => 'Fitri Handayani',
                 'perusahaan' => 'PT Logistics One',
                 'surat_jalan' => false, // Missing Doc
                 'stnk_valid' => true,
@@ -143,7 +146,7 @@ class CekKendaraanSeeder extends Seeder
                 'waktu_keluar' => null,
                 'nomor_polisi' => 'D 1234 PQR',
                 'jenis_kendaraan' => 'Tangki', // Use Oil
-                'nama_driver' => 'Ahmad Dahlan',
+                'nama_driver' => 'Guntur Saputra',
                 'perusahaan' => 'PT Oil Trans',
                 'surat_jalan' => true,
                 'stnk_valid' => true,
@@ -167,7 +170,7 @@ class CekKendaraanSeeder extends Seeder
                 'waktu_keluar' => '15:00:00',
                 'nomor_polisi' => 'F 5678 STU',
                 'jenis_kendaraan' => 'Truk', // Raw Material
-                'nama_driver' => 'Kartini',
+                'nama_driver' => 'Indah Lestari',
                 'perusahaan' => 'CV Raw Material Jaya',
                 'surat_jalan' => true,
                 'stnk_valid' => true,
@@ -191,7 +194,7 @@ class CekKendaraanSeeder extends Seeder
                 'waktu_keluar' => '15:30:00',
                 'nomor_polisi' => 'A 9012 VWX',
                 'jenis_kendaraan' => 'Mobil Box', // Drum
-                'nama_driver' => 'Hasyim Asyari',
+                'nama_driver' => 'Joko Susilo',
                 'perusahaan' => 'PT Drum Corp',
                 'surat_jalan' => true,
                 'stnk_valid' => true,
@@ -215,7 +218,7 @@ class CekKendaraanSeeder extends Seeder
                 'waktu_keluar' => null,
                 'nomor_polisi' => 'H 3456 YZ',
                 'jenis_kendaraan' => 'Truk', // Finish Product
-                'nama_driver' => 'Cut Nyak Dien',
+                'nama_driver' => 'Kurniawati',
                 'perusahaan' => 'PT Logistics One',
                 'surat_jalan' => true,
                 'stnk_valid' => true,
@@ -239,7 +242,7 @@ class CekKendaraanSeeder extends Seeder
                 'waktu_keluar' => '16:00:00',
                 'nomor_polisi' => 'L 7890 AB',
                 'jenis_kendaraan' => 'Tangki', // Use Oil
-                'nama_driver' => 'Pattimura',
+                'nama_driver' => 'Lukman Hakim',
                 'perusahaan' => 'PT Oil Trans',
                 'surat_jalan' => true,
                 'stnk_valid' => true,

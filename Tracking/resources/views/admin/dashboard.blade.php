@@ -194,11 +194,11 @@
                                     </div>
                                     <div class="text-left font-medium text-sm">
                                         <p class="text-xs font-bold uppercase tracking-wider text-purple-500/80">SCM</p>
-                                        <p>Supply Chain Management</p>
+                                        <p>Logistics & Supply</p>
                                     </div>
                                 </span>
                                 <svg id="scmToggleIcon" xmlns="http://www.w3.org/2000/svg"
-                                    class="h-4 w-4 text-purple-400 transition-transform duration-300 group-hover:text-purple-600"
+                                    class="h-4 w-4 text-slate-300 transition-transform duration-300 group-hover:text-purple-600"
                                     viewBox="0 0 20 20" fill="currentColor">
                                     <path fill-rule="evenodd"
                                         d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
@@ -210,13 +210,7 @@
                                 <div class="relative ml-4 space-y-1 border-l-2 border-slate-100 pl-4 py-1">
                                     <a href="{{ route('scm.do-item.input') }}"
                                         class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-purple-50 hover:text-purple-700">
-                                        <span>DO Item</span>
-                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                            class="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100"
-                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-                                        </svg>
+                                        <span>Form DO Item</span>
                                     </a>
                                 </div>
                             </div>

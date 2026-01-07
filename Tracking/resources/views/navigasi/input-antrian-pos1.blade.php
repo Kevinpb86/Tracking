@@ -750,10 +750,14 @@
                                             <div class="space-y-2">
                                                 <label for="tujuan"
                                                     class="block text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Tujuan
-                                                    Gate / Area</label>
-                                                <input type="text" id="tujuan" name="tujuan"
-                                                    placeholder="Gudang / Produksi / Kantor"
-                                                    class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 px-6 font-bold text-slate-900 transition-all focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-blue-500/5">
+                                                    Gate / Area <span class="text-rose-500">*</span></label>
+                                                <select id="tujuan" name="tujuan" required
+                                                    class="w-full rounded-2xl border-2 border-slate-100 bg-slate-50 py-4 px-6 font-bold text-slate-900 transition-all focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-blue-500/5 appearance-none">
+                                                    <option value="" disabled selected>Pilih Gate / Area</option>
+                                                    <option value="Gate 1">Gate 1</option>
+                                                    <option value="Gate 2">Gate 2</option>
+                                                    <option value="Gate 3">Gate 3</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>

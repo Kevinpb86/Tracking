@@ -466,7 +466,7 @@
                                 Total: <span class="text-blue-600 text-lg ml-1">{{ $cekKendaraanList->count() }}</span>
                             </div>
                             <a href="{{ route('cek-kendaraan.input') }}"
-                                class="inline-flex items-center justify-center gap-2 rounded-2xl bg-slate-900 px-6 py-3.5 text-sm font-bold text-white shadow-xl shadow-slate-900/20 transition-all hover:bg-slate-800 hover:scale-105 active:scale-95">
+                                class="inline-flex items-center justify-center gap-2 rounded-2xl bg-blue-600 px-6 py-3.5 text-sm font-bold text-white shadow-xl shadow-blue-600/20 transition-all hover:bg-blue-700 hover:scale-105 active:scale-95">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
                                     fill="currentColor">
                                     <path fill-rule="evenodd"
@@ -721,7 +721,8 @@
                     </svg>
                 </div>
                 <h3 class="text-xl font-bold text-slate-900">Hapus Data Pemeriksaan</h3>
-                <p class="mt-2 text-sm text-slate-500">Apakah Anda yakin ingin menghapus data pemeriksaan untuk kendaraan <span id="deleteVehicleNopol" class="font-bold text-slate-900"></span>?</p>
+                <p class="mt-2 text-sm text-slate-500">Apakah Anda yakin ingin menghapus data pemeriksaan untuk
+                    kendaraan <span id="deleteVehicleNopol" class="font-bold text-slate-900"></span>?</p>
                 <p class="text-xs text-rose-500 mt-1">Tindakan ini tidak dapat dibatalkan.</p>
             </div>
             <div class="flex gap-3">
@@ -832,7 +833,7 @@
             confirmDeleteVehicleBtn.onclick = () => {
                 document.getElementById(`delete-vehicle-form-${id}`).submit();
             };
-            
+
             deleteVehicleModal.classList.remove('opacity-0', 'pointer-events-none');
             deleteVehicleModalContent.classList.remove('scale-95');
             deleteVehicleModalContent.classList.add('scale-100');

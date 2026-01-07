@@ -107,18 +107,21 @@
                     </div>
 
                     <nav class="space-y-2">
+
                         {{-- Admin Dashboard Link --}}
                         <a href="{{ route('admin.dashboard') }}"
-                            class="flex items-center justify-between rounded-xl bg-blue-600 px-4 py-3 text-white shadow-lg shadow-blue-500/30 transition-all hover:bg-blue-700 hover:shadow-blue-600/40 hover:-translate-y-0.5">
+                            class="group flex items-center justify-between rounded-xl border border-transparent px-4 py-3 text-slate-600 transition-all hover:bg-blue-50 hover:text-blue-600">
                             <span class="flex items-center gap-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                                    stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                                </svg>
-                                <span class="font-semibold text-sm">Admin Dashboard</span>
+                                <div
+                                    class="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-100 text-blue-600 transition-colors group-hover:bg-blue-500 group-hover:text-white">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                                    </svg>
+                                </div>
+                                <span class="font-medium text-sm">Admin Dashboard</span>
                             </span>
-                            <div class="h-1.5 w-1.5 rounded-full bg-white/90"></div>
                         </a>
 
                         {{-- Administrator Menu Accordion --}}
@@ -242,13 +245,9 @@
 
                             <div id="scmSubmenu" class="space-y-1 pl-4">
                                 <div class="relative ml-4 space-y-1 border-l-2 border-slate-100 pl-4 py-1">
-                                    <a href="{{ route('scm.do-item.index') }}"
-                                        class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-purple-50 hover:text-purple-700">
-                                        <span>Daftar DO</span>
-                                    </a>
                                     <a href="{{ route('scm.do-item.input') }}"
                                         class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm bg-purple-50 text-purple-700 font-semibold transition-colors">
-                                        <span>Input DO Item</span>
+                                        <span>Form DO Item</span>
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-purple-600"
                                             viewBox="0 0 20 20" fill="currentColor">
                                             <path fill-rule="evenodd"
@@ -347,52 +346,54 @@
                 <section class="relative mx-auto w-full flex-1 px-4 py-8 sm:px-6 lg:px-8 max-w-7xl">
                     <!-- Header Section - PREMIUM REDESIGN -->
                     <div
-                        class="relative mb-8 overflow-hidden rounded-3xl bg-slate-900 border border-slate-800 shadow-2xl">
+                        class="relative mb-8 overflow-hidden rounded-3xl bg-gradient-to-br from-purple-700 to-indigo-600 border border-purple-400/30 shadow-2xl shadow-purple-500/20">
                         {{-- Decorative Glows --}}
-                        <div class="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-purple-600/20 blur-[80px]">
+                        <div class="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-white/10 blur-[80px]">
                         </div>
-                        <div class="absolute -left-24 -bottom-24 h-72 w-72 rounded-full bg-blue-600/10 blur-[80px]">
+                        <div class="absolute -left-24 -bottom-24 h-72 w-72 rounded-full bg-purple-400/20 blur-[80px]">
                         </div>
 
                         <div class="relative flex flex-col items-center px-8 py-10 text-center sm:px-16 lg:py-12">
                             <div
-                                class="mb-4 inline-flex items-center gap-2 rounded-full bg-purple-500/10 px-4 py-1 border border-purple-500/20 backdrop-blur-md">
+                                class="mb-4 inline-flex items-center gap-2 rounded-full bg-white/20 px-4 py-1 border border-white/30 backdrop-blur-md">
                                 <span class="relative flex h-1.5 w-1.5">
                                     <span
-                                        class="absolute inline-flex h-full w-full animate-ping rounded-full bg-purple-400 opacity-75"></span>
-                                    <span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-purple-500"></span>
+                                        class="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-75"></span>
+                                    <span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-white"></span>
                                 </span>
-                                <span class="text-[9px] font-bold uppercase tracking-[0.2em] text-purple-300">SCM
+                                <span class="text-[9px] font-bold uppercase tracking-[0.2em] text-white">SCM
                                     Workspace</span>
                             </div>
 
                             <h1 class="mb-4 text-3xl font-black tracking-tight text-white sm:text-5xl leading-tight">
-                                Input <span
-                                    class="bg-gradient-to-r from-purple-400 to-indigo-400 bg-clip-text text-transparent">DO
-                                    Item</span>
+                                Input <span class="text-purple-100 italic">DO Item</span>
                             </h1>
 
-                            <p class="max-w-2xl text-base font-medium text-slate-400 leading-relaxed">
+                            <p class="max-w-2xl text-base font-medium text-purple-50/80 leading-relaxed">
                                 Sistem manajemen rantai pasokan terpadu untuk efisiensi operasional.
-                                Pastikan validitas data dokumen <span class="text-purple-400">VBELN</span> dan <span
-                                    class="text-purple-400">POSNR</span>.
+                                Pastikan validitas data dokumen <span
+                                    class="text-white font-bold underline decoration-purple-400">VBELN</span> dan <span
+                                    class="text-white font-bold underline decoration-purple-400">POSNR</span>.
                             </p>
 
                             {{-- Stats/Info Bar --}}
                             <div class="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-3 w-full max-w-2xl">
-                                <div class="rounded-xl bg-white/5 p-3 border border-white/10 backdrop-blur-md">
-                                    <p class="text-[9px] font-bold uppercase tracking-widest text-slate-500">Form
+                                <div
+                                    class="rounded-xl bg-white/10 p-3 border border-white/20 backdrop-blur-md transition-all hover:bg-white/20">
+                                    <p class="text-[9px] font-bold uppercase tracking-widest text-purple-100">Form
                                         Status</p>
-                                    <p class="text-xs font-bold text-emerald-400">Ready</p>
+                                    <p class="text-xs font-bold text-white">Ready</p>
                                 </div>
-                                <div class="rounded-xl bg-white/5 p-3 border border-white/10 backdrop-blur-md">
-                                    <p class="text-[9px] font-bold uppercase tracking-widest text-slate-500">Module</p>
+                                <div
+                                    class="rounded-xl bg-white/10 p-3 border border-white/20 backdrop-blur-md transition-all hover:bg-white/20">
+                                    <p class="text-[9px] font-bold uppercase tracking-widest text-purple-100">Module</p>
                                     <p class="text-xs font-bold text-white">Supply Chain</p>
                                 </div>
-                                <div class="rounded-xl bg-white/5 p-3 border border-white/10 backdrop-blur-md">
-                                    <p class="text-[9px] font-bold uppercase tracking-widest text-slate-500">Integrity
+                                <div
+                                    class="rounded-xl bg-white/10 p-3 border border-white/20 backdrop-blur-md transition-all hover:bg-white/20">
+                                    <p class="text-[9px] font-bold uppercase tracking-widest text-purple-100">Integrity
                                     </p>
-                                    <p class="text-xs font-bold text-blue-400">High Priority</p>
+                                    <p class="text-xs font-bold text-white">High Priority</p>
                                 </div>
                             </div>
                         </div>
@@ -664,7 +665,6 @@
         function toggleAdminMenu() {
             const submenu = document.getElementById('adminSubmenu');
             const icon = document.getElementById('adminToggleIcon');
-
             if (submenu.classList.contains('hidden')) {
                 submenu.classList.remove('hidden');
                 icon.classList.add('rotate-180');

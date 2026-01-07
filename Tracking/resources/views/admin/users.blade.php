@@ -166,6 +166,43 @@
                                 </div>
                             </span>
                         </a>
+
+                        {{-- SCM Menu Accordion --}}
+                        <div class="space-y-1">
+                            <button type="button" onclick="toggleSCMMenu()"
+                                class="group flex w-full items-center justify-between rounded-xl border border-transparent px-4 py-3 text-slate-600 transition-all hover:bg-purple-50 hover:text-purple-600">
+                                <span class="flex items-center gap-3">
+                                    <div
+                                        class="flex h-8 w-8 items-center justify-center rounded-lg bg-purple-100 text-purple-600 transition-colors group-hover:bg-purple-500 group-hover:text-white">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                                        </svg>
+                                    </div>
+                                    <div class="text-left font-medium text-sm">
+                                        <p class="text-xs font-bold uppercase tracking-wider text-purple-500/80">SCM</p>
+                                        <p>Logistics & Supply</p>
+                                    </div>
+                                </span>
+                                <svg id="scmToggleIcon" xmlns="http://www.w3.org/2000/svg"
+                                    class="h-4 w-4 text-slate-300 transition-transform duration-300 group-hover:text-purple-600"
+                                    viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </button>
+
+                            <div id="scmSubmenu" class="hidden space-y-1 pl-4">
+                                <div class="relative ml-4 space-y-1 border-l-2 border-slate-100 pl-4 py-1">
+                                    <a href="{{ route('scm.do-item.input') }}"
+                                        class="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-purple-50 hover:text-purple-700">
+                                        <span>Form DO Item</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </nav>
                 </div>
             </div>
@@ -254,9 +291,9 @@
                         class="absolute -left-20 -bottom-20 h-56 w-56 rounded-full bg-white/5 blur-3xl group-hover:bg-white/15 transition-colors duration-700">
                     </div>
 
-                    <div class="relative flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-                        <div class="max-w-2xl space-y-3">
-                            <div class="flex items-center gap-3">
+                    <div class="relative flex flex-col items-center text-center gap-6">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-center gap-3">
                                 <span
                                     class="rounded-full bg-white/10 px-4 py-1.5 text-[9px] font-bold uppercase tracking-[0.3em] text-white border border-white/20">
                                     Administrator Access
@@ -271,24 +308,13 @@
                                         Active</span>
                                 </div>
                             </div>
-                            <h1 class="text-2xl font-black text-white sm:text-4xl leading-tight tracking-tight">
+                            <h1 class="text-3xl font-black text-white sm:text-5xl leading-tight tracking-tight">
                                 User <span class="text-blue-100 italic">Management</span>
                             </h1>
-                            <p class="text-sm text-blue-50/80 leading-relaxed max-w-xl">
+                            <p class="text-sm text-blue-50/90 leading-relaxed max-w-2xl mx-auto">
                                 Kelola hak akses, perbarui informasi profil, dan pantau aktivitas pengguna dalam
-                                ekosistem Tracking System PT. WGI.
+                                ekosistem Tracking System PT. WGI secara tersentralisasi.
                             </p>
-                        </div>
-
-                        <div class="flex flex-col items-center lg:items-end">
-                            <button
-                                class="px-8 py-4 bg-white text-blue-900 rounded-2xl font-bold shadow-xl transition-all hover:bg-blue-50 hover:-translate-y-1 active:scale-95 flex items-center gap-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                                    stroke="currentColor" stroke-width="2.5">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
-                                </svg>
-                                Register New User
-                            </button>
                         </div>
                     </div>
                 </div>
@@ -604,6 +630,18 @@
         function toggleAdminMenu() {
             const submenu = document.getElementById('adminSubmenu');
             const icon = document.getElementById('adminToggleIcon');
+            if (submenu.classList.contains('hidden')) {
+                submenu.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                submenu.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
+        }
+
+        function toggleSCMMenu() {
+            const submenu = document.getElementById('scmSubmenu');
+            const icon = document.getElementById('scmToggleIcon');
             if (submenu.classList.contains('hidden')) {
                 submenu.classList.remove('hidden');
                 icon.classList.add('rotate-180');

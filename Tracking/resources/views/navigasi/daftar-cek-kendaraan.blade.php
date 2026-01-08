@@ -446,9 +446,8 @@
                         </div>
                     @endif
 
-                    {{-- Action Toolbar --}}
                     <div class="mb-10 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-                        <div class="relative flex-1 max-w-lg">
+                        <form action="{{ route('cek-kendaraan.daftar') }}" method="GET" class="relative flex-1 max-w-lg">
                             <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-slate-400"
                                     viewBox="0 0 20 20" fill="currentColor">
@@ -457,9 +456,9 @@
                                         clip-rule="evenodd" />
                                 </svg>
                             </div>
-                            <input type="text" placeholder="Cari data (Nopol, Supir, Perusahaan)..."
+                            <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari data (Nopol, Supir, Perusahaan)..."
                                 class="w-full rounded-2xl border-0 bg-white py-4 pl-12 pr-4 text-sm font-medium text-slate-600 shadow-lg shadow-slate-200/50 ring-1 ring-slate-100 transition focus:ring-2 focus:ring-blue-500/50 outline-none placeholder:text-slate-400">
-                        </div>
+                        </form>
 
                         <div class="flex items-center gap-4">
                             <div class="text-xs font-bold uppercase tracking-wider text-slate-400">
@@ -477,203 +476,204 @@
                             </a>
                         </div>
                     </div>
-
-                    @if($cekKendaraanList->isEmpty())
-                        <div
-                            class="flex flex-col items-center justify-center rounded-[2rem] border-2 border-dashed border-slate-200 bg-slate-50/50 py-24 text-center">
-                            <div
-                                class="mb-6 flex h-24 w-24 items-center justify-center rounded-full bg-white shadow-xl shadow-slate-200/50">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-slate-300" viewBox="0 0 20 20"
-                                    fill="currentColor">
-                                    <path
-                                        d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
-                                    <path
-                                        d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V5a1 1 0 00-1-1H3zM14 7a1 1 0 00-1 1v6.05A2.5 2.5 0 0115.95 16H17a1 1 0 001-1v-5a1 1 0 00-.293-.707l-2-2A1 1 0 0015 7h-1z" />
-                                </svg>
-                            </div>
-                            <h3 class="text-xl font-bold text-slate-800">Belum Ada Data Pemeriksaan</h3>
-                            <p class="mt-2 text-slate-500 max-w-sm mx-auto">Data pemeriksaan kendaraan Anda akan muncul di
-                                sini. Mulai dengan menginput pemeriksaan baru.</p>
-                        </div>
-                    @else
-                        {{-- Table Layout --}}
-                        <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg">
-                            <div class="overflow-x-auto">
-                                <table class="w-full min-w-[1200px]">
-                                    <thead>
-                                        <tr class="bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-sm">
-                                            <th
-                                                class="px-4 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider w-16">
-                                                No
-                                            </th>
-                                            <th
-                                                class="px-4 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider w-24">
-                                                Tanggal
-                                            </th>
-                                            <th
-                                                class="px-4 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider w-24">
-                                                Jam
-                                            </th>
-                                            <th
-                                                class="px-4 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider w-28">
-                                                No. Polisi
-                                            </th>
-                                            <th
-                                                class="px-4 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider w-36">
-                                                Supir
-                                            </th>
-                                            <th
-                                                class="px-4 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider w-32">
-                                                Perusahaan
-                                            </th>
-                                            <th
-                                                class="px-4 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider w-28">
-                                                Jenis
-                                            </th>
-                                            <th
-                                                class="px-4 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider w-32">
-                                                Hasil
-                                            </th>
-                                            <th
-                                                class="px-4 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider w-32">
-                                                Petugas
-                                            </th>
-                                            <th
-                                                class="px-4 py-2.5 text-center text-[11px] font-bold uppercase tracking-wider w-20">
-                                                Action
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="divide-y divide-slate-100">
-                                        @foreach($cekKendaraanList as $index => $item)
-                                            @php
-                                                $hasilColor = match ($item->hasil_pemeriksaan) {
-                                                    'Lolos' => 'emerald',
-                                                    'Lolos Bersyarat' => 'amber',
-                                                    'Tidak Lolos' => 'rose',
-                                                    default => 'slate'
-                                                };
-                                            @endphp
-                                            <tr class="bg-white hover:bg-slate-50/80 transition-colors duration-150 group">
-                                                <td class="px-4 py-2.5">
-                                                    <span
-                                                        class="inline-block font-bold text-slate-700 bg-slate-100 px-2 py-0.5 rounded text-xs border border-slate-200 group-hover:bg-white group-hover:border-blue-200 group-hover:text-blue-700 transition-colors">
-                                                        {{ $index + 1 }}
-                                                    </span>
-                                                </td>
-                                                <td class="px-4 py-2.5 text-xs font-medium text-slate-500 whitespace-nowrap">
-                                                    {{ $item->tanggal->format('d-m-Y') }}
-                                                </td>
-                                                <td class="px-4 py-2.5 text-xs font-medium text-slate-500 whitespace-nowrap">
-                                                    {{ $item->waktu_masuk->format('H:i') }}
-                                                </td>
-                                                <td class="px-4 py-2.5">
-                                                    <span
-                                                        class="text-xs font-bold text-slate-700 font-mono bg-slate-50 px-1.5 py-0.5 rounded border border-slate-200">
-                                                        {{ $item->nomor_polisi }}
-                                                    </span>
-                                                </td>
-                                                <td class="px-4 py-2.5 text-xs font-medium text-slate-600 max-w-[150px]">
-                                                    <div class="flex items-center gap-2">
-                                                        <div
-                                                            class="h-5 w-5 rounded-full bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-500">
-                                                            {{ substr($item->nama_driver, 0, 1) }}
-                                                        </div>
-                                                        <span class="truncate">{{ $item->nama_driver }}</span>
-                                                    </div>
-                                                </td>
-                                                <td class="px-4 py-2.5 text-xs text-slate-600">
-                                                    {{ $item->perusahaan ?? '-' }}
-                                                </td>
-                                                <td class="px-4 py-2.5 text-xs text-slate-600">
-                                                    {{ $item->jenis_kendaraan }}
-                                                </td>
-                                                <td class="px-4 py-2.5 whitespace-nowrap">
-                                                    <span
-                                                        class="inline-flex items-center justify-center min-w-[80px] rounded-full bg-{{ $hasilColor }}-50 px-2.5 py-1 text-[11px] font-bold tracking-wide text-{{ $hasilColor }}-700 border border-{{ $hasilColor }}-200">
-                                                        {{ strtoupper($item->hasil_pemeriksaan) }}
-                                                    </span>
-                                                </td>
-                                                <td class="px-4 py-2.5 text-xs text-slate-600">
-                                                    {{ $item->nama_petugas }}
-                                                </td>
-                                                <td class="px-4 py-2.5 text-center whitespace-nowrap">
-                                                    <div class="relative" x-data="{ open: false }">
-                                                        <button @click="open = !open"
-                                                            class="text-slate-400 hover:text-blue-600 transition-colors p-1 rounded-full hover:bg-slate-100 focus:outline-none border border-transparent focus:border-blue-200 cursor-pointer">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
-                                                                viewBox="0 0 24 24" stroke="currentColor">
-                                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                                    stroke-width="2"
-                                                                    d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-                                                            </svg>
-                                                        </button>
-
-                                                        <!-- Dropdown Menu -->
-                                                        <div x-show="open" @click.away="open = false"
-                                                            x-transition:enter="transition ease-out duration-100"
-                                                            x-transition:enter-start="transform opacity-0 scale-95"
-                                                            x-transition:enter-end="transform opacity-100 scale-100"
-                                                            x-transition:leave="transition ease-in duration-75"
-                                                            x-transition:leave-start="transform opacity-100 scale-100"
-                                                            x-transition:leave-end="transform opacity-0 scale-95"
-                                                            class="absolute right-0 top-8 z-10 w-44 origin-top-right rounded-xl border border-slate-100 bg-white shadow-xl focus:outline-none overflow-hidden text-left">
-                                                            <div class="py-1">
-                                                                <a href="{{ route('cek-kendaraan.edit', $item->id) }}"
-                                                                    class="flex items-center gap-2 px-4 py-2 text-xs font-semibold text-blue-600 hover:bg-blue-50 transition-colors cursor-pointer">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4"
-                                                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                                            stroke-width="2"
-                                                                            d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                                                                    </svg>
-                                                                    Edit
-                                                                </a>
-
-                                                                <button type="button"
-                                                                    @click="open = false; confirmDeleteVehicle({{ $item->id }}, '{{ $item->nomor_polisi }}')"
-                                                                    class="flex w-full items-center gap-2 px-4 py-2 text-xs font-semibold text-rose-600 hover:bg-rose-50 transition-colors cursor-pointer border-t border-slate-50">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4"
-                                                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                                            stroke-width="2"
-                                                                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                                                    </svg>
-                                                                    Delete
-                                                                </button>
-
-                                                                <a href="{{ route('cek-kendaraan.export-pdf', $item->id) }}"
-                                                                    target="_blank"
-                                                                    class="flex items-center gap-2 px-4 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-50 transition-colors border-t border-slate-100 cursor-pointer">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4"
-                                                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                                            stroke-width="2"
-                                                                            d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
-                                                                    </svg>
-                                                                    Export PDF
-                                                                </a>
-                                                            </div>
-                                                        </div>
-
-                                                        <form id="delete-vehicle-form-{{ $item->id }}"
-                                                            action="{{ route('cek-kendaraan.destroy', $item->id) }}"
-                                                            method="POST" class="hidden">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                        </form>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    @endif
                 </div>
-            </section>
-        </main>
+
+                @if($cekKendaraanList->isEmpty())
+                    <div
+                        class="flex flex-col items-center justify-center rounded-[2rem] border-2 border-dashed border-slate-200 bg-slate-50/50 py-24 text-center">
+                        <div
+                            class="mb-6 flex h-24 w-24 items-center justify-center rounded-full bg-white shadow-xl shadow-slate-200/50">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-slate-300" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path
+                                    d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
+                                <path
+                                    d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V5a1 1 0 00-1-1H3zM14 7a1 1 0 00-1 1v6.05A2.5 2.5 0 0115.95 16H17a1 1 0 001-1v-5a1 1 0 00-.293-.707l-2-2A1 1 0 0015 7h-1z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-800">Belum Ada Data Pemeriksaan</h3>
+                        <p class="mt-2 text-slate-500 max-w-sm mx-auto">Data pemeriksaan kendaraan Anda akan muncul di
+                            sini. Mulai dengan menginput pemeriksaan baru.</p>
+                    </div>
+                @else
+                    {{-- Table Layout --}}
+                    <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg">
+                        <div class="overflow-x-auto">
+                            <table class="w-full min-w-[1200px]">
+                                <thead>
+                                    <tr class="bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-sm">
+                                        <th
+                                            class="px-4 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider w-16">
+                                            No
+                                        </th>
+                                        <th
+                                            class="px-4 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider w-24">
+                                            Tanggal
+                                        </th>
+                                        <th
+                                            class="px-4 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider w-24">
+                                            Jam
+                                        </th>
+                                        <th
+                                            class="px-4 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider w-28">
+                                            No. Polisi
+                                        </th>
+                                        <th
+                                            class="px-4 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider w-36">
+                                            Supir
+                                        </th>
+                                        <th
+                                            class="px-4 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider w-32">
+                                            Perusahaan
+                                        </th>
+                                        <th
+                                            class="px-4 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider w-28">
+                                            Jenis
+                                        </th>
+                                        <th
+                                            class="px-4 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider w-32">
+                                            Hasil
+                                        </th>
+                                        <th
+                                            class="px-4 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider w-32">
+                                            Petugas
+                                        </th>
+                                        <th
+                                            class="px-4 py-2.5 text-center text-[11px] font-bold uppercase tracking-wider w-20">
+                                            Action
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-100">
+                                    @foreach($cekKendaraanList as $index => $item)
+                                        @php
+                                            $hasilColor = match ($item->hasil_pemeriksaan) {
+                                                'Lolos' => 'emerald',
+                                                'Lolos Bersyarat' => 'amber',
+                                                'Tidak Lolos' => 'rose',
+                                                default => 'slate'
+                                            };
+                                        @endphp
+                                        <tr class="bg-white hover:bg-slate-50/80 transition-colors duration-150 group">
+                                            <td class="px-4 py-2.5">
+                                                <span
+                                                    class="inline-block font-bold text-slate-700 bg-slate-100 px-2 py-0.5 rounded text-xs border border-slate-200 group-hover:bg-white group-hover:border-blue-200 group-hover:text-blue-700 transition-colors">
+                                                    {{ $index + 1 }}
+                                                </span>
+                                            </td>
+                                            <td class="px-4 py-2.5 text-xs font-medium text-slate-500 whitespace-nowrap">
+                                                {{ $item->tanggal->format('d-m-Y') }}
+                                            </td>
+                                            <td class="px-4 py-2.5 text-xs font-medium text-slate-500 whitespace-nowrap">
+                                                {{ $item->waktu_masuk->format('H:i') }}
+                                            </td>
+                                            <td class="px-4 py-2.5">
+                                                <span
+                                                    class="text-xs font-bold text-slate-700 font-mono bg-slate-50 px-1.5 py-0.5 rounded border border-slate-200">
+                                                    {{ $item->nomor_polisi }}
+                                                </span>
+                                            </td>
+                                            <td class="px-4 py-2.5 text-xs font-medium text-slate-600 max-w-[150px]">
+                                                <div class="flex items-center gap-2">
+                                                    <div
+                                                        class="h-5 w-5 rounded-full bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-500">
+                                                        {{ substr($item->nama_driver, 0, 1) }}
+                                                    </div>
+                                                    <span class="truncate">{{ $item->nama_driver }}</span>
+                                                </div>
+                                            </td>
+                                            <td class="px-4 py-2.5 text-xs text-slate-600">
+                                                {{ $item->perusahaan ?? '-' }}
+                                            </td>
+                                            <td class="px-4 py-2.5 text-xs text-slate-600">
+                                                {{ $item->jenis_kendaraan }}
+                                            </td>
+                                            <td class="px-4 py-2.5 whitespace-nowrap">
+                                                <span
+                                                    class="inline-flex items-center justify-center min-w-[80px] rounded-full bg-{{ $hasilColor }}-50 px-2.5 py-1 text-[11px] font-bold tracking-wide text-{{ $hasilColor }}-700 border border-{{ $hasilColor }}-200">
+                                                    {{ strtoupper($item->hasil_pemeriksaan) }}
+                                                </span>
+                                            </td>
+                                            <td class="px-4 py-2.5 text-xs text-slate-600">
+                                                {{ $item->nama_petugas }}
+                                            </td>
+                                            <td class="px-4 py-2.5 text-center whitespace-nowrap">
+                                                <div class="relative" x-data="{ open: false }">
+                                                    <button @click="open = !open"
+                                                        class="text-slate-400 hover:text-blue-600 transition-colors p-1 rounded-full hover:bg-slate-100 focus:outline-none border border-transparent focus:border-blue-200 cursor-pointer">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                                                            viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                stroke-width="2"
+                                                                d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+                                                        </svg>
+                                                    </button>
+
+                                                    <!-- Dropdown Menu -->
+                                                    <div x-show="open" @click.away="open = false"
+                                                        x-transition:enter="transition ease-out duration-100"
+                                                        x-transition:enter-start="transform opacity-0 scale-95"
+                                                        x-transition:enter-end="transform opacity-100 scale-100"
+                                                        x-transition:leave="transition ease-in duration-75"
+                                                        x-transition:leave-start="transform opacity-100 scale-100"
+                                                        x-transition:leave-end="transform opacity-0 scale-95"
+                                                        class="absolute right-0 top-8 z-10 w-44 origin-top-right rounded-xl border border-slate-100 bg-white shadow-xl focus:outline-none overflow-hidden text-left">
+                                                        <div class="py-1">
+                                                            <a href="{{ route('cek-kendaraan.edit', $item->id) }}"
+                                                                class="flex items-center gap-2 px-4 py-2 text-xs font-semibold text-blue-600 hover:bg-blue-50 transition-colors cursor-pointer">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4"
+                                                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                                        stroke-width="2"
+                                                                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                                                </svg>
+                                                                Edit
+                                                            </a>
+
+                                                            <button type="button"
+                                                                @click="open = false; confirmDeleteVehicle({{ $item->id }}, '{{ $item->nomor_polisi }}')"
+                                                                class="flex w-full items-center gap-2 px-4 py-2 text-xs font-semibold text-rose-600 hover:bg-rose-50 transition-colors cursor-pointer border-t border-slate-50">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4"
+                                                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                                        stroke-width="2"
+                                                                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                                </svg>
+                                                                Delete
+                                                            </button>
+
+                                                            <a href="{{ route('cek-kendaraan.export-pdf', $item->id) }}"
+                                                                target="_blank"
+                                                                class="flex items-center gap-2 px-4 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-50 transition-colors border-t border-slate-100 cursor-pointer">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4"
+                                                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                                        stroke-width="2"
+                                                                        d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+                                                                </svg>
+                                                                Export PDF
+                                                            </a>
+                                                        </div>
+                                                    </div>
+
+                                                    <form id="delete-vehicle-form-{{ $item->id }}"
+                                                        action="{{ route('cek-kendaraan.destroy', $item->id) }}" method="POST"
+                                                        class="hidden">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                    </form>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                @endif
+    </div>
+    </section>
+    </main>
     </div>
 
     <!-- Logout Confirmation Modal -->

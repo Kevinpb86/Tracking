@@ -442,7 +442,7 @@
 
                     {{-- Action Toolbar --}}
                     <div class="mb-10 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-                        <div class="relative flex-1 max-w-lg">
+                        <form action="{{ route('hse.daftar') }}" method="GET" class="relative flex-1 max-w-lg">
                             <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-slate-400"
                                     viewBox="0 0 20 20" fill="currentColor">
@@ -451,16 +451,16 @@
                                         clip-rule="evenodd" />
                                 </svg>
                             </div>
-                            <input type="text" placeholder="Cari laporan (Nama, Lokasi, ID)..."
+                            <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari laporan (Nama Driver, No Polisi, Perusahaan)..."
                                 class="w-full rounded-2xl border-0 bg-white py-4 pl-12 pr-4 text-sm font-medium text-slate-600 shadow-lg shadow-slate-200/50 ring-1 ring-slate-100 transition focus:ring-2 focus:ring-emerald-500/50 outline-none placeholder:text-slate-400">
-                        </div>
+                        </form>
 
                         <div class="flex items-center gap-4">
                             <div class="text-xs font-bold uppercase tracking-wider text-slate-400">
                                 Total: <span class="text-emerald-600 text-lg ml-1">{{ $hseList->count() }}</span>
                             </div>
                             <a href="{{ route('hse.input') }}"
-                                class="inline-flex items-center justify-center gap-2 rounded-2xl bg-blue-600 px-6 py-3.5 text-sm font-bold text-white shadow-xl shadow-blue-600/20 transition-all hover:bg-blue-700 hover:scale-105 active:scale-95">
+                                class="inline-flex items-center justify-center gap-2 rounded-2xl bg-emerald-600 px-6 py-3.5 text-sm font-bold text-white shadow-xl shadow-emerald-600/20 transition-all hover:bg-emerald-700 hover:scale-105 active:scale-95">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
                                     fill="currentColor">
                                     <path fill-rule="evenodd"

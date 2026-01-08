@@ -491,41 +491,41 @@
                             <div class="overflow-x-auto">
                                 <table class="w-full min-w-[1200px]">
                                     <thead>
-                                        <tr class="bg-gradient-to-r from-blue-700 to-blue-600 text-white shadow-sm">
+                                        <tr class="bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-sm">
                                             <th
-                                                class="px-6 py-4 text-left text-[11px] font-bold uppercase tracking-wider w-32">
+                                                class="px-4 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider w-32">
                                                 No. Tracking
                                             </th>
                                             <th
-                                                class="px-6 py-4 text-left text-[11px] font-bold uppercase tracking-wider w-32">
+                                                class="px-4 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider w-32">
                                                 Waktu Masuk
                                             </th>
                                             <th
-                                                class="px-6 py-4 text-left text-[11px] font-bold uppercase tracking-wider w-32">
+                                                class="px-4 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider w-32">
                                                 No. Polisi
                                             </th>
                                             <th
-                                                class="px-6 py-4 text-left text-[11px] font-bold uppercase tracking-wider w-40">
+                                                class="px-4 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider w-40">
                                                 Supir / Driver
                                             </th>
                                             <th
-                                                class="px-6 py-4 text-left text-[11px] font-bold uppercase tracking-wider w-40">
-                                                Lokasi Asal
+                                                class="px-4 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider w-40">
+                                                Lokasi
                                             </th>
                                             <th
-                                                class="px-6 py-4 text-left text-[11px] font-bold uppercase tracking-wider w-40">
+                                                class="px-4 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider w-40">
                                                 Perusahaan
                                             </th>
                                             <th
-                                                class="px-6 py-4 text-left text-[11px] font-bold uppercase tracking-wider w-32">
+                                                class="px-4 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider w-32">
                                                 Jenis Unit
                                             </th>
                                             <th
-                                                class="px-6 py-4 text-left text-[11px] font-bold uppercase tracking-wider w-32">
+                                                class="px-4 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider w-32">
                                                 Status
                                             </th>
                                             <th
-                                                class="px-6 py-4 text-center text-[11px] font-bold uppercase tracking-wider w-24">
+                                                class="px-4 py-2.5 text-center text-[11px] font-bold uppercase tracking-wider w-24">
                                                 Opsi
                                             </th>
                                         </tr>
@@ -533,79 +533,121 @@
                                     <tbody class="divide-y divide-slate-100">
                                         @foreach($trackings as $item)
                                             <tr class="bg-white hover:bg-slate-50/80 transition-colors duration-150 group">
-                                                <td class="px-6 py-4">
+                                                <td class="px-4 py-2.5">
                                                     <span
-                                                        class="inline-block font-bold text-blue-700 bg-blue-50 px-2 py-1 rounded text-xs border border-blue-100 group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-700 transition-all duration-300">
+                                                        class="inline-block font-bold text-slate-700 bg-slate-100 px-2 py-0.5 rounded text-xs border border-slate-200 group-hover:bg-white group-hover:border-blue-200 group-hover:text-blue-700 transition-colors">
                                                         {{ $item->tracking_number }}
                                                     </span>
                                                 </td>
-                                                <td class="px-6 py-4">
+                                                <td class="px-4 py-2.5">
                                                     <div class="flex flex-col">
                                                         <span
-                                                            class="text-xs font-bold text-slate-700">{{ date('d M Y', strtotime($item->tanggal)) }}</span>
+                                                            class="text-xs font-bold text-slate-700 whitespace-nowrap">{{ date('d M Y', strtotime($item->tanggal)) }}</span>
                                                         <span
-                                                            class="text-[10px] font-medium text-slate-400">{{ $item->waktu_masuk }}
+                                                            class="text-[10px] font-medium text-slate-400 whitespace-nowrap">{{ $item->waktu_masuk }}
                                                             WIB</span>
                                                     </div>
                                                 </td>
-                                                <td class="px-6 py-4">
+                                                <td class="px-4 py-2.5">
                                                     <span
-                                                        class="text-xs font-bold text-slate-700 font-mono bg-slate-50 px-2 py-1 rounded border border-slate-200 group-hover:border-blue-400 transition-colors">
+                                                        class="text-xs font-bold text-slate-700 font-mono bg-slate-50 px-1.5 py-0.5 rounded border border-slate-200 group-hover:border-blue-400 transition-colors">
                                                         {{ $item->nomor_polisi }}
                                                     </span>
                                                 </td>
-                                                <td class="px-6 py-4">
-                                                    <div class="flex items-center gap-3">
+                                                <td class="px-4 py-2.5">
+                                                    <div class="flex items-center gap-2">
                                                         <div
-                                                            class="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center text-xs font-bold text-blue-600 border border-blue-200">
+                                                            class="h-5 w-5 rounded-full bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-500">
                                                             {{ substr($item->nama_driver, 0, 1) }}
                                                         </div>
                                                         <span
-                                                            class="text-xs font-semibold text-slate-700">{{ $item->nama_driver }}</span>
+                                                            class="text-xs font-semibold text-slate-700 truncate max-w-[120px]">{{ $item->nama_driver }}</span>
                                                     </div>
                                                 </td>
-                                                <td class="px-6 py-4 text-xs font-semibold text-slate-600 italic">
+                                                <td class="px-4 py-2.5 text-xs font-semibold text-slate-600 italic truncate max-w-[120px]">
                                                     {{ $item->lokasi ?? '-' }}
                                                 </td>
-                                                <td class="px-6 py-4 text-xs font-medium text-slate-500">
+                                                <td class="px-4 py-2.5 text-xs font-medium text-slate-500 truncate max-w-[150px]">
                                                     {{ $item->perusahaan ?? '-' }}
                                                 </td>
-                                                <td class="px-6 py-4 text-xs text-slate-600">
+                                                <td class="px-4 py-2.5 text-xs text-slate-600 truncate max-w-[100px]">
                                                     {{ $item->jenis_kendaraan ?? '-' }}
                                                 </td>
-                                                <td class="px-6 py-4">
+                                                <td class="px-4 py-2.5">
                                                     @php
                                                         $statusStyle = $item->getStatusColor(); 
                                                     @endphp
                                                     <span
-                                                        class="inline-flex items-center justify-center min-w-[80px] rounded-full bg-{{ $statusStyle }}-50 px-2.5 py-1 text-[10px] font-bold tracking-wide text-{{ $statusStyle }}-700 border border-{{ $statusStyle }}-200">
-                                                        {{ strtoupper($item->status ?? 'POS 1') }}
+                                                        class="inline-flex items-center justify-center min-w-[70px] rounded-full bg-{{ $statusStyle }}-50 px-2.5 py-1 text-[11px] font-bold tracking-wide text-{{ $statusStyle }}-700 border border-{{ $statusStyle }}-200">
+                                                        {{ strtoupper($item->status_keseluruhan ?? 'POS 1') }}
                                                     </span>
                                                 </td>
-                                                <td class="px-6 py-4 text-center">
-                                                    <div class="flex items-center justify-center gap-2">
-                                                        <a href="{{ route('tracking.show', $item->id) }}"
-                                                            class="p-2 rounded-lg bg-slate-100 text-slate-500 hover:bg-blue-600 hover:text-white transition-all duration-300 shadow-sm"
-                                                            title="View Detail">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
-                                                                viewBox="0 0 24 24" stroke="currentColor">
-                                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                                    stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                                    stroke-width="2"
-                                                                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                                                            </svg>
-                                                        </a>
-                                                        <a href="{{ route('tracking.edit', $item->id) }}"
-                                                            class="p-2 rounded-lg bg-slate-100 text-slate-500 hover:bg-amber-500 hover:text-white transition-all duration-300 shadow-sm"
-                                                            title="Edit">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                                                <td class="px-4 py-2.5 text-center whitespace-nowrap">
+                                                    <div class="relative" x-data="{ open: false }">
+                                                        <button @click="open = !open"
+                                                            class="text-slate-400 hover:text-blue-600 transition-colors p-1 rounded-full hover:bg-slate-100 focus:outline-none border border-transparent focus:border-blue-200">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
                                                                 viewBox="0 0 24 24" stroke="currentColor">
                                                                 <path stroke-linecap="round" stroke-linejoin="round"
                                                                     stroke-width="2"
-                                                                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                                                    d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
                                                             </svg>
-                                                        </a>
+                                                        </button>
+
+                                                        <!-- Dropdown Menu -->
+                                                        <div x-show="open" @click.away="open = false"
+                                                            x-transition:enter="transition ease-out duration-100"
+                                                            x-transition:enter-start="transform opacity-0 scale-95"
+                                                            x-transition:enter-end="transform opacity-100 scale-100"
+                                                            x-transition:leave="transition ease-in duration-75"
+                                                            x-transition:leave-start="transform opacity-100 scale-100"
+                                                            x-transition:leave-end="transform opacity-0 scale-95"
+                                                            class="absolute right-0 top-8 z-10 w-44 origin-top-right rounded-xl border border-slate-100 bg-white shadow-xl focus:outline-none overflow-hidden text-left">
+                                                            <div class="py-1">
+                                                                <a href="{{ route('tracking.show', $item->id) }}"
+                                                                    class="flex items-center gap-2 px-4 py-2 text-xs font-semibold text-blue-600 hover:bg-blue-50 transition-colors cursor-pointer">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4"
+                                                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                                            stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                                            stroke-width="2"
+                                                                            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                                                    </svg>
+                                                                    View Details
+                                                                </a>
+
+                                                                <a href="{{ route('tracking.edit', $item->id) }}"
+                                                                    class="flex items-center gap-2 px-4 py-2 text-xs font-semibold text-amber-600 hover:bg-amber-50 transition-colors cursor-pointer border-t border-slate-50">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4"
+                                                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                                            stroke-width="2"
+                                                                            d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                                                    </svg>
+                                                                    Edit
+                                                                </a>
+
+                                                                <button type="button"
+                                                                    @click="open = false; confirmDelete('{{ $item->id }}', '{{ $item->tracking_number }}')"
+                                                                    class="flex w-full items-center gap-2 px-4 py-2 text-xs font-semibold text-rose-600 hover:bg-rose-50 transition-colors cursor-pointer border-t border-slate-50">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4"
+                                                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                                            stroke-width="2"
+                                                                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                                    </svg>
+                                                                    Delete
+                                                                </button>
+                                                            </div>
+                                                        </div>
+
+                                                        <form id="delete-form-{{ $item->id }}"
+                                                            action="{{ route('tracking.destroy', $item->id) }}"
+                                                            method="POST" class="hidden">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                        </form>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -625,7 +667,41 @@
         </main>
     </div>
 
-    <!-- Modals (Logout, etc) -->
+    <!-- Delete Confirmation Modal -->
+    <div id="deleteModal"
+        class="fixed inset-0 z-50 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="closeDeleteModal()"></div>
+        <div
+            class="relative w-full max-w-sm rounded-2xl bg-white p-6 shadow-2xl transform scale-95 transition-transform duration-300">
+            <div class="mb-6 flex flex-col items-center text-center">
+                <div class="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-rose-100 text-rose-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900">Hapus Data Tracking</h3>
+                <p class="mt-2 text-sm text-slate-500">
+                    Apakah Anda yakin ingin menghapus data tracking <span id="deleteTrackingNo"
+                        class="font-bold text-slate-900"></span>?
+                </p>
+                <p class="text-xs text-rose-500 mt-1">Tindakan ini tidak dapat dibatalkan.</p>
+            </div>
+            <div class="flex gap-3">
+                <button type="button" onclick="closeDeleteModal()"
+                    class="flex-1 rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 cursor-pointer">
+                    Batal
+                </button>
+                <button type="button" id="confirmDeleteBtn"
+                    class="flex-1 rounded-xl bg-rose-600 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-rose-600/20 transition hover:bg-rose-700 cursor-pointer">
+                    Ya, Hapus
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Logout Confirmation Modal -->
     <div id="logoutModal"
         class="fixed inset-0 z-50 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
         <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="closeLogoutModal()"></div>
@@ -663,6 +739,37 @@
         const sidebarOverlay = document.getElementById('sidebarOverlay');
         const logoutModal = document.getElementById('logoutModal');
         const logoutModalContent = logoutModal.querySelector('div.transform');
+
+        // Delete Modal Elements
+        const deleteModal = document.getElementById('deleteModal');
+        const deleteModalContent = deleteModal.querySelector('div.transform');
+        const deleteTrackingNo = document.getElementById('deleteTrackingNo');
+        const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
+        let deleteFormId = null;
+
+        function confirmDelete(id, trackingNo) {
+            deleteFormId = 'delete-form-' + id;
+            deleteTrackingNo.textContent = trackingNo;
+
+            deleteModal.classList.remove('opacity-0', 'pointer-events-none');
+            deleteModalContent.classList.remove('scale-95');
+            deleteModalContent.classList.add('scale-100');
+        }
+
+        function closeDeleteModal() {
+            deleteModal.classList.add('opacity-0', 'pointer-events-none');
+            deleteModalContent.classList.remove('scale-100');
+            deleteModalContent.classList.add('scale-95');
+            deleteFormId = null;
+        }
+
+        if (confirmDeleteBtn) {
+            confirmDeleteBtn.addEventListener('click', function () {
+                if (deleteFormId) {
+                    document.getElementById(deleteFormId).submit();
+                }
+            });
+        }
 
         function toggleSidebar() {
             const isClosed = sidebar.classList.contains('-translate-x-full');

@@ -114,7 +114,7 @@ class TrackingController extends Controller
      */
     public function edit(Tracking $tracking)
     {
-        return view('tracking.edit', compact('tracking'));
+        return view('navigasi.edit-tracking', compact('tracking'));
     }
 
     /**

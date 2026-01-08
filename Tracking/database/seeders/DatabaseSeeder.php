@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             CekKendaraanSeeder::class,
             HSESeeder::class,
             CekBarangSeeder::class,
+            TrackingSeeder::class,
         ]);
 
         Schema::enableForeignKeyConstraints();

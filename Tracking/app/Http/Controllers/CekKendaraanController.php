@@ -7,9 +7,15 @@ use Illuminate\Http\Request;
 
 class CekKendaraanController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $cekKendaraanList = CekKendaraan::orderBy('tanggal', 'desc')
+        $search = $request->input('search');
+
+        $cekKendaraanList = CekKendaraan::when($search, function ($query, $search) {
+            return $query->where('nama_driver', 'like', "%{$search}%")
+                ->orWhere('nomor_polisi', 'like', "%{$search}%")
+                ->orWhere('perusahaan', 'like', "%{$search}%");
+        })->orderBy('tanggal', 'desc')
             ->orderBy('waktu_masuk', 'desc')
             ->get();
 

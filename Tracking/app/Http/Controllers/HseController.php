@@ -7,9 +7,16 @@ use Illuminate\Http\Request;
 
 class HseController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $hseList = Hse::orderBy('created_at', 'desc')->get();
+        $search = $request->input('search');
+
+        $hseList = Hse::when($search, function ($query, $search) {
+            return $query->where('nama_driver', 'like', "%{$search}%")
+                ->orWhere('nomor_polisi', 'like', "%{$search}%")
+                ->orWhere('perusahaan', 'like', "%{$search}%");
+        })->orderBy('created_at', 'desc')->get();
+
         return view('navigasi.daftar-hse', compact('hseList'));
     }
 

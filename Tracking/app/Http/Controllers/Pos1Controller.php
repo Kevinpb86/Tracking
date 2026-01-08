@@ -119,9 +119,15 @@ class Pos1Controller extends Controller
         return redirect()->route('pos1.dashboard')->with('success', 'Antrian berhasil dibuat! Nomor: ' . $nomorAntrian);
     }
 
-    public function daftarAntrian()
+    public function daftarAntrian(\Illuminate\Http\Request $request)
     {
-        $antrianList = \App\Models\AntrianPos1::orderByRaw("
+        $search = $request->input('search');
+
+        $antrianList = \App\Models\AntrianPos1::when($search, function ($query, $search) {
+            return $query->where('nama_driver', 'like', "%{$search}%")
+                ->orWhere('nomor_polisi', 'like', "%{$search}%")
+                ->orWhere('no_antrian', 'like', "%{$search}%");
+        })->orderByRaw("
                 CASE 
                     WHEN emr = 'Critical' THEN 1 
                     WHEN emr = 'Urgent' THEN 2 

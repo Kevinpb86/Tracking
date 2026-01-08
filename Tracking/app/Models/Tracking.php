@@ -353,14 +353,14 @@ class Tracking extends Model
     public function getStatusColorAttribute()
     {
         return match ($this->status_keseluruhan) {
-            'Menunggu' => 'warning',
-            'Dalam Pemeriksaan' => 'info',
-            'Lolos' => 'success',
-            'Lolos Bersyarat' => 'primary',
-            'Ditahan' => 'warning',
-            'Ditolak' => 'danger',
-            'Selesai' => 'secondary',
-            default => 'secondary',
+            'Menunggu' => 'amber',
+            'Dalam Pemeriksaan' => 'blue',
+            'Lolos' => 'emerald',
+            'Lolos Bersyarat' => 'indigo',
+            'Ditahan' => 'orange',
+            'Ditolak' => 'rose',
+            'Selesai' => 'slate',
+            default => 'slate',
         };
     }
 
@@ -370,16 +370,29 @@ class Tracking extends Model
     public function getLokasiColorAttribute()
     {
         return match ($this->lokasi_terakhir) {
-            'Pos 1 - Antrian' => 'info',
-            'Pos 1 - Cek Kendaraan' => 'primary',
-            'Pos 1 - HSE' => 'warning',
-            'Pos 2 - Cek DO' => 'success',
-            'Pos 2 - Cek Barang' => 'success',
-            'Area Bongkar Muat' => 'dark',
-            'Keluar' => 'secondary',
-            'Ditolak' => 'danger',
-            default => 'secondary',
+            'Pos 1 - Antrian' => 'blue',
+            'Pos 1 - Cek Kendaraan' => 'indigo',
+            'Pos 1 - HSE' => 'amber',
+            'Pos 2 - Cek DO' => 'emerald',
+            'Pos 2 - Cek Barang' => 'emerald',
+            'Area Bongkar Muat' => 'slate',
+            'Keluar' => 'slate',
+            'Ditolak' => 'rose',
+            default => 'slate',
         };
+    }
+
+    /**
+     * Helper methods for UI (compatible with calls like getStatusColor())
+     */
+    public function getStatusColor()
+    {
+        return $this->status_color;
+    }
+
+    public function getLokasiColor()
+    {
+        return $this->lokasi_color;
     }
 
     /**

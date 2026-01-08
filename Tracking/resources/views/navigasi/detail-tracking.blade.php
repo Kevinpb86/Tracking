@@ -161,7 +161,7 @@
                                                 <div class="space-y-1">
                                                     <p
                                                         class="text-[10px] font-black uppercase tracking-widest text-slate-400">
-                                                        Lokasi Asal</p>
+                                                        Lokasi</p>
                                                     <p class="text-lg font-bold text-slate-900">
                                                         {{ $tracking->lokasi ?? '-' }}
                                                     </p>

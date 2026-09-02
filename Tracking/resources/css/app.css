@@ -9,3 +9,19 @@
     --font-sans: 'Inter', 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+
+/* Global cursor pointer for all interactive elements */
+@layer base {
+    button,
+    a,
+    [role="button"],
+    [onclick],
+    input[type="submit"],
+    input[type="button"],
+    input[type="reset"],
+    select,
+    label[for],
+    .cursor-pointer {
+        cursor: pointer !important;
+    }
+}
